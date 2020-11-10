@@ -1,0 +1,7 @@
+/* Temporary style -- delete after bringing in map */
+.map h2 {
+  padding-top: 5em;
+  text-align: center;
+  background-color: #ccc;
+  height: 100vh;
+}

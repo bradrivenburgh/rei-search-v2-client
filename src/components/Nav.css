@@ -1,0 +1,36 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1% 0;
+  background-color: #aaa;
+}
+
+.nav p {
+  margin: 0 1em;
+}
+
+/* Placeholder style -- move to <Search /> component */
+.nav input {
+  height: 2em;
+  width: 10em;
+}
+
+/* Placeholder styles -- move to <Menu /> component */
+
+.nav button {
+  font-size: 1.25em;
+  padding: .25em .5em;
+  margin-right: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+.nav button:hover {
+  background-color:#ddd;
+}

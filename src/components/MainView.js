@@ -1,12 +1,15 @@
 import React, {useContext} from 'react';
+import './MainView.css';
+import Nav from './Nav';
+import Map from './Map';
+import HUD from './HUD';
 
 function MainView() {
   return(
     <>
-      {/* <NavComponent />*/}
-      {/* <MapComponent />*/}      
-      {/* <HUDComponent />*/}
-      <p>This is the main view container</p>
+      <Nav />
+      <Map />
+      <HUD />
     </>
   );
 }

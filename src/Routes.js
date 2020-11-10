@@ -4,7 +4,7 @@ import MainView from './components/MainView';
 
 const Routes = 
   <Switch>
-    <Route path="/main-view">
+    <Route path="/">
       <MainView />
     </Route>
   </Switch>
