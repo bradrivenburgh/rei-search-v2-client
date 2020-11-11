@@ -1,0 +1,24 @@
+.HUD {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 98;
+  bottom: -95vh;
+  overflow-y: hidden;
+  transition: 0.5s;
+  background-color: #aaa;
+}
+
+.HUD__pill-button {
+  background-color: #ddd;
+  border: none;
+  padding: 3px 15px;
+  display: block;
+  margin: .5em auto;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.HUD__pill-button:hover {
+  background-color: #f1f1f1;;
+}

@@ -1,7 +1,15 @@
+.map {
+  position: fixed;
+  top: 0;
+  min-width: 100%;
+  min-height: 100vh;
+  background-color: #ccc;
+}
+
 /* Temporary style -- delete after bringing in map */
+
 .map h2 {
   padding-top: 5em;
   text-align: center;
-  background-color: #ccc;
-  height: 100vh;
+  z-index: 0;
 }
