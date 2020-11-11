@@ -5,8 +5,11 @@ function Nav() {
   return(
     <nav className="nav">
       <p>[Logo]</p>
-      <input placeholder="Philadelphia, PA" /> {/** <Search /> */}      
-      <button>☰</button> {/**<Menu /> */}
+      {/** <Search /> */}
+      <input placeholder="Philadelphia, PA" />       
+      
+      {/**<Menu /> */}
+      <button>☰</button>
     </nav>
   );
 }

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import './MainView.css';
 import Nav from './Nav';
 import Map from './Map';

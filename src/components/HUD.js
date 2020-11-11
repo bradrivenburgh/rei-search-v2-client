@@ -6,25 +6,22 @@ function HUD() {
   let [ pressCount, setPressCount ] = useState(0);
 
   const adjustHUD = () => {
-    let styleAdjust
-
-    // let offset = "";
-    // let adjustHUD = document.getElementById("HUD").style.bottom = `${offset}`;
-
+    let offset;
 
     if (pressCount === 0) {
-      document.getElementById("HUD").style.bottom = "-67vh";
+      offset = "-33vh";
     } else if (pressCount === 1) {
-      document.getElementById("HUD").style.bottom = "-33vh";
+      offset = "-6vh";
     } else if (pressCount === 2) {
-      document.getElementById("HUD").style.bottom = "-6vh";
+      offset = "-95vh";
     } else {
-      document.getElementById("HUD").style.bottom = "-95vh";
-      setPressCount(pressCount = -1);
+      offset = "-67vh";
     }
-
-    setPressCount(pressCount + 1);
-
+    document.getElementById("HUD").style.bottom = `${offset}`;
+    
+    pressCount <= 2
+    ? setPressCount(pressCount + 1)
+    : setPressCount(pressCount = 0);
   }
 
   return(
