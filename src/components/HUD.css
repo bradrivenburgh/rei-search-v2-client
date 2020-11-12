@@ -14,7 +14,7 @@
   height: 33vh;
   position: fixed;
   z-index: 98;
-  bottom: 0;
+  bottom: 0px;
   overflow: hidden;
   transition: 0.5s;
   background-color: #aaa;
@@ -71,7 +71,7 @@
   position: absolute;
   display: none;
   padding: 6px 12px;
-  height: 80%;
+  height: 100%;
   width: 97%;
   overflow-y: scroll;
 }
