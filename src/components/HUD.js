@@ -32,11 +32,7 @@ function HUD() {
     if (pressCount === 0) {
       containerHeight = "67vh";
     } else if (pressCount === 1) {
-<<<<<<< HEAD
-      containerHeight = "93%";
-=======
       containerHeight = "100vh";
->>>>>>> experiment
     } else if (pressCount === 2) {
       containerHeight = "69px";
     } else {
