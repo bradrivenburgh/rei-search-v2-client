@@ -9,6 +9,7 @@
   align-items: center;
   padding: .25em 0;
   background-color: #aaa;
+  /* height: 8vh; */
 }
 
 .nav p {
