@@ -47,7 +47,7 @@ function HUD() {
   }
 
 
-  const openCity = (e, cityName) => {
+  const openTab = (e, cityName) => {
     let tabContent = document.getElementsByClassName("HUD__tab__tabcontent");
     for (let i = 0; i < tabContent.length; i++) {
       tabContent[i].style.display = "none";
@@ -71,9 +71,9 @@ function HUD() {
       <button className="HUD__pill-button" onClick={adjustHUDHeight} />
       
       <div className="HUD__tab">
-        <button id="defaultOpen" className="HUD__tab__tablinks" onClick={(e) => openCity(e, 'economics')}>economics</button>
-        <button className="HUD__tab__tablinks" onClick={(e) => openCity(e, 'demographics')}>demographics</button>
-        <button className="HUD__tab__tablinks" onClick={(e) => openCity(e, 'properties')}>properties</button>
+        <button id="defaultOpen" className="HUD__tab__tablinks" onClick={(e) => openTab(e, 'economics')}>economics</button>
+        <button className="HUD__tab__tablinks" onClick={(e) => openTab(e, 'demographics')}>demographics</button>
+        <button className="HUD__tab__tablinks" onClick={(e) => openTab(e, 'properties')}>properties</button>
       </div>
 
       <div id="economics" className="HUD__tab__tabcontent">
