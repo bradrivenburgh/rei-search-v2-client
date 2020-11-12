@@ -4,6 +4,10 @@ import './HUD.css';
 function HUD() {
   let [ pressCount, setPressCount ] = useState(0);
 
+  /**
+   * Adust offset instead of height property to control
+   * the HUD's height.
+   */
   // const adjustHUDHeight = () => {
   //   let offset;
 
@@ -73,8 +77,8 @@ function HUD() {
       </div>
 
       <div id="economics" className="HUD__tab__tabcontent">
-          <h3>London</h3>
-          <p>London is the capital city of England.</p>
+          <h3>Economics</h3>
+          <p>First line</p>
           <p>Dolore adipisicing voluptate excepteur culpa.</p>
           <p>Dolore adipisicing voluptate excepteur culpa.</p>
           <p>Dolore adipisicing voluptate excepteur culpa.</p>
@@ -101,13 +105,13 @@ function HUD() {
       </div>
 
       <div id="demographics" className="HUD__tab__tabcontent">
-        <h3>Paris</h3>
-        <p>Paris is the capital of France.</p>
+        <h3>Demographics</h3>
+        <p>First line.</p>
       </div>
 
       <div id="properties" className="HUD__tab__tabcontent">
-        <h3>Tokyo</h3>
-        <p>Tokyo is the capital of Japan.</p>
+        <h3>Properties</h3>
+        <p>First line.</p>
       </div>
     </section>
   );

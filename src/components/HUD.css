@@ -1,4 +1,5 @@
-/* .HUD {
+/* style for adjusting offset instead of div height 
+.HUD {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -68,22 +69,10 @@
 }
 
 .HUD__tab__tabcontent {
-  position: absolute;
+  /* position: absolute; */
   display: none;
   padding: 6px 12px;
-  height: 100%;
-  width: 97%;
+  max-height: 80%;
+  /* width: 97%; */
   overflow-y: scroll;
-}
-
-.HUD__tab__tabcontent__container {
-  position: absolute;
-  top: 4em;
-  overflow-y: scroll;
-  height: 70%;
-  width: 97%;
-}
-
-.HUD__tab__tabcontent__container :nth-child(1){
-  margin-top: 0;
 }
