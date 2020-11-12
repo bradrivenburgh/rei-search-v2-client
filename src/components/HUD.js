@@ -28,7 +28,7 @@ function HUD() {
     if (pressCount === 0) {
       containerHeight = "67%";
     } else if (pressCount === 1) {
-      containerHeight = "94%";
+      containerHeight = "93%";
     } else if (pressCount === 2) {
       containerHeight = "12%";
     } else {

@@ -76,7 +76,7 @@
   overflow-y: scroll;
 }
 
-.HUD__tab__tabcontent__container {
+/* .HUD__tab__tabcontent__container {
   position: absolute;
   top: 4em;
   overflow-y: scroll;
@@ -86,4 +86,4 @@
 
 .HUD__tab__tabcontent__container :nth-child(1){
   margin-top: 0;
-}
+} */
