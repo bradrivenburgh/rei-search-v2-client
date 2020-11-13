@@ -70,6 +70,7 @@ function HUD() {
 
   return (
     <section id='HUD' className='HUD'>
+      <div className="HUD__nav">
       <button className='HUD__pill-button' onClick={adjustHUDHeight} />
 
       <div className='HUD__tab'>
@@ -90,6 +91,10 @@ function HUD() {
           properties
         </button>
       </div>
+
+      </div>
+
+    <div className='HUD__tabcontent__container'>
 
       <div id='economics' className='HUD__tabcontent'>
         <h3>Economics</h3>
@@ -128,6 +133,7 @@ function HUD() {
         <h3>Properties</h3>
         <p>First line.</p>
       </div>
+    </div>
     </section>
   );
 }

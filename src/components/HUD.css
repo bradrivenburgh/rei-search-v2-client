@@ -1,15 +1,3 @@
-/* style for adjusting offset instead of div height 
-.HUD {
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  z-index: 98;
-  bottom: -67vh;
-  overflow-y: hidden;
-  transition: 0.5s;
-  background-color: #aaa;
-} */
-
 .HUD {
   width: 100%;
   min-height: max(69px, 1%);
@@ -19,6 +7,12 @@
   bottom: 0px;
   overflow: hidden;
   transition: 0.5s;
+  background-color: #aaa;
+}
+
+.HUD__nav {
+  position: relative;
+  z-index: 99;
   background-color: #aaa;
 }
 
@@ -69,11 +63,15 @@
   background-color: #ccc;
 }
 
+.HUD__tabcontent__container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: calc(100% - 64px);
+}
+
 .HUD__tabcontent {
-  /* position: absolute; */
   display: none;
   padding: 6px 12px;
-  max-height: 80%;
-  /* width: 97%; */
   overflow-y: scroll;
 }
