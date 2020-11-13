@@ -4,29 +4,6 @@ import "./HUD.css";
 function HUD() {
   let [pressCount, setPressCount] = useState(0);
 
-  /**
-   * Adust offset instead of height property to control
-   * the HUD's height.
-   */
-  // const adjustHUDHeight = () => {
-  //   let offset;
-
-  //   if (pressCount === 0) {
-  //     offset = "-33vh";
-  //   } else if (pressCount === 1) {
-  //     offset = "-6vh";
-  //   } else if (pressCount === 2) {
-  //     offset = "-91vh";
-  //   } else {
-  //     offset = "-67vh";
-  //   }
-  //   document.getElementById("HUD").style.bottom = `${offset}`;
-
-  //   pressCount <= 2
-  //   ? setPressCount(pressCount + 1)
-  //   : setPressCount(pressCount = 0);
-  // }
-
   const adjustHUDHeight = () => {
     let baseScreen = "69px";
     let thirdScreen = "33vh";
@@ -65,75 +42,77 @@ function HUD() {
     e.target.className += " active";
 
     // Get the element with id="defaultOpen" and click on it
-    // document.getElementById("defaultOpen").click();
+    // Needs to be used in a useEffect()
+    //  document.getElementById("defaultOpen").click();
   };
 
   return (
     <section id='HUD' className='HUD'>
-      <div className="HUD__nav">
-      <button className='HUD__pill-button' onClick={adjustHUDHeight} />
+      <div className='HUD__nav'>
+        <button className='HUD__pill-button' onClick={adjustHUDHeight} />
 
-      <div className='HUD__tab'>
-        <button
-          id='defaultOpen'
-          className='HUD__tab__tablinks'
-          onClick={(e) => openTab(e, "economics")}>
-          economics
-        </button>
-        <button
-          className='HUD__tab__tablinks'
-          onClick={(e) => openTab(e, "demographics")}>
-          demographics
-        </button>
-        <button
-          className='HUD__tab__tablinks'
-          onClick={(e) => openTab(e, "properties")}>
-          properties
-        </button>
+        <div className='HUD__tab'>
+          <button
+            id='defaultOpen'
+            className='HUD__tab__tablinks'
+            onClick={(e) => openTab(e, "economics")}>
+            economics
+          </button>
+          <button
+            className='HUD__tab__tablinks'
+            onClick={(e) => openTab(e, "demographics")}>
+            demographics
+          </button>
+          <button
+            className='HUD__tab__tablinks'
+            onClick={(e) => openTab(e, "properties")}>
+            properties
+          </button>
+        </div>
       </div>
 
-      </div>
+      <div className='HUD__tabcontent__container'>
+        <div id='economics' className='HUD__tabcontent'>
+          <h3>Economics</h3>
+          <p>First line</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>
+            Dolore adipisicing voluptate excepteur culpaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.
+          </p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>Dolore adipisicing voluptate excepteur culpa.</p>
+          <p>This is the last line</p>
+        </div>
 
-    <div className='HUD__tabcontent__container'>
+        <div id='demographics' className='HUD__tabcontent'>
+          <h3>Demographics</h3>
+          <p>First line.</p>
+        </div>
 
-      <div id='economics' className='HUD__tabcontent'>
-        <h3>Economics</h3>
-        <p>First line</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>Dolore adipisicing voluptate excepteur culpa.</p>
-        <p>This is the last line</p>
+        <div id='properties' className='HUD__tabcontent'>
+          <h3>Properties</h3>
+          <p>First line.</p>
+        </div>
       </div>
-
-      <div id='demographics' className='HUD__tabcontent'>
-        <h3>Demographics</h3>
-        <p>First line.</p>
-      </div>
-
-      <div id='properties' className='HUD__tabcontent'>
-        <h3>Properties</h3>
-        <p>First line.</p>
-      </div>
-    </div>
     </section>
   );
 }
