@@ -9,13 +9,6 @@
   background-color: #aaa;
 }
 
-.HUD__nav {
-  position: relative;
-  z-index: 99;
-  background-color: #aaa;
-}
-
-
 .HUD__pill-button {
   background-color: #ddd;
   border: none;
@@ -37,6 +30,12 @@
 
 .HUD__pill-button:hover {
   background-color: #f1f1f1;;
+}
+
+.HUD__nav {
+  position: relative;
+  z-index: 99;
+  background-color: #aaa;
 }
 
 .HUD__tab {
@@ -75,4 +74,17 @@
   padding: 6px 12px;
   overflow-y: scroll;
   overflow-wrap: break-word;
+  /* Hide scroll bar for IE, Edge, and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.HUD__tabcontent::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

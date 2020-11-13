@@ -73,34 +73,113 @@ function HUD() {
 
       <div className='HUD__tabcontent__container'>
         <div id='economics' className='HUD__tabcontent'>
-          <h3>Economics</h3>
-          <p>First line</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>
-            Dolore adipisicing voluptate excepteur culpaaaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.
-          </p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>This is the last line</p>
+        <h3>Economy</h3>
+                <ul>
+                  <li>
+                    <h4>Price-to-rent ratio</h4>
+                    <p><em>(Lower is better)</em></p>
+                    <table>
+                      <tr>
+                        <th>CT</th>
+                        <th>MSA</th>
+                        <th>USA</th>
+                      </tr>
+                      <tr>
+                        <td>18.84</td>
+                        <td>18.00</td>
+                        <td>17.00</td>
+                      </tr>
+                    </table>
+                  </li>
+                  <li>
+                    <h4>Median income</h4>
+                    <table>
+                      <tr>
+                        <th>CT</th>
+                        <th>MSA</th>
+                        <th>USA</th>
+                      </tr>
+                      <tr>
+                        <td>$39500</td>
+                        <td>$40495</td>
+                        <td>$39000</td>
+                      </tr>
+                    </table>
+                  </li>
+                  <li>
+                    <h4>Top three sector</h4>
+                    <p><em>(Ordered by percentage of working 
+                      population employed)</em></p>
+                    <table>
+                      <tr>
+                        <th>CT</th>
+                        <th>MSA</th>
+                        <th>USA</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <ul>
+                            <li>Health care and social assistance: 19.29%</li>
+                            <li>Retail trade: 11.75%</li>
+                            <li>Accommodation and food services: 8.57%</li>
+                          </ul>      
+                        </td>
+                        <td>
+                          <ul>
+                            <li>Health care and social assistance: 19.29%</li>
+                            <li>Retail trade: 11.75%</li>
+                            <li>Accommodation and food services: 8.57%</li>
+                          </ul>      
+                        </td>
+                        <td>
+                          <ul>
+                            <li>Health care and social assistance: 19.29%</li>
+                            <li>Retail trade: 11.75%</li>
+                            <li>Accommodation and food services: 8.57%</li>
+                          </ul>      
+                        </td>
+                      </tr>
+                    </table>
+                  </li>
+                  <li>
+                    <h4>Top three occupation types</h4>
+                    <p><em>(Ordered by percentage of 
+                      working population in occupation)</em></p>
+                    <table>
+                      <tr>
+                        <th>CT</th>
+                        <th>MSA</th>
+                        <th>USA</th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <ul>
+                            <li>Management, business, science, 
+                              and arts occupations: 43.8%</li>
+                            <li>Sales and office occupations: 21.7%</li>
+                            <li>Service occupations: 16.9%</li>
+                          </ul>      
+                        </td>
+                        <td>
+                          <ul>
+                            <li>Management, business, science, 
+                              and arts occupations: 43.8%</li>
+                            <li>Sales and office occupations: 21.7%</li>
+                            <li>Service occupations: 16.9%</li>
+                          </ul>      
+                        </td>
+                        <td>
+                          <ul>
+                            <li>Management, business, science, 
+                              and arts occupations: 43.8%</li>
+                            <li>Sales and office occupations: 21.7%</li>
+                            <li>Service occupations: 16.9%</li>
+                          </ul>      
+                        </td>
+                      </tr>
+                    </table>
+                  </li>
+                </ul>
         </div>
 
         <div id='demographics' className='HUD__tabcontent'>
