@@ -12,6 +12,7 @@
 
 .HUD {
   width: 100%;
+  min-height: max(69px, 1%);
   height: 33vh;
   position: fixed;
   z-index: 98;
@@ -68,7 +69,7 @@
   background-color: #ccc;
 }
 
-.HUD__tab__tabcontent {
+.HUD__tabcontent {
   /* position: absolute; */
   display: none;
   padding: 6px 12px;

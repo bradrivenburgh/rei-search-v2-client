@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './HUD.css';
+import React, { useState } from "react";
+import "./HUD.css";
 
 function HUD() {
-  let [ pressCount, setPressCount ] = useState(0);
+  let [pressCount, setPressCount] = useState(0);
 
   /**
    * Adust offset instead of height property to control
@@ -21,38 +21,41 @@ function HUD() {
   //     offset = "-67vh";
   //   }
   //   document.getElementById("HUD").style.bottom = `${offset}`;
-    
+
   //   pressCount <= 2
   //   ? setPressCount(pressCount + 1)
   //   : setPressCount(pressCount = 0);
   // }
 
   const adjustHUDHeight = () => {
-    let containerHeight, contentHeight;
+    let baseScreen = "69px";
+    let thirdScreen = "33vh";
+    let twoThirdsScreen = "67vh";
+    let fullScreen = "100vh";
+
+    let containerHeight;
     if (pressCount === 0) {
-      containerHeight = "67vh";
+      containerHeight = twoThirdsScreen;
     } else if (pressCount === 1) {
-      containerHeight = "100vh";
+      containerHeight = fullScreen;
     } else if (pressCount === 2) {
-      containerHeight = "69px";
+      containerHeight = baseScreen;
     } else {
-      containerHeight = "33vh";
+      containerHeight = thirdScreen;
     }
     document.getElementById("HUD").style.height = `${containerHeight}`;
-    
+
     pressCount <= 2
-    ? setPressCount(pressCount + 1)
-    : setPressCount(pressCount = 0);
-
-  }
-
+      ? setPressCount(pressCount + 1)
+      : setPressCount((pressCount = 0));
+  };
 
   const openTab = (e, cityName) => {
-    let tabContent = document.getElementsByClassName("HUD__tab__tabcontent");
+    let tabContent = document.getElementsByClassName("HUD__tabcontent");
     for (let i = 0; i < tabContent.length; i++) {
       tabContent[i].style.display = "none";
     }
-    
+
     let tabLinks = document.getElementsByClassName("HUD__tab__tablinks");
     for (let i = 0; i < tabLinks.length; i++) {
       tabLinks[i].className = tabLinks[i].className.replace(" active", "");
@@ -63,53 +66,65 @@ function HUD() {
 
     // Get the element with id="defaultOpen" and click on it
     // document.getElementById("defaultOpen").click();
-  }
-  
+  };
 
-  return(
-    <section id="HUD" className="HUD">
-      <button className="HUD__pill-button" onClick={adjustHUDHeight} />
-      
-      <div className="HUD__tab">
-        <button id="defaultOpen" className="HUD__tab__tablinks" onClick={(e) => openTab(e, 'economics')}>economics</button>
-        <button className="HUD__tab__tablinks" onClick={(e) => openTab(e, 'demographics')}>demographics</button>
-        <button className="HUD__tab__tablinks" onClick={(e) => openTab(e, 'properties')}>properties</button>
+  return (
+    <section id='HUD' className='HUD'>
+      <button className='HUD__pill-button' onClick={adjustHUDHeight} />
+
+      <div className='HUD__tab'>
+        <button
+          id='defaultOpen'
+          className='HUD__tab__tablinks'
+          onClick={(e) => openTab(e, "economics")}>
+          economics
+        </button>
+        <button
+          className='HUD__tab__tablinks'
+          onClick={(e) => openTab(e, "demographics")}>
+          demographics
+        </button>
+        <button
+          className='HUD__tab__tablinks'
+          onClick={(e) => openTab(e, "properties")}>
+          properties
+        </button>
       </div>
 
-      <div id="economics" className="HUD__tab__tabcontent">
-          <h3>Economics</h3>
-          <p>First line</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>Dolore adipisicing voluptate excepteur culpa.</p>
-          <p>This is the last line</p>
+      <div id='economics' className='HUD__tabcontent'>
+        <h3>Economics</h3>
+        <p>First line</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>Dolore adipisicing voluptate excepteur culpa.</p>
+        <p>This is the last line</p>
       </div>
 
-      <div id="demographics" className="HUD__tab__tabcontent">
+      <div id='demographics' className='HUD__tabcontent'>
         <h3>Demographics</h3>
         <p>First line.</p>
       </div>
 
-      <div id="properties" className="HUD__tab__tabcontent">
+      <div id='properties' className='HUD__tabcontent'>
         <h3>Properties</h3>
         <p>First line.</p>
       </div>
