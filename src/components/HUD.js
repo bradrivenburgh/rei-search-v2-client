@@ -27,7 +27,7 @@ function HUD() {
       : setPressCount((pressCount = 0));
   };
 
-  const openTab = (e, cityName) => {
+  const openTab = (e, category) => {
     let tabContent = document.getElementsByClassName("HUD__tabcontent");
     for (let i = 0; i < tabContent.length; i++) {
       tabContent[i].style.display = "none";
@@ -38,13 +38,135 @@ function HUD() {
       tabLinks[i].className = tabLinks[i].className.replace(" active", "");
     }
 
-    document.getElementById(cityName).style.display = "block";
+    document.getElementById(category).style.display = "block";
     e.target.className += " active";
 
-    // Get the element with id="defaultOpen" and click on it
+    // TO DO: Get the element with id="defaultOpen" and click on it
     // Needs to be used in a useEffect()
     //  document.getElementById("defaultOpen").click();
   };
+
+const mockData = [
+  {
+    "id": 1,
+    "statistic": "Price-to-rent ratio",
+    "advisory": "(Lower is better)",
+    "CT": "18.00",
+    "MSA": "18.20",
+    "USA": "18.30"
+  },
+  {
+    "id": 2,
+    "statistic": "Median income",
+    "CT": "$40,000",
+    "MSA": "$40,000",
+    "USA": "$40,000"
+  },
+  {
+    "id": 3,
+    "statistic": "Top three sectors",
+    "advisory": "(Ordered by percentage of working population employed)",
+    "CT": [
+      "Health care and social assistance (19.29%)", 
+      "Retail trade (18.29%)", 
+      "Accommodation and food services (8.75%)"
+    ],
+    "MSA": [
+      "Health care and social assistance (19.29%)", 
+      "Retail trade (18.29%)", 
+      "Accommodation and food services (8.75%)"
+    ],
+    "USA": [
+      "Health care and social assistance (19.29%)", 
+      "Retail trade (18.29%)", 
+      "Accommodation and food services (8.75%)"
+    ],
+  },
+  {
+    "id": 4,
+    "statistic": "Top three occupations",
+    "advisory": "(Ordered by percentage of working population in occupation)",
+    "CT": [
+      "Health care and social assistance (19.29%)", 
+      "Retail trade (18.29%)", 
+      "Accommodation and food services (8.75%)"
+    ],
+    "MSA": [
+      "Health care and social assistance (19.29%)", 
+      "Retail trade (18.29%)", 
+      "Accommodation and food services (8.75%)"
+    ],
+    "USA": [
+      "Health care and social assistance (19.29%)", 
+      "Retail trade (18.29%)", 
+      "Accommodation and food services (8.75%)"
+    ],
+  },
+];
+
+  const renderTableHeaders = (data) => {
+    let keys = Object.keys(data[0]);
+    let header = keys.slice(3);
+    return header.map((key, index) => {
+      return <th key={index}>{key}</th>
+    });
+  }
+
+  /** TO DO: Examine this function with Robert to figure out why this won't map a
+   * list. The current implementation is basically hardcoded! 
+  */
+  const renderValue = (value) => {
+    if (typeof value === 'object') {
+      return (
+        <ul>
+          <li>{value[0]}</li>
+          <li>{value[1]}</li>
+          <li>{value[2]}</li>
+        </ul>
+      );
+    } else {
+      return value;
+    }
+
+    // if (typeof value === 'object') {
+    //   // let list = value.map((item, index) => <li key={index}>{item}</li>;
+    //   return (
+    //   <ul>
+    //     value.map((item, index) => <li key={index}>{item}</li> 
+    //   </ul>    
+    //   ); 
+    
+    // } else {
+    //   return value;
+    // }
+
+  }
+
+  const renderTable = (data) => {
+    return data.map(entry => {
+      const { id, statistic, CT, MSA, USA } = entry;
+      return (
+        <li key={id}>
+          <h4>{statistic}</h4>
+          {entry.advisory && <p><em>{entry.advisory}</em></p>}
+          <table>
+            <thead>
+              <tr>
+                {renderTableHeaders(data)}
+              </tr>
+            </thead>
+            <tbody>          
+              <tr>
+                <td>{renderValue(CT)}</td>
+                <td>{renderValue(MSA)}</td>
+                <td>{renderValue(USA)}</td>
+              </tr>
+            </tbody>    
+          </table>
+        </li>
+      )
+    })
+  }
 
   return (
     <section id='HUD' className='HUD'>
@@ -73,113 +195,10 @@ function HUD() {
 
       <div className='HUD__tabcontent__container'>
         <div id='economics' className='HUD__tabcontent'>
-        <h3>Economy</h3>
-                <ul>
-                  <li>
-                    <h4>Price-to-rent ratio</h4>
-                    <p><em>(Lower is better)</em></p>
-                    <table>
-                      <tr>
-                        <th>CT</th>
-                        <th>MSA</th>
-                        <th>USA</th>
-                      </tr>
-                      <tr>
-                        <td>18.84</td>
-                        <td>18.00</td>
-                        <td>17.00</td>
-                      </tr>
-                    </table>
-                  </li>
-                  <li>
-                    <h4>Median income</h4>
-                    <table>
-                      <tr>
-                        <th>CT</th>
-                        <th>MSA</th>
-                        <th>USA</th>
-                      </tr>
-                      <tr>
-                        <td>$39500</td>
-                        <td>$40495</td>
-                        <td>$39000</td>
-                      </tr>
-                    </table>
-                  </li>
-                  <li>
-                    <h4>Top three sector</h4>
-                    <p><em>(Ordered by percentage of working 
-                      population employed)</em></p>
-                    <table>
-                      <tr>
-                        <th>CT</th>
-                        <th>MSA</th>
-                        <th>USA</th>
-                      </tr>
-                      <tr>
-                        <td>
-                          <ul>
-                            <li>Health care and social assistance: 19.29%</li>
-                            <li>Retail trade: 11.75%</li>
-                            <li>Accommodation and food services: 8.57%</li>
-                          </ul>      
-                        </td>
-                        <td>
-                          <ul>
-                            <li>Health care and social assistance: 19.29%</li>
-                            <li>Retail trade: 11.75%</li>
-                            <li>Accommodation and food services: 8.57%</li>
-                          </ul>      
-                        </td>
-                        <td>
-                          <ul>
-                            <li>Health care and social assistance: 19.29%</li>
-                            <li>Retail trade: 11.75%</li>
-                            <li>Accommodation and food services: 8.57%</li>
-                          </ul>      
-                        </td>
-                      </tr>
-                    </table>
-                  </li>
-                  <li>
-                    <h4>Top three occupation types</h4>
-                    <p><em>(Ordered by percentage of 
-                      working population in occupation)</em></p>
-                    <table>
-                      <tr>
-                        <th>CT</th>
-                        <th>MSA</th>
-                        <th>USA</th>
-                      </tr>
-                      <tr>
-                        <td>
-                          <ul>
-                            <li>Management, business, science, 
-                              and arts occupations: 43.8%</li>
-                            <li>Sales and office occupations: 21.7%</li>
-                            <li>Service occupations: 16.9%</li>
-                          </ul>      
-                        </td>
-                        <td>
-                          <ul>
-                            <li>Management, business, science, 
-                              and arts occupations: 43.8%</li>
-                            <li>Sales and office occupations: 21.7%</li>
-                            <li>Service occupations: 16.9%</li>
-                          </ul>      
-                        </td>
-                        <td>
-                          <ul>
-                            <li>Management, business, science, 
-                              and arts occupations: 43.8%</li>
-                            <li>Sales and office occupations: 21.7%</li>
-                            <li>Service occupations: 16.9%</li>
-                          </ul>      
-                        </td>
-                      </tr>
-                    </table>
-                  </li>
-                </ul>
+          <h3>Economy</h3>
+          <ul>
+            {renderTable(mockData)}
+          </ul>
         </div>
 
         <div id='demographics' className='HUD__tabcontent'>
