@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from '../Context';
 import "./HUD.css";
 
 function HUD() {
+  const { economicData } = useContext(Context);
+
   let [pressCount, setPressCount] = useState(0);
 
   const adjustHUDHeight = () => {
@@ -45,64 +48,6 @@ function HUD() {
     // Needs to be used in a useEffect()
     //  document.getElementById("defaultOpen").click();
   };
-
-const mockData = [
-  {
-    "id": 1,
-    "statistic": "Price-to-rent ratio",
-    "advisory": "(Lower is better)",
-    "CT": "18.00",
-    "MSA": "18.20",
-    "USA": "18.30"
-  },
-  {
-    "id": 2,
-    "statistic": "Median income",
-    "CT": "$40,000",
-    "MSA": "$40,000",
-    "USA": "$40,000"
-  },
-  {
-    "id": 3,
-    "statistic": "Top three sectors",
-    "advisory": "(Ordered by percentage of working population employed)",
-    "CT": [
-      "Health care and social assistance (19.29%)", 
-      "Retail trade (18.29%)", 
-      "Accommodation and food services (8.75%)"
-    ],
-    "MSA": [
-      "Health care and social assistance (19.29%)", 
-      "Retail trade (18.29%)", 
-      "Accommodation and food services (8.75%)"
-    ],
-    "USA": [
-      "Health care and social assistance (19.29%)", 
-      "Retail trade (18.29%)", 
-      "Accommodation and food services (8.75%)"
-    ],
-  },
-  {
-    "id": 4,
-    "statistic": "Top three occupations",
-    "advisory": "(Ordered by percentage of working population in occupation)",
-    "CT": [
-      "Health care and social assistance (19.29%)", 
-      "Retail trade (18.29%)", 
-      "Accommodation and food services (8.75%)"
-    ],
-    "MSA": [
-      "Health care and social assistance (19.29%)", 
-      "Retail trade (18.29%)", 
-      "Accommodation and food services (8.75%)"
-    ],
-    "USA": [
-      "Health care and social assistance (19.29%)", 
-      "Retail trade (18.29%)", 
-      "Accommodation and food services (8.75%)"
-    ],
-  },
-];
 
   const renderTableHeaders = (data) => {
     let keys = Object.keys(data[0]);
@@ -197,7 +142,7 @@ const mockData = [
         <div id='economics' className='HUD__tabcontent'>
           <h3>Economy</h3>
           <ul>
-            {renderTable(mockData)}
+            {renderTable(economicData)}
           </ul>
         </div>
 
