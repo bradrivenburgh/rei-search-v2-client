@@ -1,11 +1,11 @@
 import React from 'react';
 import { Context } from './Context';
-import { economicData } from './mockData';
+import { stats } from './mockData';
 import Routes from './Routes';
 
 function App() {
   const contextValues = {
-    economicData,
+    stats,
   }
 
   return (

@@ -1,11 +1,14 @@
-import React, { useState, useContext } from "react";
-import { Context } from '../Context';
+import React, { useState, useEffect } from "react";
+import StatsTabs from './StatsTabs';
 import "./HUD.css";
 
 function HUD() {
-  const { economicData } = useContext(Context);
-
   let [pressCount, setPressCount] = useState(0);
+  useEffect(() => {
+    // Open the economic tab by default on first render;
+    // Execute upon receiving data from server in future
+    return document.getElementById("defaultOpen").click();
+  }, []) 
 
   const adjustHUDHeight = () => {
     let baseScreen = "69px";
@@ -43,75 +46,7 @@ function HUD() {
 
     document.getElementById(category).style.display = "block";
     e.target.className += " active";
-
-    // TO DO: Get the element with id="defaultOpen" and click on it
-    // Needs to be used in a useEffect()
-    //  document.getElementById("defaultOpen").click();
   };
-
-  const renderTableHeaders = (data) => {
-    let keys = Object.keys(data[0]);
-    let header = keys.slice(3);
-    return header.map((key, index) => {
-      return <th key={index}>{key}</th>
-    });
-  }
-
-  /** TO DO: Examine this function with Robert to figure out why this won't map a
-   * list. The current implementation is basically hardcoded! 
-  */
-  const renderValue = (value) => {
-    if (typeof value === 'object') {
-      return (
-        <ul>
-          <li>{value[0]}</li>
-          <li>{value[1]}</li>
-          <li>{value[2]}</li>
-        </ul>
-      );
-    } else {
-      return value;
-    }
-
-    // if (typeof value === 'object') {
-    //   // let list = value.map((item, index) => <li key={index}>{item}</li>;
-    //   return (
-    //   <ul>
-    //     value.map((item, index) => <li key={index}>{item}</li> 
-    //   </ul>    
-    //   ); 
-    
-    // } else {
-    //   return value;
-    // }
-
-  }
-
-  const renderTable = (data) => {
-    return data.map(entry => {
-      const { id, statistic, CT, MSA, USA } = entry;
-      return (
-        <li key={id}>
-          <h4>{statistic}</h4>
-          {entry.advisory && <p><em>{entry.advisory}</em></p>}
-          <table>
-            <thead>
-              <tr>
-                {renderTableHeaders(data)}
-              </tr>
-            </thead>
-            <tbody>          
-              <tr>
-                <td>{renderValue(CT)}</td>
-                <td>{renderValue(MSA)}</td>
-                <td>{renderValue(USA)}</td>
-              </tr>
-            </tbody>    
-          </table>
-        </li>
-      )
-    })
-  }
 
   return (
     <section id='HUD' className='HUD'>
@@ -140,15 +75,11 @@ function HUD() {
 
       <div className='HUD__tabcontent__container'>
         <div id='economics' className='HUD__tabcontent'>
-          <h3>Economy</h3>
-          <ul>
-            {renderTable(economicData)}
-          </ul>
+          <StatsTabs id='economics' />
         </div>
 
         <div id='demographics' className='HUD__tabcontent'>
-          <h3>Demographics</h3>
-          <p>First line.</p>
+          <StatsTabs id='demographics' />
         </div>
 
         <div id='properties' className='HUD__tabcontent'>
