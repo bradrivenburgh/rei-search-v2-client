@@ -7,6 +7,11 @@ function StatsTabs({ id }) {
     stats: { demographic = [] },
   } = useContext(Context);
 
+  /**
+   * Make keys into column headers; remove 
+   * properties that should not be headers
+   * @param {array} data;
+   */
   const renderTableHeaders = (data) => {
     let keys = Object.keys(data[0]);
     let header = keys.slice(3);
@@ -15,35 +20,23 @@ function StatsTabs({ id }) {
     });
   };
 
-  /** TO DO: Examine this function with Robert to figure out why this won't map a
-   * list. The current implementation is basically hardcoded!
+  /**
+   * Return string or list depending on value
+   * @param {string || array} value 
    */
   const renderValue = (value) => {
-    if (typeof value === "object") {
-      return (
-        <ul>
-          <li>{value[0]}</li>
-          <li>{value[1]}</li>
-          <li>{value[2]}</li>
-        </ul>
-      );
+    if (typeof value === 'object') {
+      let list = value.map((item, index) => <li key={index}>{item}</li>);
+      return <ul>{list}</ul>
     } else {
       return value;
     }
-
-    // if (typeof value === 'object') {
-    //   // let list = value.map((item, index) => <li key={index}>{item}</li>;
-    //   return (
-    //   <ul>
-    //     value.map((item, index) => <li key={index}>{item}</li>
-    //   </ul>
-    //   );
-
-    // } else {
-    //   return value;
-    // }
   };
 
+  /**
+   * Create list items containing stat tables
+   * @param {array} data 
+   */
   const renderTable = (data) => {
     return data.map((entry) => {
       const { id, statistic, CT, MSA, USA } = entry;
