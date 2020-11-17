@@ -221,7 +221,7 @@ export const properties = [
     url:
       "https://www.zillow.com/homedetails/2567-E-Ontario-St-Philadelphia-PA-19134/10442725_zpid/",
     photos: [
-      "https://maps.googleapis.com/maps/api/streetview?size=1025x768&location=39.98819351196289,-75.09884643554688&key=AIzaSyBJsNQO5ZeG-XAbqqWLKwG08fWITSxg33w&&signature=Ftun4REZRP7voC9z44BeajeHJ4M=",
+      "https://photos.zillowstatic.com/fp/f2ce07b3ae79f931c6caacc6a537761c-cc_ft_1152.jpg",
     ],
   },
   {

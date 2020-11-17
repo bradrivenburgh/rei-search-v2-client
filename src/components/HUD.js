@@ -94,8 +94,6 @@ function HUD() {
         </div>
 
         <div id='properties' className='HUD__tabcontent'>
-          <h3>Properties</h3>
-          <p>First line.</p>
           <PropertiesTab />
         </div>
       </div>
