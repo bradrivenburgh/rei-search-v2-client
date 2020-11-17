@@ -4,12 +4,16 @@ import "./HUD.css";
 
 function HUD() {
   let [pressCount, setPressCount] = useState(0);
+
   useEffect(() => {
-    // Open the economic tab by default on first render;
-    // Execute upon receiving data from server in future
+    // Open the economic tab by default
     return document.getElementById("defaultOpen").click();
   }, []) 
 
+  /**
+   * Allows user to adjust height of HUD display in order
+   * to view more information and less of the map.
+   */
   const adjustHUDHeight = () => {
     let baseScreen = "69px";
     let thirdScreen = "33vh";
@@ -33,6 +37,12 @@ function HUD() {
       : setPressCount((pressCount = 0));
   };
 
+  /**
+   * Hides all tab content by default and listens for click event
+   * to display tab content.
+   * @param {object} e 
+   * @param {string} category 
+   */
   const openTab = (e, category) => {
     let tabContent = document.getElementsByClassName("HUD__tabcontent");
     for (let i = 0; i < tabContent.length; i++) {
