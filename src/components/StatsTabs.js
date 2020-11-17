@@ -27,8 +27,9 @@ function StatsTabs({ id }) {
    */
   const renderValue = (value) => {
     if (typeof value === 'object') {
-      let list = value.map((item, index) => <li key={index}>{item}</li>);
-      return <ul>{list}</ul>
+      let list = value.map((item, index) => 
+        <li key={index}>{item}</li>);
+      return <ul className="stats__table-list">{list}</ul>
     } else {
       return value;
     }

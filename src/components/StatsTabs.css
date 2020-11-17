@@ -6,22 +6,30 @@
   text-align: left;
 }
 
-.stats table td {
-  padding-top:.25em;
+.stats table {
+  margin-bottom: 1em;
 }
 
 .stats table td {
-  padding-right: 1em;
+  padding:.5em;
 }
 
 .stats td, th { 
-  border: 1px solid rgb(233, 221, 221); 
+  border: 1px solid rgb(233, 221, 221);
 }
 
 .stats th {
   display: table-cell;
   text-align: center;
   vertical-align: center;
+}
+
+.stats__table-list li {
+  margin-top: .5em;
+}
+
+.stats__table-list li:first-child {
+  margin-top: 0;
 }
 
 @media 
@@ -40,9 +48,11 @@ only screen and (max-width: 760px),
 		left: -9999px;
 	}
 	
-	.stats tr { border: 1px solid rgb(233, 221, 221); }
+	.stats tr { 
+    border: 1px solid rgb(233, 221, 221);
+  }
 	
-	.stats td { 
+	.stats table td { 
 		/* Behave  like a "row" */
 		border: none;
 		border-bottom: 1px solid #eee; 
