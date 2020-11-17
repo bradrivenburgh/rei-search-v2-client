@@ -60,57 +60,58 @@ export const stats = {
   demographic: [
     {
       "id": 1,
-      "statistic": "Price-to-rent ratio",
-      "advisory": "(Lower is better)",
-      "CT": "18.00",
-      "MSA": "18.20",
-      "USA": "18.30"
+      "statistic": "Population growth rate",
+      "advisory": "(Higher is better)",
+      "CT": "2.18%",
+      "MSA": "2.40%",
+      "USA": "2.00%"
     },
     {
       "id": 2,
-      "statistic": "Median income",
-      "CT": "$40,000",
-      "MSA": "$40,000",
-      "USA": "$40,000"
+      "statistic": "Median age",
+      "CT": "34",
+      "MSA": "35",
+      "USA": "36"
     },
     {
       "id": 3,
-      "statistic": "Top three sectors",
-      "advisory": "(Ordered by percentage of working population employed)",
+      "statistic": "Race and ethnicity",
       "CT": [
-        "Health care and social assistance (19.29%)", 
-        "Retail trade (18.29%)", 
-        "Accommodation and food services (8.75%)"
+        "American Indian (##%)", 
+        "Asian (##%)", 
+        "Black (##%)",
+        "Pacific Islander (##%)",
+        "White (##%)"
       ],
       "MSA": [
-        "Health care and social assistance (19.29%)", 
-        "Retail trade (18.29%)", 
-        "Accommodation and food services (8.75%)"
+        "American Indian (##%)", 
+        "Asian (##%)", 
+        "Black (##%)",
+        "Pacific Islander (##%)",
+        "White (##%)"
       ],
       "USA": [
-        "Health care and social assistance (19.29%)", 
-        "Retail trade (18.29%)", 
-        "Accommodation and food services (8.75%)"
+        "American Indian (##%)", 
+        "Asian (##%)", 
+        "Black (##%)",
+        "Pacific Islander (##%)",
+        "White (##%)"
       ],
     },
     {
       "id": 4,
-      "statistic": "Top three occupations",
-      "advisory": "(Ordered by percentage of working population in occupation)",
-      "CT": [
-        "Health care and social assistance (19.29%)", 
-        "Retail trade (18.29%)", 
-        "Accommodation and food services (8.75%)"
+      "statistic": "Employment status",
+      "CT": [ 
+        "Employed (##%)", 
+        "Unemployed (##%)"
       ],
       "MSA": [
-        "Health care and social assistance (19.29%)", 
-        "Retail trade (18.29%)", 
-        "Accommodation and food services (8.75%)"
+        "Employed (##%)", 
+        "Unemployed (##%)"
       ],
       "USA": [
-        "Health care and social assistance (19.29%)", 
-        "Retail trade (18.29%)", 
-        "Accommodation and food services (8.75%)"
+        "Employed (##%)", 
+        "Unemployed (##%)"
       ],
     },
   ]
