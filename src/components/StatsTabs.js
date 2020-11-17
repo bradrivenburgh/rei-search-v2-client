@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../Context";
+import './StatsTabs.css';
 
 function StatsTabs({ id }) {
   const {
@@ -70,11 +71,11 @@ function StatsTabs({ id }) {
       {id === 'economics'
         ? <>
             <h3>Economics</h3>
-            <ul>{renderTable(economic)}</ul>
+            <ul className="stats">{renderTable(economic)}</ul>
           </>
         : <>
             <h3>Demographics</h3>
-            <ul>{renderTable(demographic)}</ul>
+            <ul className="stats">{renderTable(demographic)}</ul>
           </>
       }
     </>
