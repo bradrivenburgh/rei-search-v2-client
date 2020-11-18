@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useContext } from 'react';
 import { Context } from '../Context';
 import './PropertiesTab.css';
 
@@ -12,9 +12,8 @@ function PropertiesTab() {
 
   const renderProperties = (data) => {
     return (
-      <>
-      <h3>Properties</h3>
-      <ul>
+      
+      <ul className="properties">
         {data.map((property, index) => {
           const { 
             address: { streetAddress, city, state, zipcode }, 
@@ -23,7 +22,7 @@ function PropertiesTab() {
           } = property;
           
           return (
-            <li key={index} className="property">
+            <li key={index}>
             <ul>
               <li>
                 <a href="property-profile-dash.html">
@@ -51,14 +50,16 @@ function PropertiesTab() {
           );
         })}
       </ul>    
-    </>
 
     );
 
   }
 
   return (
-    renderProperties(properties)
+    <>
+      <h3>Properties</h3>
+      {renderProperties(properties)}
+    </>
   );
 }
 

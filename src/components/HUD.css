@@ -69,6 +69,13 @@
   height: calc(100% - var(--HUD__nav-height));
 }
 
+@media only screen and (min-device-width: 768px) {
+  .HUD__tabcontent__container {  
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
+
 .HUD__tabcontent {
   display: none;
   padding: 6px 12px;
