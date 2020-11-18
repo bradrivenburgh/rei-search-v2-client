@@ -25,7 +25,7 @@ function PropertiesTab() {
             <li key={index}>
             <ul>
               <li>
-                <a href="property-profile-dash.html">
+                <a href="property-profile.html">
                   <img 
                     src={photos[0]} 
                     alt="property" 
@@ -42,7 +42,7 @@ function PropertiesTab() {
                 </p>
               </li>
               <li>
-                <a href="#"><button>Save</button></a>
+                <button>Save</button>
               </li>
               <hr />
             </ul>

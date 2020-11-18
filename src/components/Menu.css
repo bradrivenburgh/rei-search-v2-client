@@ -1,0 +1,48 @@
+.menu  {
+  min-width: 250px;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  right: -250px;
+  background-color: #ddd;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.menu a {
+  padding: 8px 8px 8px 8px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #f1f1f1;
+}
+
+.menu__closebtn {
+  position: absolute;
+  top: -7px;
+  right: 15px;
+  font-size: 36px;
+}
+
+.menu hr {
+  width: 80%;
+}
+
+.menu_openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #bbb;
+  padding: 5px 10px;
+  margin-right: 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color:#ddd;
+}
