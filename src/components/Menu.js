@@ -19,8 +19,9 @@ function Menu() {
   },[])
 
   /**
-   * Close the menu via clicking outside the menu
-   * or by clicking the close button
+   * Close the menu via mousedown outside the menu
+   * or mousedown on the close button. Also added
+   * an onClick event in the markup for accessibility.
    * @param {object} e 
    */
   const handleMenuClose = (e) => {
@@ -35,7 +36,7 @@ function Menu() {
   return (
     <>
       <div id="menu" className="menu" ref={containingNode}>
-        <button className="menu__closebtn" >☰</button>
+        <button className="menu__closebtn" onClick={handleMenuClose}>☰</button>
         <a href="index.html">About</a>
         <a href="manage-account.html">My account</a>
         <a href="saved-properties.html">Saved properties</a>

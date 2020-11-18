@@ -8,7 +8,6 @@ function Nav() {
 
   return(
     <nav className="nav">
-      <p>[Logo]</p>
       
       {/** <Search /> */}
       <input placeholder="Philadelphia, PA" />       
