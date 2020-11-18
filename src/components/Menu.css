@@ -41,6 +41,7 @@
   top: 5px;
   right: 15px;
   border: none;
+  cursor: pointer;
 }
 
 .menu hr {
