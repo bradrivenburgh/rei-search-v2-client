@@ -9,7 +9,6 @@
   align-items: center;
   padding: .25em 0;
   background-color: #aaa;
-  /* height: 8vh; */
 }
 
 .nav p {
@@ -21,8 +20,6 @@
   height: 2em;
   width: 10em;
 }
-
-/* Placeholder styles -- move to <Menu /> component */
 
 .nav button {
   font-size: 1.25em;

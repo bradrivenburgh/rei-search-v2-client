@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { Context } from '../Context';
+import React from 'react';
 import './Nav.css';
 
 function Nav() {
-  const { openMenu } = useContext(Context);
+  const handleMenuOpen = () => {
+    document.getElementById("menu").style.right = "0px";
+  }
 
   return(
     <nav className="nav">
@@ -11,7 +12,7 @@ function Nav() {
       
       {/** <Search /> */}
       <input placeholder="Philadelphia, PA" />       
-      <button onClick={() => openMenu()}>☰</button>      
+      <button onClick={handleMenuOpen}>☰</button>      
 
     </nav>
   );
