@@ -1,16 +1,18 @@
-import React from 'react';
-import Menu from './Menu';
+import React, { useContext } from 'react';
+import { Context } from '../Context';
 import './Nav.css';
 
 function Nav() {
+  const { openMenu } = useContext(Context);
+
   return(
     <nav className="nav">
       <p>[Logo]</p>
       
       {/** <Search /> */}
       <input placeholder="Philadelphia, PA" />       
-      
-      <Menu />
+      <button onClick={() => openMenu()}>☰</button>      
+
     </nav>
   );
 }

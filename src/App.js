@@ -4,9 +4,18 @@ import { stats, properties } from './mockData';
 import Routes from './Routes';
 
 function App() {
+  const openMenu = () => {
+    document.getElementById("menu").style.right = "0px";
+  }
+  const closeMenu = () => {
+    document.getElementById("menu").style.right = "-250px";
+  }
+
   const contextValues = {
     stats,
-    properties
+    properties,
+    openMenu,
+    closeMenu,
   }
 
   return (
