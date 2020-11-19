@@ -108,6 +108,37 @@ export const stats = {
   ],
 };
 
+export const cities = [
+  {
+    name: 'Philadelphia, PA',
+  },
+  {
+    name: 'Moorestown, NJ',
+  },
+  {
+    name: 'Cinnaminson, NJ',
+  },
+  {
+    name: 'Langhorne, PA',
+  },
+  {
+    name: 'Haddonfield, NJ',
+  },
+  {
+    name: 'Conshohoken, PA',
+  },
+  {
+    name: 'Conshohoken, PA',
+  },
+  {
+    name: 'Conshohoken, PA',
+  },
+  {
+    name: 'Conshohoken, PA',
+  },
+];
+
+
 export const properties = [
   {
     address: {

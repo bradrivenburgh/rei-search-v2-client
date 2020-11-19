@@ -1,51 +1,7 @@
 import React from 'react';
+import { cities } from '../mockData';
 import Autosuggest from 'react-autosuggest';
 import './Search.css';
-
-const cities = [
-  {
-    name: 'Philadelphia, PA',
-  },
-  {
-    name: 'Moorestown, NJ',
-  },
-  {
-    name: 'Langhorne, PA',
-  },
-  {
-    name: 'Cinnaminson, NJ',
-  },
-  {
-    name: 'Elm',
-  },
-  {
-    name: 'Go',
-  },
-  {
-    name: 'Haskell',
-  },
-  {
-    name: 'Java',
-  },
-  {
-    name: 'Javascript',
-  },
-  {
-    name: 'Perl',
-  },
-  {
-    name: 'PHP',
-  },
-  {
-    name: 'Python',
-  },
-  {
-    name: 'Ruby',
-  },
-  {
-    name: 'Scala',
-  }
-];
 
 function escapeRegexCharacters(str) {
   return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -103,7 +59,7 @@ class Search extends React.Component {
   render() {
     const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Type 'c'",
+      placeholder: "Type a city name",
       value,
       onChange: this.onChange
     };
