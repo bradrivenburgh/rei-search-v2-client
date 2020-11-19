@@ -8,9 +8,9 @@ function Nav() {
 
   return(
     <nav className="nav">
-      
+      <img src="https://via.placeholder.com/35x35?text=LOGO" alt="Logo" />
       {/** <Search /> */}
-      <input placeholder="Philadelphia, PA" />       
+      <input placeholder="Philadelphia, PA" />
       <button onClick={handleMenuOpen}>☰</button>      
 
     </nav>

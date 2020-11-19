@@ -11,14 +11,14 @@
   background-color: #aaa;
 }
 
-.nav p {
-  margin: 0 1em;
+.nav img {
+  margin-left: 15px;
 }
 
 /* Placeholder style -- move to <Search /> component */
 .nav input {
-  height: 2em;
-  width: 10em;
+  height: 1.75em;
+  width: 12em;
 }
 
 .nav button {
