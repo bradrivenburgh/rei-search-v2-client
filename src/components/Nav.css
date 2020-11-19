@@ -15,12 +15,6 @@
   margin-left: 15px;
 }
 
-/* Placeholder style -- move to <Search /> component */
-.nav input {
-  height: 1.75em;
-  width: 12em;
-}
-
 .nav button {
   font-size: 1.25em;
   padding: .25em .5em;
