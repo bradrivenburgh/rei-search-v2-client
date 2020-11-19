@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Context } from '../Context';
 import './PropertiesTab.css';
 
@@ -25,12 +26,12 @@ function PropertiesTab() {
             <li key={index}>
             <ul>
               <li>
-                <a href="property-profile.html">
+                <Link to="/property-profile">
                   <img 
                     src={photos[0]} 
                     alt="property" 
                     onError={(e) => addDefaultSrc(e)} />
-                </a>
+                </Link>
               </li>
               <li>
                 <p>${price}</p>

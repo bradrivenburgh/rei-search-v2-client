@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { Context } from '../Context';
 import './SavedProps.css';
 
@@ -25,12 +26,12 @@ function SavedProps() {
               <li key={index}>
               <ul>
                 <li>
-                  <a href="property-profile.html">
+                  <Link to="/property-profile">
                     <img 
                       src={photos[0]} 
                       alt="property" 
                       onError={(e) => addDefaultSrc(e)} />
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <p>${price}</p>
@@ -57,7 +58,10 @@ function SavedProps() {
   
     return (
       <section className="saved-properties">
-        <h1>Saved Properties</h1>
+        <header>
+          <h1>Saved Properties</h1>
+        </header>
+
         {renderProperties(savedProperties)}
       </section>
     );
