@@ -1,12 +1,13 @@
 import React from 'react';
 import { Context } from './Context';
-import { stats, properties } from './mockData';
+import { stats, properties, savedProperties } from './mockData';
 import Routes from './Routes';
 
 function App() {
   const contextValues = {
     stats,
     properties,
+    savedProperties,
   }
 
   return (

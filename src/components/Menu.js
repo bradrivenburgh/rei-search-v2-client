@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import './Menu.css';
 
 function Menu() {
@@ -39,7 +40,7 @@ function Menu() {
         <button className="menu__closebtn" onClick={handleMenuClose}>☰</button>
         <a href="index.html">About</a>
         <a href="manage-account.html">My account</a>
-        <a href="saved-properties.html">Saved properties</a>
+        <Link to="/saved-properties">Saved properties</Link>
 
         <hr />
         

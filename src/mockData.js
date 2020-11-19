@@ -521,3 +521,95 @@ export const properties = [
     ],
   },
 ];
+
+export const savedProperties = [
+  {
+    address: {
+      streetAddress: "332 E Somerset St",
+      city: "Philadelphia",
+      state: "PA",
+      zipcode: "19134",
+      neighborhood: null,
+      community: null,
+      subdivision: null,
+    },
+    bedrooms: 3,
+    bathrooms: 1,
+    price: 80000,
+    yearBuilt: 1935,
+    longitude: -75.12525177001953,
+    latitude: 39.99158477783203,
+    description:
+      "A Great Opportunity to own a Property near a Developing Neighborhood and local to the Subway Line.  \nThis Affordable Rowhome, with very little investment, could be move-in ready or a great income-producing property! Schedule your appointment today!",
+    livingArea: 1065,
+    currency: "USD",
+    url:
+      "https://www.zillow.com/homedetails/332-E-Somerset-St-Philadelphia-PA-19134/10203588_zpid/",
+    photos: [
+      "https://photos.zillowstatic.com/fp/7a1264a3d683bd48ba1a96ec3ff8b5cb-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/62ff661fa1557f45ec3c111da9e06e25-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/ab1204ce7b773ffd46477000ec60ccb9-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/b2f0c47f3534119fb041e5683f28b6f4-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/c7bacbed57c8eea701e5a1b085f8b48b-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/0170fdf237dcc5e64f1f2a49fa4a31f8-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/6221c6753da1d27c0bd3b98373863b21-p_f.jpg",
+    ],
+  },
+  {
+    address: {
+      streetAddress: "3033 Weikel St",
+      city: "Philadelphia",
+      state: "PA",
+      zipcode: "19134",
+      neighborhood: null,
+      community: null,
+      subdivision: null,
+    },
+    bedrooms: 3,
+    bathrooms: 2,
+    price: 260000,
+    yearBuilt: 1925,
+    longitude: -75.1115951538086,
+    latitude: 39.987884521484375,
+    description:
+      "Welcome to 3033 Weikel St - This soon to be completely renovated 3 bed 1.5 bath home is located in the heart of Port Richmond, surrounded by top eateries and bars  such as Tacconelli's Pizza,  Her Daughter's Cafe, Gaul House, Em's Place, Nemi, Tin Can Bar  and much more!  This home will feature vinyl hardwood floors, quartz countertops, white cabinetry,  tile backsplash, ample lighting, and much more! There's still some time to customize the finishing touches!  Prefer matte black hardware over  gold?!  Let us know, and the builder will be happy to install your preference! This  home won't last  long. Make your offer today!",
+    livingArea: 904,
+    currency: "USD",
+    url:
+      "https://www.zillow.com/homedetails/3033-Weikel-St-Philadelphia-PA-19134/10301177_zpid/",
+    photos: [
+      "https://photos.zillowstatic.com/fp/b3d1df88c8f7056868e9a4d72176bde2-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/9d836faf09d9ae98706a376e7cef3704-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/f39bc2b16f09081687cb120206417c8a-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/f017ec58e08bb5fdca964bc7590d5446-p_f.jpg",
+    ],
+  },
+  {
+    address: {
+      streetAddress: "1216 E Susquehanna Ave",
+      city: "Philadelphia",
+      state: "PA",
+      zipcode: "19125",
+      neighborhood: null,
+      community: null,
+      subdivision: null,
+    },
+    bedrooms: 2,
+    bathrooms: 1,
+    price: 320000,
+    yearBuilt: 1925,
+    longitude: -75.1253433227539,
+    latitude: 39.97256088256836,
+    description:
+      "Calling all builders and developers or those looking to build their dream home.  An amazing opportunity to own this 20 foot wide by 120 foot deep property located in one of the most popular and rapidly developing neighborhoods in the country! Steps away from everything Fishtown has to offer and close to major thoroughfares.  Easy access to 95 and 676.  Bring your contractors / architects and turn this large lot into something special!",
+    livingArea: 1031,
+    currency: "USD",
+    url:
+      "https://www.zillow.com/homedetails/1216-E-Susquehanna-Ave-Philadelphia-PA-19125/10257539_zpid/",
+    photos: [
+      "https://photos.zillowstatic.com/fp/76ed77d99109b7b6fb44e6098aa99714-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/c3b737f18e48218f506e4ffa037e19bb-p_f.jpg",
+      "https://photos.zillowstatic.com/fp/bf947aa418f6ad34cd73e1d161da7cd2-p_f.jpg",
+    ],
+  },
+];

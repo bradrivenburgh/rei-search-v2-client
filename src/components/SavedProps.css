@@ -1,0 +1,38 @@
+.saved-properties {
+  margin: 0 1em;
+}
+
+.saved-properties h1 {
+  text-align: center;
+  margin: 2em 0 3em 0;
+}
+
+.saved-properties, ul {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0px;
+  text-align: left;
+}
+
+.saved-properties img {
+  width: 200px;
+  height: 125px;
+  object-fit: cover;
+}
+
+.saved-properties p {
+  font-weight: bold;
+}
+
+.saved-properties hr {
+  width: 80%;
+  margin: 1em auto;
+}
+
+@media only screen and (min-device-width: 768px) {
+  .saved-properties {  
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
