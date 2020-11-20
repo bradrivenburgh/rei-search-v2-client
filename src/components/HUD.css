@@ -9,6 +9,12 @@
   background-color: #aaa;
 }
 
+.HUD__button-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Styles for pill button that is currently not in use */
 .HUD__pill-button {
   background-color: #ddd;
   border: none;
@@ -31,6 +37,50 @@
 .HUD__pill-button:hover {
   background-color: #f1f1f1;;
 }
+/* -------- */
+
+.HUD__expand-button, 
+.HUD__contract-button {
+  background-color: #ddd;
+  border: none;
+  padding: 3px 15px;
+  display: inline-flex;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.HUD__expand-button {
+  margin: .5em .5em .5em 0;
+}
+
+.HUD__contract-button {
+  margin: .5em 0 .5em .5em;
+}
+
+
+.HUD__expand-button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34%;
+  height: 25px;
+}
+
+.HUD__contract-button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 34%;
+  height: 25px;
+}
+
+.HUD__expand-button:hover, 
+.HUD__contract-button:hover {
+  background-color: #f1f1f1;;
+}
 
 .HUD__nav {
   position: relative;
@@ -48,7 +98,7 @@
   background-color: inherit;
   border: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 9px 16px;
   transition: 0.3s;
 }
 

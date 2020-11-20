@@ -1,48 +1,54 @@
 import React, { useState, useEffect } from "react";
-import StatsTabs from './StatsTabs';
-import PropertiesTab from './PropertiesTab';
+import StatsTabs from "./StatsTabs";
+import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
 function HUD() {
-  let [pressCount, setPressCount] = useState(0);
+  let [pressCount, setPressCount] = useState(1);
 
   useEffect(() => {
     // Open the economic tab by default
     return document.getElementById("defaultOpen").click();
-  }, []) 
+  }, []);
 
   /**
    * Allows user to adjust height of HUD display in order
    * to view more information and less of the map.
    */
-  const adjustHUDHeight = () => {
+  const adjustHUDHeight = (value = 0) => {
     let baseScreen = "69px";
-    let thirdScreen = "33vh";
+    let oneThirdScreen = "33vh";
     let twoThirdsScreen = "67vh";
     let fullScreen = "100vh";
 
+    if (value > 0 && pressCount >= 0 && pressCount <= 2) {
+      setPressCount((pressCount += value));
+    } else if (value > 0 && pressCount === 3) {
+      setPressCount((pressCount = 0));
+    } else if (value < 0 && pressCount > 0 && pressCount <= 3) {
+      setPressCount((pressCount += value));
+    } else if (value < 0 && pressCount === 0) {
+      setPressCount((pressCount = 3));
+    }
+
     let containerHeight;
     if (pressCount === 0) {
-      containerHeight = twoThirdsScreen;
-    } else if (pressCount === 1) {
-      containerHeight = fullScreen;
-    } else if (pressCount === 2) {
       containerHeight = baseScreen;
-    } else {
-      containerHeight = thirdScreen;
+    } else if (pressCount === 1) {
+      containerHeight = oneThirdScreen;
+    } else if (pressCount === 2) {
+      containerHeight = twoThirdsScreen;
+    } else if (pressCount === 3) {
+      containerHeight = fullScreen;
     }
     document.getElementById("HUD").style.height = `${containerHeight}`;
-
-    pressCount <= 2
-      ? setPressCount(pressCount + 1)
-      : setPressCount((pressCount = 0));
   };
 
   /**
    * Hides all tab content by default and listens for click event
    * to display tab content.
-   * @param {object} e 
-   * @param {string} category 
+   * @param {object} e
+   * @param {string} category
    */
   const openTab = (e, category) => {
     let tabContent = document.getElementsByClassName("HUD__tabcontent");
@@ -62,8 +68,18 @@ function HUD() {
   return (
     <section id='HUD' className='HUD'>
       <div className='HUD__nav'>
-        <button className='HUD__pill-button' onClick={adjustHUDHeight} />
-
+        <div className="HUD__button-container">
+          <button
+            className='HUD__expand-button'
+            onClick={() => adjustHUDHeight(1)}>
+            &#9650;
+          </button>
+          <button
+            className='HUD__contract-button'
+            onClick={() => adjustHUDHeight(-1)}>
+            &#9660;
+          </button>
+        </div>
         <div className='HUD__tab'>
           <button
             id='defaultOpen'
