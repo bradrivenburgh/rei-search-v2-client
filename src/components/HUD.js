@@ -4,7 +4,7 @@ import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
 function HUD() {
-  let [pressCount, setPressCount] = useState(1);
+  let [pressCount, setPressCount] = useState(0);
 
   useEffect(() => {
     // Open the economic tab by default
@@ -20,6 +20,7 @@ function HUD() {
     let oneThirdScreen = "33vh";
     let twoThirdsScreen = "67vh";
     let fullScreen = "100vh";
+    let containerHeight;
 
     if (value > 0 && pressCount >= 0 && pressCount <= 2) {
       setPressCount((pressCount += value));
@@ -31,7 +32,6 @@ function HUD() {
       setPressCount((pressCount = 3));
     }
 
-    let containerHeight;
     if (pressCount === 0) {
       containerHeight = baseScreen;
     } else if (pressCount === 1) {
@@ -46,7 +46,8 @@ function HUD() {
 
   /**
    * Hides all tab content by default and listens for click event
-   * to display tab content.
+   * to display tab content.  Also, calls adjustHeight() if the HUD
+   * is collapsed all the way in order to show content.
    * @param {object} e
    * @param {string} category
    */
@@ -63,6 +64,10 @@ function HUD() {
 
     document.getElementById(category).style.display = "block";
     e.target.className += " active";
+
+    if (pressCount === 0) {
+      adjustHUDHeight(1)
+    }
   };
 
   return (
