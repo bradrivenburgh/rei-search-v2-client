@@ -1,4 +1,5 @@
 import React from 'react';
+import { Context } from '../Context'
 import { cities } from '../mockData';
 import Autosuggest from 'react-autosuggest';
 import './Search.css';
@@ -34,10 +35,11 @@ class Search extends React.Component {
 
     this.state = {
       value: '',
-      suggestions: []
+      suggestions: [],
+
     };
   }
-
+  static contextType = Context;
   onChange = (event, { newValue, method }) => {
     this.setState({
       value: newValue
@@ -56,6 +58,13 @@ class Search extends React.Component {
     });
   };
 
+  
+  onSubmit = (e) => {
+    //TEMPORARY MOCK SEARCH
+    e.preventDefault();
+    this.context.setMockSearch(true)
+  }
+
   render() {
     const { value, suggestions } = this.state;
     const inputProps = {
@@ -64,15 +73,18 @@ class Search extends React.Component {
       onChange: this.onChange
     };
 
+
     return (
-      <Autosuggest
-        suggestions={suggestions}
-        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={getSuggestionValue}
-        shouldRenderSuggestions={shouldRenderSuggestions}
-        renderSuggestion={renderSuggestion}
-        inputProps={inputProps} />
+      <form onSubmit={(e) => this.onSubmit(e)}>
+        <Autosuggest
+          suggestions={suggestions}
+          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+          getSuggestionValue={getSuggestionValue}
+          shouldRenderSuggestions={shouldRenderSuggestions}
+          renderSuggestion={renderSuggestion}
+          inputProps={inputProps} />
+      </form>
     );
   }
 }

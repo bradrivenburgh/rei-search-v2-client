@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from '../Context';
 import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
 function HUD() {
   let [pressCount, setPressCount] = useState(0);
+  let { mockSearch, setMockSearch } = useContext(Context);
 
   useEffect(() => {
-    // Open the economic tab by default
-    return document.getElementById("defaultOpen").click();
-  }, []);
+    // Open the economic tab by default after search submitted
+    if (mockSearch) {
+      document.getElementById("defaultOpen").click();
+    }
+    setMockSearch(false)
+  }, [mockSearch, setMockSearch]);
 
   /**
    * Allows user to adjust height of HUD display in order

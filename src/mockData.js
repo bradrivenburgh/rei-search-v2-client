@@ -613,3 +613,5 @@ export const savedProperties = [
     ],
   },
 ];
+
+export const mockSearch = false;
