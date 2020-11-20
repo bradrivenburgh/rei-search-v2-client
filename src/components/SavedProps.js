@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Context } from '../Context';
 import './SavedProps.css';
 
 function SavedProps() {
     const { savedProperties } = useContext(Context);
-  
+    let history = useHistory();
+
     const addDefaultSrc = (e) => {
       e.target.onError=null;
       e.target.src = "https://via.placeholder.com/250x125?text=No Image"
@@ -58,6 +59,9 @@ function SavedProps() {
   
     return (
       <section className="saved-properties">
+        <nav className="closing-nav">
+          <button onClick={() => history.goBack()}>X</button>
+        </nav>
         <header>
           <h1>Saved Properties</h1>
         </header>
