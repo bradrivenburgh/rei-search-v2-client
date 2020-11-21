@@ -5,8 +5,16 @@ import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
 function HUD() {
-  let [pressCount, setPressCount] = useState(0);
-  let { mockSearch, setMockSearch } = useContext(Context);
+  let { 
+    pressCount,
+    HUDPosition,
+    currentTab,
+    mockSearch, 
+    setPressCount,
+    setHUDPosition,
+    setCurrentTab, 
+    setMockSearch,
+  } = useContext(Context);
 
   useEffect(() => {
     // Open the economic tab by default after search submitted
@@ -15,6 +23,12 @@ function HUD() {
     }
     setMockSearch(false)
   }, [mockSearch, setMockSearch]);
+
+  console.log(pressCount, HUDPosition, currentTab)
+
+  useEffect(() => {
+    document.getElementById("HUD").style.height = `${HUDPosition}`;
+  }, [HUDPosition]);
 
   /**
    * Allows user to adjust height of HUD display in order
@@ -28,13 +42,13 @@ function HUD() {
     let containerHeight;
 
     if (value > 0 && pressCount >= 0 && pressCount <= 2) {
-      setPressCount((pressCount += value));
+      setPressCount(pressCount += value);
     } else if (value > 0 && pressCount === 3) {
-      setPressCount((pressCount = 0));
+      setPressCount(pressCount = 0);
     } else if (value < 0 && pressCount > 0 && pressCount <= 3) {
-      setPressCount((pressCount += value));
+      setPressCount(pressCount += value);
     } else if (value < 0 && pressCount === 0) {
-      setPressCount((pressCount = 3));
+      setPressCount(pressCount = 3);
     }
 
     if (pressCount === 0) {
@@ -46,7 +60,7 @@ function HUD() {
     } else if (pressCount === 3) {
       containerHeight = fullScreen;
     }
-    document.getElementById("HUD").style.height = `${containerHeight}`;
+    setHUDPosition(HUDPosition = containerHeight);
   };
 
   /**
@@ -67,6 +81,7 @@ function HUD() {
       tabLinks[i].className = tabLinks[i].className.replace(" active", "");
     }
 
+    
     document.getElementById(category).style.display = "block";
     e.target.className += " active";
 
