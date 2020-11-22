@@ -18,13 +18,16 @@ function HUD() {
 
   /**
    * Open the economic tab by default after search submitted;
+   * or open the last active tab selected after search submitted 
    */
   useEffect(() => {
-    if (mockSearch) {
+    if (mockSearch && currentTab.length === 0) {
       document.getElementById("economics-btn").click();
+    } else if (mockSearch && currentTab.length > 0) {
+      document.getElementById(currentTab[0]).click();
     }
     setMockSearch(false)
-  }, [mockSearch, setMockSearch]);
+  }, [mockSearch, setMockSearch, currentTab]);
 
   /**
    * Changes the height of HUD; works when navigating back to HUD
