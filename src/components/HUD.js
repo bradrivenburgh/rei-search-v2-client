@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { Context } from '../Context';
 import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
@@ -16,20 +16,35 @@ function HUD() {
     setMockSearch,
   } = useContext(Context);
 
+  /**
+   * Open the economic tab by default after search submitted;
+   */
   useEffect(() => {
-    // Open the economic tab by default after search submitted
     if (mockSearch) {
-      document.getElementById("defaultOpen").click();
+      document.getElementById("economics-btn").click();
     }
     setMockSearch(false)
   }, [mockSearch, setMockSearch]);
 
-  console.log(pressCount, HUDPosition, currentTab)
-
+  /**
+   * Changes the height of HUD; works when navigating back to HUD
+   */
   useEffect(() => {
     document.getElementById("HUD").style.height = `${HUDPosition}`;
   }, [HUDPosition]);
 
+  // Maintains the current tab selected if the user navigates away
+  // from the mainView
+  useEffect(() => {
+    if (currentTab.length === 0) {
+      return;
+    } else if (currentTab.length > 0 && HUDPosition === "69px") {
+      document.getElementById(currentTab[0]).className += " active"
+    } else {
+      document.getElementById(currentTab[0]).click();
+    } 
+  }, [currentTab, HUDPosition])
+  
   /**
    * Allows user to adjust height of HUD display in order
    * to view more information and less of the map.
@@ -81,13 +96,20 @@ function HUD() {
       tabLinks[i].className = tabLinks[i].className.replace(" active", "");
     }
 
-    
-    document.getElementById(category).style.display = "block";
-    e.target.className += " active";
+    // Only run setCurrentTab if user changes tabs
+    if (!currentTab.includes(e.target.id)) {
+      setCurrentTab(currentTab = [e.target.id, e.target]);
+    }
 
+    // Expand HUD if tab is clicked when just tabs are showing
     if (pressCount === 0) {
       adjustHUDHeight(1)
     }
+
+    // Reveal tab content and highlight selected tab
+    document.getElementById(category).style.display = "block";
+    e.target.className += " active"
+
   };
 
   return (
@@ -107,17 +129,19 @@ function HUD() {
         </div>
         <div className='HUD__tab'>
           <button
-            id='defaultOpen'
+            id='economics-btn'
             className='HUD__tab__tablinks'
             onClick={(e) => openTab(e, "economics")}>
             economics
           </button>
           <button
+            id="demographics-btn"
             className='HUD__tab__tablinks'
             onClick={(e) => openTab(e, "demographics")}>
             demographics
           </button>
           <button
+            id="properties-btn"
             className='HUD__tab__tablinks'
             onClick={(e) => openTab(e, "properties")}>
             properties

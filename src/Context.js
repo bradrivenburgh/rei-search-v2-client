@@ -6,7 +6,7 @@ export const Context = createContext({
   savedProperties: [],
   pressCount: 0,
   HUDPosition: '',
-  currentTab: '',
+  currentTab: [],
   mockSearch: false,
   setMockSearch: () => {},
   setPressCount: () => {},

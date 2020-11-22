@@ -10,7 +10,7 @@ function App() {
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState('');
   let [mockSearch, setMockSearch] = useState(false);
-  let [currentTab, setCurrentTab] = useState('');
+  let [currentTab, setCurrentTab] = useState([]);
   
   const contextValues = {
     stats,

@@ -99,7 +99,6 @@
   border: none;
   cursor: pointer;
   padding: 9px 16px;
-  transition: 0.3s;
 }
 
 .HUD__tab button:hover {
