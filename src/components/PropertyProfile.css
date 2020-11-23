@@ -1,0 +1,49 @@
+.property-profile {
+  margin: 0 1em;
+  text-align: left;
+}
+
+.property-profile p {
+  margin-top: .5em;
+  padding-top: 0;
+}
+
+.property-profile__price {
+  padding-top: 0;
+  margin-left: 0.25em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.property-profile__address {
+  font-weight: bold;
+  margin-left: .25em;
+}
+
+.property-profile__info {
+  margin: 1em .25em 0 .25em;
+}
+
+.property-profile__carousel {
+  min-width: 100%; 
+  padding:0;
+  margin: 0 auto;
+}
+
+.property-profile__carousel img {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+.property-profile__basic-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  text-align: center;
+}
+
+.property-profile__description {
+  margin-top: 1em;
+}
