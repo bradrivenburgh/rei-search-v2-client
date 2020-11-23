@@ -6,6 +6,11 @@
   text-align: left;
 }
 
+.properties ul {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .properties img {
   width: 200px;
   height: 125px;

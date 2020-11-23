@@ -25,28 +25,30 @@ function PropertiesTab() {
 
           return (
             <li key={index}>
-              <li>
-                <Link to='/property-profile'>
-                  <img
-                    src={photos[0]}
-                    alt='property'
-                    onError={(e) => addDefaultSrc(e)}
-                  />
-                </Link>
-              </li>
-              <li>
-                <p>${price}</p>
-              </li>
-              <li>
-                <p>
-                  {streetAddress}, <br />
-                  {city}, {state} {zipcode}
-                </p>
-              </li>
-              <li>
-                <button>Save</button>
-              </li>
-              <hr />
+              <ul>
+                <li>
+                  <Link to='/property-profile'>
+                    <img
+                      src={photos[0]}
+                      alt='property'
+                      onError={(e) => addDefaultSrc(e)}
+                    />
+                  </Link>
+                </li>
+                <li>
+                  <p>${price}</p>
+                </li>
+                <li>
+                  <p>
+                    {streetAddress}, <br />
+                    {city}, {state} {zipcode}
+                  </p>
+                </li>
+                <li>
+                  <button>Save</button>
+                </li>
+                <hr />
+              </ul>
             </li>
           );
         })}
