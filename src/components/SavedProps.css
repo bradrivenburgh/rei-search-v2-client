@@ -15,10 +15,24 @@
   text-align: left;
 }
 
+.saved-properties__flex-container {
+  display: flex;
+  align-items: center;
+}
+
 .saved-properties img {
   width: 200px;
   height: 125px;
   object-fit: cover;
+  margin-right: 2em;
+}
+
+@media screen and (max-width: 767px) {
+  .saved-properties img {
+    width: 140px;
+    height: 160px;
+    object-fit: cover;
+  }  
 }
 
 .saved-properties p {
@@ -35,7 +49,7 @@
   margin-bottom: 1em;
 }
 
-.saved-properties li:last-child {
+.saved-properties .saved-properties__flex-container:last-of-type {
   margin-bottom: 1em;
 }
 

@@ -25,30 +25,35 @@ function SavedProps() {
             
             return (
               <li key={index}>
-              <ul>
-                <li>
-                  <Link to="/property-profile">
-                    <img 
-                      src={photos[0]} 
-                      alt="property" 
-                      onError={(e) => addDefaultSrc(e)} />
-                  </Link>
-                </li>
-                <li>
-                  <p>${price}</p>
-                </li>
-                <li>
-                  <p>
-                    {streetAddress}, <br /> 
-                    {city}, {state} {zipcode}
-                  </p>
-                </li>
-                <li>
-                  <button>Remove</button>
-                </li>
-                <hr />
-              </ul>
-            </li>
+                <ul>
+                  <div className='saved-properties__flex-container'>
+                    <li>
+                      <Link to='/property-profile'>
+                        <img
+                          src={photos[0]}
+                          alt='property'
+                          onError={(e) => addDefaultSrc(e)}
+                        />
+                      </Link>
+                    </li>
+                    <div>
+                      <li>
+                        <p>${price}</p>
+                      </li>
+                      <li>
+                        <p>
+                          {streetAddress}, <br />
+                          {city}, {state} {zipcode}
+                        </p>
+                      </li>
+                      <li>
+                        <button>Remove</button>
+                      </li>
+                    </div>
+                  </div>
+                  <hr />
+                </ul>
+              </li>
             );
           })}
         </ul>    
