@@ -4,7 +4,9 @@ import { Context } from '../Context';
 import './PropertiesTab.css';
 
 function PropertiesTab() {
-  const { properties } = useContext(Context);
+  const {
+    searchResults: { properties = [] },
+  } = useContext(Context);  
 
   const addDefaultSrc = (e) => {
     e.target.onError=null;

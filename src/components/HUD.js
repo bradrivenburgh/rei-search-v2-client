@@ -5,20 +5,22 @@ import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
 function HUD() {
-  let { 
-    pressCount,
-    HUDPosition,
-    currentTab,
-    mockSearch, 
-    setPressCount,
-    setHUDPosition,
-    setCurrentTab, 
+  let {
+    HUDState: {
+      pressCount,
+      HUDPosition,
+      currentTab,
+      setPressCount,
+      setHUDPosition,
+      setCurrentTab,
+    },
+    mockSearch,
     setMockSearch,
   } = useContext(Context);
 
   /**
    * Open the economic tab by default after search submitted;
-   * or open the last active tab selected after search submitted 
+   * or open the last active tab selected after search submitted
    */
   useEffect(() => {
     if (mockSearch && currentTab.length === 0) {
@@ -26,7 +28,7 @@ function HUD() {
     } else if (mockSearch && currentTab.length > 0) {
       document.getElementById(currentTab[0]).click();
     }
-    setMockSearch(false)
+    setMockSearch(false);
   }, [mockSearch, setMockSearch, currentTab]);
 
   /**
@@ -42,12 +44,12 @@ function HUD() {
     if (currentTab.length === 0) {
       return;
     } else if (currentTab.length > 0 && HUDPosition === "69px") {
-      document.getElementById(currentTab[0]).className += " active"
+      document.getElementById(currentTab[0]).className += " active";
     } else {
       document.getElementById(currentTab[0]).click();
-    } 
-  }, [currentTab, HUDPosition])
-  
+    }
+  }, [currentTab, HUDPosition]);
+
   /**
    * Allows user to adjust height of HUD display in order
    * to view more information and less of the map.
@@ -60,13 +62,13 @@ function HUD() {
     let containerHeight;
 
     if (value > 0 && pressCount >= 0 && pressCount <= 2) {
-      setPressCount(pressCount += value);
+      setPressCount((pressCount += value));
     } else if (value > 0 && pressCount === 3) {
-      setPressCount(pressCount = 0);
+      setPressCount((pressCount = 0));
     } else if (value < 0 && pressCount > 0 && pressCount <= 3) {
-      setPressCount(pressCount += value);
+      setPressCount((pressCount += value));
     } else if (value < 0 && pressCount === 0) {
-      setPressCount(pressCount = 3);
+      setPressCount((pressCount = 3));
     }
 
     if (pressCount === 0) {
@@ -78,7 +80,7 @@ function HUD() {
     } else if (pressCount === 3) {
       containerHeight = fullScreen;
     }
-    setHUDPosition(HUDPosition = containerHeight);
+    setHUDPosition((HUDPosition = containerHeight));
   };
 
   /**
@@ -101,24 +103,23 @@ function HUD() {
 
     // Only run setCurrentTab if user changes tabs
     if (!currentTab.includes(e.target.id)) {
-      setCurrentTab(currentTab = [e.target.id, e.target]);
+      setCurrentTab((currentTab = [e.target.id, e.target]));
     }
 
     // Expand HUD if tab is clicked when just tabs are showing
     if (pressCount === 0) {
-      adjustHUDHeight(1)
+      adjustHUDHeight(1);
     }
 
     // Reveal tab content and highlight selected tab
     document.getElementById(category).style.display = "block";
-    e.target.className += " active"
-
+    e.target.className += " active";
   };
 
   return (
     <section id='HUD' className='HUD'>
       <div className='HUD__nav'>
-        <div className="HUD__button-container">
+        <div className='HUD__button-container'>
           <button
             className='HUD__expand-button'
             onClick={() => adjustHUDHeight(1)}>
@@ -138,13 +139,13 @@ function HUD() {
             economics
           </button>
           <button
-            id="demographics-btn"
+            id='demographics-btn'
             className='HUD__tab__tablinks'
             onClick={(e) => openTab(e, "demographics")}>
             demographics
           </button>
           <button
-            id="properties-btn"
+            id='properties-btn'
             className='HUD__tab__tablinks'
             onClick={(e) => openTab(e, "properties")}>
             properties

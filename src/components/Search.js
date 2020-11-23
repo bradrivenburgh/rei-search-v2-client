@@ -59,8 +59,8 @@ class Search extends React.Component {
   };
 
   
+  //TEMPORARY MOCK SEARCH
   onSubmit = (e) => {
-    //TEMPORARY MOCK SEARCH
     e.preventDefault();
     this.context.setMockSearch(true)
   }

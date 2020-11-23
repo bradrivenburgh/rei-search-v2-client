@@ -1,15 +1,19 @@
 import { createContext } from 'react';
 
 export const Context = createContext({
-  stats: {},
-  properties: [],
+  searchResults: {
+    stats: {},
+    properties: [],
+  },
   savedProperties: [],
-  pressCount: 0,
-  HUDPosition: '',
-  currentTab: [],
+  HUDState: {
+    pressCount: 0,
+    HUDPosition: '',
+    currentTab: [],
+    setPressCount: () => {},
+    setHUDPosition: () => {},
+    setCurrentTab: () => {},  
+  },
   mockSearch: false,
   setMockSearch: () => {},
-  setPressCount: () => {},
-  setHUDPosition: () => {},
-  setCurrentTab: () => {},
 });

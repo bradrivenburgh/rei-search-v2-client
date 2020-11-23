@@ -4,9 +4,10 @@ import './StatsTabs.css';
 
 function StatsTabs({ id }) {
   const {
-    stats: { economic = [] },
-    stats: { demographic = [] },
-  } = useContext(Context);
+    searchResults: {
+      stats: { economic = [], demographic = [] },
+    },
+  } = useContext(Context);  
 
   /**
    * Make keys into column headers; remove 

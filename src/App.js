@@ -13,17 +13,21 @@ function App() {
   let [currentTab, setCurrentTab] = useState([]);
   
   const contextValues = {
-    stats,
-    properties,
+    searchResults: {
+      stats,
+      properties,
+    },
+    HUDState: {
+      pressCount,
+      HUDPosition,
+      currentTab,
+      setPressCount,
+      setHUDPosition,
+      setCurrentTab,    
+    },
     savedProperties,
-    pressCount,
-    HUDPosition,
-    currentTab,
     mockSearch,
     setMockSearch,
-    setPressCount,
-    setHUDPosition,
-    setCurrentTab,
   }
 
   return (
