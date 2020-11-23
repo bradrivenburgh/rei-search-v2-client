@@ -14,7 +14,6 @@ function SavedProps() {
   
     const renderProperties = (data) => {
       return (
-        
         <ul>
           {data.map((property, index) => {
             const { 
@@ -25,13 +24,13 @@ function SavedProps() {
             
             return (
               <li key={index}>
-              <ul>
                 <li>
-                  <Link to="/property-profile">
-                    <img 
-                      src={photos[0]} 
-                      alt="property" 
-                      onError={(e) => addDefaultSrc(e)} />
+                  <Link to='/property-profile'>
+                    <img
+                      src={photos[0]}
+                      alt='property'
+                      onError={(e) => addDefaultSrc(e)}
+                    />
                   </Link>
                 </li>
                 <li>
@@ -39,7 +38,7 @@ function SavedProps() {
                 </li>
                 <li>
                   <p>
-                    {streetAddress}, <br /> 
+                    {streetAddress}, <br />
                     {city}, {state} {zipcode}
                   </p>
                 </li>
@@ -47,12 +46,10 @@ function SavedProps() {
                   <button>Remove</button>
                 </li>
                 <hr />
-              </ul>
-            </li>
+              </li>
             );
           })}
         </ul>    
-  
       );
   
     }

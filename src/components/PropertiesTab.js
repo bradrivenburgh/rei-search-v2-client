@@ -15,24 +15,23 @@ function PropertiesTab() {
 
   const renderProperties = (data) => {
     return (
-      
-      <ul className="properties">
+      <ul className='properties'>
         {data.map((property, index) => {
-          const { 
-            address: { streetAddress, city, state, zipcode }, 
+          const {
+            address: { streetAddress, city, state, zipcode },
             price,
-            photos
+            photos,
           } = property;
-          
+
           return (
             <li key={index}>
-            <ul>
               <li>
-                <Link to="/property-profile">
-                  <img 
-                    src={photos[0]} 
-                    alt="property" 
-                    onError={(e) => addDefaultSrc(e)} />
+                <Link to='/property-profile'>
+                  <img
+                    src={photos[0]}
+                    alt='property'
+                    onError={(e) => addDefaultSrc(e)}
+                  />
                 </Link>
               </li>
               <li>
@@ -40,7 +39,7 @@ function PropertiesTab() {
               </li>
               <li>
                 <p>
-                  {streetAddress}, <br /> 
+                  {streetAddress}, <br />
                   {city}, {state} {zipcode}
                 </p>
               </li>
@@ -48,12 +47,10 @@ function PropertiesTab() {
                 <button>Save</button>
               </li>
               <hr />
-            </ul>
-          </li>
+            </li>
           );
         })}
-      </ul>    
-
+      </ul>
     );
 
   }

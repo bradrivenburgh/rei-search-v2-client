@@ -20,3 +20,12 @@
   width: 80%;
   margin: 1em auto;
 }
+
+.properties li:last-child hr {
+  display: none;
+  margin-bottom: 1em;
+}
+
+.properties li:last-child {
+  margin-bottom: 1em;
+}

@@ -30,6 +30,15 @@
   margin: 1em auto;
 }
 
+.saved-properties li:last-child hr {
+  display: none;
+  margin-bottom: 1em;
+}
+
+.saved-properties li:last-child {
+  margin-bottom: 1em;
+}
+
 @media only screen and (min-device-width: 768px) {
   .saved-properties {  
     max-width: 70%;
