@@ -1,10 +1,12 @@
-import React, { useEffect, useContext } from "react";
+import React, {useState, useEffect, useContext } from "react";
 import { Context } from '../Context';
 import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
 function HUD() {
+  /* STATE FROM CONTEXT */
+
   let {
     HUDState: {
       pressCount,
@@ -18,6 +20,19 @@ function HUD() {
     setMockSearch,
   } = useContext(Context);
 
+  
+  /* LOCAL STATE */
+
+  const [ allHUDHeights ] = useState({
+    baseScreen: "69px",
+    oneThirdScreen: "33vh",
+    twoThirdsScreen: "67vh",
+    fullScreen: "100vh",
+  });
+
+
+  /* SEARCH; LIFE CYCLE METHODS TO PERSIST HUD STATE */
+
   /**
    * Open the economic tab by default after search submitted;
    * or open the last active tab selected after search submitted
@@ -28,8 +43,9 @@ function HUD() {
     } else if (mockSearch && currentTab.length > 0) {
       document.getElementById(currentTab[0]).click();
     }
+  
     setMockSearch(false);
-  }, [mockSearch, setMockSearch, currentTab]);
+  }, [mockSearch, currentTab, setMockSearch ]);
 
   /**
    * Changes the height of HUD; works when navigating back to HUD
@@ -38,9 +54,12 @@ function HUD() {
     document.getElementById("HUD").style.height = `${HUDPosition}`;
   }, [HUDPosition]);
 
-  // Maintains the current tab selected if the user navigates away
-  // from the mainView
-  useEffect((baseScreen = "69px") => {
+  /**
+   * Maintains the current tab selected if the user navigates away
+   * from mainView
+   */
+  useEffect(() => {
+    const { baseScreen } = allHUDHeights;
     if (currentTab.length === 0) {
       return;
     }
@@ -51,17 +70,18 @@ function HUD() {
     } else {
       document.getElementById(currentTab[0]).click();
     }
-  }, [currentTab, HUDPosition]);
+  }, [currentTab, HUDPosition, allHUDHeights]);
+
+
+  /* FUNCTIONS FOR HUD BEHAVIOR */
 
   /**
    * Allows user to adjust height of HUD display in order
    * to view more information and less of the map.
+   * @param {number} value 
+   * @param {object} HUDHeights 
    */
-  const adjustHUDHeight = (value = 0) => {
-    let baseScreen = "69px";
-    let oneThirdScreen = "33vh";
-    let twoThirdsScreen = "67vh";
-    let fullScreen = "100vh";
+  const adjustHUDHeight = (value = 0, HUDHeights = allHUDHeights) => {
     let containerHeight;
 
     if (value > 0 && pressCount >= 0 && pressCount <= 2) {
@@ -73,15 +93,15 @@ function HUD() {
     } else if (value < 0 && pressCount === 0) {
       setPressCount((pressCount = 3));
     }
-
+      
     if (pressCount === 0) {
-      containerHeight = baseScreen;
+      containerHeight = HUDHeights.baseScreen;
     } else if (pressCount === 1) {
-      containerHeight = oneThirdScreen;
+      containerHeight = HUDHeights.oneThirdScreen;
     } else if (pressCount === 2) {
-      containerHeight = twoThirdsScreen;
+      containerHeight = HUDHeights.twoThirdsScreen;
     } else if (pressCount === 3) {
-      containerHeight = fullScreen;
+      containerHeight = HUDHeights.fullScreen;
     }
     setHUDPosition((HUDPosition = containerHeight));
   };
