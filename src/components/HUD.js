@@ -40,10 +40,13 @@ function HUD() {
 
   // Maintains the current tab selected if the user navigates away
   // from the mainView
-  useEffect(() => {
+  useEffect((baseScreen = "69px") => {
     if (currentTab.length === 0) {
       return;
-    } else if (currentTab.length > 0 && HUDPosition === "69px") {
+    }
+    // Don't change HUD height, only add "active class" if 
+    // navigated away from HUD at baseScreen height 
+      else if (currentTab.length > 0 && HUDPosition === baseScreen) {
       document.getElementById(currentTab[0]).className += " active";
     } else {
       document.getElementById(currentTab[0]).click();
