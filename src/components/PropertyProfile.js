@@ -22,18 +22,18 @@ function PropertyProfile() {
         />
       </div>
 
-      <section class='property-profile'>
+      <section className='property-profile'>
         <button>Save / Remove</button>
-        <p class='property-profile__price'>$6,250,000</p>
-        <p class='property-profile__address'>
+        <p className='property-profile__price'>$6,250,000</p>
+        <p className='property-profile__address'>
           43 8th Ave, <br />
           Brooklyn, NY 11217
         </p>
 
-        <div class='property-profile__info'>
+        <div className='property-profile__info'>
           <h2>Basic Facts</h2>
 
-          <ul class='property-profile__basic-stats'>
+          <ul className='property-profile__basic-stats'>
             <li>
               <strong>bed</strong> <br /> 5
             </li>
@@ -48,7 +48,7 @@ function PropertyProfile() {
             </li>
           </ul>
 
-          <div class='property-profile__description'>
+          <div className='property-profile__description'>
             <h2>Description</h2>
             <p>
               Lovely Row home on a quiet block with Off-street parking! This
