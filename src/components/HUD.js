@@ -134,12 +134,12 @@ function HUD() {
           <button
             className='HUD__expand-button'
             onClick={() => adjustHUDHeight(1)}>
-            &#9650;
+             {pressCount === 3 ? <>&#95;</> : <>&#9650;</> }
           </button>
           <button
             className='HUD__contract-button'
             onClick={() => adjustHUDHeight(-1)}>
-            &#9660;
+            {pressCount === 0 ? <>&#x26F6;</> : <>&#9660;</> }
           </button>
         </div>
         <div className='HUD__tab'>
