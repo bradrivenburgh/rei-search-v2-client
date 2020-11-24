@@ -20,16 +20,14 @@ function HUD() {
     setMockSearch,
   } = useContext(Context);
 
-  
   /* LOCAL STATE */
 
-  const [ allHUDHeights ] = useState({
+  const [allHUDHeights] = useState({
     baseScreen: "69px",
     oneThirdScreen: "33vh",
     twoThirdsScreen: "67vh",
     fullScreen: "100vh",
   });
-
 
   /* SEARCH; LIFE CYCLE METHODS TO PERSIST HUD STATE */
 
@@ -38,14 +36,13 @@ function HUD() {
    * or open the last active tab selected after search submitted
    */
   useEffect(() => {
-    if (mockSearch && currentTab.length === 0) {
-      document.getElementById("economics-btn").click();
-    } else if (mockSearch && currentTab.length > 0) {
-      document.getElementById(currentTab[0]).click();
+    if (mockSearch) {
+      currentTab.length === 0
+        ? document.getElementById("economics-btn").click()
+        : document.getElementById(currentTab[0]).click();
     }
-  
     setMockSearch(false);
-  }, [mockSearch, currentTab, setMockSearch ]);
+  }, [mockSearch, currentTab, setMockSearch]);
 
   /**
    * Changes the height of HUD; works when navigating back to HUD
@@ -60,50 +57,42 @@ function HUD() {
    */
   useEffect(() => {
     const { baseScreen } = allHUDHeights;
+
     if (currentTab.length === 0) {
       return;
-    }
-    // Don't change HUD height, only add "active class" if 
-    // navigated away from HUD at baseScreen height 
-      else if (currentTab.length > 0 && HUDPosition === baseScreen) {
-      document.getElementById(currentTab[0]).className += " active";
     } else {
-      document.getElementById(currentTab[0]).click();
+      // Don't change HUD height, only add "active class" if
+      // navigated away from HUD at baseScreen height
+      HUDPosition === baseScreen
+        ? (document.getElementById(currentTab[0]).className += " active")
+        : document.getElementById(currentTab[0]).click();
     }
   }, [currentTab, HUDPosition, allHUDHeights]);
-
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
   /**
    * Allows user to adjust height of HUD display in order
    * to view more information and less of the map.
-   * @param {number} value 
-   * @param {object} HUDHeights 
+   * @param {number} pressCountAdj
+   * @param {object} HUDHeights
    */
-  const adjustHUDHeight = (value = 0, HUDHeights = allHUDHeights) => {
-    let containerHeight;
-
-    if (value > 0 && pressCount >= 0 && pressCount <= 2) {
-      setPressCount((pressCount += value));
-    } else if (value > 0 && pressCount === 3) {
+  const adjustHUDHeight = (pressCountAdj = 0, HUDHeights = allHUDHeights) => {
+    // HUD to baseScreen
+    if (pressCountAdj > 0 && pressCount === 3) {
       setPressCount((pressCount = 0));
-    } else if (value < 0 && pressCount > 0 && pressCount <= 3) {
-      setPressCount((pressCount += value));
-    } else if (value < 0 && pressCount === 0) {
+    }
+    // HUD to fullScreen
+    else if (pressCountAdj < 0 && pressCount === 0) {
       setPressCount((pressCount = 3));
     }
-      
-    if (pressCount === 0) {
-      containerHeight = HUDHeights.baseScreen;
-    } else if (pressCount === 1) {
-      containerHeight = HUDHeights.oneThirdScreen;
-    } else if (pressCount === 2) {
-      containerHeight = HUDHeights.twoThirdsScreen;
-    } else if (pressCount === 3) {
-      containerHeight = HUDHeights.fullScreen;
+    // HUD up and down
+    else {
+      setPressCount((pressCount += pressCountAdj));
     }
-    setHUDPosition((HUDPosition = containerHeight));
+
+    // Set HUDPosition state; pressCount === 0 || 1 || 2 || 3
+    setHUDPosition(Object.values(HUDHeights)[pressCount]); // ["69px","33vh","67vh","100vh"]
   };
 
   /**
@@ -128,7 +117,6 @@ function HUD() {
     if (!currentTab.includes(e.target.id)) {
       setCurrentTab((currentTab = [e.target.id, e.target]));
     }
-
     // Expand HUD if tab is clicked when just tabs are showing
     if (pressCount === 0) {
       adjustHUDHeight(1);
