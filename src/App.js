@@ -10,7 +10,11 @@ function App() {
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState('');
   let [mockSearch, setMockSearch] = useState(false);
-  let [currentTab, setCurrentTab] = useState([]);
+  let [activeTab, setActiveTab] = useState({
+    econTab: false,
+    demogTab: false,
+    propsTab: false
+  });
   let [displayTab, setDisplayTab] = useState({
     econTab: false,
     demogTab: false,
@@ -26,10 +30,10 @@ function App() {
     HUDState: {
       pressCount,
       HUDPosition,
-      currentTab,
+      activeTab,
       setPressCount,
       setHUDPosition,
-      setCurrentTab,    
+      setActiveTab,    
     },
     displayTab,
     setDisplayTab,

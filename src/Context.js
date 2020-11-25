@@ -9,10 +9,10 @@ export const Context = createContext({
   HUDState: {
     pressCount: 0,
     HUDPosition: '',
-    currentTab: [],
+    activeTab: {},
     setPressCount: () => {},
     setHUDPosition: () => {},
-    setCurrentTab: () => {},  
+    setActiveTab: () => {},  
   },
   displayTab: {
     econTab: false,

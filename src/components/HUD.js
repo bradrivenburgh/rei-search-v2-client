@@ -11,13 +11,11 @@ function HUD() {
     HUDState: {
       pressCount,
       HUDPosition,
-      currentTab,
+      activeTab,
       setPressCount,
       setHUDPosition,
-      setCurrentTab,
+      setActiveTab,
     },
-    displayTab,
-    setDisplayTab,
     mockSearch,
     setMockSearch,
   } = useContext(Context);
@@ -32,20 +30,24 @@ function HUD() {
     fullScreen: "100vh",
   });
 
-  /* SEARCH; LIFE CYCLE METHODS TO PERSIST HUD STATE */
-
   /**
    * Open the economic tab by default after search submitted;
    * or open the last active tab selected after search submitted
    */
   useEffect(() => {
+    const { oneThirdScreen } = allHUDHeights;
     if (mockSearch) {
-      currentTab.length === 0
-        ? document.getElementById("economics-btn").click()
-        : document.getElementById(currentTab[0]).click();
+      if (pressCount === 0) {
+        if (activeTab.demogTab || activeTab.propsTab) {
+          setHUDPosition(oneThirdScreen);
+        } else {
+          setHUDPosition(oneThirdScreen);
+          setActiveTab({...activeTab, econTab: true});
+        }
+      }
     }
     setMockSearch(false);
-  }, [mockSearch, currentTab, setMockSearch]);
+  }, [mockSearch, setMockSearch, activeTab, setActiveTab, pressCount, allHUDHeights, setHUDPosition]);
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
@@ -70,7 +72,8 @@ function HUD() {
     }
 
     // Set HUDPosition state; pressCount === 0 || 1 || 2 || 3
-    setHUDPosition(Object.values(HUDHeights)[pressCount]); // ["69px","33vh","67vh","100vh"]
+    // ["69px","33vh","67vh","100vh"]
+    setHUDPosition(Object.values(HUDHeights)[pressCount]); 
   };
 
   /**
@@ -81,10 +84,6 @@ function HUD() {
    * @param {string} category
    */
   const openTab = (e, category) => {
-    // Only run setCurrentTab if user changes tabs
-    if (!currentTab.includes(e.target.id)) {
-      setCurrentTab((currentTab = [e.target.id, e.target]));
-    }
     // Expand HUD if tab is clicked when just tabs are showing
     if (pressCount === 0) {
       adjustHUDHeight(1);
@@ -92,18 +91,18 @@ function HUD() {
 
     // Reveal tab content and highlight selected tab
     e.target.id === "economics-btn"
-      ? setDisplayTab({  
+      ? setActiveTab({  
           econTab: true,
           demogTab: false,
           propsTab: false
       }) :
     e.target.id === "demographics-btn"
-      ? setDisplayTab({ 
+      ? setActiveTab({ 
           econTab: false,
           demogTab: true,
           propsTab: false      
       })
-      : setDisplayTab({ 
+      : setActiveTab({ 
           econTab: false,
           demogTab: false,
           propsTab: true      
@@ -129,7 +128,7 @@ function HUD() {
           <button
             id='economics-btn'
             className={
-              displayTab.econTab
+              activeTab.econTab
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
@@ -139,7 +138,7 @@ function HUD() {
           <button
             id='demographics-btn'
             className={
-              displayTab.demogTab
+              activeTab.demogTab
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
@@ -149,7 +148,7 @@ function HUD() {
           <button
             id='properties-btn'
             className={
-              displayTab.propsTab
+              activeTab.propsTab
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
@@ -163,21 +162,21 @@ function HUD() {
         <div
           id='economics'
           className='HUD__tabcontent'
-          style={{ display: displayTab.econTab ? "block" : "none" }}>
+          style={{ display: activeTab.econTab ? "block" : "none" }}>
           <StatsTabs id='economics' />
         </div>
 
         <div
           id='demographics'
           className='HUD__tabcontent'
-          style={{ display: displayTab.demogTab ? "block" : "none" }}>
+          style={{ display: activeTab.demogTab ? "block" : "none" }}>
           <StatsTabs id='demographics' />
         </div>
 
         <div
           id='properties'
           className='HUD__tabcontent'
-          style={{ display: displayTab.propsTab ? "block" : "none" }}>
+          style={{ display: activeTab.propsTab ? "block" : "none" }}>
           <PropertiesTab />
         </div>
       </div>
