@@ -104,11 +104,6 @@ function HUD({ displayTab, setDisplayTab }) {
    * @param {string} category
    */
   const openTab = (e, category) => {
-    let tabLinks = document.getElementsByClassName("HUD__tab__tablinks");
-    for (let i = 0; i < tabLinks.length; i++) {
-      tabLinks[i].className = tabLinks[i].className.replace(" active", "");
-    }
-
     // Only run setCurrentTab if user changes tabs
     if (!currentTab.includes(e.target.id)) {
       setCurrentTab((currentTab = [e.target.id, e.target]));
@@ -137,7 +132,6 @@ function HUD({ displayTab, setDisplayTab }) {
           demogTab: false,
           propsTab: true      
       })
-    e.target.className += " active";
   };
 
   return (
@@ -158,19 +152,31 @@ function HUD({ displayTab, setDisplayTab }) {
         <div className='HUD__tab'>
           <button
             id='economics-btn'
-            className='HUD__tab__tablinks'
+            className={
+              displayTab.econTab
+                ? "HUD__tab__tablinks active"
+                : "HUD__tab__tablinks"
+            }
             onClick={(e) => openTab(e, "economics")}>
             economics
           </button>
           <button
             id='demographics-btn'
-            className='HUD__tab__tablinks'
+            className={
+              displayTab.demogTab
+                ? "HUD__tab__tablinks active"
+                : "HUD__tab__tablinks"
+            }
             onClick={(e) => openTab(e, "demographics")}>
             demographics
           </button>
           <button
             id='properties-btn'
-            className='HUD__tab__tablinks'
+            className={
+              displayTab.propsTab
+                ? "HUD__tab__tablinks active"
+                : "HUD__tab__tablinks"
+            }
             onClick={(e) => openTab(e, "properties")}>
             properties
           </button>
@@ -178,28 +184,24 @@ function HUD({ displayTab, setDisplayTab }) {
       </div>
 
       <div className='HUD__tabcontent__container'>
-         
         <div
           id='economics'
           className='HUD__tabcontent'
-          style={{ display: displayTab.econTab ? 'block' : 'none'}} >
+          style={{ display: displayTab.econTab ? "block" : "none" }}>
           <StatsTabs id='economics' />
         </div>
 
         <div
           id='demographics'
           className='HUD__tabcontent'
-          style={{ display: displayTab.demogTab ? 'block' : 'none'}} 
-          >
+          style={{ display: displayTab.demogTab ? "block" : "none" }}>
           <StatsTabs id='demographics' />
         </div>
 
         <div
           id='properties'
           className='HUD__tabcontent'
-          style={{ display: displayTab.propsTab ? 'block' : 'none'}} 
-          >
-            
+          style={{ display: displayTab.propsTab ? "block" : "none" }}>
           <PropertiesTab />
         </div>
       </div>
