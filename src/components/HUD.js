@@ -20,7 +20,6 @@ function HUD() {
     setMockSearch,
   } = useContext(Context);
 
-
   /* LOCAL STATE */
 
   const [allHUDHeights] = useState({
@@ -72,18 +71,16 @@ function HUD() {
     }
 
     // Set HUDPosition state; pressCount === 0 || 1 || 2 || 3
-    // ["69px","33vh","67vh","100vh"]
+    // corresponding to ["69px","33vh","67vh","100vh"]
     setHUDPosition(Object.values(HUDHeights)[pressCount]); 
   };
 
   /**
-   * Hides all tab content by default and listens for click event
-   * to display tab content.  Also, calls adjustHeight() if the HUD
-   * is collapsed all the way in order to show content.
+   * Listens for click event to display tab content.  Calls 
+   * adjustHeight() if the HUD is collapsed in order to show content.
    * @param {object} e
-   * @param {string} category
    */
-  const openTab = (e, category) => {
+  const openTab = (e) => {
     // Expand HUD if tab is clicked when just tabs are showing
     if (pressCount === 0) {
       adjustHUDHeight(1);
@@ -91,22 +88,22 @@ function HUD() {
 
     // Reveal tab content and highlight selected tab
     e.target.id === "economics-btn"
-      ? setActiveTab({  
+      ? setActiveTab({
           econTab: true,
           demogTab: false,
-          propsTab: false
-      }) :
-    e.target.id === "demographics-btn"
-      ? setActiveTab({ 
+          propsTab: false,
+        })
+      : e.target.id === "demographics-btn"
+      ? setActiveTab({
           econTab: false,
           demogTab: true,
-          propsTab: false      
-      })
-      : setActiveTab({ 
+          propsTab: false,
+        })
+      : setActiveTab({
           econTab: false,
           demogTab: false,
-          propsTab: true      
-      })
+          propsTab: true,
+        });
   };
 
   return (
@@ -132,7 +129,7 @@ function HUD() {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => openTab(e, "economics")}>
+            onClick={(e) => openTab(e)}>
             economics
           </button>
           <button
@@ -142,7 +139,7 @@ function HUD() {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => openTab(e, "demographics")}>
+            onClick={(e) => openTab(e)}>
             demographics
           </button>
           <button
@@ -152,7 +149,7 @@ function HUD() {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => openTab(e, "properties")}>
+            onClick={(e) => openTab(e)}>
             properties
           </button>
         </div>
@@ -160,21 +157,18 @@ function HUD() {
 
       <div className='HUD__tabcontent__container'>
         <div
-          id='economics'
           className='HUD__tabcontent'
           style={{ display: activeTab.econTab ? "block" : "none" }}>
           <StatsTabs id='economics' />
         </div>
 
         <div
-          id='demographics'
           className='HUD__tabcontent'
           style={{ display: activeTab.demogTab ? "block" : "none" }}>
           <StatsTabs id='demographics' />
         </div>
 
         <div
-          id='properties'
           className='HUD__tabcontent'
           style={{ display: activeTab.propsTab ? "block" : "none" }}>
           <PropertiesTab />
