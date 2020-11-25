@@ -52,12 +52,13 @@
 
 .HUD__expand-button {
   margin: .5em .5em .5em 0;
+  font-weight: bold;
 }
 
 .HUD__contract-button {
   margin: .5em 0 .5em .5em;
+  font-weight: bold;
 }
-
 
 .HUD__expand-button:after {
   content: "";
