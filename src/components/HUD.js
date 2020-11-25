@@ -46,7 +46,7 @@ function HUD() {
       }
     }
     setMockSearch(false);
-  }, [mockSearch, setMockSearch, activeTab, setActiveTab, pressCount, allHUDHeights, setHUDPosition]);
+  }, [mockSearch, activeTab, pressCount, allHUDHeights, setActiveTab, setMockSearch, setHUDPosition]);
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
@@ -76,6 +76,21 @@ function HUD() {
   };
 
   /**
+   * Helper function used to reduce repetition when calling 
+   * setActiveTab()
+   * @param {string} activeTab 
+   */
+  const changeActiveValue = (activeTab) => {
+    const tabs = {
+      econTab: false,
+      demogTab: false,
+      propsTab: false
+    }
+    tabs[activeTab] = true;
+    return tabs;
+  }
+
+  /**
    * Listens for click event to display tab content.  Calls 
    * adjustHeight() if the HUD is collapsed in order to show content.
    * @param {object} e
@@ -88,22 +103,10 @@ function HUD() {
 
     // Reveal tab content and highlight selected tab
     e.target.id === "economics-btn"
-      ? setActiveTab({
-          econTab: true,
-          demogTab: false,
-          propsTab: false,
-        })
-      : e.target.id === "demographics-btn"
-      ? setActiveTab({
-          econTab: false,
-          demogTab: true,
-          propsTab: false,
-        })
-      : setActiveTab({
-          econTab: false,
-          demogTab: false,
-          propsTab: true,
-        });
+      ? setActiveTab(changeActiveValue("econTab")) : 
+    e.target.id === "demographics-btn"
+      ? setActiveTab(changeActiveValue("demogTab"))
+      : setActiveTab(changeActiveValue("propsTab"));
   };
 
   return (
