@@ -1,9 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import './PropertyProfile.css';
 
 function PropertyProfile() {
-  let history = useHistory();  
+  // Get history object to allow navigating back tot he last page
+  let history = useHistory();
+  // Get location.state object to import property info passed by Link
+  let {property} = useLocation().state;
   
   return (
     <section className='property-profile'>

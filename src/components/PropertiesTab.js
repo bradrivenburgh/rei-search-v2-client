@@ -28,7 +28,7 @@ function PropertiesTab() {
               <ul>
                 <div className="properties__flex-container">
                   <li>
-                    <Link to='/property-profile'>
+                    <Link to={{pathname: '/property-profile', state: {property}}}>
                       <img
                         src={photos[0]}
                         alt='property'
