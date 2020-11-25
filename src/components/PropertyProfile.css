@@ -3,6 +3,17 @@
   text-align: left;
 }
 
+@media only screen and (min-device-width: 768px) {
+  .property-profile {  
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
+
+max-width: 70%;
+margin: 0 auto;
+
+
 .property-profile p {
   margin-top: .5em;
   padding-top: 0;
@@ -36,8 +47,7 @@
 }
 
 .property-profile__carousel img {
-  width: 100%;
-  max-width: 600px;
+  max-height: 200px;
   display: block;
   margin: 0 auto;
 }
@@ -47,6 +57,7 @@
   justify-content: space-between;
   font-size: 1em;
   text-align: center;
+  max-width: 600px;
 }
 
 .property-profile__description {

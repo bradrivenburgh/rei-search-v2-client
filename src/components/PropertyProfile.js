@@ -6,8 +6,19 @@ function PropertyProfile() {
   // Get history object to allow navigating back tot he last page
   let history = useHistory();
   // Get location.state object to import property info passed by Link
-  let {property} = useLocation().state;
-  
+  let {property = {}} = useLocation().state;
+  const {
+    address: { streetAddress, city, state, zipcode },
+    price,
+    photos,
+    bedrooms,
+    bathrooms,
+    livingArea,
+    yearBuilt,
+    description,
+  } = property;
+
+
   return (
     <section className='property-profile'>
       <nav className='closing-nav'>
@@ -20,17 +31,18 @@ function PropertyProfile() {
 
       <div className='property-profile__carousel'>
         <img
-          src='https://via.placeholder.com/300x200?text=Image Carousel'
-          alt='[images of property]'
+          // src='https://via.placeholder.com/300x200?text=Image Carousel'
+          src={photos[0]}
+          alt='first'
         />
       </div>
 
-      <section className='property-profile'>
+      <div>
         <button>Save / Remove</button>
-        <p className='property-profile__price'>$6,250,000</p>
+        <p className='property-profile__price'>${price}</p>
         <p className='property-profile__address'>
-          43 8th Ave, <br />
-          Brooklyn, NY 11217
+          {streetAddress}, <br />
+          {city}, {state} {zipcode}
         </p>
 
         <div className='property-profile__info'>
@@ -38,32 +50,25 @@ function PropertyProfile() {
 
           <ul className='property-profile__basic-stats'>
             <li>
-              <strong>bed</strong> <br /> 5
+              <strong>bed</strong> <br /> {bedrooms}
             </li>
             <li>
-              <strong>bath</strong> <br /> 3
+              <strong>bath</strong> <br /> {bathrooms}
             </li>
             <li>
-              <strong>sqft</strong> <br /> 7000
+              <strong>sqft</strong> <br /> {livingArea}
             </li>
             <li>
-              <strong>built</strong> <br /> 1984
+              <strong>built</strong> <br /> {yearBuilt}
             </li>
           </ul>
 
           <div className='property-profile__description'>
             <h2>Description</h2>
-            <p>
-              Lovely Row home on a quiet block with Off-street parking! This
-              home boasts exposed brick walls, tons of character, hardwood
-              flooring, pocket doors, and a great location. Within close
-              proximity to tons of restaurants, bars, parks, shopping, and
-              transportation, you really can't go wrong. Call for a showing
-              today!
-            </p>
+            <p> {description} </p>
           </div>
         </div>
-      </section>
+      </div>
     </section>
   );
 }
