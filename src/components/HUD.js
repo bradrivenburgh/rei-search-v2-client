@@ -4,7 +4,7 @@ import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD({ displayTab, setDisplayTab }) {
+function HUD() {
   /* STATE FROM CONTEXT */
 
   let {
@@ -16,6 +16,8 @@ function HUD({ displayTab, setDisplayTab }) {
       setHUDPosition,
       setCurrentTab,
     },
+    displayTab,
+    setDisplayTab,
     mockSearch,
     setMockSearch,
   } = useContext(Context);
@@ -44,24 +46,6 @@ function HUD({ displayTab, setDisplayTab }) {
     }
     setMockSearch(false);
   }, [mockSearch, currentTab, setMockSearch]);
-
-  /**
-   * Maintains the current tab selected if the user navigates away
-   * from mainView
-   */
-  useEffect(() => {
-    const { baseScreen } = allHUDHeights;
-
-    if (currentTab.length === 0) {
-      return;
-    } else {
-      // Don't change HUD height, only add "active class" if
-      // navigated away from HUD at baseScreen height
-      HUDPosition === baseScreen
-        ? (document.getElementById(currentTab[0]).className += " active")
-        : document.getElementById(currentTab[0]).click();
-    }
-  }, [currentTab, HUDPosition, allHUDHeights]);
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 

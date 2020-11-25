@@ -14,6 +14,11 @@ export const Context = createContext({
     setHUDPosition: () => {},
     setCurrentTab: () => {},  
   },
+  displayTab: {
+    econTab: false,
+    demogTab: false,
+    propsTab: false
+  },
   mockSearch: false,
   setMockSearch: () => {},
 });
