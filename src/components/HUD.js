@@ -104,11 +104,6 @@ function HUD({ displayTab, setDisplayTab }) {
    * @param {string} category
    */
   const openTab = (e, category) => {
-    // let tabContent = document.getElementsByClassName("HUD__tabcontent");
-    // for (let i = 0; i < tabContent.length; i++) {
-    //   tabContent[i].style.display = "none";
-    // }
-
     let tabLinks = document.getElementsByClassName("HUD__tab__tablinks");
     for (let i = 0; i < tabLinks.length; i++) {
       tabLinks[i].className = tabLinks[i].className.replace(" active", "");
@@ -183,26 +178,30 @@ function HUD({ displayTab, setDisplayTab }) {
       </div>
 
       <div className='HUD__tabcontent__container'>
-        {displayTab.econTab && 
+         
         <div
           id='economics'
-          className='HUD__tabcontent'>
+          className='HUD__tabcontent'
+          style={{ display: displayTab.econTab ? 'block' : 'none'}} >
           <StatsTabs id='economics' />
-        </div>}
+        </div>
 
-        {displayTab.demogTab && 
         <div
           id='demographics'
-          className='HUD__tabcontent'>
+          className='HUD__tabcontent'
+          style={{ display: displayTab.demogTab ? 'block' : 'none'}} 
+          >
           <StatsTabs id='demographics' />
-        </div>}
+        </div>
 
-        {displayTab.propsTab && 
         <div
           id='properties'
-          className='HUD__tabcontent'>
+          className='HUD__tabcontent'
+          style={{ display: displayTab.propsTab ? 'block' : 'none'}} 
+          >
+            
           <PropertiesTab />
-        </div>}
+        </div>
       </div>
     </section>
   );
