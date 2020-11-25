@@ -15,12 +15,6 @@ function App() {
     demogTab: false,
     propsTab: false
   });
-  let [displayTab, setDisplayTab] = useState({
-    econTab: false,
-    demogTab: false,
-    propsTab: false
-  });
-
   
   const contextValues = {
     searchResults: {
@@ -35,8 +29,6 @@ function App() {
       setHUDPosition,
       setActiveTab,    
     },
-    displayTab,
-    setDisplayTab,
     savedProperties,
     mockSearch,
     setMockSearch,
