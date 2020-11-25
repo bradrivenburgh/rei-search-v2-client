@@ -46,13 +46,6 @@ function HUD({ displayTab, setDisplayTab }) {
   }, [mockSearch, currentTab, setMockSearch]);
 
   /**
-   * Changes the height of HUD; works when navigating back to HUD
-   */
-  useEffect(() => {
-    document.getElementById("HUD").style.height = `${HUDPosition}`;
-  }, [HUDPosition]);
-
-  /**
    * Maintains the current tab selected if the user navigates away
    * from mainView
    */
@@ -114,7 +107,6 @@ function HUD({ displayTab, setDisplayTab }) {
     }
 
     // Reveal tab content and highlight selected tab
-    // document.getElementById(category).style.display = "block";
     e.target.id === "economics-btn"
       ? setDisplayTab({  
           econTab: true,
