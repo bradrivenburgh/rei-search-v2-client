@@ -522,7 +522,7 @@ export const properties = [
   },
 ];
 
-export const savedProperties = [
+export const savedProps = [
   {
     address: {
       streetAddress: "332 E Somerset St",

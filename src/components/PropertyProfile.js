@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { Context } from '../Context';
 import './PropertyProfile.css';
 
 function PropertyProfile() {
+  // Get saved properties in order to determine save / remove button behavior
+  const { savedProperties, setSavedProperties } = useContext(Context)
+
   // Get history object to allow navigating back tot he last page
   let history = useHistory();
   // Get location.state object to import property info passed by Link
@@ -18,6 +22,28 @@ function PropertyProfile() {
     description,
   } = property;
 
+  const inSavedProps = (savedProps = savedProperties, street = streetAddress) => {
+    if (savedProperties.length) {
+      const filteredProps = savedProperties.filter(savedProp => {
+        return savedProp["address"]["streetAddress"] !== street
+      })
+      if (filteredProps.length !== savedProps.length) {
+        return filteredProps;
+      }
+    } 
+    
+    return false;
+  }
+
+  const handleClick = (filteredProps, savedProps = savedProperties, prop = property) => {
+    if (filteredProps) {
+      setSavedProperties(filteredProps);
+    } else {
+      const newSavedProps = savedProps.push(prop);
+      console.log(newSavedProps)
+      // setSavedProperties(newSavedProps);
+    }
+  }
 
   return (
     <section className='property-profile'>
@@ -38,7 +64,9 @@ function PropertyProfile() {
       </div>
 
       <div>
-        <button>Save / Remove</button>
+
+        <button onClick={() => handleClick(inSavedProps())}>{inSavedProps() ? "Remove": "Save"}</button>
+        
         <p className='property-profile__price'>${price}</p>
         <p className='property-profile__address'>
           {streetAddress}, <br />

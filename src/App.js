@@ -3,10 +3,10 @@ import { Context } from './Context';
 import { 
   stats, 
   properties, 
-  savedProperties } from './mockData';
+  savedProps } from './mockData';
 import Routes from './Routes';
 
-function App() {
+function App() {  
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState('');
   let [mockSearch, setMockSearch] = useState(false);
@@ -15,6 +15,7 @@ function App() {
     demogTab: false,
     propsTab: false
   });
+  let [savedProperties, setSavedProperties] = useState(savedProps)
   
   const contextValues = {
     searchResults: {
@@ -30,6 +31,7 @@ function App() {
       setActiveTab,    
     },
     savedProperties,
+    setSavedProperties,
     mockSearch,
     setMockSearch,
   }
