@@ -125,7 +125,6 @@
 }
 
 .HUD__tabcontent {
-  display: none;
   padding: 6px 12px;
   overflow-y: scroll;
   overflow-wrap: break-word;

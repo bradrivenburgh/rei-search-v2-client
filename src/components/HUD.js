@@ -4,7 +4,7 @@ import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD() {
+function HUD({ displayTab, setDisplayTab }) {
   /* STATE FROM CONTEXT */
 
   let {
@@ -19,6 +19,7 @@ function HUD() {
     mockSearch,
     setMockSearch,
   } = useContext(Context);
+
 
   /* LOCAL STATE */
 
@@ -103,10 +104,10 @@ function HUD() {
    * @param {string} category
    */
   const openTab = (e, category) => {
-    let tabContent = document.getElementsByClassName("HUD__tabcontent");
-    for (let i = 0; i < tabContent.length; i++) {
-      tabContent[i].style.display = "none";
-    }
+    // let tabContent = document.getElementsByClassName("HUD__tabcontent");
+    // for (let i = 0; i < tabContent.length; i++) {
+    //   tabContent[i].style.display = "none";
+    // }
 
     let tabLinks = document.getElementsByClassName("HUD__tab__tablinks");
     for (let i = 0; i < tabLinks.length; i++) {
@@ -123,23 +124,40 @@ function HUD() {
     }
 
     // Reveal tab content and highlight selected tab
-    document.getElementById(category).style.display = "block";
+    // document.getElementById(category).style.display = "block";
+    e.target.id === "economics-btn"
+      ? setDisplayTab({  
+          econTab: true,
+          demogTab: false,
+          propsTab: false
+      }) :
+    e.target.id === "demographics-btn"
+      ? setDisplayTab({ 
+          econTab: false,
+          demogTab: true,
+          propsTab: false      
+      })
+      : setDisplayTab({ 
+          econTab: false,
+          demogTab: false,
+          propsTab: true      
+      })
     e.target.className += " active";
   };
 
   return (
-    <section id='HUD' className='HUD'>
+    <section id='HUD' className='HUD' style={{ height: HUDPosition }}>
       <div className='HUD__nav'>
         <div className='HUD__button-container'>
           <button
             className='HUD__expand-button'
             onClick={() => adjustHUDHeight(1)}>
-             {pressCount === 3 ? <>&#95;</> : <>&#9650;</> }
+            {pressCount === 3 ? <>&#95;</> : <>&#9650;</>}
           </button>
           <button
             className='HUD__contract-button'
             onClick={() => adjustHUDHeight(-1)}>
-            {pressCount === 0 ? <>&#x26F6;</> : <>&#9660;</> }
+            {pressCount === 0 ? <>&#x26F6;</> : <>&#9660;</>}
           </button>
         </div>
         <div className='HUD__tab'>
@@ -165,17 +183,26 @@ function HUD() {
       </div>
 
       <div className='HUD__tabcontent__container'>
-        <div id='economics' className='HUD__tabcontent'>
+        {displayTab.econTab && 
+        <div
+          id='economics'
+          className='HUD__tabcontent'>
           <StatsTabs id='economics' />
-        </div>
+        </div>}
 
-        <div id='demographics' className='HUD__tabcontent'>
+        {displayTab.demogTab && 
+        <div
+          id='demographics'
+          className='HUD__tabcontent'>
           <StatsTabs id='demographics' />
-        </div>
+        </div>}
 
-        <div id='properties' className='HUD__tabcontent'>
+        {displayTab.propsTab && 
+        <div
+          id='properties'
+          className='HUD__tabcontent'>
           <PropertiesTab />
-        </div>
+        </div>}
       </div>
     </section>
   );
