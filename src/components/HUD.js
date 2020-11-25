@@ -41,12 +41,12 @@ function HUD() {
           setHUDPosition(oneThirdScreen);
         } else {
           setHUDPosition(oneThirdScreen);
-          setActiveTab({...activeTab, econTab: true});
+          setActiveTab({ ...activeTab, econTab: true });
         }
       }
     }
     setMockSearch(false);
-  }, [mockSearch, activeTab, pressCount, allHUDHeights, setActiveTab, setMockSearch, setHUDPosition]);
+  });
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
@@ -69,7 +69,6 @@ function HUD() {
     else {
       setPressCount((pressCount += pressCountAdj));
     }
-
     // Set HUDPosition state; pressCount === 0 || 1 || 2 || 3
     // corresponding to ["69px","33vh","67vh","100vh"]
     setHUDPosition(Object.values(HUDHeights)[pressCount]); 
@@ -100,7 +99,6 @@ function HUD() {
     if (pressCount === 0) {
       adjustHUDHeight(1);
     }
-
     // Reveal tab content and highlight selected tab
     e.target.id === "economics-btn"
       ? setActiveTab(changeActiveValue("econTab")) : 
