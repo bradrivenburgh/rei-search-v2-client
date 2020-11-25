@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext } from "react";
+import React, {useEffect, useContext } from "react";
 import { Context } from '../Context';
 import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
@@ -20,21 +20,25 @@ function HUD() {
     setMockSearch,
   } = useContext(Context);
 
-  /* LOCAL STATE */
-
-  const [allHUDHeights] = useState({
-    baseScreen: "69px",
-    oneThirdScreen: "33vh",
-    twoThirdsScreen: "67vh",
-    fullScreen: "100vh",
-  });
+  /**
+   * Returns object with preset HUD height settings 
+   */
+  const HUDHeights = () => {
+    return {
+      baseScreen: "69px",
+      oneThirdScreen: "33vh",
+      twoThirdsScreen: "67vh",
+      fullScreen: "100vh",
+    };
+  }
 
   /**
    * Open the economic tab by default after search submitted;
    * or open the last active tab selected after search submitted
    */
   useEffect(() => {
-    const { oneThirdScreen } = allHUDHeights;
+    // const { oneThirdScreen } = allHUDHeights;
+    const { oneThirdScreen } = HUDHeights();
     if (mockSearch) {
       if (pressCount === 0) {
         if (activeTab.demogTab || activeTab.propsTab) {
@@ -56,7 +60,7 @@ function HUD() {
    * @param {number} pressCountAdj
    * @param {object} HUDHeights
    */
-  const adjustHUDHeight = (pressCountAdj = 0, HUDHeights = allHUDHeights) => {
+  const adjustHUDHeight = (pressCountAdj = 0, allHUDHeights = HUDHeights()) => {
     // HUD to baseScreen
     if (pressCountAdj > 0 && pressCount === 3) {
       setPressCount((pressCount = 0));
@@ -71,7 +75,7 @@ function HUD() {
     }
     // Set HUDPosition state; pressCount === 0 || 1 || 2 || 3
     // corresponding to ["69px","33vh","67vh","100vh"]
-    setHUDPosition(Object.values(HUDHeights)[pressCount]); 
+    setHUDPosition(Object.values(allHUDHeights)[pressCount]); 
   };
 
   /**
