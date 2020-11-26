@@ -57,12 +57,14 @@ class Search extends React.Component {
       suggestions: []
     });
   };
-
-  
-  //TEMPORARY MOCK SEARCH
+ 
   onSubmit = (e) => {
     e.preventDefault();
-    this.context.setDefaultTab(true)  //TEMPORARY
+    //TEMPORARY
+    this.context.setDefaultTab(true)
+    setInterval(() => {
+      this.context.setDefaultTab(false)
+    }, 1);  
   }
 
   render() {
