@@ -4,7 +4,7 @@ import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD() {
+function HUD({defaultTab}) {
   /* STATE FROM CONTEXT */
 
   let {
@@ -15,9 +15,7 @@ function HUD() {
       setPressCount,
       setHUDPosition,
       setActiveTab,
-    },
-    defaultTab,
-    setDefaultTab,
+    }
   } = useContext(Context);
 
   /**
@@ -45,7 +43,6 @@ function HUD() {
         handleHUDHeight(pressCount + 1)
       }
     }
-    setDefaultTab(false);
   });
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
