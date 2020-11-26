@@ -54,23 +54,21 @@ function HUD() {
   /**
    * Allows user to adjust height of HUD display in order
    * to view more information and less of the map.
-   * @param {number} pressCountAdj
-   * @param {object} HUDHeights
+   * @param {number} pressCount
+   * @param {object} allHUDHeights
    */
-  const adjustHUDHeight = (pressCountAdj = 0, allHUDHeights = HUDHeights()) => {
+  const adjustHUDHeight = (pressCount, allHUDHeights = HUDHeights()) => {
     // HUD to baseScreen
-    if (pressCountAdj > 0 && pressCount === 3) {
-      setPressCount((pressCount = 0));
+    if (pressCount > 3) {
+      pressCount = 0;
     }
     // HUD to fullScreen
-    else if (pressCountAdj < 0 && pressCount === 0) {
-      setPressCount((pressCount = 3));
+    else if (pressCount < 0) {
+      pressCount = 3;
     }
-    // HUD up and down
-    else {
-      setPressCount((pressCount += pressCountAdj));
-    }
-    // Set HUDPosition state; pressCount === 0 || 1 || 2 || 3
+    setPressCount(pressCount);
+
+    // Set HUDPosition; pressCount === 0 || 1 || 2 || 3
     // corresponding to ["69px","33vh","67vh","100vh"]
     setHUDPosition(Object.values(allHUDHeights)[pressCount]); 
   };
@@ -114,12 +112,12 @@ function HUD() {
         <div className='HUD__button-container'>
           <button
             className='HUD__expand-button'
-            onClick={() => adjustHUDHeight(1)}>
+            onClick={() => adjustHUDHeight(pressCount + 1)}>
             {pressCount === 3 ? <>&#95;</> : <>&#9650;</>}
           </button>
           <button
             className='HUD__contract-button'
-            onClick={() => adjustHUDHeight(-1)}>
+            onClick={() => adjustHUDHeight(pressCount - 1)}>
             {pressCount === 0 ? <>&#x26F6;</> : <>&#9660;</>}
           </button>
         </div>
