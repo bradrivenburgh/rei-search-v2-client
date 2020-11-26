@@ -178,4 +178,8 @@ function HUD() {
   );
 }
 
+HUD.defaultProps = {
+  defaultTab: false
+}
+
 export default HUD;
