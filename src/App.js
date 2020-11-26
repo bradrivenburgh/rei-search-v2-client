@@ -1,22 +1,26 @@
-import React, { useState } from 'react';
-import { Context } from './Context';
-import { 
-  stats, 
-  properties, 
-  savedProps } from './mockData';
-import Routes from './Routes';
+import React, { useState } from "react";
+import { Switch, Route } from "react-router-dom";
+import Nav from "./components/Nav";
+import Menu from "./components/Menu";
+import Map from "./components/Map";
+import HUD from "./components/HUD";
+import SavedProps from "./components/SavedProps";
+import PropertyProfile from "./components/PropertyProfile";
+import { Context } from "./Context";
+import { stats, properties, savedProps } from "./mockData";
 
-function App() {  
+function App() {
   let [pressCount, setPressCount] = useState(0);
-  let [HUDPosition, setHUDPosition] = useState('');
-  let [mockSearch, setMockSearch] = useState(false);
+  let [HUDPosition, setHUDPosition] = useState("");
+  let [defaultTab, setDefaultTab] = useState(false);
+  let [savedProperties, setSavedProperties] = useState(savedProps);
   let [activeTab, setActiveTab] = useState({
     econTab: false,
     demogTab: false,
-    propsTab: false
+    propsTab: false,
   });
   let [savedProperties, setSavedProperties] = useState(savedProps)
-  
+
   const contextValues = {
     searchResults: {
       stats,
@@ -28,13 +32,13 @@ function App() {
       activeTab,
       setPressCount,
       setHUDPosition,
-      setActiveTab,    
+      setActiveTab,
     },
     savedProperties,
     setSavedProperties,
-    mockSearch,
-    setMockSearch,
-  }
+    defaultTab,
+    setDefaultTab,
+  };
 
   return (
     <main className='App'>

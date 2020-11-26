@@ -16,8 +16,8 @@ function HUD() {
       setHUDPosition,
       setActiveTab,
     },
-    mockSearch,
-    setMockSearch,
+    defaultTab,
+    setDefaultTab,
   } = useContext(Context);
 
   /**
@@ -38,7 +38,7 @@ function HUD() {
    */
   useEffect(() => {
     const { oneThirdScreen } = HUDHeights();
-    if (mockSearch) {
+    if (defaultTab) {
       if (pressCount === 0) {
         if (!(activeTab.demogTab || activeTab.propsTab)) {
           setActiveTab({ ...activeTab, econTab: true });
@@ -46,7 +46,7 @@ function HUD() {
         setHUDPosition(oneThirdScreen);
       }
     }
-    setMockSearch(false);
+    setDefaultTab(false);
   });
 
   /* FUNCTIONS FOR HUD BEHAVIOR */

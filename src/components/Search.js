@@ -62,7 +62,7 @@ class Search extends React.Component {
   //TEMPORARY MOCK SEARCH
   onSubmit = (e) => {
     e.preventDefault();
-    this.context.setMockSearch(true)
+    this.context.setDefaultTab(true)  //TEMPORARY
   }
 
   render() {
