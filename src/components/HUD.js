@@ -37,16 +37,13 @@ function HUD() {
    * or open the last active tab selected after search submitted
    */
   useEffect(() => {
-    // const { oneThirdScreen } = allHUDHeights;
     const { oneThirdScreen } = HUDHeights();
     if (mockSearch) {
       if (pressCount === 0) {
-        if (activeTab.demogTab || activeTab.propsTab) {
-          setHUDPosition(oneThirdScreen);
-        } else {
-          setHUDPosition(oneThirdScreen);
+        if (!(activeTab.demogTab || activeTab.propsTab)) {
           setActiveTab({ ...activeTab, econTab: true });
         }
+        setHUDPosition(oneThirdScreen);
       }
     }
     setMockSearch(false);
