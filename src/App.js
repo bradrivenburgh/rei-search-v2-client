@@ -39,7 +39,20 @@ function App() {
   return (
     <main className='App'>
       <Context.Provider value={contextValues}>
-        { Routes }
+        <Switch>
+          <Route path='/property-profile'>
+            <PropertyProfile />
+          </Route>
+          <Route path='/saved-properties'>
+            <SavedProps />
+          </Route>
+          <Route path='/'>
+            <Nav />
+            <Menu />
+            <Map />
+            <HUD />
+          </Route>
+        </Switch>
       </Context.Provider>
     </main>
   );
