@@ -37,13 +37,12 @@ function HUD() {
    * or open the last active tab selected after search submitted
    */
   useEffect(() => {
-    const { oneThirdScreen } = HUDHeights();
     if (defaultTab) {
       if (pressCount === 0) {
         if (!(activeTab.demogTab || activeTab.propsTab)) {
           setActiveTab({ ...activeTab, econTab: true });
         }
-        setHUDPosition(oneThirdScreen);
+        handleHUDHeight(pressCount + 1)
       }
     }
     setDefaultTab(false);
