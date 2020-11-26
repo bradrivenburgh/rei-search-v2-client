@@ -57,7 +57,7 @@ function HUD() {
    * @param {number} pressCount
    * @param {object} allHUDHeights
    */
-  const adjustHUDHeight = (pressCount, allHUDHeights = HUDHeights()) => {
+  const handleHUDHeight = (pressCount, allHUDHeights = HUDHeights()) => {
     // HUD to baseScreen
     if (pressCount > 3) {
       pressCount = 0;
@@ -93,10 +93,10 @@ function HUD() {
    * adjustHeight() if the HUD is collapsed in order to show content.
    * @param {object} e
    */
-  const openTab = (e) => {
+  const handleOpenTab = (e) => {
     // Expand HUD if tab is clicked when just tabs are showing
     if (pressCount === 0) {
-      adjustHUDHeight(1);
+      handleHUDHeight(1);
     }
     // Reveal tab content and highlight selected tab
     e.target.id === "economics-btn"
@@ -112,12 +112,12 @@ function HUD() {
         <div className='HUD__button-container'>
           <button
             className='HUD__expand-button'
-            onClick={() => adjustHUDHeight(pressCount + 1)}>
+            onClick={() => handleHUDHeight(pressCount + 1)}>
             {pressCount === 3 ? <>&#95;</> : <>&#9650;</>}
           </button>
           <button
             className='HUD__contract-button'
-            onClick={() => adjustHUDHeight(pressCount - 1)}>
+            onClick={() => handleHUDHeight(pressCount - 1)}>
             {pressCount === 0 ? <>&#x26F6;</> : <>&#9660;</>}
           </button>
         </div>
@@ -129,7 +129,7 @@ function HUD() {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => openTab(e)}>
+            onClick={(e) => handleOpenTab(e)}>
             economics
           </button>
           <button
@@ -139,7 +139,7 @@ function HUD() {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => openTab(e)}>
+            onClick={(e) => handleOpenTab(e)}>
             demographics
           </button>
           <button
@@ -149,7 +149,7 @@ function HUD() {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => openTab(e)}>
+            onClick={(e) => handleOpenTab(e)}>
             properties
           </button>
         </div>
@@ -172,6 +172,7 @@ function HUD() {
           className='HUD__tabcontent'
           style={{ display: activeTab.propsTab ? "block" : "none" }}>
           <PropertiesTab />
+          {/* <PropertiesTab onPropertyClick=props.onPropertyClick /> */}
         </div>
       </div>
     </section>
