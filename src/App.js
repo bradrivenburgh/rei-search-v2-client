@@ -54,7 +54,7 @@ function App() {
             <Nav />
             <Menu />
             <Map />
-            <HUD />
+            <HUD defaultTab={defaultTab} />
           </Route>
         </Switch>
       </Context.Provider>
