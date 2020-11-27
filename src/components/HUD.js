@@ -1,22 +1,20 @@
-import React, {useEffect, useContext } from "react";
-import { Context } from '../Context';
+import React, {useEffect } from "react";
 import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD({ defaultTab }) {
-  /* STATE FROM CONTEXT */
+function HUD({ defaultTab, HUDState }) {
+  /* STATE */
 
   let {
-    HUDState: {
       pressCount,
       HUDPosition,
       activeTab,
       setPressCount,
       setHUDPosition,
       setActiveTab,
-    }
-  } = useContext(Context);
+  } = HUDState;
+
 
   /**
    * Open a tab after a search is made

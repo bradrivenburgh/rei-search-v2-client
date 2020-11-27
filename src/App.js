@@ -12,6 +12,8 @@ import { fakeStats, fakeProps, savedProps } from "./mockData";
 function App() {
   let [statistics, setStatistics] = useState(fakeStats);
   let [properties, setProperties] = useState(fakeProps);
+  let [savedProperties, setSavedProperties] = useState(savedProps);
+  let [currentProperty, setCurrentProperty] = useState(properties[0]);
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
   let [defaultTab, setDefaultTab] = useState(false);
@@ -20,8 +22,15 @@ function App() {
     demogTab: false,
     propsTab: false,
   });
-  let [savedProperties, setSavedProperties] = useState(savedProps);
-  let [currentProperty, setCurrentProperty] = useState(properties[0]);
+  
+  let HUDState = {
+      pressCount,
+      setPressCount,
+      HUDPosition,
+      setHUDPosition,
+      activeTab,
+      setActiveTab,
+  };
 
   const contextValues = {
     searchResults: {
@@ -30,18 +39,10 @@ function App() {
       properties,
       setProperties
     },
-    HUDState: {
-      pressCount,
-      HUDPosition,
-      activeTab,
-      setPressCount,
-      setHUDPosition,
-      setActiveTab,
-    },
     savedProperties,
+    setSavedProperties,
     currentProperty,
     setCurrentProperty,
-    setSavedProperties,
     defaultTab,
     setDefaultTab,
   };
@@ -61,7 +62,7 @@ function App() {
             <Nav />
             <Menu />
             <Map />
-            <HUD defaultTab={defaultTab} />
+            <HUD defaultTab={defaultTab} HUDState={HUDState}/>
           </Route>
         </Switch>
       </Context.Provider>

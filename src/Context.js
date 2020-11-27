@@ -11,14 +11,6 @@ export const Context = createContext({
   setCurrentProperty: () => {},
   savedProperties: [], 
   setSavedProperties: () => {},
-  HUDState: {
-    pressCount: 0,
-    HUDPosition: '',
-    activeTab: {},
-    setPressCount: () => {},
-    setHUDPosition: () => {},
-    setActiveTab: () => {},  
-  },
   defaultTab: false,
   setDefaultTab: () => {},
 });
