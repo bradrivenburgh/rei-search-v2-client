@@ -34,7 +34,7 @@ function PropertyProfile({currentProperty}) {
     return false;
   }
 
-  const handleClick = (filteredProps, savedProps = savedProperties, prop = currentProperty) => {
+  const handleAddRemove = (filteredProps, savedProps = savedProperties, prop = currentProperty) => {
     if (filteredProps) {
       setSavedProperties(filteredProps);
     } else {
@@ -64,7 +64,7 @@ function PropertyProfile({currentProperty}) {
 
       <div>
 
-        <button onClick={() => handleClick(inSavedProps())}>{inSavedProps() ? "Remove": "Save"}</button>
+        <button onClick={() => handleAddRemove(inSavedProps())}>{inSavedProps() ? "Remove": "Save"}</button>
         
         <p className='property-profile__price'>${price}</p>
         <p className='property-profile__address'>
