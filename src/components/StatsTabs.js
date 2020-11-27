@@ -5,7 +5,7 @@ import './StatsTabs.css';
 function StatsTabs({ id }) {
   const {
     searchResults: {
-      stats: { economic = [], demographic = [] },
+      statistics: { economic = [], demographic = [] },
     },
   } = useContext(Context);  
 

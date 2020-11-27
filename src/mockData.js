@@ -1,4 +1,4 @@
-export const stats = {
+export const fakeStats = {
   economic: [
     {
       id: 1,
@@ -139,7 +139,7 @@ export const cities = [
 ];
 
 
-export const properties = [
+export const fakeProps = [
   {
     address: {
       streetAddress: "332 E Somerset St",

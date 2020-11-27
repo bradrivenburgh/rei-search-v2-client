@@ -7,9 +7,11 @@ import HUD from "./components/HUD";
 import SavedProps from "./components/SavedProps";
 import PropertyProfile from "./components/PropertyProfile";
 import { Context } from "./Context";
-import { stats, properties, savedProps } from "./mockData";
+import { fakeStats, fakeProps, savedProps } from "./mockData";
 
 function App() {
+  let [statistics, setStatistics] = useState(fakeStats);
+  let [properties, setProperties] = useState(fakeProps);
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
   let [defaultTab, setDefaultTab] = useState(false);
@@ -23,8 +25,10 @@ function App() {
 
   const contextValues = {
     searchResults: {
-      stats,
+      statistics,
+      setStatistics,
       properties,
+      setProperties
     },
     HUDState: {
       pressCount,
