@@ -32,13 +32,15 @@ function App() {
       setActiveTab,
   };
 
+  let searchResults = {
+    statistics,
+    setStatistics,
+    properties,
+    setProperties
+  }
+
   const contextValues = {
-    searchResults: {
-      statistics,
-      setStatistics,
-      properties,
-      setProperties
-    },
+    searchResults,
     savedProperties,
     setSavedProperties,
     currentProperty,
