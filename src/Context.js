@@ -5,7 +5,9 @@ export const Context = createContext({
     stats: {},
     properties: [],
   },
-  savedProperties: [],
+  propertyProfile: {},
+  setPropertyProfile: () => {},
+  savedProperties: [], 
   setSavedProperties: () => {},
   HUDState: {
     pressCount: 0,

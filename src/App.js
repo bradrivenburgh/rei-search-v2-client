@@ -13,12 +13,13 @@ function App() {
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
   let [defaultTab, setDefaultTab] = useState(false);
-  let [savedProperties, setSavedProperties] = useState(savedProps);
   let [activeTab, setActiveTab] = useState({
     econTab: false,
     demogTab: false,
     propsTab: false,
   });
+  let [savedProperties, setSavedProperties] = useState(savedProps);
+  let [propertyProfile, setPropertyProfile] = useState(properties[0]);
 
   const contextValues = {
     searchResults: {
@@ -34,17 +35,20 @@ function App() {
       setActiveTab,
     },
     savedProperties,
+    propertyProfile,
+    setPropertyProfile,
     setSavedProperties,
     defaultTab,
     setDefaultTab,
   };
+
 
   return (
     <main className='App'>
       <Context.Provider value={contextValues}>
         <Switch>
           <Route path='/property-profile'>
-            <PropertyProfile />
+            <PropertyProfile propertyProfile={propertyProfile}/>
           </Route>
           <Route path='/saved-properties'>
             <SavedProps />

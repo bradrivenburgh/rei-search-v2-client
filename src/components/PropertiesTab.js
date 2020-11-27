@@ -6,6 +6,7 @@ import './PropertiesTab.css';
 function PropertiesTab() {
   const {
     searchResults: { properties = [] },
+    setPropertyProfile,
   } = useContext(Context);  
 
   const addDefaultSrc = (e) => {
@@ -24,12 +25,12 @@ function PropertiesTab() {
           } = property;
 
           return (
-          <li key={index} > {/* onClick={props.onPropertyClick(property) */}
+          <li key={index} onClick={() => setPropertyProfile(property)}>
               <ul>
                 <div className="properties__flex-container">
                   <li>
                     
-                    <Link to={{pathname: '/property-profile', state: {property}}}>
+                    <Link to='/property-profile'>
                       <img
                         src={photos[0]}
                         alt='property'

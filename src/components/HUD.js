@@ -4,7 +4,7 @@ import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD({defaultTab}) {
+function HUD({ defaultTab }) {
   /* STATE FROM CONTEXT */
 
   let {
@@ -167,7 +167,6 @@ function HUD({defaultTab}) {
           className='HUD__tabcontent'
           style={{ display: activeTab.propsTab ? "block" : "none" }}>
           <PropertiesTab />
-          {/* <PropertiesTab onPropertyClick=props.onPropertyClick /> */}
         </div>
       </div>
     </section>

@@ -1,16 +1,14 @@
 import React, { useContext } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Context } from '../Context';
 import './PropertyProfile.css';
 
-function PropertyProfile() {
-  // Get saved properties in order to determine save / remove button behavior
-  const { savedProperties, setSavedProperties } = useContext(Context)
+function PropertyProfile({propertyProfile}) {
+  const { savedProperties, setSavedProperties } = useContext(Context);
 
-  // Get history object to allow navigating back tot he last page
+  // Get history object to allow navigating back to the last page
   let history = useHistory();
-  // Get location.state object to import property info passed by Link
-  let {property = {}} = useLocation().state;
+
   const {
     address: { streetAddress, city, state, zipcode },
     price,
@@ -20,7 +18,8 @@ function PropertyProfile() {
     livingArea,
     yearBuilt,
     description,
-  } = property;
+  } = propertyProfile;
+
 
   const inSavedProps = (savedProps = savedProperties, street = streetAddress) => {
     if (savedProperties.length) {
@@ -35,7 +34,7 @@ function PropertyProfile() {
     return false;
   }
 
-  const handleClick = (filteredProps, savedProps = savedProperties, prop = property) => {
+  const handleClick = (filteredProps, savedProps = savedProperties, prop = propertyProfile) => {
     if (filteredProps) {
       setSavedProperties(filteredProps);
     } else {
@@ -100,5 +99,9 @@ function PropertyProfile() {
     </section>
   );
 }
+
+PropertyProfile.defaultProps = {
+  propertyProfile: {},
+};
 
 export default PropertyProfile;
