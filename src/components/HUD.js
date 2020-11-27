@@ -31,17 +31,11 @@ function HUD({defaultTab}) {
   }
 
   /**
-   * Open the economic tab by default after search submitted;
-   * or open the last active tab selected after search submitted
+   * Open a tab after a search is made
    */
   useEffect(() => {
     if (defaultTab) {
-      if (pressCount === 0) {
-        if (!(activeTab.demogTab || activeTab.propsTab)) {
-          setActiveTab({ ...activeTab, econTab: true });
-        }
-        handleHUDHeight(pressCount + 1)
-      }
+      handleOpenTab();
     }
   });
 
@@ -87,19 +81,24 @@ function HUD({defaultTab}) {
   /**
    * Listens for click event to display tab content.  Calls 
    * adjustHeight() if the HUD is collapsed in order to show content.
-   * @param {object} e
+   * @param {string} selectedTab
    */
-  const handleOpenTab = (e) => {
+  const handleOpenTab = (selectedTab="econTab") => {
     // Expand HUD if tab is clicked when just tabs are showing
     if (pressCount === 0) {
-      handleHUDHeight(1);
+      handleHUDHeight(pressCount + 1);
     }
-    // Reveal tab content and highlight selected tab
-    e.target.id === "economics-btn"
-      ? setActiveTab(changeActiveValue("econTab")) : 
-    e.target.id === "demographics-btn"
-      ? setActiveTab(changeActiveValue("demogTab"))
-      : setActiveTab(changeActiveValue("propsTab"));
+  
+    // Check if there is already an active tab when the
+    // defaultTab request is made
+    if (defaultTab) {
+      if (activeTab.demogTab || activeTab.propsTab) {
+        return;
+      }
+    }
+
+    // Set active tab
+    setActiveTab(changeActiveValue(selectedTab));
   };
 
   return (
@@ -125,7 +124,7 @@ function HUD({defaultTab}) {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => handleOpenTab(e)}>
+            onClick={() => handleOpenTab("econTab")}>
             economics
           </button>
           <button
@@ -135,7 +134,7 @@ function HUD({defaultTab}) {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => handleOpenTab(e)}>
+            onClick={() => handleOpenTab("demogTab")}>
             demographics
           </button>
           <button
@@ -145,7 +144,7 @@ function HUD({defaultTab}) {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
-            onClick={(e) => handleOpenTab(e)}>
+            onClick={() => handleOpenTab("propsTab")}>
             properties
           </button>
         </div>
