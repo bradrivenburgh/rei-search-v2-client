@@ -38,9 +38,9 @@ function PropertyProfile({currentProperty}) {
     if (filteredProps) {
       setSavedProperties(filteredProps);
     } else {
-      const newSavedProps = savedProps.push(prop);
-      console.log(newSavedProps)
-      // setSavedProperties(newSavedProps);
+      const newSavedProps = [...savedProps];
+      newSavedProps.push(prop);
+      setSavedProperties(newSavedProps);
     }
   }
 
