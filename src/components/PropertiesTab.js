@@ -24,10 +24,11 @@ function PropertiesTab() {
           } = property;
 
           return (
-            <li key={index}>
+          <li key={index} > {/* onClick={props.onPropertyClick(property) */}
               <ul>
                 <div className="properties__flex-container">
                   <li>
+                    
                     <Link to={{pathname: '/property-profile', state: {property}}}>
                       <img
                         src={photos[0]}
