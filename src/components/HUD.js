@@ -19,6 +19,17 @@ function HUD({defaultTab}) {
   } = useContext(Context);
 
   /**
+   * Open a tab after a search is made
+   */
+  useEffect(() => {
+    if (defaultTab) {
+      handleOpenTab();
+    }
+  });
+
+  /* FUNCTIONS FOR HUD BEHAVIOR */
+
+  /**
    * Returns object with preset HUD height settings 
    */
   const HUDHeights = () => {
@@ -29,17 +40,6 @@ function HUD({defaultTab}) {
       fullScreen: "100vh",
     };
   }
-
-  /**
-   * Open a tab after a search is made
-   */
-  useEffect(() => {
-    if (defaultTab) {
-      handleOpenTab();
-    }
-  });
-
-  /* FUNCTIONS FOR HUD BEHAVIOR */
 
   /**
    * Allows user to adjust height of HUD display in order

@@ -19,7 +19,6 @@ function App() {
     demogTab: false,
     propsTab: false,
   });
-  let [savedProperties, setSavedProperties] = useState(savedProps)
 
   const contextValues = {
     searchResults: {
