@@ -613,5 +613,3 @@ export const savedProps = [
     ],
   },
 ];
-
-export const mockSearch = false;

@@ -62,7 +62,7 @@ class Search extends React.Component {
     e.preventDefault();
     //TEMPORARY
     this.context.setDefaultTab(true)
-    setInterval(() => {
+    setTimeout(() => {
       this.context.setDefaultTab(false)
     }, 1);  
   }
