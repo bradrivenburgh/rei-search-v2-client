@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Context } from '../Context';
 import './PropertyProfile.css';
 
-function PropertyProfile({propertyProfile}) {
+function PropertyProfile({currentProperty}) {
   const { savedProperties, setSavedProperties } = useContext(Context);
 
   // Get history object to allow navigating back to the last page
@@ -18,7 +18,7 @@ function PropertyProfile({propertyProfile}) {
     livingArea,
     yearBuilt,
     description,
-  } = propertyProfile;
+  } = currentProperty;
 
 
   const inSavedProps = (savedProps = savedProperties, street = streetAddress) => {
@@ -34,7 +34,7 @@ function PropertyProfile({propertyProfile}) {
     return false;
   }
 
-  const handleClick = (filteredProps, savedProps = savedProperties, prop = propertyProfile) => {
+  const handleClick = (filteredProps, savedProps = savedProperties, prop = currentProperty) => {
     if (filteredProps) {
       setSavedProperties(filteredProps);
     } else {
@@ -101,7 +101,7 @@ function PropertyProfile({propertyProfile}) {
 }
 
 PropertyProfile.defaultProps = {
-  propertyProfile: {},
+  currentProperty: {},
 };
 
 export default PropertyProfile;

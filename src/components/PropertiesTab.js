@@ -6,7 +6,7 @@ import './PropertiesTab.css';
 function PropertiesTab() {
   const {
     searchResults: { properties = [] },
-    setPropertyProfile,
+    setCurrentProperty,
   } = useContext(Context);  
 
   const addDefaultSrc = (e) => {
@@ -25,7 +25,7 @@ function PropertiesTab() {
           } = property;
 
           return (
-          <li key={index} onClick={() => setPropertyProfile(property)}>
+          <li key={index} onClick={() => setCurrentProperty(property)}>
               <ul>
                 <div className="properties__flex-container">
                   <li>

@@ -19,7 +19,7 @@ function App() {
     propsTab: false,
   });
   let [savedProperties, setSavedProperties] = useState(savedProps);
-  let [propertyProfile, setPropertyProfile] = useState(properties[0]);
+  let [currentProperty, setCurrentProperty] = useState(properties[0]);
 
   const contextValues = {
     searchResults: {
@@ -35,8 +35,8 @@ function App() {
       setActiveTab,
     },
     savedProperties,
-    propertyProfile,
-    setPropertyProfile,
+    currentProperty,
+    setCurrentProperty,
     setSavedProperties,
     defaultTab,
     setDefaultTab,
@@ -48,7 +48,7 @@ function App() {
       <Context.Provider value={contextValues}>
         <Switch>
           <Route path='/property-profile'>
-            <PropertyProfile propertyProfile={propertyProfile}/>
+            <PropertyProfile currentProperty={currentProperty}/>
           </Route>
           <Route path='/saved-properties'>
             <SavedProps />
