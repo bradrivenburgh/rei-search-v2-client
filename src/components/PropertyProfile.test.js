@@ -35,17 +35,18 @@ const property = {
   ],
 };
 
+//This was a mock for when passing props with React Router
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
-  useLocation: () => ({
-    pathname: '/property-profile',
-    hash: '',
-    search: '',
-    state: {property}  
-  })
-}));
+// jest.mock('react-router-dom', () => ({
+//   ...jest.requireActual('react-router-dom'), // use actual for all non-hook parts
+//   useLocation: () => ({
+//     pathname: '/property-profile',
+//     hash: '',
+//     search: '',
+//     state: {property}  
+//   })
+// }));
 
 test('renders PropertyProfile', () => {
-  render(<BrowserRouter><PropertyProfile /></BrowserRouter>);
+  render(<BrowserRouter><PropertyProfile currentProperty={property} /></BrowserRouter>);
 });

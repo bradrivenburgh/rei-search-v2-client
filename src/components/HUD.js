@@ -15,7 +15,6 @@ function HUD({ defaultTab, HUDState }) {
       setActiveTab,
   } = HUDState;
 
-
   /**
    * Open a tab after a search is made
    */
