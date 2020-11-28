@@ -18,21 +18,7 @@ function PropertyProfile({currentProperty}) {
     livingArea,
     yearBuilt,
     description,
-  } = currentProperty;
-
-
-  const inSavedProps = (savedProps = savedProperties, street = streetAddress) => {
-    if (savedProperties.length) {
-      const filteredProps = savedProperties.filter(savedProp => {
-        return savedProp["address"]["streetAddress"] !== street
-      })
-      if (filteredProps.length !== savedProps.length) {
-        return filteredProps;
-      }
-    } 
-    
-    return false;
-  }
+  } = currentProperty.propertyData;
 
   const handleAddRemove = (filteredProps, savedProps = savedProperties, prop = currentProperty) => {
     if (filteredProps) {
@@ -64,7 +50,7 @@ function PropertyProfile({currentProperty}) {
 
       <div>
 
-        <button onClick={() => handleAddRemove(inSavedProps())}>{inSavedProps() ? "Remove": "Save"}</button>
+        <button onClick={() => handleAddRemove(currentProperty.inSavedProperties)}>{currentProperty.inSavedProperties ? "Remove": "Save"}</button>
         
         <p className='property-profile__price'>${price}</p>
         <p className='property-profile__address'>

@@ -13,7 +13,10 @@ function App() {
   let [statistics, setStatistics] = useState(fakeStats);
   let [properties, setProperties] = useState(fakeProps);
   let [savedProperties, setSavedProperties] = useState(savedProps);
-  let [currentProperty, setCurrentProperty] = useState(properties[0]);
+  let [currentProperty, setCurrentProperty] = useState({
+    propertyData: properties[0],
+    inSavedProperties: false,
+  });
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
   let [defaultTab, setDefaultTab] = useState(false);

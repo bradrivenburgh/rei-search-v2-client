@@ -6,8 +6,12 @@ import './PropertiesTab.css';
 function PropertiesTab() {
   const {
     searchResults: { properties = [] },
+    currentProperty,
     setCurrentProperty,
+    savedProperties, 
+    setSavedProperties
   } = useContext(Context);  
+
 
   const addDefaultSrc = (e) => {
     e.target.onError=null;
@@ -24,12 +28,27 @@ function PropertiesTab() {
             photos,
           } = property;
 
+          const inSavedProps = (savedProps = savedProperties, street = streetAddress) => {
+            if (savedProperties.length) {
+              const filteredProps = savedProperties.filter(savedProp => {
+                return savedProp["address"]["streetAddress"] !== street
+              })
+              if (filteredProps.length !== savedProps.length) {
+                return filteredProps;
+              }
+            } 
+            
+            return false;
+          }
+        
+
           return (
-          <li key={index} onClick={() => setCurrentProperty(property)}>
+          <li key={index} onClick={() => setCurrentProperty({
+            propertyData: property, 
+            inSavedProperties: inSavedProps()})}>
               <ul>
                 <div className="properties__flex-container">
                   <li>
-                    
                     <Link to='/property-profile'>
                       <img
                         src={photos[0]}
@@ -49,7 +68,7 @@ function PropertiesTab() {
                       </p>
                     </li>
                     <li>
-                      <button>Save</button>
+                    <button>{inSavedProps() ? "Remove": "Save"}</button>
                     </li>
                   </div>
                 </div>
