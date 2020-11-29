@@ -163,7 +163,7 @@ function HUD({ defaultTab, HUDState }) {
         <div
           className='HUD__tabcontent'
           style={{ display: activeTab.propsTab ? "block" : "none" }}>
-          <PropertiesTab />
+          <PropertiesTab onSaveRemoveProperty={HUDState.handleSaveRemoveProperty}/>
         </div>
       </div>
     </section>

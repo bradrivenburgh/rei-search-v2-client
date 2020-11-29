@@ -26,32 +26,6 @@ function App() {
     propsTab: false,
   });
   
-  let HUDState = {
-      pressCount,
-      setPressCount,
-      HUDPosition,
-      setHUDPosition,
-      activeTab,
-      setActiveTab,
-  };
-
-  let searchResults = {
-    statistics,
-    setStatistics,
-    properties,
-    setProperties
-  }
-
-  const contextValues = {
-    searchResults,
-    savedProperties,
-    setSavedProperties,
-    currentProperty,
-    setCurrentProperty,
-    defaultTab,
-    setDefaultTab,
-  };
-
   const handleSaveRemoveProperty = (
     inSavedProps = currentProperty.inSavedProperties,
     prop = currentProperty.propertyData,
@@ -76,6 +50,32 @@ function App() {
     setSavedProperties(newSavedProps);
   };
 
+  let HUDState = {
+      pressCount,
+      setPressCount,
+      HUDPosition,
+      setHUDPosition,
+      activeTab,
+      setActiveTab,
+      handleSaveRemoveProperty
+  };
+
+  let searchResults = {
+    statistics,
+    setStatistics,
+    properties,
+    setProperties
+  }
+
+  const contextValues = {
+    searchResults,
+    savedProperties,
+    setSavedProperties,
+    currentProperty,
+    setCurrentProperty,
+    defaultTab,
+    setDefaultTab,
+  };
 
   return (
     <main className='App'>

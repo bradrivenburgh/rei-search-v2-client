@@ -3,13 +3,11 @@ import { Link } from 'react-router-dom';
 import { Context } from '../Context';
 import './PropertiesTab.css';
 
-function PropertiesTab() {
+function PropertiesTab({onSaveRemoveProperty}) {
   const {
     searchResults: { properties = [] },
-    currentProperty,
     setCurrentProperty,
     savedProperties, 
-    setSavedProperties
   } = useContext(Context);  
 
 
@@ -39,11 +37,16 @@ function PropertiesTab() {
           }
         
           return (
-          <li key={index} onClick={() => setCurrentProperty({
-            propertyData: property, 
-            inSavedProperties: inSavedProps()})}>
+            <li
+              key={index}
+              onClick={() =>
+                setCurrentProperty({
+                  propertyData: property,
+                  inSavedProperties: inSavedProps(),
+                })
+              }>
               <ul>
-                <div className="properties__flex-container">
+                <div className='properties__flex-container'>
                   <li>
                     <Link to='/property-profile'>
                       <img
@@ -64,7 +67,10 @@ function PropertiesTab() {
                       </p>
                     </li>
                     <li>
-                    <button>{inSavedProps() ? "Remove": "Save"}</button>
+                      <button
+                        onClick={() => onSaveRemoveProperty(inSavedProps(), property)}>
+                        {inSavedProps() ? "Remove" : "Save"}
+                      </button>
                     </li>
                   </div>
                 </div>
