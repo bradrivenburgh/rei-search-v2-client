@@ -57,7 +57,6 @@ function App() {
       setHUDPosition,
       activeTab,
       setActiveTab,
-      handleSaveRemoveProperty
   };
 
   let searchResults = {
@@ -94,7 +93,11 @@ function App() {
             <Nav />
             <Menu />
             <Map />
-            <HUD defaultTab={defaultTab} HUDState={HUDState} />
+            <HUD
+              defaultTab={defaultTab}
+              HUDState={HUDState}
+              onSaveRemoveProperty={handleSaveRemoveProperty}
+            />
           </Route>
         </Switch>
       </Context.Provider>

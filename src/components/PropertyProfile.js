@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Context } from '../Context';
 import './PropertyProfile.css';
 
 function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
-  const { savedProperties, setSavedProperties } = useContext(Context);
-
   // Get history object to allow navigating back to the last page
   let history = useHistory();
 

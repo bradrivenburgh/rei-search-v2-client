@@ -6,8 +6,8 @@ import './PropertiesTab.css';
 function PropertiesTab({onSaveRemoveProperty}) {
   const {
     searchResults: { properties = [] },
-    setCurrentProperty,
     savedProperties, 
+    setCurrentProperty,
   } = useContext(Context);  
 
 

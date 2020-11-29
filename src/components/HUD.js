@@ -1,18 +1,18 @@
-import React, {useEffect } from "react";
+import React, { useEffect } from "react";
 import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD({ defaultTab, HUDState }) {
+function HUD({ defaultTab, HUDState, onSaveRemoveProperty }) {
   /* STATE */
 
   let {
-      pressCount,
-      HUDPosition,
-      activeTab,
-      setPressCount,
-      setHUDPosition,
-      setActiveTab,
+    pressCount,
+    HUDPosition,
+    activeTab,
+    setPressCount,
+    setHUDPosition,
+    setActiveTab,
   } = HUDState;
 
   /**
@@ -27,7 +27,7 @@ function HUD({ defaultTab, HUDState }) {
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
   /**
-   * Returns object with preset HUD height settings 
+   * Returns object with preset HUD height settings
    */
   const HUDHeights = () => {
     return {
@@ -36,7 +36,7 @@ function HUD({ defaultTab, HUDState }) {
       twoThirdsScreen: "67vh",
       fullScreen: "100vh",
     };
-  }
+  };
 
   /**
    * Allows user to adjust height of HUD display in order
@@ -57,35 +57,35 @@ function HUD({ defaultTab, HUDState }) {
 
     // Set HUDPosition; pressCount === 0 || 1 || 2 || 3
     // corresponding to ["69px","33vh","67vh","100vh"]
-    setHUDPosition(Object.values(allHUDHeights)[pressCount]); 
+    setHUDPosition(Object.values(allHUDHeights)[pressCount]);
   };
 
   /**
-   * Helper function used to reduce repetition when calling 
+   * Helper function used to reduce repetition when calling
    * setActiveTab()
-   * @param {string} activeTab 
+   * @param {string} activeTab
    */
   const changeActiveValue = (activeTab) => {
     const tabs = {
       econTab: false,
       demogTab: false,
-      propsTab: false
-    }
+      propsTab: false,
+    };
     tabs[activeTab] = true;
     return tabs;
-  }
+  };
 
   /**
-   * Listens for click event to display tab content.  Calls 
+   * Listens for click event to display tab content.  Calls
    * adjustHeight() if the HUD is collapsed in order to show content.
    * @param {string} selectedTab
    */
-  const handleOpenTab = (selectedTab="econTab") => {
+  const handleOpenTab = (selectedTab = "econTab") => {
     // Expand HUD if tab is clicked when just tabs are showing
     if (pressCount === 0) {
       handleHUDHeight(pressCount + 1);
     }
-  
+
     // Check if there is already an active tab when the
     // defaultTab request is made
     if (defaultTab) {
@@ -163,7 +163,7 @@ function HUD({ defaultTab, HUDState }) {
         <div
           className='HUD__tabcontent'
           style={{ display: activeTab.propsTab ? "block" : "none" }}>
-          <PropertiesTab onSaveRemoveProperty={HUDState.handleSaveRemoveProperty}/>
+          <PropertiesTab onSaveRemoveProperty={onSaveRemoveProperty} />
         </div>
       </div>
     </section>
@@ -171,7 +171,7 @@ function HUD({ defaultTab, HUDState }) {
 }
 
 HUD.defaultProps = {
-  defaultTab: false
-}
+  defaultTab: false,
+};
 
 export default HUD;
