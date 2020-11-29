@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Context } from '../Context';
 import './SavedProps.css';
 
-function SavedProps() {
+function SavedProps({ onSaveRemoveProperty }) {
     const { savedProperties } = useContext(Context);
     let history = useHistory();
 
@@ -47,7 +47,7 @@ function SavedProps() {
                         </p>
                       </li>
                       <li>
-                        <button>Remove</button>
+                        <button onClick={() => onSaveRemoveProperty(true)}>Remove</button>
                       </li>
                     </div>
                   </div>
