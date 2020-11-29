@@ -35,6 +35,11 @@ const property = {
   ],
 };
 
+const currentProperty = {
+  propertyData: property,
+  inSavedProperties: true
+};
+
 //This was a mock for when passing props with React Router
 
 // jest.mock('react-router-dom', () => ({
@@ -48,5 +53,5 @@ const property = {
 // }));
 
 test('renders PropertyProfile', () => {
-  render(<BrowserRouter><PropertyProfile currentProperty={property} /></BrowserRouter>);
+  render(<BrowserRouter><PropertyProfile currentProperty={currentProperty} /></BrowserRouter>);
 });
