@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Context } from '../Context';
 import './PropertyProfile.css';
 
-function PropertyProfile({currentProperty}) {
+function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
   const { savedProperties, setSavedProperties } = useContext(Context);
 
   // Get history object to allow navigating back to the last page
@@ -19,16 +19,6 @@ function PropertyProfile({currentProperty}) {
     yearBuilt,
     description,
   } = currentProperty.propertyData;
-
-  const handleAddRemove = (filteredProps, savedProps = savedProperties, prop = currentProperty) => {
-    if (filteredProps) {
-      setSavedProperties(filteredProps);
-    } else {
-      const newSavedProps = [...savedProps];
-      newSavedProps.push(prop);
-      setSavedProperties(newSavedProps);
-    }
-  }
 
   return (
     <section className='property-profile'>
@@ -49,9 +39,13 @@ function PropertyProfile({currentProperty}) {
       </div>
 
       <div>
+        <button
+          onClick={() =>
+            onSaveRemoveProperty(currentProperty.inSavedProperties)
+          }>
+          {currentProperty.inSavedProperties ? "Remove" : "Save"}
+        </button>
 
-        <button onClick={() => handleAddRemove(currentProperty.inSavedProperties)}>{currentProperty.inSavedProperties ? "Remove": "Save"}</button>
-        
         <p className='property-profile__price'>${price}</p>
         <p className='property-profile__address'>
           {streetAddress}, <br />

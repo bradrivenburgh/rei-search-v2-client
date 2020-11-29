@@ -29,19 +29,15 @@ function PropertiesTab() {
           } = property;
 
           const inSavedProps = (savedProps = savedProperties, street = streetAddress) => {
-            if (savedProperties.length) {
-              const filteredProps = savedProperties.filter(savedProp => {
-                return savedProp["address"]["streetAddress"] !== street
-              })
-              if (filteredProps.length !== savedProps.length) {
-                return filteredProps;
-              }
-            } 
-            
+            if (savedProps.length) {
+              const containsProp = savedProps.some(savedProp => {
+                return savedProp.address.streetAddress === street;
+              });
+              return containsProp;
+            }             
             return false;
           }
         
-
           return (
           <li key={index} onClick={() => setCurrentProperty({
             propertyData: property, 
