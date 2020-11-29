@@ -54,8 +54,8 @@ function App() {
 
   const handleSaveRemoveProperty = (
     inSavedProps = currentProperty.inSavedProperties,
+    prop = currentProperty.propertyData,
     savedProps = savedProperties,
-    prop = currentProperty.propertyData
   ) => {
     let newSavedProps;
 

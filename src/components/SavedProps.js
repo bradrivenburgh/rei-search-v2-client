@@ -47,7 +47,7 @@ function SavedProps({ onSaveRemoveProperty }) {
                         </p>
                       </li>
                       <li>
-                        <button onClick={() => onSaveRemoveProperty(true)}>Remove</button>
+                        <button onClick={() => onSaveRemoveProperty(true, property)}>Remove</button>
                       </li>
                     </div>
                   </div>
