@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Context } from '../Context';
+import Image from './Image';
 import './PropertiesTab.css';
 
 function PropertiesTab({onSaveRemoveProperty}) {
@@ -10,20 +11,6 @@ function PropertiesTab({onSaveRemoveProperty}) {
     setCurrentProperty,
   } = useContext(Context);
 
-  /**
-   * Replaces images from Google Maps with default to
-   * avoid 403 http errors
-   * @param {array} photos
-   */
-  const addSrc = (photos) => {
-    const checkedPhotos = photos.map((photo) => {
-      if (photo.includes("https://maps.googleapis.com")) {
-        return "https://via.placeholder.com/250x125?text=No_Image";
-      }
-      return photo;
-    });
-    return checkedPhotos;
-  };
 
   const renderProperties = (data) => {
     return (
@@ -61,7 +48,7 @@ function PropertiesTab({onSaveRemoveProperty}) {
                 <div className='properties__flex-container'>
                   <li>
                     <Link to='/property-profile'>
-                      <img src={addSrc(photos)[0]} alt='property' />
+                      <Image photos={photos} />
                     </Link>
                   </li>
                   <div>
