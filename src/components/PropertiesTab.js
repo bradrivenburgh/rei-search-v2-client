@@ -63,13 +63,14 @@ function PropertiesTab({onSaveRemoveProperty}) {
                     </li>
                     <li>
                       <button
-                        className="addRemove-button"
+                        className={inSavedProps()
+                          ? "addRemove-button remove-button"
+                          : "addRemove-button add-button"}
+                        aria-pressed={inSavedProps() ? "true" : "false"}                     
                         onClick={() =>
                           onSaveRemoveProperty(inSavedProps(), property)
                         }>
-                        {inSavedProps() 
-                          ? <span className="remove-button">&#10084;</span> 
-                          : <span className="add-button">&#10084;</span>}
+                          &#10084;
                       </button>
                     </li>
                   </div>

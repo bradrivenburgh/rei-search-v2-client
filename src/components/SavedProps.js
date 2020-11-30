@@ -47,9 +47,10 @@ function SavedProps({ onSaveRemoveProperty }) {
                       </li>
                       <li>
                         <button
-                          className="addRemove-button" 
+                          className="addRemove-button remove-button"
+                          aria-pressed="true"
                           onClick={() => onSaveRemoveProperty(true, property)}>
-                            <span className="remove-button">&#10084;</span>
+                            &#10084;
                         </button>
                       </li>
                     </div>

@@ -31,13 +31,14 @@ function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
       <div className="carousel-container">
         <Carousel photos={photos} />
         <button
-          className="addRemove-button"
+          className={currentProperty.inSavedProperties
+            ? "addRemove-button remove-button"
+            : "addRemove-button add-button"}
+          aria-pressed={currentProperty.inSavedProperties ? "true" : "false"}                     
           onClick={() =>
             onSaveRemoveProperty(currentProperty.inSavedProperties)
           }>
-          {currentProperty.inSavedProperties 
-            ? <span className="remove-button">&#10084;</span> 
-            : <span className="add-button">&#10084;</span>}
+            &#10084;
         </button>
       </div>
 
