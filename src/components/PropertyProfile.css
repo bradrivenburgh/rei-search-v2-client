@@ -40,18 +40,6 @@ margin: 0 auto;
   margin: 1em .25em 0 .25em;
 }
 
-.property-profile__carousel {
-  min-width: 100%; 
-  padding:0;
-  margin: 0 auto;
-}
-
-.property-profile__carousel img {
-  max-height: 200px;
-  display: block;
-  margin: 0 auto;
-}
-
 .property-profile__basic-stats {
   display: flex;
   justify-content: space-between;

@@ -28,14 +28,7 @@ function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
         <h1>Property Profile</h1>
       </header>
 
-      <div className='property-profile__carousel'>
-        {/* <img
-          // src='https://via.placeholder.com/300x200?text=Image Carousel'
-          src={photos[0]}
-          alt='first'
-        /> */}
-        <Carousel photos={photos} />
-      </div>
+      <Carousel photos={photos} />
 
       <div>
         <button

@@ -7,7 +7,7 @@
 
 .carousel__button-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .carousel button {
@@ -19,7 +19,41 @@
   background: none;
 }
 
+.carousel button:first-of-type {
+  margin-right: 6em;
+}
+
+@media only screen and (min-device-width: 768px) {
+  .carousel__button-container {
+    justify-content: center;
+  }
+  .carousel button:first-of-type {
+    margin-right: 8em;
+  }  
+}
+
 .carousel button:hover {
   background-color: #ccc;
   color: white;
+}
+
+.carousel {
+  min-width: 100%; 
+  padding:0;
+  margin: 0 auto;
+}
+
+.carousel img {
+  width: 100%;
+  height: 39vh;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+@media only screen and (min-device-width: 768px) {
+  .carousel img {
+    height: 59vh;
+    object-fit: contain;
+  }
 }
