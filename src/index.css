@@ -38,3 +38,25 @@ code {
   background-color: #ccc;
   color: white;
 }
+
+.addRemove-button {
+  background: rgba(255, 255, 255, 0.453);
+  border-radius:50%;
+  padding: .5em .75em;
+  border: none;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.addRemove-button:hover {
+  background-color: rgb(245, 242, 242);
+  transition: .2s;
+}
+
+.add-button {
+  color: black;
+}
+
+.remove-button {
+  color: red;
+}

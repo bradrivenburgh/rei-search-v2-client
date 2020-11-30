@@ -28,16 +28,20 @@ function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
         <h1>Property Profile</h1>
       </header>
 
-      <Carousel photos={photos} />
-
-      <div>
+      <div className="carousel-container">
+        <Carousel photos={photos} />
         <button
+          className="addRemove-button"
           onClick={() =>
             onSaveRemoveProperty(currentProperty.inSavedProperties)
           }>
-          {currentProperty.inSavedProperties ? "Remove" : "Save"}
+          {currentProperty.inSavedProperties 
+            ? <span className="remove-button">&#10084;</span> 
+            : <span className="add-button">&#10084;</span>}
         </button>
+      </div>
 
+      <div>
         <p className='property-profile__price'>${price}</p>
         <p className='property-profile__address'>
           {streetAddress}, <br />
