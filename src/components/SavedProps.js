@@ -5,7 +5,7 @@ import Image from './Image';
 import './SavedProps.css';
 
 function SavedProps({ onSaveRemoveProperty }) {
-    const { savedProperties } = useContext(Context);
+    const { savedProperties, setCurrentProperty } = useContext(Context);
     let history = useHistory();
 
     const renderProperties = (data) => {
@@ -20,11 +20,18 @@ function SavedProps({ onSaveRemoveProperty }) {
             } = property;
             
             return (
-              <li key={index}>
-                <ul>
+              <li
+              key={index}
+              onClick={() =>
+                setCurrentProperty({
+                  propertyData: property,
+                  inSavedProperties: true,
+                })
+              }>
+                 <ul>
                   <div className='saved-properties__flex-container'>
                     <li>
-                    <Link to={{pathname: '/property-profile', state: {property}}}>
+                    <Link to='/property-profile'>
                       <Image photos={photos} />
                     </Link>
                     </li>
