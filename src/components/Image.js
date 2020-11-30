@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Image({photos}) {
-    /**
+  /**
    * Replaces images from Google Maps with default to
    * avoid 403 http errors
    * @param {array} photos

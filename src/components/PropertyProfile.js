@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import Carousel from './carousel/Carousel';
 import './PropertyProfile.css';
 
 function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
@@ -28,11 +29,12 @@ function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
       </header>
 
       <div className='property-profile__carousel'>
-        <img
+        {/* <img
           // src='https://via.placeholder.com/300x200?text=Image Carousel'
           src={photos[0]}
           alt='first'
-        />
+        /> */}
+        <Carousel photos={photos} />
       </div>
 
       <div>

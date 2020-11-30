@@ -1,0 +1,6 @@
+.inactive-slide {
+  display: none;
+}
+.active-slide {
+  display: block;
+}
