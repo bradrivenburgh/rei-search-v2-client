@@ -6,15 +6,24 @@ import './PropertiesTab.css';
 function PropertiesTab({onSaveRemoveProperty}) {
   const {
     searchResults: { properties = [] },
-    savedProperties, 
+    savedProperties,
     setCurrentProperty,
-  } = useContext(Context);  
+  } = useContext(Context);
 
-
-  const addDefaultSrc = (e) => {
-    e.target.onError=null;
-    e.target.src = "https://via.placeholder.com/250x125?text=No Image"
-  }
+  /**
+   * Replaces images from Google Maps with default to
+   * avoid 403 http errors
+   * @param {array} photos
+   */
+  const addSrc = (photos) => {
+    const checkedPhotos = photos.map((photo) => {
+      if (photo.includes("https://maps.googleapis.com")) {
+        return "https://via.placeholder.com/250x125?text=No_Image";
+      }
+      return photo;
+    });
+    return checkedPhotos;
+  };
 
   const renderProperties = (data) => {
     return (
@@ -26,16 +35,19 @@ function PropertiesTab({onSaveRemoveProperty}) {
             photos,
           } = property;
 
-          const inSavedProps = (savedProps = savedProperties, street = streetAddress) => {
+          const inSavedProps = (
+            savedProps = savedProperties,
+            street = streetAddress
+          ) => {
             if (savedProps.length) {
-              const containsProp = savedProps.some(savedProp => {
+              const containsProp = savedProps.some((savedProp) => {
                 return savedProp.address.streetAddress === street;
               });
               return containsProp;
-            }             
+            }
             return false;
-          }
-        
+          };
+
           return (
             <li
               key={index}
@@ -49,11 +61,7 @@ function PropertiesTab({onSaveRemoveProperty}) {
                 <div className='properties__flex-container'>
                   <li>
                     <Link to='/property-profile'>
-                      <img
-                        src={photos[0]}
-                        alt='property'
-                        onError={(e) => addDefaultSrc(e)}
-                      />
+                      <img src={addSrc(photos)[0]} alt='property' />
                     </Link>
                   </li>
                   <div>
@@ -68,7 +76,9 @@ function PropertiesTab({onSaveRemoveProperty}) {
                     </li>
                     <li>
                       <button
-                        onClick={() => onSaveRemoveProperty(inSavedProps(), property)}>
+                        onClick={() =>
+                          onSaveRemoveProperty(inSavedProps(), property)
+                        }>
                         {inSavedProps() ? "Remove" : "Save"}
                       </button>
                     </li>
@@ -81,8 +91,7 @@ function PropertiesTab({onSaveRemoveProperty}) {
         })}
       </ul>
     );
-
-  }
+  };
 
   return (
     <>
