@@ -1,3 +1,4 @@
+import { findAllByDisplayValue } from '@testing-library/react';
 import React from 'react';
 
 function Slide({photos, activeIndex}) {
@@ -15,7 +16,7 @@ function Slide({photos, activeIndex}) {
 
 
   return (
-    <section>
+    <div>
       {
         photos.map((photoUrl, index) => 
         <div className={
@@ -25,7 +26,7 @@ function Slide({photos, activeIndex}) {
         </div>
         )
       }
-    </section>
+    </div>
   );
 } 
 

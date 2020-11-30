@@ -4,3 +4,22 @@
 .active-slide {
   display: block;
 }
+
+.carousel__button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel button {
+  font-size: 1.75em;
+  text-decoration: none;
+  color: black;
+  padding: .2em .5em;
+  border: 0;
+  background: none;
+}
+
+.carousel button:hover {
+  background-color: #ccc;
+  color: white;
+}

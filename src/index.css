@@ -34,7 +34,7 @@ code {
   background: none;
 }
 
-.closing-nav a:hover {
+.closing-nav button:hover {
   background-color: #ccc;
   color: white;
 }

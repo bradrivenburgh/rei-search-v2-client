@@ -26,22 +26,13 @@ function Carousel({photos}) {
   };
 
   return (
-    <div className='slider'>
-    <div className='slider-items'>
-      <LeftArrow
-        onPrevSlide={handlePrevSlide}
-      />
-    <div className='slider-text'>
-      <Slide
-        photos={photos}
-        activeIndex={activeIndex}
-      />
-    </div>
-      <RightArrow
-        onNextSlide={handleNextSlide}
-      />
-    </div>
-  </div>
+    <section className='carousel'>
+      <Slide photos={photos} activeIndex={activeIndex} />
+      <div className="carousel__button-container">
+        <LeftArrow onPrevSlide={handlePrevSlide} />
+        <RightArrow onNextSlide={handleNextSlide} />
+      </div>
+    </section>
   );
 }
 
