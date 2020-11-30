@@ -46,7 +46,11 @@ function SavedProps({ onSaveRemoveProperty }) {
                         </p>
                       </li>
                       <li>
-                        <button onClick={() => onSaveRemoveProperty(true, property)}>Remove</button>
+                        <button
+                          className="addRemove-button" 
+                          onClick={() => onSaveRemoveProperty(true, property)}>
+                            <span className="remove-button">&#10084;</span>
+                        </button>
                       </li>
                     </div>
                   </div>
