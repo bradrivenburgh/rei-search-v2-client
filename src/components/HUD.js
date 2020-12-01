@@ -20,7 +20,7 @@ function HUD({ defaultTab, HUDState }) {
    */
   useEffect(() => {
     if (defaultTab) {
-      handleOpenTab();
+      handleOpenTab('econTab');
     }
   });
 
@@ -44,7 +44,7 @@ function HUD({ defaultTab, HUDState }) {
    * @param {number} pressCount
    * @param {object} allHUDHeights
    */
-  const handleHUDHeight = (pressCount, allHUDHeights = HUDHeights()) => {
+  const handleHUDHeight = (pressCount) => {
     // HUD to baseScreen
     if (pressCount > 3) {
       pressCount = 0;
@@ -57,7 +57,13 @@ function HUD({ defaultTab, HUDState }) {
 
     // Set HUDPosition; pressCount === 0 || 1 || 2 || 3
     // corresponding to ["69px","33vh","67vh","100vh"]
-    setHUDPosition(Object.values(allHUDHeights)[pressCount]);
+    setHUDPosition(Object.values(HUDHeights())[pressCount]);
+
+    // If no active tab, set it to 'econTab'
+    let { econTab, demogTab, propsTab } = activeTab;
+    if (!econTab && !demogTab && !propsTab) {
+      setActiveTab(changeActiveValue("econTab"));
+    }
   };
 
   /**
