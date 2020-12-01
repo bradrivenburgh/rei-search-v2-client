@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.css';
 
-function Menu() {
+function Menu({ menuOffset: { menuOffset, setMenuOffset } }) {
   /**
    * Creates ref that we will use to store the DOM node
    * of the div with id="menu".
@@ -30,24 +30,29 @@ function Menu() {
       !containingNode.current.contains(e.target) ||
       e.target.className === "menu__closebtn"
     ) {
-      document.getElementById("menu").style.right = "-250px";
+      setMenuOffset("-250px");
     }
   };
   
   return (
     <>
-      <div id="menu" className="menu" ref={containingNode}>
-        <button className="menu__closebtn" onClick={handleMenuClose}>☰</button>
-        <a href="index.html">About</a>
-        <a href="manage-account.html">My account</a>
-        <Link to="/saved-properties">Saved properties</Link>
+      <div
+        id='menu'
+        className='menu'
+        ref={containingNode}
+        style={{ right: menuOffset }}>
+        <button className='menu__closebtn' onClick={handleMenuClose}>
+          ☰
+        </button>
+        <a href='index.html'>About</a>
+        <a href='manage-account.html'>My account</a>
+        <Link to='/saved-properties'>Saved properties</Link>
 
         <hr />
-        
-        <a href="create-account.html">Create account</a>
-        <a href="sign-in.html">Sign-in / Sign-out</a>
-      </div>
 
+        <a href='create-account.html'>Create account</a>
+        <a href='sign-in.html'>Sign-in / Sign-out</a>
+      </div>
     </>
   );
 

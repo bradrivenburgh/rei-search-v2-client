@@ -10,13 +10,18 @@ import { Context } from "./Context";
 import { fakeStats, fakeProps, savedProps } from "./mockData";
 
 function App() {
+  /* State */
+
+  /* Data from API */
   let [statistics, setStatistics] = useState(fakeStats);
   let [properties, setProperties] = useState(fakeProps);
+  /* Property Data */
   let [savedProperties, setSavedProperties] = useState(savedProps);
   let [currentProperty, setCurrentProperty] = useState({
     propertyData: properties[0],
     inSavedProperties: false,
   });
+  /* HUD Data */
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
   let [defaultTab, setDefaultTab] = useState(false);
@@ -25,14 +30,16 @@ function App() {
     demogTab: false,
     propsTab: false,
   });
-  
+  /* Menu Data */
+  let [menuOffset, setMenuOffset] = useState('-250px');
+
+  /* Handlers */
   const handleAddRemoveProperty = (
     inSavedProps = false,
     prop = {},
     savedProps = []
   ) => {
     let newSavedProps;
-
     // Remove prop from savedProps
     if (inSavedProps) {
       newSavedProps = savedProps.filter((savedProp) => {
@@ -45,11 +52,11 @@ function App() {
       inSavedProps = true;
       newSavedProps = [...savedProps, prop];
     }
-
     setCurrentProperty({ ...currentProperty, inSavedProperties: inSavedProps });
     setSavedProperties(newSavedProps);
   };
 
+  /* Objects with state values */
   let HUDState = {
       pressCount,
       setPressCount,
@@ -66,6 +73,7 @@ function App() {
     setProperties
   }
 
+  /* Context values */
   const contextValues = {
     searchResults,
     savedProperties,
@@ -96,8 +104,8 @@ function App() {
             />
           </Route>
           <Route path='/'>
-            <Nav />
-            <Menu />
+            <Nav setMenuOffset={setMenuOffset}/>
+            <Menu menuOffset={{menuOffset, setMenuOffset}}/>
             <Map />
             <HUD defaultTab={defaultTab} HUDState={HUDState} />
           </Route>
