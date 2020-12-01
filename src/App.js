@@ -37,6 +37,12 @@ function App() {
 
   /* Handlers */
 
+  /**
+   * Adds or removes a property from the savedProperties array
+   * @param {boolean} inSavedProps 
+   * @param {object} prop 
+   * @param {array} savedProps 
+   */
   const handleAddRemoveProperty = (
     inSavedProps = false,
     prop = {},
@@ -59,6 +65,11 @@ function App() {
     setSavedProperties(newSavedProps);
   };
 
+  /**
+   * Closes menu if it detects a click outside of the Menu component
+   * @param {object} e 
+   * @param {object} mainViewNode 
+   */
   const handleMenuClose = (e, mainViewNode) => {
     if (mainViewNode.current.contains(e.target)) {
       setMenuOffset("-250px");
