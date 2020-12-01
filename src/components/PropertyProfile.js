@@ -3,9 +3,16 @@ import { useHistory } from 'react-router-dom';
 import Carousel from './carousel/Carousel';
 import './PropertyProfile.css';
 
-function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
+function PropertyProfile({
+  savedProperties,
+  currentProperty,
+  onAddRemoveProperty,
+}) {
+  
   // Get history object to allow navigating back to the last page
   let history = useHistory();
+
+  const { inSavedProperties, propertyData } = currentProperty;
 
   const {
     address: { streetAddress, city, state, zipcode },
@@ -16,7 +23,7 @@ function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
     livingArea,
     yearBuilt,
     description,
-  } = currentProperty.propertyData;
+  } = propertyData;
 
   return (
     <section className='property-profile'>
@@ -28,17 +35,23 @@ function PropertyProfile({currentProperty, onSaveRemoveProperty}) {
         <h1>Property Profile</h1>
       </header>
 
-      <div className="carousel-container">
+      <div className='carousel-container'>
         <Carousel photos={photos} />
         <button
-          className={currentProperty.inSavedProperties
-            ? "addRemove-button remove-button"
-            : "addRemove-button add-button"}
-          aria-pressed={currentProperty.inSavedProperties ? "true" : "false"}                     
+          className={
+            inSavedProperties
+              ? "addRemove-button remove-button"
+              : "addRemove-button add-button"
+          }
+          aria-pressed={inSavedProperties ? "true" : "false"}
           onClick={() =>
-            onSaveRemoveProperty(currentProperty.inSavedProperties)
+            onAddRemoveProperty(
+              inSavedProperties,
+              propertyData,
+              savedProperties
+            )
           }>
-            &#10084;
+          &#10084;
         </button>
       </div>
 

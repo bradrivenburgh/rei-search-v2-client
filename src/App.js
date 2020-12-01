@@ -26,10 +26,10 @@ function App() {
     propsTab: false,
   });
   
-  const handleSaveRemoveProperty = (
-    inSavedProps = currentProperty.inSavedProperties,
-    prop = currentProperty.propertyData,
-    savedProps = savedProperties,
+  const handleAddRemoveProperty = (
+    inSavedProps = false,
+    prop = {},
+    savedProps = []
   ) => {
     let newSavedProps;
 
@@ -39,8 +39,8 @@ function App() {
         return savedProp.address.streetAddress !== prop.address.streetAddress;
       });
       inSavedProps = false;
-    } 
-    // Add prop to savedProps    
+    }
+    // Add prop to savedProps
     else {
       inSavedProps = true;
       newSavedProps = [...savedProps, prop];
@@ -74,6 +74,7 @@ function App() {
     setCurrentProperty,
     defaultTab,
     setDefaultTab,
+    handleAddRemoveProperty
   };
 
   return (
@@ -83,21 +84,22 @@ function App() {
           <Route path='/property-profile'>
             <PropertyProfile
               currentProperty={currentProperty}
-              onSaveRemoveProperty={handleSaveRemoveProperty}
+              savedProperties={savedProperties}
+              onAddRemoveProperty={handleAddRemoveProperty}
             />
           </Route>
           <Route path='/saved-properties'>
-            <SavedProps onSaveRemoveProperty={handleSaveRemoveProperty} />
+            <SavedProps
+              savedProperties={savedProperties}
+              setCurrentProperty={setCurrentProperty}
+              onAddRemoveProperty={handleAddRemoveProperty}
+            />
           </Route>
           <Route path='/'>
             <Nav />
             <Menu />
             <Map />
-            <HUD
-              defaultTab={defaultTab}
-              HUDState={HUDState}
-              onSaveRemoveProperty={handleSaveRemoveProperty}
-            />
+            <HUD defaultTab={defaultTab} HUDState={HUDState} />
           </Route>
         </Switch>
       </Context.Provider>

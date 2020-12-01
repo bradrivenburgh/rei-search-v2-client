@@ -13,4 +13,5 @@ export const Context = createContext({
   setSavedProperties: () => {},
   defaultTab: false,
   setDefaultTab: () => {},
+  handleAddRemoveProperty: () => {},
 });

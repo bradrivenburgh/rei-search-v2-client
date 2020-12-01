@@ -3,7 +3,7 @@ import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD({ defaultTab, HUDState, onSaveRemoveProperty }) {
+function HUD({ defaultTab, HUDState }) {
   /* STATE */
 
   let {
@@ -163,7 +163,7 @@ function HUD({ defaultTab, HUDState, onSaveRemoveProperty }) {
         <div
           className='HUD__tabcontent'
           style={{ display: activeTab.propsTab ? "block" : "none" }}>
-          <PropertiesTab onSaveRemoveProperty={onSaveRemoveProperty} />
+          <PropertiesTab />
         </div>
       </div>
     </section>

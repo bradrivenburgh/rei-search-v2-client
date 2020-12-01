@@ -4,11 +4,12 @@ import { Context } from '../Context';
 import Image from './Image';
 import './PropertiesTab.css';
 
-function PropertiesTab({onSaveRemoveProperty}) {
+function PropertiesTab() {
   const {
     searchResults: { properties = [] },
     savedProperties,
     setCurrentProperty,
+    handleAddRemoveProperty,
   } = useContext(Context);
 
 
@@ -22,10 +23,7 @@ function PropertiesTab({onSaveRemoveProperty}) {
             photos,
           } = property;
 
-          const inSavedProps = (
-            savedProps = savedProperties,
-            street = streetAddress
-          ) => {
+          const inSavedProps = (savedProps = [], street = "") => {
             if (savedProps.length) {
               const containsProp = savedProps.some((savedProp) => {
                 return savedProp.address.streetAddress === street;
@@ -41,7 +39,10 @@ function PropertiesTab({onSaveRemoveProperty}) {
               onClick={() =>
                 setCurrentProperty({
                   propertyData: property,
-                  inSavedProperties: inSavedProps(),
+                  inSavedProperties: inSavedProps(
+                    savedProperties,
+                    streetAddress
+                  ),
                 })
               }>
               <ul>
@@ -63,14 +64,24 @@ function PropertiesTab({onSaveRemoveProperty}) {
                     </li>
                     <li>
                       <button
-                        className={inSavedProps()
-                          ? "addRemove-button remove-button"
-                          : "addRemove-button add-button"}
-                        aria-pressed={inSavedProps() ? "true" : "false"}                     
+                        className={
+                          inSavedProps(savedProperties, streetAddress)
+                            ? "addRemove-button remove-button"
+                            : "addRemove-button add-button"
+                        }
+                        aria-pressed={
+                          inSavedProps(savedProperties, streetAddress)
+                            ? "true"
+                            : "false"
+                        }
                         onClick={() =>
-                          onSaveRemoveProperty(inSavedProps(), property)
+                          handleAddRemoveProperty(
+                            inSavedProps(savedProperties, streetAddress),
+                            property,
+                            savedProperties
+                          )
                         }>
-                          &#10084;
+                        &#10084;
                       </button>
                     </li>
                   </div>
