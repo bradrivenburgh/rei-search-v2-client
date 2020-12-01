@@ -24,13 +24,13 @@ function PropertiesTab() {
           } = property;
 
           const inSavedProps = (savedProps = [], street = "") => {
+            let hasProperty = false;
             if (savedProps.length) {
-              const containsProp = savedProps.some((savedProp) => {
+              hasProperty = savedProps.some((savedProp) => {
                 return savedProp.address.streetAddress === street;
               });
-              return containsProp;
             }
-            return false;
+            return hasProperty;
           };
 
           return (
@@ -71,8 +71,6 @@ function PropertiesTab() {
                         }
                         aria-pressed={
                           inSavedProps(savedProperties, streetAddress)
-                            ? "true"
-                            : "false"
                         }
                         onClick={() =>
                           handleAddRemoveProperty(

@@ -8,7 +8,7 @@ function PropertyProfile({
   currentProperty,
   onAddRemoveProperty,
 }) {
-  
+
   // Get history object to allow navigating back to the last page
   let history = useHistory();
 
@@ -43,7 +43,7 @@ function PropertyProfile({
               ? "addRemove-button remove-button"
               : "addRemove-button add-button"
           }
-          aria-pressed={inSavedProperties ? "true" : "false"}
+          aria-pressed={inSavedProperties}
           onClick={() =>
             onAddRemoveProperty(
               inSavedProperties,
