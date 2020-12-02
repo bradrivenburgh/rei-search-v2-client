@@ -14,6 +14,9 @@ function MenuTestComponent() {
   );
 }
 
-test('renders Menu', () => {
-  render(<MenuTestComponent />);
+describe('Menu', () => {
+  test('renders Menu', () => {
+    render(<MenuTestComponent />);
+  });  
 });
+

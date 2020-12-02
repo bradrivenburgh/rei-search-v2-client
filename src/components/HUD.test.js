@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import HUD from './HUD';
 
-function TestComponent() {
+function HUDTestComponent() {
   /* HUD State */
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
@@ -34,6 +34,6 @@ let HUDState = {
 
 describe("HUD", () => {
   test("renders HUD", () => {
-    render(<TestComponent />);
+    render(<HUDTestComponent />);
   });
 });
