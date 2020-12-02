@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Context } from '../Context';
 import { contextValues } from '../mockData';
@@ -27,13 +27,17 @@ describe("PropertiesTab", () => {
   });
 
   test('contains a button with addRemove-button class', () => {
-    const { getByRole, getByLabelText } = render(
+    render(
       <BrowserRouter>
         <Context.Provider value={contextValues}>
           <PropertiesTab />
         </Context.Provider>
       </BrowserRouter>); 
-    expect(screen.getByLabelText(/false/i)).toBeInTheDocument();
+      const allFalseBefore = screen.getAllByRole("button", { pressed: false });
+      fireEvent.click(allFalseBefore[0]);
+      const allFalseAfter = screen.getAllByRole("button", { pressed: false });
+      expect(allFalseAfter.length).toBeLessThan(allFalseBefore.length);
+      screen.debug()
   });
 
 });

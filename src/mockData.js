@@ -631,9 +631,12 @@ export const contextValues = {
   searchResults,
   savedProperties: savedProps,
   setSavedProperties: () => {},
-  currentProperty: savedProps[0],
+  currentProperty: {
+    propertyData: savedProps[0],
+    inSavedProperties: true
+  },
   setCurrentProperty: () => {},
   defaultTab: false,
-  setDefaultTab: () => {},
-  handleAddRemoveProperty: () => {},
+  setDefaultTab: () => {}, 
+  handleAddRemoveProperty: () => {return true},
 };
