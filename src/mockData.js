@@ -138,7 +138,6 @@ export const cities = [
   },
 ];
 
-
 export const fakeProps = [
   {
     address: {
