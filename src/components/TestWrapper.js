@@ -3,7 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Context } from '../Context';
 import { fakeProps, fakeStats, savedProps } from '../mockData';
 
-
 function TestWrapper({children}) {
   /* Data from API */
   let [statistics, setStatistics] = useState(fakeStats);
@@ -71,7 +70,7 @@ function TestWrapper({children}) {
 
   /* Objects with state values */
 
-  let HUDState = {
+let HUDState = {
     pressCount,
     setPressCount,
     HUDPosition,

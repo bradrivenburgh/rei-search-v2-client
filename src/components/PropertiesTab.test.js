@@ -34,7 +34,6 @@ describe("PropertiesTab", () => {
       fireEvent.click(unpressedBtnsBefore[0]);
       const unpressedBtnsAfter = screen.getAllByRole("button", { pressed: false });
       expect(unpressedBtnsAfter.length).toBeLessThan(unpressedBtnsBefore.length);
-      screen.debug()
   });
 
 });
