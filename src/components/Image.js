@@ -1,25 +1,26 @@
 import React from 'react';
+import house from '../images/default-house.png';
 
-function Image({photos}) {
+function Image({photos, alt}) {
   /**
-   * Replaces images from Google Maps with default to
-   * avoid 403 http errors
+   * Replaces images that aren't retrievable with a default photo
    * @param {array} photos
    */
-  const addSrc = (photos) => {
-    const checkedPhotos = photos.map((photo) => {
-      if (photo.includes("https://maps.googleapis.com")) {
-        return "https://via.placeholder.com/250x125?text=No_Image";
+  const addSafeSrc = (photoUrls) => {
+    const handleError = photoUrls.map((photoUrl) => {
+      try {
+        return photoUrl;
+      } catch(e) {
+        return house;
       }
-      return photo;
     });
-    return checkedPhotos;
+    return handleError;
   };
 
   return (
     <img 
-      src={addSrc(photos)[0]} 
-      alt='property'
+      src={addSafeSrc(photos)[0]} 
+      alt={alt}
     />
   );
 }

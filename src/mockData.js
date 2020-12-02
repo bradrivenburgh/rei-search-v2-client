@@ -1,3 +1,5 @@
+import config from './config'; //Get Google Streetview keys
+
 export const fakeStats = {
   economic: [
     {
@@ -465,7 +467,7 @@ export const fakeProps = [
     url:
       "https://www.zillow.com/homedetails/2943-Memphis-St-Philadelphia-PA-19134/10298243_zpid/",
     photos: [
-      "https://maps.googleapis.com/maps/api/streetview?size=1025x768&location=39.98567199707031,-75.1126937866211&key=AIzaSyBJsNQO5ZeG-XAbqqWLKwG08fWITSxg33w&&signature=xLrSRv4tyDILdULT0HR5uwFnrA8=",
+      `https://maps.googleapis.com/maps/api/streetview?size=1025x768&location=39.98567199707031,-75.1126937866211&key=${config.STREETVIEW_API_KEY}&signature=${config.STREETVIEW_SIGNATURE}`,
     ],
   },
   {
