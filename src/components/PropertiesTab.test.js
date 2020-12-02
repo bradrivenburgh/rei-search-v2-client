@@ -2,15 +2,8 @@ import React from 'react'
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Context } from '../Context';
-import { fakeProps, savedProps } from '../mockData';
+import { contextValues } from '../mockData';
 import PropertiesTab from './PropertiesTab';
-
-const contextValues = {
-  searchResults: {properties: fakeProps},
-  savedProperties: savedProps,
-  setCurrentProperty: () => {},
-  handleAddRemoveProperty: () => {},
-};
 
 describe("PropertiesTab", () => {
   test('renders to the DOM', () => {

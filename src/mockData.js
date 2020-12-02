@@ -110,31 +110,31 @@ export const fakeStats = {
 
 export const cities = [
   {
-    name: 'Philadelphia, PA',
+    name: "Philadelphia, PA",
   },
   {
-    name: 'Moorestown, NJ',
+    name: "Moorestown, NJ",
   },
   {
-    name: 'Cinnaminson, NJ',
+    name: "Cinnaminson, NJ",
   },
   {
-    name: 'Langhorne, PA',
+    name: "Langhorne, PA",
   },
   {
-    name: 'Haddonfield, NJ',
+    name: "Haddonfield, NJ",
   },
   {
-    name: 'Conshohoken, PA',
+    name: "Conshohoken, PA",
   },
   {
-    name: 'Conshohoken, PA',
+    name: "Conshohoken, PA",
   },
   {
-    name: 'Conshohoken, PA',
+    name: "Conshohoken, PA",
   },
   {
-    name: 'Conshohoken, PA',
+    name: "Conshohoken, PA",
   },
 ];
 
@@ -612,3 +612,28 @@ export const savedProps = [
     ],
   },
 ];
+
+/* Objects with state values */
+
+let searchResults = {
+  statistics: {
+    economic: fakeStats.economic,
+    demographic: fakeStats.demographic
+  },
+  setStatistics: () => {},
+  properties: fakeProps,
+  setProperties: () => {},
+};
+
+/* Context values */
+
+export const contextValues = {
+  searchResults,
+  savedProperties: savedProps,
+  setSavedProperties: () => {},
+  currentProperty: savedProps[0],
+  setCurrentProperty: () => {},
+  defaultTab: false,
+  setDefaultTab: () => {},
+  handleAddRemoveProperty: () => {},
+};
