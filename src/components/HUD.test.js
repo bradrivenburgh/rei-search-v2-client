@@ -7,7 +7,7 @@ function TestComponent() {
   /* HUD State */
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
-  let [defaultTab, setDefaultTab] = useState(false);
+  let [defaultTab] = useState(false);
   let [activeTab, setActiveTab] = useState({
     econTab: false,
     demogTab: false,
