@@ -96,11 +96,11 @@
 }
 
 .HUD__tab button {
+  display: flex;
   background-color: inherit;
   border: none;
   cursor: pointer;
-  /* padding: 9px 16px; */
-  padding: 0 37px;
+  padding: 0 35px;
   transition: .3s;
 }
 
