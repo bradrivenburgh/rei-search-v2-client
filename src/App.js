@@ -30,6 +30,12 @@ function App() {
     demogTab: false,
     propsTab: false,
   });
+  let [HUDTabsScrollPosition, setHUDTabsScrollPosition] = useState({
+    econTab: 0,
+    demogTab: 0,
+    propsTab: 0
+  })
+  
   /* Menu State */
   let [menuOffset, setMenuOffset] = useState("-250px");
   //Reference to node outside of Menu for handleMenuClose
@@ -85,6 +91,8 @@ function App() {
     setHUDPosition,
     activeTab,
     setActiveTab,
+    HUDTabsScrollPosition,
+    setHUDTabsScrollPosition,
   };
 
   let searchResults = {
