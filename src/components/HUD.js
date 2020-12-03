@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+import demographics from '../images/demographics.svg';
+import economics from '../images/economics.svg';
+import properties from '../images/properties.svg';
 import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
@@ -128,7 +131,8 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("econTab")}>
-            economics
+              <img src={economics} alt='demographics' style={{height: "30px"}}  />
+
           </button>
           <button
             id='demographics-btn'
@@ -138,7 +142,7 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("demogTab")}>
-            demographics
+             <img src={demographics} alt='demographics' style={{height: "30px"}}  />
           </button>
           <button
             id='properties-btn'
@@ -148,7 +152,7 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("propsTab")}>
-            properties
+             <img src={properties} alt='demographics' style={{height: "30px"}}  />
           </button>
         </div>
       </div>

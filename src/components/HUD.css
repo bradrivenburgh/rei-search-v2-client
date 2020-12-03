@@ -99,7 +99,8 @@
   background-color: inherit;
   border: none;
   cursor: pointer;
-  padding: 9px 16px;
+  /* padding: 9px 16px; */
+  padding: 0 37px;
   transition: .3s;
 }
 
