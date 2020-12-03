@@ -1,0 +1,41 @@
+
+/* Create Account */
+.create-account {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.create-account form {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.create-account input {
+  width: 150px;
+  padding-top: .5em;
+  margin-top: .25em;
+}
+
+.create-account label {
+  margin-top: .5em;
+}
+
+.create-account__buttons {
+  display: flex;
+}
+
+.create-account__buttons button {
+  margin-top: 2em;
+  margin-right: 1em;
+}
+
+
+@media only screen and (min-device-width: 768px) {
+  .create-account {  
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
+

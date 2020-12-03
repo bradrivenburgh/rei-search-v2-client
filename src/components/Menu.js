@@ -17,7 +17,7 @@ function Menu({ menuOffset: { menuOffset, setMenuOffset } }) {
 
         <hr />
 
-        <a href='create-account.html'>Create account</a>
+        <Link to='/create-account'>Create account</Link>
         <a href='sign-in.html'>Sign-in / Sign-out</a>
       </div>
     </>
