@@ -13,6 +13,12 @@ function HUDTestComponent() {
     demogTab: false,
     propsTab: false,
   });
+  let [HUDTabsScrollPosition, setHUDTabsScrollPosition] = useState({
+    econTab: 0,
+    demogTab: 0,
+    propsTab: 0
+  });
+
 
   /* Objects with state values */
 
@@ -23,6 +29,8 @@ let HUDState = {
     setHUDPosition,
     activeTab,
     setActiveTab,
+    HUDTabsScrollPosition,
+    setHUDTabsScrollPosition,
   };
 
   return(

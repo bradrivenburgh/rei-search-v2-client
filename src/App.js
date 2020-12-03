@@ -34,7 +34,7 @@ function App() {
     econTab: 0,
     demogTab: 0,
     propsTab: 0
-  })
+  });
   
   /* Menu State */
   let [menuOffset, setMenuOffset] = useState("-250px");
