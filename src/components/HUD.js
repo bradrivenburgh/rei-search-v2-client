@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
-import demographics from '../images/demographics.svg';
-import economics from '../images/economics.svg';
-import properties from '../images/properties.svg';
+import {ReactComponent as EconomicsIcon} from '../images/economics-resized.svg';
+import {ReactComponent as DemographicsIcon} from '../images/demographics-resized.svg';
+import {ReactComponent as PropertiesIcon} from '../images/properties-resized.svg';
+// import demographics from '../images/demographics-resized.svg';
+// import economics from '../images/economics-resized.svg';
+// import properties from '../images/properties-resized.svg';
 import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
@@ -131,8 +134,8 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("econTab")}>
-              <img src={economics} alt='demographics' style={{height: "30px"}}  />
-
+              {/* <img src={economics} alt='demographics' style={{height: "30px"}}  /> */}
+              <EconomicsIcon />
           </button>
           <button
             id='demographics-btn'
@@ -142,7 +145,8 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("demogTab")}>
-             <img src={demographics} alt='demographics' style={{height: "30px"}}  />
+             {/* <img src={demographics} alt='demographics' style={{height: "30px"}}  /> */}
+             <DemographicsIcon />
           </button>
           <button
             id='properties-btn'
@@ -152,7 +156,8 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("propsTab")}>
-             <img src={properties} alt='demographics' style={{height: "30px"}}  />
+             {/* <img src={properties} alt='demographics' style={{height: "30px"}}  /> */}
+             <PropertiesIcon />
           </button>
         </div>
       </div>
