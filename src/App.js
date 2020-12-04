@@ -26,11 +26,13 @@ function App() {
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
   let [defaultTab, setDefaultTab] = useState(false);
+  // Will hold refs in HUD in state
   let [activeTab, setActiveTab] = useState({
-    econTab: false,
-    demogTab: false,
-    propsTab: false,
+    econTab: 0,
+    demogTab: 0,
+    propsTab: 0,
   });
+  // Holds the scrollTop value for each tab in HUD
   let [HUDTabsScrollPosition, setHUDTabsScrollPosition] = useState({
     econTab: 0,
     demogTab: 0,
