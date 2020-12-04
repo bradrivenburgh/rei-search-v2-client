@@ -105,6 +105,24 @@ function HUD({ defaultTab, HUDState }) {
     return tabs;
   };
 
+  // const handleScrollPosition = (selectedTab = '') => {
+  //   // let scrollPosition;
+  //   // switch(selectedTab) {
+  //   //   case "demogTab":
+  //   //     scrollPosition = demographicsTabContent.current.scrollTop;
+  //   //     break;
+  //   //   case "propsTab":
+  //   //     scrollPosition = propertiesTabContent.current.scrollTop;
+  //   //     break;
+  //   //   default:
+  //   //     scrollPosition = economicsTabContent.current.scrollTop
+  //   // }
+  //   setHUDTabsScrollPosition({
+  //     ...HUDTabsScrollPosition, 
+  //     [selectedTab]: activeTab[selectedTab].scrollTop
+  //   });
+  // }
+
   /**
    * Listens for click event to display tab content.  Calls
    * adjustHeight() if the HUD is collapsed in order to show content.
@@ -126,6 +144,10 @@ function HUD({ defaultTab, HUDState }) {
 
     // Set active tab
     setActiveTab(changeActiveValue(selectedTab));
+
+    
+    // Set tab scroll position
+    // handleScrollPosition(selectedTab);
   };
 
 
