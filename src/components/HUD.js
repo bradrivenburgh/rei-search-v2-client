@@ -37,12 +37,12 @@ function HUD({ defaultTab, HUDState }) {
     }
   });
 
-  /* Sets the scroll position for the tabs  */
-  useEffect(() => {
-    economicsTabContent.current.scrollTop = HUDTabsScrollPosition.econTab;
-    demographicsTabContent.current.scrollTop = HUDTabsScrollPosition.demogTab;
-    propertiesTabContent.current.scrollTop = HUDTabsScrollPosition.propsTab;
-  })
+  // /* Sets the scroll position for the tabs  */
+  // useEffect(() => {
+  //   economicsTabContent.current.scrollTop = HUDTabsScrollPosition.econTab;
+  //   demographicsTabContent.current.scrollTop = HUDTabsScrollPosition.demogTab;
+  //   propertiesTabContent.current.scrollTop = HUDTabsScrollPosition.propsTab;
+  // }, [])
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
@@ -57,25 +57,6 @@ function HUD({ defaultTab, HUDState }) {
       fullScreen: "100vh",
     };
   };
-
-  const handleScrollPosition = (e) => {
-    let property_key;
-    switch(e.target) {
-      case demographicsTabContent.current:
-        property_key = "demogTab";
-        break;
-      case propertiesTabContent.current:
-        property_key = "propsTab"
-        break;
-      default:
-        property_key = "econTab"
-    }
-
-    setHUDTabsScrollPosition({
-      ...HUDTabsScrollPosition, 
-      [property_key]: e.target.scrollTop
-    })
-  }
 
   /**
    * Allows user to adjust height of HUD display in order
@@ -143,6 +124,24 @@ function HUD({ defaultTab, HUDState }) {
     setActiveTab(changeActiveValue(selectedTab));
   };
 
+  const handleScrollPosition = (e) => {
+    let property_key;
+    switch(e.target) {
+      case demographicsTabContent.current:
+        property_key = "demogTab";
+        break;
+      case propertiesTabContent.current:
+        property_key = "propsTab"
+        break;
+      default:
+        property_key = "econTab"
+    }
+    setHUDTabsScrollPosition({
+      ...HUDTabsScrollPosition, 
+      [property_key]: e.target.scrollTop
+    })
+  }
+
   return (
     <section id='HUD' className='HUD' style={{ height: HUDPosition }}>
       <div className='HUD__nav'>
@@ -198,7 +197,6 @@ function HUD({ defaultTab, HUDState }) {
       <div className='HUD__tabcontent__container'>
         <div
           ref={economicsTabContent}
-          onScroll={(e) => handleScrollPosition(e)}
           className='HUD__tabcontent'
           style={{ display: activeTab.econTab ? "block" : "none" }}>
           <StatsTabs id='economics' />
@@ -206,7 +204,6 @@ function HUD({ defaultTab, HUDState }) {
 
         <div
           ref={demographicsTabContent}
-          onScroll={(e) => handleScrollPosition(e)}
           className='HUD__tabcontent'
           style={{ display: activeTab.demogTab ? "block" : "none" }}>
           <StatsTabs id='demographics' />
@@ -214,7 +211,6 @@ function HUD({ defaultTab, HUDState }) {
 
         <div
           ref={propertiesTabContent}
-          onScroll={(e) => handleScrollPosition(e)}
           className='HUD__tabcontent'
           style={{ display: activeTab.propsTab ? "block" : "none" }}>
           <PropertiesTab />
