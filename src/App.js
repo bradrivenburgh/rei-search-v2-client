@@ -38,7 +38,6 @@ function App() {
     demogTab: 0,
     propsTab: 0
   });
-  
   /* Menu State */
   let [menuOffset, setMenuOffset] = useState("-250px");
   //Reference to node outside of Menu for handleMenuClose
