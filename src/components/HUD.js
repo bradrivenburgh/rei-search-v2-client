@@ -81,7 +81,7 @@ function HUD({ defaultTab, HUDState }) {
 
     // If no active tab, set it to 'econTab'
     let { econTab, demogTab, propsTab } = activeTab;
-    if (!econTab && !demogTab && !propsTab) {
+    if (!econTab && !demogTab && !propsTab && pressCount > 0) {
       setActiveTab(changeActiveValue("econTab"));
     }
   };
