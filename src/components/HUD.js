@@ -131,23 +131,6 @@ function HUD({ defaultTab, HUDState }) {
     setActiveTab(changeActiveValue(selectedTab));
   };
 
-  const handleScrollPosition = (e) => {
-    let property_key;
-    switch(e.target) {
-      case demographicsTabContent.current:
-        property_key = "demogTab";
-        break;
-      case propertiesTabContent.current:
-        property_key = "propsTab"
-        break;
-      default:
-        property_key = "econTab"
-    }
-    setHUDTabsScrollPosition({
-      ...HUDTabsScrollPosition, 
-      [property_key]: e.target.scrollTop
-    })
-  }
 
   return (
     <section id='HUD' className='HUD' style={{ height: HUDPosition }}>
@@ -173,7 +156,6 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("econTab")}>
-              {/* <img src={economics} alt='demographics' style={{height: "30px"}}  /> */}
               <EconomicsIcon />
           </button>
           <button
@@ -184,7 +166,6 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("demogTab")}>
-             {/* <img src={demographics} alt='demographics' style={{height: "30px"}}  /> */}
              <DemographicsIcon />
           </button>
           <button
@@ -195,7 +176,6 @@ function HUD({ defaultTab, HUDState }) {
                 : "HUD__tab__tablinks"
             }
             onClick={() => handleOpenTab("propsTab")}>
-             {/* <img src={properties} alt='demographics' style={{height: "30px"}}  /> */}
              <PropertiesIcon />
           </button>
         </div>
