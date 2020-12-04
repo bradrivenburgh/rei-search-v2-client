@@ -59,24 +59,22 @@ function HUD({ defaultTab, HUDState }) {
   };
 
   const handleScrollPosition = (e) => {
-    if (e.target === economicsTabContent.current) {
-      setHUDTabsScrollPosition({
-        ...HUDTabsScrollPosition, 
-        econTab: economicsTabContent.current.scrollTop
-      })
+    let property_key;
+    switch(e.target) {
+      case demographicsTabContent.current:
+        property_key = "demogTab";
+        break;
+      case propertiesTabContent.current:
+        property_key = "propsTab"
+        break;
+      default:
+        property_key = "econTab"
     }
-    if (e.target === demographicsTabContent.current) {
-      setHUDTabsScrollPosition({
-        ...HUDTabsScrollPosition, 
-        demogTab: demographicsTabContent.current.scrollTop
-      })
-    }
-    if (e.target === propertiesTabContent.current) {
-      setHUDTabsScrollPosition({
-        ...HUDTabsScrollPosition, 
-        propsTab: propertiesTabContent.current.scrollTop
-      })
-    }
+
+    setHUDTabsScrollPosition({
+      ...HUDTabsScrollPosition, 
+      [property_key]: e.target.scrollTop
+    })
   }
 
   /**
