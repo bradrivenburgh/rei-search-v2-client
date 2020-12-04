@@ -93,11 +93,18 @@ function HUD({ defaultTab, HUDState }) {
    */
   const changeActiveValue = (activeTab) => {
     const tabs = {
-      econTab: false,
-      demogTab: false,
-      propsTab: false,
+      econTab: 0,
+      demogTab: 0,
+      propsTab: 0,
     };
-    tabs[activeTab] = true;
+    //Dictionary containing ref nodes
+    const tabRefDictionary = {
+      econTab: economicsTabContent.current,
+      demogTab: demographicsTabContent.current,
+      propsTab: propertiesTabContent.current
+    };  
+  
+    tabs[activeTab] = tabRefDictionary[activeTab];
     return tabs;
   };
 
