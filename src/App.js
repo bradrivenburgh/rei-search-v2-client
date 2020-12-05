@@ -94,7 +94,7 @@ function App() {
     activeTab,
     setActiveTab,
     HUDTabsScrollPosition,
-    setHUDTabsScrollPosition,
+    setHUDTabsScrollPosition, // Wrapper looks at activeTab (if it was a ref) and get scrollTop and then call setHUDTabsScrollPosition
   };
 
   let searchResults = {
