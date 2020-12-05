@@ -8,6 +8,9 @@ function Image({photos, alt}) {
    */
   const addSafeSrc = (photoUrls) => {
     const handleError = photoUrls.map((photoUrl) => {
+      // try fetch call to see if there is a successful response and replace
+      // src with the value of data-src
+      // https://stackoverflow.com/questions/47263773/add-image-data-to-html-file
       try {
         return photoUrl;
       } catch(e) {
