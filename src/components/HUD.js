@@ -217,41 +217,28 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
       <div className='HUD__tabcontent__container'>
         <div
           ref={economicsTabContent}
-          className='HUD__tabcontent'
-          style={{
-            visibility: activeTab.econTab ? "visible" : "hidden",
-            zIndex: activeTab.econTab ? "999" : "-1",
-            height: activeTab.econTab ? "100%" : "0px",
-            padding: activeTab.econTab ? "6px 12px" : "0"
-          }}
-          >
+          className={activeTab.econTab
+            ? 'HUD__tabcontent HUD__tabcontent--visible'
+            : 'HUD__tabcontent HUD__tabcontent--hidden'
+          }>
           <StatsTabs id='economics' />
         </div>
 
         <div
           ref={demographicsTabContent}
-          className='HUD__tabcontent'
-          style={{
-            visibility: activeTab.demogTab ? "visible" : "hidden",
-            zIndex: activeTab.demogTab ? "999" : "-1",
-            height: activeTab.demogTab ? "100%" : "0",
-            padding: activeTab.demogTab ? "6px 12px" : "0",
-          }}
-
-          >
+          className={activeTab.demogTab
+            ? 'HUD__tabcontent HUD__tabcontent--visible'
+            : 'HUD__tabcontent HUD__tabcontent--hidden'
+          }>
           <StatsTabs id='demographics' />
         </div>
 
         <div
           ref={propertiesTabContent}
-          className='HUD__tabcontent'
-          style={{
-            visibility: activeTab.propsTab ? "visible" : "hidden",
-            zIndex: activeTab.propsTab ? "999" : "-1",
-            height: activeTab.propsTab ? "100%" : "0",
-            padding: activeTab.propsTab ? "6px 12px" : "0",
-          }}
-          >
+          className={activeTab.propsTab
+            ? 'HUD__tabcontent HUD__tabcontent--visible'
+            : 'HUD__tabcontent HUD__tabcontent--hidden'
+          }>
           <PropertiesTab />
         </div>
       </div>

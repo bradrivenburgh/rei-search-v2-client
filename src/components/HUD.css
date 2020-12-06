@@ -147,3 +147,17 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.HUD__tabcontent--visible {
+  visibility: visible;
+  z-index: 999;
+  height: 100%;
+  padding: 6px 12px;
+}
+
+.HUD__tabcontent--hidden {
+  visibility: hidden;
+  z-index: -1;
+  height: 0;
+  padding: 0;
+}
