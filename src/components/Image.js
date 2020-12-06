@@ -21,7 +21,8 @@ function Image({photos, alt}) {
   };
 
   return (
-    <img 
+    <img
+      className="property-image"
       src={addSafeSrc(photos)[0]} 
       alt={alt}
     />

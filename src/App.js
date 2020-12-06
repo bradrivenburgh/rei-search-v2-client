@@ -33,12 +33,14 @@ function App() {
     propsTab: 0,
   });
   // Holds the scrollTop value for each tab in HUD
-  let [econScrollPosition, setEconScrollPosition] = useState(0);
-  let [demogScrollPosition, setDemogScrollPosition] = useState(0);
-  let [propsScrollPosition, setPropsScrollPosition] = useState(0);
+  let [HUDScrollTops, setHUDScrollTops] = useState({
+    econTab: 0,
+    demogTab: 0,
+    propsTab: 0
+  });
   /* Menu State */
   let [menuOffset, setMenuOffset] = useState("-250px");
-  //Reference to node outside of Menu for handleMenuClose
+  //Reference to node holding Nav, Map, Search, and HUD
   let mainViewNode = useRef(null);
 
   /* Handlers */
@@ -91,12 +93,9 @@ function App() {
     setHUDPosition,
     activeTab,
     setActiveTab,
-    econScrollPosition,
-    setEconScrollPosition,
-    demogScrollPosition,
-    setDemogScrollPosition,
-    propsScrollPosition,
-    setPropsScrollPosition, // Wrapper looks at activeTab (if it was a ref) and get scrollTop and then call setHUDTabsScrollPosition
+    // Wrapper looks at activeTab (if it was a ref) and get scrollTop and then call setHUDTabsScrollPosition
+    HUDScrollTops,
+    setHUDScrollTops
   };
 
   let searchResults = {

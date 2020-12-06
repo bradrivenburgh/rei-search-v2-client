@@ -16,12 +16,8 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
     setPressCount,
     setHUDPosition,
     setActiveTab,
-    econScrollPosition,
-    setEconScrollPosition,
-    demogScrollPosition,
-    setDemogScrollPosition,
-    propsScrollPosition,
-    setPropsScrollPosition,
+    HUDScrollTops,
+    setHUDScrollTops
   } = HUDState;
 
   /* Refs for HUD tab content */
@@ -38,32 +34,28 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
     }
   });
 
-  // Potentially Modify this so that the switch statement
-  // checks if the event target is the menu button or
-  // an image, saving all scroll positions at once.  If so,
-  // can remove call to handleScroll position from handleOpenTab
+  /**
+   * Receives event object from onClick listener attached to
+   * forwarded ref from App (mainViewNode). Sets scroll positions
+   * when Menu button is clicked or when an Image is clicked in
+   * the propsTab
+   * @param(object) e
+   */
   const handleScrollPosition = useCallback(
-    (e, selectedTab = '') => {
-      switch(selectedTab) {
-        case "demogTab":
-          setDemogScrollPosition(demographicsTabContent.current.scrollTop);
-          break;
-        case "propsTab":
-          setPropsScrollPosition(propertiesTabContent.current.scrollTop);
-          break;
-        case "econTab":
-          setEconScrollPosition(economicsTabContent.current.scrollTop);
-          break;
-        default:
-          
-          if (e.target.classList[0] === "menu-button") {
-            setDemogScrollPosition(demographicsTabContent.current.scrollTop);
-            setPropsScrollPosition(propertiesTabContent.current.scrollTop);
-            setEconScrollPosition(economicsTabContent.current.scrollTop);
-          }
+    (e) => {
+      if (
+        e.target.classList[0] === "menu-button" ||
+        e.target.classList[0] === "property-image"
+      ) {
+        setHUDScrollTops({
+          econTab: economicsTabContent.current.scrollTop,
+          demogTab: demographicsTabContent.current.scrollTop,
+          propsTab: propertiesTabContent.current.scrollTop,
+        });
       }
-    }, [setEconScrollPosition, setDemogScrollPosition, setPropsScrollPosition]
-  )
+    },
+    [setHUDScrollTops]
+  );
   
   /**
    * Adds an event listener to the entire mainView listening for clicks
@@ -71,20 +63,20 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
    */
   useEffect(() => {
     if (ref && ref.current) {
-      let refCopy = ref.current;
-      refCopy.addEventListener('click', handleScrollPosition, false);
+      let mainViewNode = ref.current;
+      mainViewNode.addEventListener('click', handleScrollPosition, false);
       return () => {
-        refCopy.removeEventListener('click', handleScrollPosition, false);
+        mainViewNode.removeEventListener('click', handleScrollPosition, false);
       }
     }
   }, [handleScrollPosition, ref])
 
   /* Sets the scroll position for the tabs  */
   useEffect(() => {
-    economicsTabContent.current.scrollTop = econScrollPosition;
-    demographicsTabContent.current.scrollTop = demogScrollPosition;
-    propertiesTabContent.current.scrollTop = propsScrollPosition;
-  }, [econScrollPosition, demogScrollPosition, propsScrollPosition])
+    economicsTabContent.current.scrollTop = HUDScrollTops.econTab;
+    demographicsTabContent.current.scrollTop = HUDScrollTops.demogTab;
+    propertiesTabContent.current.scrollTop = HUDScrollTops.propsTab;
+  }, [HUDScrollTops])
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
@@ -171,10 +163,6 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
 
     // Set active tab
     setActiveTab(changeActiveValue(selectedTab));
-
-    // Set tab scroll position
-    setEconScrollPosition(economicsTabContent.current.scrollTop)
-    handleScrollPosition(selectedTab);
   };
 
   return (
