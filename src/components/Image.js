@@ -30,7 +30,8 @@ function Image({photos, alt}) {
 }
 
 Image.defaultProps = {
-  photos: []
+  photos: [],
+  alt: ''
 }
 
 export default Image;

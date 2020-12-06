@@ -92,6 +92,8 @@ function PropertyProfile({
 
 PropertyProfile.defaultProps = {
   currentProperty: {},
+  savedProperties: {},
+  onAddRemoveProperty: () => {},
 };
 
 export default PropertyProfile;

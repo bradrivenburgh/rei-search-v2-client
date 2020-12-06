@@ -248,6 +248,20 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
 
 HUD.defaultProps = {
   defaultTab: false,
+  HUDState: {
+    pressCount: 0,
+    HUDPosition: 0,
+    activeTab: null,
+    setPressCount: () => {},
+    setHUDPosition: () => {},
+    setActiveTab: () => {},
+    HUDScrollTops: {
+      econTab: 0,
+      demogTab: 0,
+      propsTab: 0
+    },
+    setHUDScrollTops: () => {}
+  }
 };
 
 export default HUD;

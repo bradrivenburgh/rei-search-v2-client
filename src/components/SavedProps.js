@@ -82,4 +82,10 @@ function SavedProps({
   );
 }
 
+SavedProps.defaultProps = {
+  savedProperties: {},
+  setCurrentProperty: () => {},
+  onAddRemoveProperty: () => {},
+}
+
 export default SavedProps;

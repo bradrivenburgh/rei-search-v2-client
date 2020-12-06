@@ -25,3 +25,10 @@ function Menu({ menuOffset: { menuOffset, setMenuOffset } }) {
 }
 
 export default Menu;
+
+Menu.defaultProps = {
+  menuOffset: {
+    menuOffset: '0px',
+    setMenuOffset: () => {}
+  }
+}

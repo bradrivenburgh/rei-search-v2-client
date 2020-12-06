@@ -13,3 +13,7 @@ function Nav({ setMenuOffset }) {
 }
 
 export default Nav;
+
+Nav.defaultProps = {
+  setMenuOffset: () => {}
+}
