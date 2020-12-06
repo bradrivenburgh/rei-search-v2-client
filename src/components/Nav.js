@@ -7,7 +7,7 @@ function Nav({ setMenuOffset }) {
     <nav className='nav'>
       <img src='https://via.placeholder.com/35x35?text=LOGO' alt='Logo' />
       <Search />
-      <button onClick={() => setMenuOffset("0px")}>☰</button>
+      <button className='menu-button' onClick={() => setMenuOffset("0px")}>☰</button>
     </nav>
   );
 }

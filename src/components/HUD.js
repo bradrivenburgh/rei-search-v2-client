@@ -38,8 +38,12 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
     }
   });
 
+  // Potentially Modify this so that the switch statement
+  // checks if the event target is the menu button or
+  // an image, saving all scroll positions at once.  If so,
+  // can remove call to handleScroll position from handleOpenTab
   const handleScrollPosition = useCallback(
-    (selectedTab = '') => {
+    (e, selectedTab = '') => {
       switch(selectedTab) {
         case "demogTab":
           setDemogScrollPosition(demographicsTabContent.current.scrollTop);
@@ -51,9 +55,12 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
           setEconScrollPosition(economicsTabContent.current.scrollTop);
           break;
         default:
-          setDemogScrollPosition(demographicsTabContent.current.scrollTop);
-          setPropsScrollPosition(propertiesTabContent.current.scrollTop);
-          setEconScrollPosition(economicsTabContent.current.scrollTop);
+          
+          if (e.target.classList[0] === "menu-button") {
+            setDemogScrollPosition(demographicsTabContent.current.scrollTop);
+            setPropsScrollPosition(propertiesTabContent.current.scrollTop);
+            setEconScrollPosition(economicsTabContent.current.scrollTop);
+          }
       }
     }, [setEconScrollPosition, setDemogScrollPosition, setPropsScrollPosition]
   )
