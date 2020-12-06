@@ -145,9 +145,9 @@ function HUD({ defaultTab, HUDState }) {
     // Set active tab
     setActiveTab(changeActiveValue(selectedTab));
 
-    
+    economicsTabContent.current.click()
     // Set tab scroll position
-    // handleScrollPosition(selectedTab);
+    handleScrollPosition(selectedTab);
   };
 
 
@@ -204,21 +204,41 @@ function HUD({ defaultTab, HUDState }) {
         <div
           ref={economicsTabContent}
           className='HUD__tabcontent'
-          style={{ display: activeTab.econTab ? "block" : "none" }}>
+          style={{
+            visibility: activeTab.econTab ? "visible" : "hidden",
+            zIndex: activeTab.econTab ? "999" : "-1",
+            height: activeTab.econTab ? "100%" : "0px",
+            padding: activeTab.econTab ? "6px 12px" : "0"
+          }}
+          >
           <StatsTabs id='economics' />
         </div>
 
         <div
           ref={demographicsTabContent}
           className='HUD__tabcontent'
-          style={{ display: activeTab.demogTab ? "block" : "none" }}>
+          style={{
+            visibility: activeTab.demogTab ? "visible" : "hidden",
+            zIndex: activeTab.demogTab ? "999" : "-1",
+            height: activeTab.demogTab ? "100%" : "0",
+            padding: activeTab.demogTab ? "6px 12px" : "0",
+          }}
+
+          >
           <StatsTabs id='demographics' />
         </div>
 
         <div
           ref={propertiesTabContent}
           className='HUD__tabcontent'
-          style={{ display: activeTab.propsTab ? "block" : "none" }}>
+          style={{
+            visibility: activeTab.propsTab ? "visible" : "hidden",
+            zIndex: activeTab.propsTab ? "999" : "-1",
+            height: activeTab.propsTab ? "100%" : "0",
+            padding: activeTab.propsTab ? "6px 12px" : "0",
+          }}
+
+          >
           <PropertiesTab />
         </div>
       </div>
