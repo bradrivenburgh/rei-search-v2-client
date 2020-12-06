@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import {ReactComponent as EconomicsIcon} from '../images/economics-resized.svg';
 import {ReactComponent as DemographicsIcon} from '../images/demographics-resized.svg';
 import {ReactComponent as PropertiesIcon} from '../images/properties-resized.svg';
@@ -6,7 +6,7 @@ import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD({ defaultTab, HUDState }) {
+const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
   /* STATE */
 
   let {
@@ -16,8 +16,12 @@ function HUD({ defaultTab, HUDState }) {
     setPressCount,
     setHUDPosition,
     setActiveTab,
-    HUDTabsScrollPosition,
-    setHUDTabsScrollPosition,
+    econScrollPosition,
+    setEconScrollPosition,
+    demogScrollPosition,
+    setDemogScrollPosition,
+    propsScrollPosition,
+    setPropsScrollPosition,
   } = HUDState;
 
   /* Refs for HUD tab content */
@@ -34,12 +38,46 @@ function HUD({ defaultTab, HUDState }) {
     }
   });
 
-  // /* Sets the scroll position for the tabs  */
-  // useEffect(() => {
-  //   economicsTabContent.current.scrollTop = HUDTabsScrollPosition.econTab;
-  //   demographicsTabContent.current.scrollTop = HUDTabsScrollPosition.demogTab;
-  //   propertiesTabContent.current.scrollTop = HUDTabsScrollPosition.propsTab;
-  // }, [])
+  const handleScrollPosition = useCallback(
+    (selectedTab = '') => {
+      switch(selectedTab) {
+        case "demogTab":
+          setDemogScrollPosition(demographicsTabContent.current.scrollTop);
+          break;
+        case "propsTab":
+          setPropsScrollPosition(propertiesTabContent.current.scrollTop);
+          break;
+        case "econTab":
+          setEconScrollPosition(economicsTabContent.current.scrollTop);
+          break;
+        default:
+          setDemogScrollPosition(demographicsTabContent.current.scrollTop);
+          setPropsScrollPosition(propertiesTabContent.current.scrollTop);
+          setEconScrollPosition(economicsTabContent.current.scrollTop);
+      }
+    }, [setEconScrollPosition, setDemogScrollPosition, setPropsScrollPosition]
+  )
+  
+  /**
+   * Adds an event listener to the entire mainView listening for clicks
+   * Need to narrow it to just act on clicks to the menu
+   */
+  useEffect(() => {
+    if (ref && ref.current) {
+      let refCopy = ref.current;
+      refCopy.addEventListener('click', handleScrollPosition, false);
+      return () => {
+        refCopy.removeEventListener('click', handleScrollPosition, false);
+      }
+    }
+  }, [handleScrollPosition, ref])
+
+  /* Sets the scroll position for the tabs  */
+  useEffect(() => {
+    economicsTabContent.current.scrollTop = econScrollPosition;
+    demographicsTabContent.current.scrollTop = demogScrollPosition;
+    propertiesTabContent.current.scrollTop = propsScrollPosition;
+  }, [econScrollPosition, demogScrollPosition, propsScrollPosition])
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
@@ -105,24 +143,6 @@ function HUD({ defaultTab, HUDState }) {
     return tabs;
   };
 
-  // const handleScrollPosition = (selectedTab = '') => {
-  //   // let scrollPosition;
-  //   // switch(selectedTab) {
-  //   //   case "demogTab":
-  //   //     scrollPosition = demographicsTabContent.current.scrollTop;
-  //   //     break;
-  //   //   case "propsTab":
-  //   //     scrollPosition = propertiesTabContent.current.scrollTop;
-  //   //     break;
-  //   //   default:
-  //   //     scrollPosition = economicsTabContent.current.scrollTop
-  //   // }
-  //   setHUDTabsScrollPosition({
-  //     ...HUDTabsScrollPosition, 
-  //     [selectedTab]: activeTab[selectedTab].scrollTop
-  //   });
-  // }
-
   /**
    * Listens for click event to display tab content.  Calls
    * adjustHeight() if the HUD is collapsed in order to show content.
@@ -145,11 +165,10 @@ function HUD({ defaultTab, HUDState }) {
     // Set active tab
     setActiveTab(changeActiveValue(selectedTab));
 
-    economicsTabContent.current.click()
     // Set tab scroll position
+    setEconScrollPosition(economicsTabContent.current.scrollTop)
     handleScrollPosition(selectedTab);
   };
-
 
   return (
     <section id='HUD' className='HUD' style={{ height: HUDPosition }}>
@@ -237,14 +256,13 @@ function HUD({ defaultTab, HUDState }) {
             height: activeTab.propsTab ? "100%" : "0",
             padding: activeTab.propsTab ? "6px 12px" : "0",
           }}
-
           >
           <PropertiesTab />
         </div>
       </div>
     </section>
   );
-}
+});
 
 HUD.defaultProps = {
   defaultTab: false,

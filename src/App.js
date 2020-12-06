@@ -33,11 +33,9 @@ function App() {
     propsTab: 0,
   });
   // Holds the scrollTop value for each tab in HUD
-  let [HUDTabsScrollPosition, setHUDTabsScrollPosition] = useState({
-    econTab: 0,
-    demogTab: 0,
-    propsTab: 0
-  });
+  let [econScrollPosition, setEconScrollPosition] = useState(0);
+  let [demogScrollPosition, setDemogScrollPosition] = useState(0);
+  let [propsScrollPosition, setPropsScrollPosition] = useState(0);
   /* Menu State */
   let [menuOffset, setMenuOffset] = useState("-250px");
   //Reference to node outside of Menu for handleMenuClose
@@ -93,8 +91,12 @@ function App() {
     setHUDPosition,
     activeTab,
     setActiveTab,
-    HUDTabsScrollPosition,
-    setHUDTabsScrollPosition, // Wrapper looks at activeTab (if it was a ref) and get scrollTop and then call setHUDTabsScrollPosition
+    econScrollPosition,
+    setEconScrollPosition,
+    demogScrollPosition,
+    setDemogScrollPosition,
+    propsScrollPosition,
+    setPropsScrollPosition, // Wrapper looks at activeTab (if it was a ref) and get scrollTop and then call setHUDTabsScrollPosition
   };
 
   let searchResults = {
@@ -145,7 +147,7 @@ function App() {
               onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
               <Nav setMenuOffset={setMenuOffset} />
               <Map />
-              <HUD defaultTab={defaultTab} HUDState={HUDState} />
+              <HUD ref={mainViewNode} defaultTab={defaultTab} HUDState={HUDState} />
             </div>
           </Route>
         </Switch>
