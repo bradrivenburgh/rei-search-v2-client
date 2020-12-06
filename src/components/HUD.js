@@ -127,9 +127,9 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
    */
   const changeActiveValue = (activeTab) => {
     const tabs = {
-      econTab: 0,
-      demogTab: 0,
-      propsTab: 0,
+      econTab: null,
+      demogTab: null,
+      propsTab: null,
     };
     //Dictionary containing ref nodes
     const tabRefDictionary = {

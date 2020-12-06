@@ -28,9 +28,9 @@ function App() {
   let [defaultTab, setDefaultTab] = useState(false);
   // Will hold refs in HUD in state
   let [activeTab, setActiveTab] = useState({
-    econTab: 0,
-    demogTab: 0,
-    propsTab: 0,
+    econTab: null,
+    demogTab: null,
+    propsTab: null,
   });
   // Holds the scrollTop value for each tab in HUD
   let [HUDScrollTops, setHUDScrollTops] = useState({
