@@ -3,5 +3,5 @@ import { BrowserRouter } from 'react-router-dom';
 import Image from './Image';
 
 test('renders SavedProps', () => {
-  render(<BrowserRouter><Image photos={[]} /></BrowserRouter>);
+  render(<BrowserRouter><Image photo={''} /></BrowserRouter>);
 });

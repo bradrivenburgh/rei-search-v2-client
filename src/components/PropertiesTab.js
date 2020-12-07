@@ -49,7 +49,7 @@ function PropertiesTab() {
                 <div className='properties__flex-container'>
                   <li>
                     <Link to='/property-profile'>
-                      <Image photos={photos} alt={streetAddress} />
+                      <Image photo={photos[0]} alt={streetAddress} />
                     </Link>
                   </li>
                   <div>

@@ -34,7 +34,7 @@ function SavedProps({
                 <div className='saved-properties__flex-container'>
                   <li>
                     <Link to='/property-profile'>
-                      <Image photos={photos} />
+                      <Image photo={photos[0]} />
                     </Link>
                   </li>
                   <div>
