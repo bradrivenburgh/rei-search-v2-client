@@ -6,6 +6,7 @@ import Map from "./components/Map";
 import HUD from "./components/HUD";
 import SavedProps from "./components/SavedProps";
 import CreateAccount from './components/CreateAccount';
+import SignIn from './components/SignIn';
 import PropertyProfile from "./components/PropertyProfile";
 import { Context } from "./Context";
 import { fakeStats, fakeProps, savedProps } from "./mockData";
@@ -122,6 +123,9 @@ function App() {
     <main className='App'>
       <Context.Provider value={contextValues}>
         <Switch>
+          <Route path='/sign-in'>
+            <SignIn />
+          </Route>
           <Route path='/create-account'>
             <CreateAccount />
           </Route>

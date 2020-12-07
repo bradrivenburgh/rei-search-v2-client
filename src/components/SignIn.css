@@ -1,0 +1,41 @@
+
+/* Create Account */
+.sign-in {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.sign-in form {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.sign-in input {
+  width: 150px;
+  padding-top: .5em;
+  margin-top: .25em;
+}
+
+.sign-in label {
+  margin-top: .5em;
+}
+
+.sign-in__buttons {
+  display: flex;
+}
+
+.sign-in__buttons button {
+  margin-top: 2em;
+  margin-right: 1em;
+}
+
+
+@media only screen and (min-device-width: 768px) {
+  .sign-in {  
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
+
