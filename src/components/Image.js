@@ -6,7 +6,7 @@ function Image({ photo, alt }) {
   // src with the value of data-src
   // https://stackoverflow.com/questions/47263773/add-image-data-to-html-file
 
-  let [isValid, setIsValid] = useState(false);
+  let [isValid, setIsValid] = useState(true);
 
   /**
    * Replaces images that aren't retrievable with a default photo
@@ -16,12 +16,12 @@ function Image({ photo, alt }) {
     fetch(url)
       .then((response) => {
         if (response.ok) {
-          setIsValid(true);
           return;
         }
         throw new Error("The image url was invalid");
       })
       .catch((e) => {
+        setIsValid(false);
         console.error(e);
       });
     return isValid;
@@ -34,6 +34,7 @@ function Image({ photo, alt }) {
       width={200}
       src={addSafeSrc(photo) ? photo : house}
       alt={alt}
+      tabIndex={1}
     />
   );
 }

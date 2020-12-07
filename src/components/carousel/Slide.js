@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import house from '../../images/default-house.png';
 
 function Slide({photos, activeIndex}) {
-  let [isValid, setIsValid] = useState(false);
+  let [isValid, setIsValid] = useState(true);
 
   /**
    * Replaces images that aren't retrievable with a default photo
@@ -12,12 +12,12 @@ function Slide({photos, activeIndex}) {
     fetch(url)
       .then((response) => {
         if (response.ok) {
-          setIsValid(true);
           return;
         }
         throw new Error("The image url was invalid");
       })
       .catch((e) => {
+        setIsValid(false);
         console.error(e);
       });
     return isValid;
@@ -34,7 +34,7 @@ function Slide({photos, activeIndex}) {
             src={addSafeSrc(url) ? url : house}
             height="200px"
             width="100%"
-            alt={`slide ${index}`} 
+            alt={`slide ${index + 1}`} 
             />
         </div>
         )
@@ -44,3 +44,8 @@ function Slide({photos, activeIndex}) {
 } 
 
 export default Slide;
+
+Slide.defaultProps = {
+  photos: [],
+  activeIndex: 1
+}
