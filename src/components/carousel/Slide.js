@@ -32,6 +32,8 @@ function Slide({photos, activeIndex}) {
           key={index}>
             <img 
             src={addSafeSrc(url) ? url : house}
+            height="200px"
+            width="100%"
             alt={`slide ${index}`} 
             />
         </div>
