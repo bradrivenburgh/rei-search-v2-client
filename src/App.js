@@ -94,7 +94,6 @@ function App() {
     setHUDPosition,
     activeTab,
     setActiveTab,
-    // Wrapper looks at activeTab (if it was a ref) and get scrollTop and then call setHUDTabsScrollPosition
     HUDScrollTops,
     setHUDScrollTops
   };
