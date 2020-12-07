@@ -5,6 +5,11 @@ import './CreateAccount.css';
 function CreateAccount() {
   let history = useHistory();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push('/')
+  }
+
   return (
     <section className='create-account'>
       <nav className='closing-nav'>
@@ -14,7 +19,7 @@ function CreateAccount() {
         <h1>Create an account</h1>
       </header>
 
-      <form action='#'>
+      <form action='#' onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor='first-name'>First Name:</label>
         <input type='text' id='first-name' name='first-name' />
 
@@ -31,10 +36,10 @@ function CreateAccount() {
         <input type='text' id='verify-password' name='verify-password' />
 
         <div className='create-account__buttons'>
-          <button onClick={() => history.push('/')}>
+          <button type="button" onClick={() => history.push('/')}>
               Cancel
           </button>
-          <button onClick={() => history.push('/')}>
+          <button>
               Submit
           </button>
         </div>
