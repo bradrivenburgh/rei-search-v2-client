@@ -11,7 +11,7 @@ function Slide({photos, activeIndex}) {
   const addSafeSrc = (url) => {
     fetch(url)
       .then((response) => {
-        if (response.ok) {
+        if (response.status >= 200 && response.status <= 299) {
           return;
         }
         throw new Error("The image url was invalid");
