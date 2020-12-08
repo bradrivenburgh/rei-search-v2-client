@@ -149,7 +149,7 @@ function App() {
               onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
               <Nav setMenuOffset={setMenuOffset} />
               <Map />
-              <HUD defaultTab={defaultTab} HUDState={HUDState} />
+              <HUD ref={mainViewNode} defaultTab={defaultTab} HUDState={HUDState} />
             </div>
           </Route>
         </Switch>
