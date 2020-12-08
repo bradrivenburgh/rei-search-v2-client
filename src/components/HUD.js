@@ -52,45 +52,43 @@ function HUD({defaultTab, HUDState}) {
    * Sets the scroll position for the tabs when HUDScrollTops updates
    */
   useEffect(() => {
+    console.log('Ref scrolltops changed to state ST values')
     economicsTabContent.current.scrollTop = HUDScrollTops.econTab;
     demographicsTabContent.current.scrollTop = HUDScrollTops.demogTab;
     propertiesTabContent.current.scrollTop = HUDScrollTops.propsTab;
   }, [HUDScrollTops]);
 
+  /* 
+  const compareScrollTops = (refScrollTops, stateScrollTops ) => {
+    const refSSTValues = Object.values(refScrollTops);
+    const stateSTValues = Object.values(stateScrollTops);
+    return refSSTValues.some((value, index) => value !== stateSTValues[index]);
+  };
+  */
+
   /**
-   * Diffs the scrollTops from the tab refs 'current' property with the copy
-   * of those refs in 
+   * Records ref scrollTops to copyRefScrollTops on every render.  
+   * Diffs the scrollTops from the tab refs 'current' property with
+   * those in state on cleanup; set new state values if any differences.
    */
   useEffect(() => {
-    if (economicsTabContent.current.scrollTop !== copyRefScrollTops.current.econTab ||
-        demographicsTabContent.current.scrollTop !== copyRefScrollTops.current.demogTab ||
-        propertiesTabContent.current.scrollTop !== copyRefScrollTops.current.propsTab) {
-      console.log('Ref scrollTops copied!')
-      copyRefScrollTops.current = {
-        econTab: economicsTabContent.current.scrollTop,
-        demogTab: demographicsTabContent.current.scrollTop,
-        propsTab: propertiesTabContent.current.scrollTop
-      }
-    }
-
-    // console.log('Ref scrollTops copied!')
-    // let copySTs = {
-    //   econTab: economicsTabContent.current.scrollTop,
-    //   demogTab: demographicsTabContent.current.scrollTop,
-    //   propsTab: propertiesTabContent.current.scrollTop
-    // }
-    // copyRefScrollTops.current = copySTs;
+    copyRefScrollTops.current = {
+      econTab: economicsTabContent.current.scrollTop,
+      demogTab: demographicsTabContent.current.scrollTop,
+      propsTab: propertiesTabContent.current.scrollTop,
+    };
 
     return () => {
       if (
         copyRefScrollTops.current.econTab !== HUDScrollTops.econTab ||
         copyRefScrollTops.current.demogTab !== HUDScrollTops.demogTab ||
-        copyRefScrollTops.current.propsTab !== HUDScrollTops.propsTab) {
-          console.log('SetHUDScrollTops ran')
-          setHUDScrollTops(copyRefScrollTops.current)
+        copyRefScrollTops.current.propsTab !== HUDScrollTops.propsTab
+      ) {
+        console.log("ScrollTops set to state");
+        setHUDScrollTops(copyRefScrollTops.current);
       }
-    }
-  })
+    };
+  });
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
