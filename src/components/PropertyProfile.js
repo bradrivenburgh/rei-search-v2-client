@@ -26,12 +26,12 @@ function PropertyProfile({
   } = propertyData;
 
   return (
-    <section className='property-profile'>
+    <section>
       <nav className='closing-nav'>
         <button onClick={() => history.goBack()}>X</button>
       </nav>
 
-      <header>
+      <header className='property-profile'>
         <h1>Property Profile</h1>
       </header>
 
@@ -55,7 +55,7 @@ function PropertyProfile({
         </button>
       </div>
 
-      <div>
+      <div className='property-profile'>
         <p className='property-profile__price'>${price}</p>
         <p className='property-profile__address'>
           {streetAddress}, <br />
