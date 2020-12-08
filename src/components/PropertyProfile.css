@@ -9,7 +9,7 @@
 
 .property-profile .carousel-container .addRemove-button {
   position: absolute;
-  right: 5px;
+  right: 16px;
   top: 5px;
   background: rgba(255, 255, 255, 0.453);
   border-radius:50%;
@@ -19,7 +19,7 @@
   text-decoration: none;
 }
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
   .property-profile .carousel-container .addRemove-button {
     font-size: 1.5em;
     padding: .25em .5em
@@ -39,7 +39,7 @@
   color: red;
 }
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
   .property-profile {  
     max-width: 70%;
     margin: 0 auto;
@@ -48,7 +48,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    margin-right: 28px;
+    margin-right: 13px;
   }
   
 }

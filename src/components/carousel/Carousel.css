@@ -38,22 +38,28 @@
 }
 
 .carousel button:first-of-type {
-  margin-right: 6.8em;
+  position: absolute;
+  left: 15px;
+}
+.carousel button:last-of-type {
+  position: absolute;
+  right: 15px;
 }
 
-@media only screen and (min-device-width: 768px) {
+
+@media all and (min-width: 1000px) {
   .carousel__button-container {
     position: absolute;
     justify-content: space-between;
     width: 100%;
     left: 0;
   }
-  .carousel button:first-of-type {
+  /* .carousel button:first-of-type {
     margin-left: 1em;
   }
   .carousel button:last-of-type {
     margin-right: 1em;
-  }
+  } */
 }
 
 .carousel img {
@@ -64,7 +70,7 @@
   margin: 0 auto;
 }
 
-@media only screen and (min-device-width: 768px) {
+@media all and (min-width: 768px) {
   .carousel img {
     height: 45vh;
     object-fit: contain;
