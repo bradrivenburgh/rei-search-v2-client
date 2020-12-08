@@ -6,7 +6,7 @@ import StatsTabs from "./StatsTabs";
 import PropertiesTab from "./PropertiesTab";
 import "./HUD.css";
 
-function HUD({defaultTab, HUDState}) {
+const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
   /* STATE */
 
   let {
@@ -24,78 +24,50 @@ function HUD({defaultTab, HUDState}) {
   let economicsTabContent = useRef(null);
   let demographicsTabContent = useRef(null);
   let propertiesTabContent = useRef(null);
-  let copyRefScrollTops = useRef({
-    econTab: 0,
-    demogTab: 0,
-    propsTab: 0
-  });
 
   /**
-   * Sets scroll positions when Image is clicked in the propsTab
+   * Receives event object from onClick listener attached to
+   * forwarded ref from App (mainViewNode). Sets scroll positions
+   * when Menu button is clicked or when an Image is clicked in
+   * the propsTab
    * @param(object) e
    */
   const handleScrollPosition = useCallback(
     (e) => {
-      copyRefScrollTops.current = {
-        econTab: economicsTabContent.current.scrollTop,
-        demogTab: demographicsTabContent.current.scrollTop,
-        propsTab: propertiesTabContent.current.scrollTop,
-      };
-  
-      if (e.target.classList[0] === "property-image") {
-        console.log('handle scroll positions ran')
+      if (
+        e.target.classList[0] === "menu-button" ||
+        e.target.classList[0] === "property-image"
+      ) {
         setHUDScrollTops({
-          econTab: copyRefScrollTops.econTab,
-          demogTab: copyRefScrollTops.demogTab,
-          propsTab: copyRefScrollTops.propsTab,
+          econTab: economicsTabContent.current.scrollTop,
+          demogTab: demographicsTabContent.current.scrollTop,
+          propsTab: propertiesTabContent.current.scrollTop,
         });
       }
     },
-    []
+    [setHUDScrollTops]
   );
 
   /**
-   * Sets the scroll position for the tabs when HUDScrollTops updates
+   * Adds an event listener to the entire mainView listening for clicks
+   * Need to narrow it to just act on clicks to the menu
    */
   useEffect(() => {
-    console.log('Ref scrolltops changed to state ST values')
+    if (ref && ref.current) {
+      let mainViewNode = ref.current;
+      mainViewNode.addEventListener("click", handleScrollPosition, false);
+      return () => {
+        mainViewNode.removeEventListener("click", handleScrollPosition, false);
+      };
+    }
+  }, [handleScrollPosition, ref]);
 
+  /* Sets the scroll position for the tabs  */
+  useEffect(() => {
     economicsTabContent.current.scrollTop = HUDScrollTops.econTab;
     demographicsTabContent.current.scrollTop = HUDScrollTops.demogTab;
     propertiesTabContent.current.scrollTop = HUDScrollTops.propsTab;
   }, [HUDScrollTops]);
-
-  /* 
-  const compareScrollTops = (refScrollTops, stateScrollTops ) => {
-    const refSSTValues = Object.values(refScrollTops);
-    const stateSTValues = Object.values(stateScrollTops);
-    return refSSTValues.some((value, index) => value !== stateSTValues[index]);
-  };
-  */
-
-  /**
-   * Records ref scrollTops to copyRefScrollTops on every render.  
-   * Diffs the scrollTops from the tab refs 'current' property with
-   * those in state on cleanup; set new state values if any differences.
-   */
-  useEffect(() => {
-    copyRefScrollTops.current = {
-      econTab: economicsTabContent.current.scrollTop,
-      demogTab: demographicsTabContent.current.scrollTop,
-      propsTab: propertiesTabContent.current.scrollTop,
-    };
-
-    return () => {
-      if (
-        copyRefScrollTops.current.econTab !== HUDScrollTops.econTab ||
-        copyRefScrollTops.current.demogTab !== HUDScrollTops.demogTab ||
-        copyRefScrollTops.current.propsTab !== HUDScrollTops.propsTab
-      ) {
-        console.log("ScrollTops set to state");
-        setHUDScrollTops(copyRefScrollTops.current);
-      }
-    };
-  });
 
   /* FUNCTIONS FOR HUD BEHAVIOR */
 
@@ -280,7 +252,7 @@ function HUD({defaultTab, HUDState}) {
       </div>
     </section>
   );
-};
+});
 
 HUD.defaultProps = {
   defaultTab: false,
