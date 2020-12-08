@@ -51,7 +51,7 @@ function HUD({defaultTab, HUDState}) {
         });
       }
     },
-    [setHUDScrollTops]
+    []
   );
 
   /**
