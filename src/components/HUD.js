@@ -36,12 +36,18 @@ function HUD({defaultTab, HUDState}) {
    */
   const handleScrollPosition = useCallback(
     (e) => {
+      copyRefScrollTops.current = {
+        econTab: economicsTabContent.current.scrollTop,
+        demogTab: demographicsTabContent.current.scrollTop,
+        propsTab: propertiesTabContent.current.scrollTop,
+      };
+  
       if (e.target.classList[0] === "property-image") {
         console.log('handle scroll positions ran')
         setHUDScrollTops({
-          econTab: economicsTabContent.current.scrollTop,
-          demogTab: demographicsTabContent.current.scrollTop,
-          propsTab: propertiesTabContent.current.scrollTop,
+          econTab: copyRefScrollTops.econTab,
+          demogTab: copyRefScrollTops.demogTab,
+          propsTab: copyRefScrollTops.propsTab,
         });
       }
     },
@@ -53,6 +59,7 @@ function HUD({defaultTab, HUDState}) {
    */
   useEffect(() => {
     console.log('Ref scrolltops changed to state ST values')
+
     economicsTabContent.current.scrollTop = HUDScrollTops.econTab;
     demographicsTabContent.current.scrollTop = HUDScrollTops.demogTab;
     propertiesTabContent.current.scrollTop = HUDScrollTops.propsTab;
