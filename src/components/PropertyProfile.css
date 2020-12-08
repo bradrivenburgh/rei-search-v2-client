@@ -4,15 +4,14 @@
 }
 
 @media only screen and (min-width: 900px) {
-  .property-profile {  
+  .property-profile {
     max-width: 70%;
     margin: 0 auto;
-  }  
+  }
 }
 
-
 .property-profile p {
-  margin-top: .5em;
+  margin-top: 0.5em;
   padding-top: 0;
 }
 
@@ -30,11 +29,11 @@
 
 .property-profile__address {
   font-weight: bold;
-  margin-left: .25em;
+  margin-left: 0.25em;
 }
 
 .property-profile__info {
-  margin: 1em .25em 0 .25em;
+  margin: 1em 0.25em 0 0.25em;
 }
 
 .property-profile__basic-stats {
