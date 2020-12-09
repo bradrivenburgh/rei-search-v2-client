@@ -28,7 +28,7 @@ export default Menu;
 
 Menu.defaultProps = {
   menuOffset: {
-    menuOffset: '0px',
+    menuOffset: '',
     setMenuOffset: () => {}
   }
 }
