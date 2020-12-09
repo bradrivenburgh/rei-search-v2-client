@@ -1,0 +1,19 @@
+/* .map {
+  position: fixed;
+  top: 100px;
+  z-index:0;
+} */
+
+.leaflet-container {
+  z-index: 0;
+  position: fixed;
+  top: 50px;
+  width: 100%; 
+  height: 100vh;
+}
+
+/* Map zoom controls */
+
+.leaflet-bar a.leaflet-disabled {
+  color: rgb(90, 90, 90);
+}

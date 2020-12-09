@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Menu from "./components/Menu";
-import Map from "./components/Map";
+import MapLeaflet from "./components/MapLeaflet";
 import HUD from "./components/HUD";
 import SavedProps from "./components/SavedProps";
 import CreateAccount from './components/CreateAccount';
@@ -37,20 +37,26 @@ function App() {
   let [HUDScrollTops, setHUDScrollTops] = useState({
     econTab: 0,
     demogTab: 0,
-    propsTab: 0
+    propsTab: 0,
   });
   /* Menu State */
   let [menuOffset, setMenuOffset] = useState("-250px");
   //Reference to node holding Nav, Map, Search, and HUD
   let mainViewNode = useRef(null);
+  /* Map State */
+  let [mapData, setMapData] = useState({
+    lat: 39.9,
+    lng: -75.16,
+    zoom: 10,
+  });
 
   /* Handlers */
 
   /**
    * Adds or removes a property from the savedProperties array
-   * @param {boolean} inSavedProps 
-   * @param {object} prop 
-   * @param {array} savedProps 
+   * @param {boolean} inSavedProps
+   * @param {object} prop
+   * @param {array} savedProps
    */
   const handleAddRemoveProperty = (
     inSavedProps = false,
@@ -76,8 +82,8 @@ function App() {
 
   /**
    * Closes menu if it detects a click outside of the Menu component
-   * @param {object} e 
-   * @param {object} mainViewNode 
+   * @param {object} e
+   * @param {object} mainViewNode
    */
   const handleMenuClose = (e, mainViewNode) => {
     if (mainViewNode.current.contains(e.target)) {
@@ -95,7 +101,7 @@ function App() {
     activeTab,
     setActiveTab,
     HUDScrollTops,
-    setHUDScrollTops
+    setHUDScrollTops,
   };
 
   let searchResults = {
@@ -103,6 +109,11 @@ function App() {
     setStatistics,
     properties,
     setProperties,
+  };
+
+  let mapState = {
+    mapData,
+    setMapData,
   };
 
   /* Context values */
@@ -148,8 +159,15 @@ function App() {
               ref={mainViewNode}
               onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
               <Nav setMenuOffset={setMenuOffset} />
-              <Map />
-              <HUD ref={mainViewNode} defaultTab={defaultTab} HUDState={HUDState} />
+              <MapLeaflet
+                mapState={mapState}
+                properties={properties}
+              />
+              <HUD
+                ref={mainViewNode}
+                defaultTab={defaultTab}
+                HUDState={HUDState}
+              />
             </div>
           </Route>
         </Switch>
