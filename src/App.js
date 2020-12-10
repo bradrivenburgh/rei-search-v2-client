@@ -11,6 +11,7 @@ import PropertyProfile from "./components/PropertyProfile";
 import { Context } from "./Context";
 import { fakeStats, fakeProps, savedProps } from "./mockData";
 
+
 function App() {
   /* State */
 
@@ -160,6 +161,7 @@ function App() {
               onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
               <Nav setMenuOffset={setMenuOffset} />
               <MapLeaflet
+                defaultTab={defaultTab}
                 mapState={mapState}
                 properties={properties}
               />
