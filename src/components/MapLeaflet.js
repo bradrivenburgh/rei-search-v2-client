@@ -4,9 +4,11 @@ import {
   TileLayer,
   Marker,
   Popup,
+  GeoJSON,
   useMapEvent,
   useMap,
 } from "react-leaflet";
+import census from 'citysdk';
 import config from "../config";
 import "./MapLeaflet.css";
 
@@ -16,17 +18,40 @@ function MapLeaflet({
   defaultTab,
 }) {
   /* State from App */
-  let { zoom, center } = mapData;
+  let { zoom, center, msaShape, lat, lng } = mapData;
 
-  useEffect(() => {
-    if (defaultTab) {
-      setMapData({
-        ...mapData,
-        zoom: 10,
-        center: [39.9, -75.16],
-      });
-    }
-  }, [defaultTab, mapData, setMapData]);
+  const addMSAToMap = (lng, lat) => {
+    return census(
+      {
+        vintage: 2017,
+        geoHierarchy: {
+          "metropolitan statistical area/micropolitan statistical area": {
+            lat: lat,
+            lng: lng,
+          },
+        },
+        geoResolution: "5m",
+        sourcePath: ["cbp"],
+        values: ["EMP"],
+        statsKey: config.CENSUS_API_KEY,
+      },
+      (error, response) => {
+        if (error) {
+          console.log(error);
+          return error;
+        }
+        setMapData({
+          ...mapData,
+          msaShape: response
+        })
+        console.log(response.features[0].geometry.coordinates[1])
+        console.log(msaShape)
+        return response;
+      }
+    );
+  }
+  
+
 
   const ReturnCenter = () => {
     const captureMap = useMapEvent("moveend", () => {
@@ -76,6 +101,7 @@ function MapLeaflet({
           url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
         />
         {renderMarkers}
+        
         <ReturnCenter />
       </MapContainer>
     </div>
