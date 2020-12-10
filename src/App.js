@@ -167,7 +167,6 @@ function App() {
               onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
               <Nav setMenuOffset={setMenuOffset} />
               <MapLeaflet
-                defaultTab={defaultTab}
                 mapState={mapState}
                 properties={properties}
               />

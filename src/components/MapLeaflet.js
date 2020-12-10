@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import config from '../config';
 import './MapLeaflet.css';
 
-function MapLeaflet({mapData, properties, defaultTab}) {
+function MapLeaflet({mapData, properties}) {
   /* State from App */
   let { zoom } = mapData;
 
@@ -47,5 +47,4 @@ MapLeaflet.defaultProps = {
     lng: -75.16,
     zoom: 10  
   },
-  defaultTab: false
 }
