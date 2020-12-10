@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import config from '../config';
@@ -8,17 +9,18 @@ function MapLeaflet({mapData, properties, defaultTab}) {
   let { zoom } = mapData;
 
   console.log(defaultTab)
-  const renderMarkers = (properties) => {
-    properties.map(property => 
-      <Marker
-        key={property.address.streetAddress}
-        position={[
-          property.latitude,
-          property.longitude
-        ]}
-      />
-    )
-  }
+  const renderMarkers = properties.map((property) => (
+    <Marker
+      key={property.address.streetAddress}
+      position={[property.latitude, property.longitude]}
+    >
+      <Popup>
+        <span>{property.address.streetAddress},</span> <br />
+        <span>{property.address.city}, {property.address.state} </span>
+        <span>{property.address.zipcode}</span>
+      </Popup>
+    </Marker>
+  ));
 
   return(
     <div>
@@ -28,17 +30,12 @@ function MapLeaflet({mapData, properties, defaultTab}) {
         zoom={zoom}
         maxBounds={[[38.6, -74.2], [40.6, -76.2]]}
         >
-        <Marker position={[39.9, -75.16]} >
-          <Popup>
-            Address 
-          </Popup>  
-        </Marker>
         <TileLayer 
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
           // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
         />
-
+        {renderMarkers}
       </MapContainer>
     </div>
   );
