@@ -7,7 +7,6 @@ function MapLeaflet({mapData, properties, defaultTab}) {
   /* State from App */
   let { zoom } = mapData;
 
-  console.log(defaultTab)
   const renderMarkers = properties.map((property) => (
     <Marker
       key={property.address.streetAddress}
@@ -47,5 +46,6 @@ MapLeaflet.defaultProps = {
     lat: 39.9,
     lng: -75.16,
     zoom: 10  
-  }
+  },
+  defaultTab: false
 }
