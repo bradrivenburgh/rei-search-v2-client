@@ -1,11 +1,23 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvent } from 'react-leaflet';
 import config from '../config';
 import './MapLeaflet.css';
 
-function MapLeaflet({mapData, properties}) {
+function MapLeaflet({mapState: { mapData, setMapData }, properties}) {
   /* State from App */
-  let { zoom } = mapData;
+  let { zoom, center } = mapData;
+
+  function ReturnCenter() {
+    const captureMap = useMapEvent('moveend', () => {
+      setMapData({
+        ...mapData,
+        zoom: captureMap.getZoom(),
+        center: captureMap.getCenter()
+      })
+    });
+    return null;
+  }
+
 
   const renderMarkers = properties.map((property) => (
     <Marker
@@ -23,7 +35,7 @@ function MapLeaflet({mapData, properties}) {
   return(
     <div>
       <MapContainer
-        center={[39.9, -75.16]}
+        center={center}
         minZoom={9}
         zoom={zoom}
         maxBounds={[[38.6, -74.2], [40.6, -76.2]]}
@@ -34,6 +46,7 @@ function MapLeaflet({mapData, properties}) {
           url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
         />
         {renderMarkers}
+        <ReturnCenter />
       </MapContainer>
     </div>
   );
@@ -42,9 +55,4 @@ function MapLeaflet({mapData, properties}) {
 export default MapLeaflet;
 
 MapLeaflet.defaultProps = {
-  mapData: {
-    lat: 39.9,
-    lng: -75.16,
-    zoom: 10  
-  },
 }

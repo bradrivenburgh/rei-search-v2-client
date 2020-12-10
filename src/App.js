@@ -49,6 +49,7 @@ function App() {
     lat: 39.9,
     lng: -75.16,
     zoom: 10,
+    center: [39.9, -75.16]
   });
 
   /* Handlers */
