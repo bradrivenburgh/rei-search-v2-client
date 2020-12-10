@@ -55,4 +55,6 @@ function MapLeaflet({mapState: { mapData, setMapData }, properties}) {
 export default MapLeaflet;
 
 MapLeaflet.defaultProps = {
-}
+  mapState: { mapData: {}, setMapData: () => {} },
+  properties: [],
+};
