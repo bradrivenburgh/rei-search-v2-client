@@ -1,13 +1,25 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvent } from 'react-leaflet';
+import React, {useEffect} from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvent, useMap } from 'react-leaflet';
 import config from '../config';
 import './MapLeaflet.css';
 
-function MapLeaflet({mapState: { mapData, setMapData }, properties}) {
+function MapLeaflet({mapState: { mapData, setMapData }, properties, defaultTab}) {
   /* State from App */
   let { zoom, center } = mapData;
 
-  function ReturnCenter() {
+  useEffect(() => {
+    if (defaultTab) {
+      setMapData({
+        ...mapData,
+        zoom: 10,
+        center: [39.9, -75.16],
+      });
+    }
+  }, [defaultTab, mapData, setMapData])
+
+
+
+  const ReturnCenter = () => {
     const captureMap = useMapEvent('moveend', () => {
       setMapData({
         ...mapData,
@@ -15,10 +27,16 @@ function MapLeaflet({mapState: { mapData, setMapData }, properties}) {
         center: captureMap.getCenter()
       })
     });
+
+    let map = useMap();
+    useEffect(() => {
+      if (defaultTab) {
+        map.flyTo([39.9, -75.16], 10)
+      }
+    })
     return null;
   }
-
-
+    
   const renderMarkers = properties.map((property) => (
     <Marker
       key={property.address.streetAddress}
