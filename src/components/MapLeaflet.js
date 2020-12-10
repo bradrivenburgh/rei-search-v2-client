@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import config from '../config';
