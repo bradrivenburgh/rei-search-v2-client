@@ -7,10 +7,10 @@ function StatsTabs({ id }) {
     searchResults: {
       statistics: { economic = [], demographic = [] },
     },
-  } = useContext(Context);  
+  } = useContext(Context);
 
   /**
-   * Make keys into column headers; remove 
+   * Make keys into column headers; remove
    * properties that should not be headers
    * @param {array} data;
    */
@@ -24,13 +24,12 @@ function StatsTabs({ id }) {
 
   /**
    * Return string or list depending on value
-   * @param {string || array} value 
+   * @param {string || array} value
    */
   const renderValue = (value) => {
-    if (typeof value === 'object') {
-      let list = value.map((item, index) => 
-        <li key={index}>{item}</li>);
-      return <ul className="stats__table-list">{list}</ul>
+    if (typeof value === "object") {
+      let list = value.map((item, index) => <li key={index}>{item}</li>);
+      return <ul className='stats__table-list'>{list}</ul>;
     } else {
       return value;
     }
@@ -38,7 +37,7 @@ function StatsTabs({ id }) {
 
   /**
    * Create list items containing stat tables
-   * @param {array} data 
+   * @param {array} data
    */
   const renderTable = (data) => {
     return data.map((entry) => {
@@ -70,16 +69,29 @@ function StatsTabs({ id }) {
 
   return (
     <>
-      {id === 'economics'
-        ? <>
-            <h3>Economics</h3>
-            <ul className="stats">{renderTable(economic)}</ul>
-          </>
-        : <>
-            <h3>Demographics</h3>
-            <ul className="stats">{renderTable(demographic)}</ul>
-          </>
-      }
+      {id === "economics" ? (
+        <>
+          {economic.length ? (
+            <>
+              <h3>Economics</h3>
+              <ul className='stats'>{renderTable(economic)}</ul>
+            </>
+          ) : (
+            <p>Please conduct a search to retrieve economic statistics.</p>
+          )}
+        </>
+      ) : (
+        <>
+          {demographic.length ? (
+            <>
+              <h3>Demographics</h3>
+              <ul className='stats'>{renderTable(demographic)}</ul>
+            </>
+          ) : (
+            <p>Please conduct a search to retrieve demographic statistics.</p>
+          )}
+        </>
+      )}
     </>
   );
 }

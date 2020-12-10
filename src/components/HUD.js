@@ -157,7 +157,14 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
       // Set active tab
       setActiveTab(changeActiveValue(selectedTab));
     },
-    [activeTab, defaultTab, pressCount, setActiveTab, handleHUDHeight]
+    [
+      pressCount,
+      defaultTab,
+      setActiveTab,
+      handleHUDHeight,
+      activeTab.demogTab,
+      activeTab.propsTab,
+    ]
   );
 
   /**

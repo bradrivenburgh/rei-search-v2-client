@@ -16,8 +16,8 @@ function App() {
   /* State */
 
   /* Data from API */
-  let [statistics, setStatistics] = useState(fakeStats);
-  let [properties, setProperties] = useState(fakeProps);
+  let [statistics, setStatistics] = useState({});
+  let [properties, setProperties] = useState([]);
   /* Properties State */
   let [savedProperties, setSavedProperties] = useState(savedProps);
   let [currentProperty, setCurrentProperty] = useState({
@@ -52,6 +52,11 @@ function App() {
   });
 
   /* Handlers */
+
+  const handleAPICall = () => {
+    setStatistics(fakeStats)
+    setProperties(fakeProps)
+  }
 
   /**
    * Adds or removes a property from the savedProperties array
@@ -128,6 +133,7 @@ function App() {
     defaultTab,
     setDefaultTab,
     handleAddRemoveProperty,
+    handleAPICall,
   };
 
   return (

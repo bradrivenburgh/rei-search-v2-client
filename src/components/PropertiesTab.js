@@ -95,8 +95,14 @@ function PropertiesTab() {
 
   return (
     <>
-      <h3>Properties</h3>
-      {renderProperties(properties)}
+      {properties.length ? (
+        <>
+          <h3>Properties</h3>
+          {renderProperties(properties)}
+        </>
+      ) : (
+        <p>Please conduct a search to retrieve economic statistics.</p>
+      )}
     </>
   );
 }

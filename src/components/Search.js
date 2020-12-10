@@ -60,7 +60,9 @@ class Search extends React.Component {
  
   onSubmit = (e) => {
     e.preventDefault();
-    //TEMPORARY
+    this.context.handleAPICall();
+    // Used to set defaultTab to true for an instant;
+    // triggers HUD event
     this.context.setDefaultTab(true)
     setTimeout(() => {
       this.context.setDefaultTab(false)
