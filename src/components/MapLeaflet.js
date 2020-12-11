@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import {
   MapContainer,
+  LayersControl,
+  LayerGroup,
   TileLayer,
   Marker,
   Popup,
@@ -50,7 +52,7 @@ function MapLeaflet({
   /* State from App */
   let { zoom, center, msaShape, tractShape, } = mapData;
 
-  const ReturnCenter = () => {
+  const CaptureMapState = () => {
     const captureMap = useMapEvent("moveend", () => {
       setMapData({
         ...mapData,
@@ -92,16 +94,26 @@ function MapLeaflet({
           [38.0, -73.8],
           [41.0, -76.6],
         ]}>
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-          // url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
-        />
-        {renderMarkers}
-        {Object.keys(msaShape).length && <GeoJSON data={msaShape} style={{color: 'red'}} />} 
-        {Object.keys(tractShape).length && <GeoJSON data={tractShape} style={{color: 'blue'}}/>}
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+            url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
+          />
 
-        <ReturnCenter />
+          <LayersControl position="topright">
+            <LayersControl.Overlay checked name="MSA shape">
+              {Object.keys(msaShape).length && <GeoJSON data={msaShape} style={{color: 'red'}} />} 
+            </LayersControl.Overlay>
+            <LayersControl.Overlay checked name="CT shape">
+              {Object.keys(tractShape).length && <GeoJSON data={tractShape} style={{color: 'blue'}}/>}
+            </LayersControl.Overlay>
+            <LayersControl.Overlay checked name="Property markers">
+              <LayerGroup>
+                {renderMarkers}
+              </LayerGroup>
+            </LayersControl.Overlay>
+          </LayersControl>
+          
+          <CaptureMapState />
       </MapContainer>
     </div>
   );
