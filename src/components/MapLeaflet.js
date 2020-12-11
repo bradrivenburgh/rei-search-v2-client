@@ -167,7 +167,7 @@ function MapLeaflet({
           <LayersControl.Overlay
             checked={mapData.displayLayer["Property markers"]}
             name='Property markers'>
-            <LayerGroup>{renderMarkers}</LayerGroup>
+            {properties.length && <LayerGroup>{renderMarkers}</LayerGroup>}
           </LayersControl.Overlay>
         </LayersControl>
 
