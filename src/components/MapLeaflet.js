@@ -58,7 +58,7 @@ function MapLeaflet({
         center: captureMap.getCenter(),
       });
     });
-    console.log(center)
+
     let map = useMap();
     useEffect(() => {
       if (defaultTab) {
@@ -110,7 +110,8 @@ function MapLeaflet({
 export default MapLeaflet;
 
 MapLeaflet.defaultProps = {
-  mapState: { mapData: {}, setMapData: () => {} },
-  properties: [],
-  defaultTab: false,
+  mapState: { mapData: {}, 
+    setMapData: () => {} },
+    properties: [],
+    defaultTab: false,
 };
