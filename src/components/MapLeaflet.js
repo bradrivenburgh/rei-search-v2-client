@@ -8,37 +8,36 @@ import {
   useMapEvent,
   useMap,
 } from "react-leaflet";
-import census from 'citysdk';
+import census from "citysdk";
 import config from "../config";
 import "./MapLeaflet.css";
 
-  // const addMSAToMap = (lng, lat) => {
-  //   const response = census(
-  //     {
-  //       vintage: 2017,
-  //       geoHierarchy: {
-  //         "metropolitan statistical area/micropolitan statistical area": {
-  //           lat: lat,
-  //           lng: lng,
-  //         },
-  //       },
-  //       geoResolution: "5m",
-  //       sourcePath: ["cbp"],
-  //       values: ["EMP"],
-  //       statsKey: config.CENSUS_API_KEY,
-  //     },
-  //     (error, response) => {
-  //       if (error) {
-  //         console.log(error);
-  //         return error;
-  //       }
-  //       return response;
-  //     }
-  //   );
-  //   console.log(response)
-  //   return response;
-  // }
-
+// const addMSAToMap = (lng, lat) => {
+//   const response = census(
+//     {
+//       vintage: 2017,
+//       geoHierarchy: {
+//         "metropolitan statistical area/micropolitan statistical area": {
+//           lat: lat,
+//           lng: lng,
+//         },
+//       },
+//       geoResolution: "5m",
+//       sourcePath: ["cbp"],
+//       values: ["EMP"],
+//       statsKey: config.CENSUS_API_KEY,
+//     },
+//     (error, response) => {
+//       if (error) {
+//         console.log(error);
+//         return error;
+//       }
+//       return response;
+//     }
+//   );
+//   console.log(response)
+//   return response;
+// }
 
 function MapLeaflet({
   mapState: { mapData, setMapData },

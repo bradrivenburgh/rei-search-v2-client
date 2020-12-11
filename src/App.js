@@ -5,12 +5,11 @@ import Menu from "./components/Menu";
 import MapLeaflet from "./components/MapLeaflet";
 import HUD from "./components/HUD";
 import SavedProps from "./components/SavedProps";
-import CreateAccount from './components/CreateAccount';
-import SignIn from './components/SignIn';
+import CreateAccount from "./components/CreateAccount";
+import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import { Context } from "./Context";
 import { fakeStats, fakeProps, savedProps, phillyMSAGeoJson } from "./mockData";
-
 
 function App() {
   /* State */
@@ -50,19 +49,19 @@ function App() {
     lng: -75.16,
     zoom: 9,
     center: [39.9, -75.16],
-    msaShape: {}
+    msaShape: {},
   });
 
   /* Handlers */
 
   const handleAPICall = () => {
-    setStatistics(fakeStats)
-    setProperties(fakeProps)
+    setStatistics(fakeStats);
+    setProperties(fakeProps);
     setMapData({
       ...mapData,
-      msaShape: phillyMSAGeoJson
-    })
-  }
+      msaShape: phillyMSAGeoJson,
+    });
+  };
 
   /**
    * Adds or removes a property from the savedProperties array
