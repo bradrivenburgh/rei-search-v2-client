@@ -21,7 +21,7 @@ import "./MapLeaflet.css";
 //       vintage: 2017,
 //       geoHierarchy: {
 //         "state": "42",
-//         "tract": {
+//         "place": {
 //           lat: lat,
 //           lng: lng,
 //         },
@@ -50,7 +50,16 @@ function MapLeaflet({
   defaultTab,
 }) {
   /* State from App */
-  let { lat, lng, zoom, center, msaShape, tractShape, displayLayer } = mapData;
+  let {
+    lat,
+    lng,
+    zoom,
+    center,
+    msaShape,
+    placeShape,
+    tractShape,
+    displayLayer,
+  } = mapData;
 
   /**
    * Component that will capture events from the map and save the 
@@ -132,6 +141,9 @@ function MapLeaflet({
           <LayersControl position="topright">
             <LayersControl.Overlay checked={mapData.displayLayer["MSA shape"]} name="MSA shape">
               {Object.keys(msaShape).length && <GeoJSON data={msaShape} style={{color: 'red'}} />} 
+            </LayersControl.Overlay>
+            <LayersControl.Overlay checked={mapData.displayLayer["Place shape"]} name="Place shape">
+              {Object.keys(placeShape).length && <GeoJSON data={placeShape} style={{color: 'green'}} />} 
             </LayersControl.Overlay>
             <LayersControl.Overlay checked={mapData.displayLayer["CT shape"]} name="CT shape">
               {Object.keys(tractShape).length && <GeoJSON data={tractShape} style={{color: 'blue'}}/>}

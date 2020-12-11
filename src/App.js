@@ -9,7 +9,14 @@ import CreateAccount from "./components/CreateAccount";
 import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import { Context } from "./Context";
-import { fakeStats, fakeProps, savedProps, phillyMSAGeoJson, phillyTractGeoJson } from "./mockData";
+import {
+  fakeStats,
+  fakeProps,
+  savedProps,
+  phillyMSAGeoJson,
+  philadelphiaPlaceGeoJson,
+  phillyTractGeoJson,
+} from "./mockData";
 
 function App() {
   /* State */
@@ -51,9 +58,11 @@ function App() {
     center: [39.9, -75.16],
     msaShape: {},
     tractShape: {},
+    placeShape: {},
     displayLayer: {
       "Property markers": true,
       "MSA shape": true,
+      "Place shape": true,
       "CT shape": true
     }
   });
@@ -66,7 +75,8 @@ function App() {
     setMapData({
       ...mapData,
       msaShape: phillyMSAGeoJson,
-      tractShape: phillyTractGeoJson
+      placeShape: philadelphiaPlaceGeoJson,
+      tractShape: phillyTractGeoJson,
     });
   };
 
