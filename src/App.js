@@ -50,7 +50,12 @@ function App() {
     zoom: 9,
     center: [39.9, -75.16],
     msaShape: {},
-    tractShape: {}
+    tractShape: {},
+    displayLayer: {
+      "Property markers": true,
+      "MSA shape": true,
+      "CT shape": true
+    }
   });
 
   /* Handlers */

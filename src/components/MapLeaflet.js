@@ -50,14 +50,42 @@ function MapLeaflet({
   defaultTab,
 }) {
   /* State from App */
-  let { zoom, center, msaShape, tractShape, } = mapData;
+  let { zoom, center, msaShape, tractShape, displayLayer } = mapData;
 
+  /**
+   * Component that will capture events from the map and save the 
+   * state of the zoom, center, and checked values for layers for
+   * when MapLeaflet remounts.
+   */
   const CaptureMapState = () => {
-    const captureMap = useMapEvent("moveend", () => {
+    // Captures map zoom and center and saves them to state
+    const captureZoomCenter = useMapEvent("moveend", () => {
       setMapData({
         ...mapData,
-        zoom: captureMap.getZoom(),
-        center: captureMap.getCenter(),
+        zoom: captureZoomCenter.getZoom(),
+        center: captureZoomCenter.getCenter(),
+      });
+    });
+
+    // Captures when overlays are removed via the layers control
+    useMapEvent("overlayremove", (e) => {
+      setMapData({
+        ...mapData,
+        displayLayer: {
+          ...displayLayer,
+          [e.name]: false,
+        },
+      });
+    });
+
+    // Captures when overlays are added via the layers control
+    useMapEvent("overlayadd", (e) => {
+      setMapData({
+        ...mapData,
+        displayLayer: {
+          ...displayLayer,
+          [e.name]: true,
+        },
       });
     });
 
@@ -100,13 +128,13 @@ function MapLeaflet({
           />
 
           <LayersControl position="topright">
-            <LayersControl.Overlay checked name="MSA shape">
+            <LayersControl.Overlay checked={mapData.displayLayer["MSA shape"]} name="MSA shape">
               {Object.keys(msaShape).length && <GeoJSON data={msaShape} style={{color: 'red'}} />} 
             </LayersControl.Overlay>
-            <LayersControl.Overlay checked name="CT shape">
+            <LayersControl.Overlay checked={mapData.displayLayer["CT shape"]} name="CT shape">
               {Object.keys(tractShape).length && <GeoJSON data={tractShape} style={{color: 'blue'}}/>}
             </LayersControl.Overlay>
-            <LayersControl.Overlay checked name="Property markers">
+            <LayersControl.Overlay checked={mapData.displayLayer["Property markers"]} name="Property markers">
               <LayerGroup>
                 {renderMarkers}
               </LayerGroup>
