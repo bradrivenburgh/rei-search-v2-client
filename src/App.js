@@ -9,7 +9,7 @@ import CreateAccount from "./components/CreateAccount";
 import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import { Context } from "./Context";
-import { fakeStats, fakeProps, savedProps, phillyMSAGeoJson } from "./mockData";
+import { fakeStats, fakeProps, savedProps, phillyMSAGeoJson, phillyTractGeoJson } from "./mockData";
 
 function App() {
   /* State */
@@ -50,6 +50,7 @@ function App() {
     zoom: 9,
     center: [39.9, -75.16],
     msaShape: {},
+    tractShape: {}
   });
 
   /* Handlers */
@@ -60,6 +61,7 @@ function App() {
     setMapData({
       ...mapData,
       msaShape: phillyMSAGeoJson,
+      tractShape: phillyTractGeoJson
     });
   };
 

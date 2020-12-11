@@ -8,23 +8,25 @@ import {
   useMapEvent,
   useMap,
 } from "react-leaflet";
-import census from "citysdk";
+// import census from "citysdk";
 import config from "../config";
 import "./MapLeaflet.css";
 
-// const addMSAToMap = (lng, lat) => {
-//   const response = census(
+// const addMSAToMap = (lng = -75.16, lat = 39.9) => {
+//   let data;
+//   census(
 //     {
 //       vintage: 2017,
 //       geoHierarchy: {
-//         "metropolitan statistical area/micropolitan statistical area": {
+//         "state": "42",
+//         "tract": {
 //           lat: lat,
 //           lng: lng,
 //         },
 //       },
-//       geoResolution: "5m",
-//       sourcePath: ["cbp"],
-//       values: ["EMP"],
+//       geoResolution: "500k",
+//       sourcePath: ["acs", "acs5"],
+//       values: ["B00001_001E"],
 //       statsKey: config.CENSUS_API_KEY,
 //     },
 //     (error, response) => {
@@ -32,12 +34,13 @@ import "./MapLeaflet.css";
 //         console.log(error);
 //         return error;
 //       }
+//       data = response;
 //       return response;
 //     }
 //   );
-//   console.log(response)
-//   return response;
+//   return data;
 // }
+// console.log(addMSAToMap())
 
 function MapLeaflet({
   mapState: { mapData, setMapData },
@@ -45,7 +48,7 @@ function MapLeaflet({
   defaultTab,
 }) {
   /* State from App */
-  let { zoom, center, msaShape, lat, lng } = mapData;
+  let { zoom, center, msaShape, tractShape, } = mapData;
 
   const ReturnCenter = () => {
     const captureMap = useMapEvent("moveend", () => {
@@ -55,11 +58,11 @@ function MapLeaflet({
         center: captureMap.getCenter(),
       });
     });
-
+    console.log(center)
     let map = useMap();
     useEffect(() => {
       if (defaultTab) {
-        map.flyTo([39.9, -75.16], 9);
+        map.flyTo([39.971867614829016, -75.11917011259358], 13);
       }
     });
     return null;
@@ -95,7 +98,9 @@ function MapLeaflet({
           url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
         />
         {renderMarkers}
-        {Object.keys(msaShape).length && <GeoJSON data={msaShape} />}
+        {Object.keys(msaShape).length && <GeoJSON data={msaShape} style={{color: 'red'}} />} 
+        {Object.keys(tractShape).length && <GeoJSON data={tractShape} style={{color: 'blue'}}/>}
+
         <ReturnCenter />
       </MapContainer>
     </div>
