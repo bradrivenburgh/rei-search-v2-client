@@ -62,7 +62,7 @@ function MapLeaflet({
   } = mapData;
 
   /**
-   * Component that will capture events from the map and save the 
+   * Component that will capture events from the map and save the
    * state of the zoom, center, and checked values for layers for
    * when MapLeaflet remounts.
    */
@@ -98,6 +98,7 @@ function MapLeaflet({
       });
     });
 
+    // Zoom and pan to specified address at zoom level 13
     let map = useMap();
     useEffect(() => {
       if (defaultTab) {
@@ -107,6 +108,9 @@ function MapLeaflet({
     return null;
   };
 
+  /**
+   * Renders property markers with address popups
+   */
   const renderMarkers = properties.map((property) => (
     <Marker
       key={property.address.streetAddress}
@@ -131,31 +135,43 @@ function MapLeaflet({
           [38.0, -73.8],
           [41.0, -76.6],
         ]}>
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-            url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
-            zoomOffset={-1}
-            tileSize={512}
-          />
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+          url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
+          zoomOffset={-1}
+          tileSize={512}
+        />
 
-          <LayersControl position="topright">
-            <LayersControl.Overlay checked={mapData.displayLayer["MSA shape"]} name="MSA shape">
-              {Object.keys(msaShape).length && <GeoJSON data={msaShape} style={{color: 'red'}} />} 
-            </LayersControl.Overlay>
-            <LayersControl.Overlay checked={mapData.displayLayer["Place shape"]} name="Place shape">
-              {Object.keys(placeShape).length && <GeoJSON data={placeShape} style={{color: 'green'}} />} 
-            </LayersControl.Overlay>
-            <LayersControl.Overlay checked={mapData.displayLayer["CT shape"]} name="CT shape">
-              {Object.keys(tractShape).length && <GeoJSON data={tractShape} style={{color: 'blue'}}/>}
-            </LayersControl.Overlay>
-            <LayersControl.Overlay checked={mapData.displayLayer["Property markers"]} name="Property markers">
-              <LayerGroup>
-                {renderMarkers}
-              </LayerGroup>
-            </LayersControl.Overlay>
-          </LayersControl>
-          
-          <CaptureMapState />
+        <LayersControl position='topright'>
+          <LayersControl.Overlay
+            checked={mapData.displayLayer["MSA shape"]}
+            name='MSA shape'>
+            {Object.keys(msaShape).length && (
+              <GeoJSON data={msaShape} style={{ color: "red" }} />
+            )}
+          </LayersControl.Overlay>
+          <LayersControl.Overlay
+            checked={mapData.displayLayer["Place shape"]}
+            name='Place shape'>
+            {Object.keys(placeShape).length && (
+              <GeoJSON data={placeShape} style={{ color: "green" }} />
+            )}
+          </LayersControl.Overlay>
+          <LayersControl.Overlay
+            checked={mapData.displayLayer["CT shape"]}
+            name='CT shape'>
+            {Object.keys(tractShape).length && (
+              <GeoJSON data={tractShape} style={{ color: "blue" }} />
+            )}
+          </LayersControl.Overlay>
+          <LayersControl.Overlay
+            checked={mapData.displayLayer["Property markers"]}
+            name='Property markers'>
+            <LayerGroup>{renderMarkers}</LayerGroup>
+          </LayersControl.Overlay>
+        </LayersControl>
+
+        <CaptureMapState />
       </MapContainer>
     </div>
   );
@@ -164,8 +180,7 @@ function MapLeaflet({
 export default MapLeaflet;
 
 MapLeaflet.defaultProps = {
-  mapState: { mapData: {}, 
-    setMapData: () => {} },
-    properties: [],
-    defaultTab: false,
+  mapState: { mapData: {}, setMapData: () => {} },
+  properties: [],
+  defaultTab: false,
 };

@@ -10,10 +10,12 @@ const mapState = {
     zoom: 9,
     center: [39.9, -75.16],
     msaShape: {},
+    placeShape: {},
     tractShape: {},
     displayLayer: {
       "Property markers": true,
       "MSA shape": true,
+      "Place shape": true,
       "CT shape": true
     } 
   },
