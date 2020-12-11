@@ -125,6 +125,8 @@ function MapLeaflet({
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
             url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=${config.MAPBOX_API_KEY}`}
+            zoomOffset={-1}
+            tileSize={512}
           />
 
           <LayersControl position="topright">
