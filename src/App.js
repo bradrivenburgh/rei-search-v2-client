@@ -9,7 +9,7 @@ import CreateAccount from './components/CreateAccount';
 import SignIn from './components/SignIn';
 import PropertyProfile from "./components/PropertyProfile";
 import { Context } from "./Context";
-import { fakeStats, fakeProps, savedProps } from "./mockData";
+import { fakeStats, fakeProps, savedProps, phillyMSAGeoJson } from "./mockData";
 
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
   let [mapData, setMapData] = useState({
     lat: 39.9,
     lng: -75.16,
-    zoom: 10,
+    zoom: 9,
     center: [39.9, -75.16],
     msaShape: {}
   });
@@ -58,6 +58,10 @@ function App() {
   const handleAPICall = () => {
     setStatistics(fakeStats)
     setProperties(fakeProps)
+    setMapData({
+      ...mapData,
+      msaShape: phillyMSAGeoJson
+    })
   }
 
   /**
