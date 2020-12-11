@@ -50,7 +50,7 @@ function MapLeaflet({
   defaultTab,
 }) {
   /* State from App */
-  let { zoom, center, msaShape, tractShape, displayLayer } = mapData;
+  let { lat, lng, zoom, center, msaShape, tractShape, displayLayer } = mapData;
 
   /**
    * Component that will capture events from the map and save the 
@@ -92,7 +92,7 @@ function MapLeaflet({
     let map = useMap();
     useEffect(() => {
       if (defaultTab) {
-        map.flyTo([39.971867614829016, -75.11917011259358], 13);
+        map.flyTo([lat, lng], 13);
       }
     });
     return null;

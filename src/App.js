@@ -45,8 +45,8 @@ function App() {
   let mainViewNode = useRef(null);
   /* Map State */
   let [mapData, setMapData] = useState({
-    lat: 39.9,
-    lng: -75.16,
+    lat: 39.971867614829016,
+    lng: -75.11917011259358,
     zoom: 9,
     center: [39.9, -75.16],
     msaShape: {},
