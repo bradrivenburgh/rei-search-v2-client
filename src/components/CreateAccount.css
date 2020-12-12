@@ -1,10 +1,14 @@
-
 /* Create Account */
 .create-account {
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+}
+
+.create-account h1 {
+  text-align: center;
+  margin: 2em 0 3em 0;
 }
 
 .create-account form {

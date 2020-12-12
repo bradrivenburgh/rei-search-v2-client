@@ -12,7 +12,7 @@ function Menu({ menuOffset: { menuOffset, setMenuOffset } }) {
           ☰
         </button>
         <a href='index.html'>About</a>
-        <a href='manage-account.html'>My account</a>
+        <Link to='/account'>My account</Link>
         <Link to='/saved-properties'>Saved properties</Link>
 
         <hr />

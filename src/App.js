@@ -5,6 +5,7 @@ import Menu from "./components/Menu";
 import MapLeaflet from "./components/MapLeaflet";
 import HUD from "./components/HUD";
 import SavedProps from "./components/SavedProps";
+import Account from './components/Account';
 import CreateAccount from "./components/CreateAccount";
 import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
@@ -167,6 +168,9 @@ function App() {
           </Route>
           <Route path='/create-account'>
             <CreateAccount />
+          </Route>
+          <Route path='/account'>
+            <Account />
           </Route>
           <Route path='/property-profile'>
             <PropertyProfile

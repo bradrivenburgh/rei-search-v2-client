@@ -1,0 +1,56 @@
+.account {
+  text-align: left;
+}
+
+.account {
+  margin: 0 1em;
+}
+
+@media only screen and (min-width: 768px) {
+  .account {  
+    max-width: 70%;
+    margin: 0 auto;
+  }
+}
+
+.account h1 {
+  text-align: center;
+  margin: 2em 0 3em 0;
+}
+
+.account h2, h3, h4 {
+  padding: 0;
+  margin: 0;
+}
+
+.account p {
+  padding: 0;
+  margin: .2em 1em 0 0;
+}
+
+.account div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1em;
+}
+
+.account p {
+  padding: 0;
+  margin-top: .2em;
+  margin-right: 1em;
+}
+
+.account div button {
+  width: 8em;
+  padding: .5em .2em
+}
+
+/* Saved Properties */
+.saved-properties {
+  padding-top: .5em;
+}
+
+.saved-properties p, li {
+  padding-top: .5em;
+}
