@@ -9,6 +9,7 @@ import Account from './components/Account';
 import CreateAccount from "./components/CreateAccount";
 import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
+import AccountChild from './components/AccountChild';
 import { Context } from "./Context";
 import {
   fakeStats,
@@ -168,6 +169,9 @@ function App() {
           </Route>
           <Route path='/create-account'>
             <CreateAccount />
+          </Route>
+          <Route path='/account/:component'>
+            <AccountChild />
           </Route>
           <Route path='/account'>
             <Account />

@@ -101,7 +101,7 @@ function PropertiesTab() {
           {renderProperties(properties)}
         </>
       ) : (
-        <p>Please conduct a search to retrieve economic statistics.</p>
+        <p>Please conduct a search to retrieve a list of properties.</p>
       )}
     </>
   );
