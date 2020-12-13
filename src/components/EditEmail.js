@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import './SignIn.css';
+import './EditEmail.css';
 
-function SignIn() {
+function EditEmail() {
   let history = useHistory();
 
   const handleSubmit = (e) => {
@@ -11,22 +11,27 @@ function SignIn() {
   }
 
   return (
-    <section className='sign-in'>
+    <section className='edit-email'>
       <nav className='closing-nav'>
         <button onClick={() => history.goBack()}>X</button>
       </nav>
       <header>
-        <h1>Sign-in</h1>
+        <h1>Edit email</h1>
       </header>
+
+      <p>
+        Your current email is <br />
+        <strong>your.email@gmail.com</strong>
+      </p>
 
       <form action='#' onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor='email'>Email:</label>
         <input type='text' id='email' name='email' />
 
-        <label htmlFor='password'>Password:</label>
-        <input type='text' id='password' name='password' />
+        <label htmlFor='confirm-email'>Confirm new email:</label>
+        <input type='text' id='confirm-email' name='confirm-email' />
 
-        <div className='sign-in__buttons'>
+        <div className='edit-email__buttons'>
           <button type="button" onClick={() => history.push('/')}>
               Cancel
           </button>
@@ -39,4 +44,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default EditEmail;

@@ -1,43 +1,46 @@
-.sign-in {
+.edit-email {
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 }
 
-.sign-in h1 {
+.edit-email h1 {
   text-align: center;
   margin: 2em 0 3em 0;
 }
 
+.edit-email p {
+  text-align: center;
+}
 
-.sign-in form {
+.edit-email form {
   display: inline-flex;
   flex-direction: column;
 }
 
-.sign-in input {
+.edit-email input {
   width: 150px;
   padding-top: .5em;
   margin-top: .25em;
 }
 
-.sign-in label {
+.edit-email label {
   margin-top: .5em;
 }
 
-.sign-in__buttons {
+.edit-email__buttons {
   display: flex;
 }
 
-.sign-in__buttons button {
+.edit-email__buttons button {
   margin-top: 2em;
   margin-right: 1em;
 }
 
 
 @media only screen and (min-device-width: 768px) {
-  .sign-in {  
+  .edit-email {  
     max-width: 70%;
     margin: 0 auto;
   }
