@@ -7,7 +7,7 @@ function EditEmail() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push('/')
+    history.goBack();
   }
 
   return (
@@ -32,7 +32,7 @@ function EditEmail() {
         <input type='text' id='confirm-email' name='confirm-email' />
 
         <div className='edit-email__buttons'>
-          <button type="button" onClick={() => history.push('/')}>
+          <button type="button" onClick={() => history.goBack()}>
               Cancel
           </button>
           <button>

@@ -4,6 +4,6 @@ import EditEmail from './EditEmail';
 
 describe('EditEmail', () => {
   test('renders to the DOM', () => {
-    render(<BrowserRouter><EditEmail /></BrowserRouter>)
-  })
+    render(<BrowserRouter><EditEmail /></BrowserRouter>);
+  });
 })

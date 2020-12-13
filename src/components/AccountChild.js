@@ -1,5 +1,6 @@
 import React from 'react';
 import EditEmail from './EditEmail';
+import ChangePassword from './ChangePassword';
 import { useParams } from "react-router-dom";
 
 function AccountChild() {
@@ -7,7 +8,7 @@ function AccountChild() {
 
   let componentDictionary = {
     'edit-email': <EditEmail />,
-    'change-password': 'Change your password',
+    'change-password': <ChangePassword />,
     'export-data': 'Export your data',
     'delete-account': 'Delete your account',
   }
