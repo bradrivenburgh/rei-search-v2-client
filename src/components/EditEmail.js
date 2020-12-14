@@ -20,6 +20,14 @@ function EditEmail() {
     history.goBack();
   };
 
+  const allFormValuesPresent = () => {
+    const areEmptyInputs = Object.values(formData).some(
+      (value) => value.trim().length === 0
+    );
+    return areEmptyInputs;
+  };
+
+
   return (
     <section className='edit-email'>
       <nav className='closing-nav'>
@@ -57,7 +65,11 @@ function EditEmail() {
           <button type='button' onClick={() => history.goBack()}>
             Cancel
           </button>
-          <button>Submit</button>
+          <button
+            disabled={allFormValuesPresent()}
+            aria-disabled={allFormValuesPresent()}>
+            Submit
+          </button>
         </div>
       </form>
     </section>

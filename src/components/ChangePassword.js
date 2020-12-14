@@ -21,15 +21,12 @@ function ChangePassword() {
     history.goBack();
   }
 
-  const passwordPresent = () => {
-    const newPassword = formData.newPassword.trim();
-    const confirmPassword = formData.confirmPassword.trim();
-
-    if (newPassword.length === 0 || confirmPassword.length === 0) {
-      return true;
-    } 
-    return false;
-  }
+  const allFormValuesPresent = () => {
+    const areEmptyInputs = Object.values(formData).some(
+      (value) => value.trim().length === 0
+    );
+    return areEmptyInputs;
+  };
 
   return (
     <section className='change-password'>
@@ -72,7 +69,11 @@ function ChangePassword() {
           <button type='button' onClick={() => history.goBack()}>
             Cancel
           </button>
-          <button disabled={ passwordPresent() }>Submit</button>
+          <button
+            disabled={allFormValuesPresent()}
+            aria-disabled={allFormValuesPresent()}>
+            Submit
+          </button>
         </div>
       </form>
     </section>

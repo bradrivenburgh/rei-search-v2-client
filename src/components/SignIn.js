@@ -20,6 +20,13 @@ function SignIn() {
     history.push("/");
   };
 
+  const allFormValuesPresent = () => {
+    const areEmptyInputs = Object.values(formData).some(
+      (value) => value.trim().length === 0
+    );
+    return areEmptyInputs;
+  };
+
   return (
     <section className='sign-in'>
       <nav className='closing-nav'>
@@ -52,7 +59,11 @@ function SignIn() {
           <button type='button' onClick={() => history.push("/")}>
             Cancel
           </button>
-          <button>Submit</button>
+          <button
+            disabled={allFormValuesPresent()}
+            aria-disabled={allFormValuesPresent()}>
+            Submit
+          </button>
         </div>
       </form>
     </section>

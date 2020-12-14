@@ -23,6 +23,13 @@ function CreateAccount() {
     history.push("/");
   };
 
+  const allFormValuesPresent = () => {
+    const areEmptyInputs = Object.values(formData).some(
+      (value) => value.trim().length === 0
+    );
+    return areEmptyInputs;
+  };
+
   return (
     <section className='create-account'>
       <nav className='closing-nav'>
@@ -82,7 +89,11 @@ function CreateAccount() {
           <button type='button' onClick={() => history.push("/")}>
             Cancel
           </button>
-          <button>Submit</button>
+          <button
+            disabled={allFormValuesPresent()}
+            aria-disabled={allFormValuesPresent()}>
+            Submit
+          </button>
         </div>
       </form>
     </section>
