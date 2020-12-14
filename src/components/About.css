@@ -1,0 +1,49 @@
+.about {
+  margin: 0 1em;
+}
+
+.about header {
+  text-align: center;
+  margin: 2em 0 3em 0;
+}
+
+.about header img {
+  display: block;
+  margin: 0 auto;
+}
+
+.about h1, h2, h3 {
+  text-align: center;
+}
+
+.about, ul {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0px;
+  text-align: left;
+}
+
+.about__flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about img {
+  display: block;
+  margin: 1em;
+}
+
+@media screen and (max-width: 767px) {
+  .about img {
+    width: 150px;
+   }  
+}
+
+@media only screen and (min-width: 768px) {
+  .about {  
+    max-width: 60%;
+    margin: 0 auto;
+  }
+}

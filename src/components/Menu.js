@@ -11,7 +11,7 @@ function Menu({ menuOffset: { menuOffset, setMenuOffset } }) {
           onClick={() => setMenuOffset("-250px")}>
           ☰
         </button>
-        <a href='index.html'>About</a>
+        <Link to='/about'>About</Link>
         <Link to='/account'>My account</Link>
         <Link to='/saved-properties'>Saved properties</Link>
 

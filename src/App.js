@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Switch, Route } from "react-router-dom";
+import About from './components/About';
 import Nav from "./components/Nav";
 import Menu from "./components/Menu";
 import MapLeaflet from "./components/MapLeaflet";
@@ -164,14 +165,17 @@ function App() {
     <main className='App'>
       <Context.Provider value={contextValues}>
         <Switch>
+          <Route path='/account/:component'>
+            <AccountChild />
+          </Route>
+          <Route path='/about'>
+            <About />
+          </Route>
           <Route path='/sign-in'>
             <SignIn />
           </Route>
           <Route path='/create-account'>
             <CreateAccount />
-          </Route>
-          <Route path='/account/:component'>
-            <AccountChild />
           </Route>
           <Route path='/account'>
             <Account />
