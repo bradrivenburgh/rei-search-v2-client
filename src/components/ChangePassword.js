@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import ValidationError from './ValidationError';
 import './ChangePassword.css';
 
 function ChangePassword() {
+  const [formData, setFormData] = useState({
+    currentPassword: "passwordFromServer" || "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+
   let history = useHistory();
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setFormData({ ...formData, [name]: value});  
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     history.goBack();
   }
+
+  const validatePassword = () => {
+    const name = formData.folderName.trim();
+    if (name.length === 0) {
+      return 'A folder name is required';
+    }
+  }
+
 
   return (
     <section className='change-password'>
@@ -20,22 +40,38 @@ function ChangePassword() {
       </header>
 
       <form action='#' onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor='current-password'>Current password:</label>
-        <input type='text' id='current-password' name='current-password' />
+        <label htmlFor='currentPassword'>Current password:</label>
+        <input
+          type='text'
+          id='currentPassword'
+          name='currentPassword'
+          value={formData.currentPassword}
+          onChange={(e) => handleChange(e)}
+        />
 
-        <label htmlFor='new-password'>New Password:</label>
-        <input type='text' id='new-password' name='new-password' />
+        <label htmlFor='newPassword'>New Password:</label>
+        <input
+          type='text'
+          id='newPassword'
+          name='newPassword'
+          value={formData.newPassword}
+          onChange={(e) => handleChange(e)}
+        />
 
-        <label htmlFor='confirm-password'>Confirm password:</label>
-        <input type='text' id='confirm-password' name='confirm-password' />
+        <label htmlFor='confirmPassword'>Confirm password:</label>
+        <input
+          type='text'
+          id='confirmPassword'
+          name='confirmPassword'
+          value={formData.confirmPassword}
+          onChange={(e) => handleChange(e)}
+        />
 
         <div className='change-password__buttons'>
-          <button type="button" onClick={() => history.goBack()}>
-              Cancel
+          <button type='button' onClick={() => history.goBack()}>
+            Cancel
           </button>
-          <button>
-              Submit
-          </button>
+          <button>Submit</button>
         </div>
       </form>
     </section>
