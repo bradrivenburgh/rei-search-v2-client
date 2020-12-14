@@ -1,14 +1,24 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import './EditEmail.css';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./EditEmail.css";
 
 function EditEmail() {
+  const [formData, setFormData] = useState({
+    newEmail: "",
+    confirmEmail: "",
+  });
+
   let history = useHistory();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     history.goBack();
-  }
+  };
 
   return (
     <section className='edit-email'>
@@ -25,19 +35,29 @@ function EditEmail() {
       </p>
 
       <form action='#' onSubmit={(e) => handleSubmit(e)}>
-        <label htmlFor='email'>Email:</label>
-        <input type='text' id='email' name='email' />
+        <label htmlFor='newEmail'>Email:</label>
+        <input
+          type='text'
+          id='newEmail'
+          name='newEmail'
+          value={formData.newEmail}
+          onChange={(e) => handleChange(e)}
+        />
 
-        <label htmlFor='confirm-email'>Confirm new email:</label>
-        <input type='text' id='confirm-email' name='confirm-email' />
+        <label htmlFor='confirmEmail'>Confirm new email:</label>
+        <input
+          type='text'
+          id='confirmEmail'
+          name='confirmEmail'
+          value={formData.confirmEmail}
+          onChange={(e) => handleChange(e)}
+        />
 
         <div className='edit-email__buttons'>
-          <button type="button" onClick={() => history.goBack()}>
-              Cancel
+          <button type='button' onClick={() => history.goBack()}>
+            Cancel
           </button>
-          <button>
-              Submit
-          </button>
+          <button>Submit</button>
         </div>
       </form>
     </section>

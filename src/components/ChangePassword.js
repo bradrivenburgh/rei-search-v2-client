@@ -5,7 +5,7 @@ import './ChangePassword.css';
 
 function ChangePassword() {
   const [formData, setFormData] = useState({
-    currentPassword: "passwordFromServer" || "",
+    currentPassword: "*************",
     newPassword: "",
     confirmPassword: "",
   });
@@ -46,7 +46,6 @@ function ChangePassword() {
           id='currentPassword'
           name='currentPassword'
           value={formData.currentPassword}
-          onChange={(e) => handleChange(e)}
         />
 
         <label htmlFor='newPassword'>New Password:</label>
