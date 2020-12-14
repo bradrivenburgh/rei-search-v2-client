@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import ValidationError from './ValidationError';
 import './ChangePassword.css';
 
 function ChangePassword() {
@@ -22,13 +21,15 @@ function ChangePassword() {
     history.goBack();
   }
 
-  const validatePassword = () => {
-    const name = formData.folderName.trim();
-    if (name.length === 0) {
-      return 'A folder name is required';
-    }
-  }
+  const passwordPresent = () => {
+    const newPassword = formData.newPassword.trim();
+    const confirmPassword = formData.confirmPassword.trim();
 
+    if (newPassword.length === 0 || confirmPassword.length === 0) {
+      return true;
+    } 
+    return false;
+  }
 
   return (
     <section className='change-password'>
@@ -46,6 +47,7 @@ function ChangePassword() {
           id='currentPassword'
           name='currentPassword'
           value={formData.currentPassword}
+          readOnly
         />
 
         <label htmlFor='newPassword'>New Password:</label>
@@ -70,7 +72,7 @@ function ChangePassword() {
           <button type='button' onClick={() => history.goBack()}>
             Cancel
           </button>
-          <button>Submit</button>
+          <button disabled={ passwordPresent() }>Submit</button>
         </div>
       </form>
     </section>
