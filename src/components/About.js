@@ -48,6 +48,7 @@ function About() {
             investors with useful context when viewing comparable Census Tract
             statistics.
           </li>
+          <br />
           <li>
             <strong>Census Tracts:</strong> a CT is a smaller geographic unit
             used for statistical purposes by the US Census Bureau, often
