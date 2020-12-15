@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { Context } from '../Context';
-import Image from './Image';
-import './PropertiesTab.css';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../Context";
+import Image from "./Image";
+import "./PropertiesTab.css";
 
 function PropertiesTab() {
   const {
@@ -11,7 +11,6 @@ function PropertiesTab() {
     setCurrentProperty,
     handleAddRemoveProperty,
   } = useContext(Context);
-
 
   const renderProperties = (data) => {
     return (
@@ -48,7 +47,7 @@ function PropertiesTab() {
               <ul>
                 <div className='properties__flex-container'>
                   <li>
-                    <Link to='/property-profile'>
+                    <Link to='/property-profile' tabIndex='6'>
                       <Image photo={photos[0]} alt={streetAddress} />
                     </Link>
                   </li>
@@ -69,10 +68,11 @@ function PropertiesTab() {
                             ? "addRemove-button remove-button"
                             : "addRemove-button add-button"
                         }
-                        tabIndex="6"
-                        aria-pressed={
-                          inSavedProps(savedProperties, streetAddress)
-                        }
+                        tabIndex='6'
+                        aria-pressed={inSavedProps(
+                          savedProperties,
+                          streetAddress
+                        )}
                         onClick={() =>
                           handleAddRemoveProperty(
                             inSavedProps(savedProperties, streetAddress),

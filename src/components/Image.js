@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import house from '../images/default-house.png';
+import React, { useState } from "react";
+import house from "../images/default-house.png";
 
 function Image({ photo, alt }) {
   // try fetch call to see if there is a successful response and replace
@@ -34,7 +34,6 @@ function Image({ photo, alt }) {
       width={200}
       src={addSafeSrc(photo) ? photo : house}
       alt={alt}
-      tabIndex="6"
     />
   );
 }
