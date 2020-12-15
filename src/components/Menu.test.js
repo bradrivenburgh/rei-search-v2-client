@@ -1,22 +1,20 @@
-import React, {useState} from 'react';
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Menu from './Menu';
 
-function MenuTestComponent() {
-  /* Menu State */
-  let [menuOffset, setMenuOffset] = useState("-250px");
-
-  return(
-    <BrowserRouter>
-      <Menu menuOffset={{ menuOffset, setMenuOffset }} />
-    </BrowserRouter>
-  );
+let menuState = {
+  menuState: {
+    menuState: {
+      menuOffset: "0px",
+      menuVisibility: "visible"
+    },
+    setMenuState: () => {}
+  }
 }
 
 describe('Menu', () => {
-  test('renders Menu', () => {
-    render(<MenuTestComponent />);
+  test('renders Menu to the DOM', () => {
+    render(<BrowserRouter><Menu menuState={menuState} /></BrowserRouter>);
   });  
 });
 
