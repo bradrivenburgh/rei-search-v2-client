@@ -69,6 +69,7 @@ function PropertiesTab() {
                             ? "addRemove-button remove-button"
                             : "addRemove-button add-button"
                         }
+                        tabIndex="6"
                         aria-pressed={
                           inSavedProps(savedProperties, streetAddress)
                         }

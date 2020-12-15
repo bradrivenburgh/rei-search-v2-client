@@ -2,13 +2,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 
-function Menu({ menuOffset: { menuOffset, setMenuOffset } }) {
+function Menu({
+  menuState: {
+    menuState: { menuOffset, menuVisibility },
+    setMenuState,
+  },
+}) {
   return (
     <>
-      <div className='menu' style={{ right: menuOffset }}>
+      <div
+        className='menu'
+        style={{ right: menuOffset, visibility: menuVisibility }}>
         <button
           className='menu__closebtn'
-          onClick={() => setMenuOffset("-250px")}>
+          onClick={() => {
+            setMenuState({
+              menuOffset: "-250px",
+              menuVisibility: "hidden",
+            });
+          }}
+          tabIndex='8'>
           ☰
         </button>
         <Link to='/about'>About</Link>
@@ -24,11 +37,14 @@ function Menu({ menuOffset: { menuOffset, setMenuOffset } }) {
   );
 }
 
-export default Menu;
+export default Menu;  
 
 Menu.defaultProps = {
-  menuOffset: {
-    menuOffset: '',
-    setMenuOffset: () => {}
+  menuState: {
+    menuState: { 
+      menuOffset: "0px", 
+      menuVisibility: "visible" 
+    },
+    setMenuState: () => {},
   }
-}
+};

@@ -34,7 +34,7 @@ function Image({ photo, alt }) {
       width={200}
       src={addSafeSrc(photo) ? photo : house}
       alt={alt}
-      tabIndex={1}
+      tabIndex="6"
     />
   );
 }

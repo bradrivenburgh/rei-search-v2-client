@@ -50,7 +50,10 @@ function App() {
     propsTab: 0,
   });
   /* Menu State */
-  let [menuOffset, setMenuOffset] = useState("-250px");
+  let [menuState, setMenuState] = useState({
+    menuOffset: "-250px",
+    menuVisibility: "hidden"
+  });  
   //Reference to node holding Nav, Map, Search, and HUD
   let mainViewNode = useRef(null);
   /* Map State */
@@ -118,7 +121,12 @@ function App() {
    */
   const handleMenuClose = (e, mainViewNode) => {
     if (mainViewNode.current.contains(e.target)) {
-      setMenuOffset("-250px");
+      setMenuState({
+        menuOffset: "-250px",
+        menuVisibility: "hidden"
+      })
+      // setMenuOffset("-250px");
+      // setMenuDisplay("none");
     }
   };
 
@@ -195,11 +203,11 @@ function App() {
             />
           </Route>
           <Route path='/'>
-            <Menu menuOffset={{ menuOffset, setMenuOffset }} />
+            <Menu menuState={{menuState, setMenuState}} />
             <div
               ref={mainViewNode}
               onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
-              <Nav setMenuOffset={setMenuOffset} />
+              <Nav menuState={{menuState, setMenuState}} />
               <MapLeaflet
                 defaultTab={defaultTab}
                 mapState={mapState}

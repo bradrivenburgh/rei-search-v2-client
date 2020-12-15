@@ -126,7 +126,7 @@ function MapLeaflet({
   ));
 
   return (
-    <div>
+    <div tabIndex="9">
       <MapContainer
         center={center}
         minZoom={7}

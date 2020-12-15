@@ -74,6 +74,7 @@ class Search extends React.Component {
     const inputProps = {
       placeholder: "Type a city name",
       value,
+      tabIndex: "1",
       onChange: this.onChange
     };
 
@@ -92,5 +93,5 @@ class Search extends React.Component {
     );
   }
 }
-
+            
 export default Search;

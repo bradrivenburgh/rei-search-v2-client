@@ -182,11 +182,13 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
         <div className='HUD__button-container'>
           <button
             className='HUD__expand-button'
+            tabIndex="1"
             onClick={() => handleHUDHeight(pressCount + 1)}>
             {pressCount === 3 ? <>&#95;</> : <>&#9650;</>}
           </button>
           <button
             className='HUD__contract-button'
+            tabIndex="2"
             onClick={() => handleHUDHeight(pressCount - 1)}>
             {pressCount === 0 ? <>&#x26F6;</> : <>&#9660;</>}
           </button>
@@ -199,6 +201,7 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
+            tabIndex="3"
             onClick={() => handleOpenTab("econTab")}>
             <EconomicsIcon />
           </button>
@@ -209,6 +212,7 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
+            tabIndex="4"
             onClick={() => handleOpenTab("demogTab")}>
             <DemographicsIcon />
           </button>
@@ -219,6 +223,7 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
                 ? "HUD__tab__tablinks active"
                 : "HUD__tab__tablinks"
             }
+            tabIndex="5"
             onClick={() => handleOpenTab("propsTab")}>
             <PropertiesIcon />
           </button>
@@ -232,7 +237,8 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
             activeTab.econTab
               ? "HUD__tabcontent HUD__tabcontent--visible"
               : "HUD__tabcontent HUD__tabcontent--hidden"
-          }>
+          }
+          tabIndex="3">
           <StatsTabs id='economics' />
         </div>
 
@@ -242,7 +248,8 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
             activeTab.demogTab
               ? "HUD__tabcontent HUD__tabcontent--visible"
               : "HUD__tabcontent HUD__tabcontent--hidden"
-          }>
+          }
+          tabIndex="4">
           <StatsTabs id='demographics' />
         </div>
 
@@ -253,7 +260,8 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
             activeTab.propsTab
               ? "HUD__tabcontent HUD__tabcontent--visible"
               : "HUD__tabcontent HUD__tabcontent--hidden"
-          }>
+          }
+          tabIndex="5">
           <PropertiesTab />
         </div>
       </div>
