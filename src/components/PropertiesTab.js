@@ -46,23 +46,11 @@ function PropertiesTab() {
               }>
               <ul>
                 <div className='properties__flex-container'>
-                  <li>
+                  <li className='properties__img-container'>
                     <Link to='/property-profile' tabIndex='6'>
                       <Image photo={photos[0]} alt={streetAddress} />
                     </Link>
-                  </li>
-                  <div>
-                    <li>
-                      <p>${price}</p>
-                    </li>
-                    <li>
-                      <p>
-                        {streetAddress}, <br />
-                        {city}, {state} {zipcode}
-                      </p>
-                    </li>
-                    <li>
-                      <button
+                    <button
                         className={
                           inSavedProps(savedProperties, streetAddress)
                             ? "addRemove-button remove-button"
@@ -82,6 +70,17 @@ function PropertiesTab() {
                         }>
                         &#10084;
                       </button>
+
+                  </li>
+                  <div>
+                    <li>
+                      <p>${price}</p>
+                    </li>
+                    <li>
+                      <p>
+                        {streetAddress}, <br />
+                        {city}, {state} {zipcode}
+                      </p>
                     </li>
                   </div>
                 </div>

@@ -18,12 +18,46 @@
   margin-right: 2em;
 }
 
-@media screen and (max-width: 767px) {
+.properties__img-container {
+  position: relative;
+}
+
+.properties .addRemove-button {
+  position: absolute;
+  top: 19px;
+  left: 440px;
+}
+
+@media screen and (max-width: 420px) {
+  .properties img {
+    width: 100px;
+    height: 75px;
+  }
+
+  .properties p {
+    font-size: .8em;
+  }
+
+  .properties .addRemove-button {
+    padding: .25em .4em;
+    position: absolute;
+    top: 5px;
+    left: 70px;
+    font-size: .9em
+
+  }
+  
+}
+
+@media screen and (min-width: 421px) and (max-width: 767px) {
   .properties img {
     width: 140px;
-    height: 160px;
+    height: 140px;
     object-fit: cover;
   }  
+  .properties .addRemove-button {
+    left: 95px;
+  }
 }
 
 .properties p {

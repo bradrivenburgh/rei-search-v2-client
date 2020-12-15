@@ -27,12 +27,29 @@
   margin-right: 2em;
 }
 
-@media screen and (max-width: 767px) {
+.saved-properties__img-container {
+  position: relative;
+}
+
+.saved-properties .addRemove-button {
+  position: absolute;
+  top: 19px;
+  left: 440px;
+}
+
+
+@media screen and (max-width: 500px) {
   .saved-properties img {
     width: 140px;
     height: 160px;
     object-fit: cover;
   }  
+  .saved-properties .addRemove-button {
+    top: 5px;
+    left: 95px;
+  }
+
+
 }
 
 .saved-properties p {

@@ -69,7 +69,7 @@
   position: absolute;
   right: 49px;
   top: 5px;
-  background: rgba(255, 255, 255, 0.453);
+  background: rgba(255, 255, 255, 0.563);
   border-radius: 50%;
   border: none;
   font-size: 1.2em;
@@ -104,5 +104,5 @@
 }
 
 .carousel-container .remove-button {
-  color: red;
+  color: rgb(192, 4, 4);
 }

@@ -77,7 +77,7 @@ const HUD = React.forwardRef(({defaultTab, HUDState}, ref) => {
   const HUDHeights = () => {
     return {
       baseScreen: "69px",
-      oneThirdScreen: "33vh",
+      oneThirdScreen: "38vh",
       twoThirdsScreen: "67vh",
       fullScreen: "100vh",
     };

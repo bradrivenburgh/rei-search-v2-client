@@ -32,10 +32,18 @@ function SavedProps({
               }>
               <ul>
                 <div className='saved-properties__flex-container'>
-                  <li>
+                  <li className='saved-properties__img-container'>
                     <Link to='/property-profile'>
                       <Image photo={photos[0]} />
                     </Link>
+                    <button
+                        className='addRemove-button remove-button'
+                        aria-pressed='true'
+                        onClick={() =>
+                          onAddRemoveProperty(true, property, savedProperties)
+                        }>
+                        &#10084;
+                      </button>
                   </li>
                   <div>
                     <li>
@@ -46,16 +54,6 @@ function SavedProps({
                         {streetAddress}, <br />
                         {city}, {state} {zipcode}
                       </p>
-                    </li>
-                    <li>
-                      <button
-                        className='addRemove-button remove-button'
-                        aria-pressed='true'
-                        onClick={() =>
-                          onAddRemoveProperty(true, property, savedProperties)
-                        }>
-                        &#10084;
-                      </button>
                     </li>
                   </div>
                 </div>
