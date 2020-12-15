@@ -3,17 +3,14 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Nav from './Nav';
 
-function NavTestComponent() {
-  /* Menu State */
-  let [menuOffset, setMenuOffset] = useState("-250px");
-
-  return(
-    <BrowserRouter>
-      <Nav setMenuOffset={ setMenuOffset } />
-    </BrowserRouter>
-  );
+let menuState = {
+  menuState: {
+    setMenuState: () => {}
+  }
 }
 
-test('renders Nav', () => {
-  render(<NavTestComponent />);
-});
+describe('Nav', () => {
+  test('renders to the DOM', () => {
+    render(<BrowserRouter><Nav menuState={menuState}></Nav></BrowserRouter>)
+  });
+}); 
