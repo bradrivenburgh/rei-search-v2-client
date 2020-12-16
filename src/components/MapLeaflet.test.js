@@ -19,7 +19,7 @@ const mapState = {
       "CT shape": true
     } 
   },
-  setMapData: () => {}
+  setMapData: () => {},
 }
 
 describe("MapLeaflet", () => {
@@ -30,6 +30,7 @@ describe("MapLeaflet", () => {
           mapState={mapState}
           defaultTab={{ defaultTab: false }}
           properties={fakeProps}
+          HUDPosition={"38vh"}
         />
       </BrowserRouter>
     );

@@ -76,9 +76,9 @@ function MapLeaflet({
     let map = useMap();
     useEffect(() => {
       let copyTractRef = tractRef.current;
-      if (defaultTab) {
+      if (copyTractRef && defaultTab) {
         // If HUD is at twoThirdsScreen
-        if (copyTractRef && HUDPosition === "67vh") {
+        if (HUDPosition === "67vh") {
           map.flyToBounds(copyTractRef.getBounds(), {
             paddingBottomRight: [0, 550],
             maxZoom: 14,
