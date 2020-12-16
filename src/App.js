@@ -16,6 +16,7 @@ import {
   fakeStats,
   fakeProps,
   savedProps,
+  placeholderProfile,
   phillyMSAGeoJson,
   philadelphiaPlaceGeoJson,
   phillyTractGeoJson,
@@ -30,7 +31,7 @@ function App() {
   /* Properties State */
   let [savedProperties, setSavedProperties] = useState(savedProps);
   let [currentProperty, setCurrentProperty] = useState({
-    propertyData: properties[0],
+    propertyData: properties[0] || placeholderProfile,
     inSavedProperties: false,
   });
   /* HUD State */
@@ -125,8 +126,6 @@ function App() {
         menuOffset: "-250px",
         menuVisibility: "hidden"
       })
-      // setMenuOffset("-250px");
-      // setMenuDisplay("none");
     }
   };
 

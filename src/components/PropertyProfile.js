@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import house from '../images/default-house.png';
 import Carousel from './carousel/Carousel';
 import './PropertyProfile.css';
 
@@ -36,7 +37,7 @@ function PropertyProfile({
       </header>
 
       <div className='carousel-container'>
-        <Carousel photos={photos} />
+        <Carousel photos={photos.length ? photos : [house]} />
         <button
           className={
             inSavedProperties
