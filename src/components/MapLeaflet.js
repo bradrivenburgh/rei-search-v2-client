@@ -10,39 +10,8 @@ import {
   useMapEvent,
   useMap,
 } from "react-leaflet";
-// import census from "citysdk";
 import config from "../config";
 import "./MapLeaflet.css";
-
-// const addMSAToMap = (lng = -75.16, lat = 39.9) => {
-//   let data;
-//   census(
-//     {
-//       vintage: 2017,
-//       geoHierarchy: {
-//         "state": "42",
-//         "place": {
-//           lat: lat,
-//           lng: lng,
-//         },
-//       },
-//       geoResolution: "500k",
-//       sourcePath: ["acs", "acs5"],
-//       values: ["B00001_001E"],
-//       statsKey: config.CENSUS_API_KEY,
-//     },
-//     (error, response) => {
-//       if (error) {
-//         console.log(error);
-//         return error;
-//       }
-//       data = response;
-//       return response;
-//     }
-//   );
-//   return data;
-// }
-// console.log(addMSAToMap())
 
 function MapLeaflet({
   mapState: { mapData, setMapData },
@@ -126,7 +95,7 @@ function MapLeaflet({
   ));
 
   return (
-    <div tabIndex="9">
+    <div tabIndex='9'>
       <MapContainer
         center={center}
         minZoom={7}
@@ -142,34 +111,36 @@ function MapLeaflet({
           tileSize={512}
         />
 
-        <LayersControl position='topright'>
-          <LayersControl.Overlay
-            checked={mapData.displayLayer["MSA shape"]}
-            name='MSA shape'>
-            {Object.keys(msaShape).length && (
-              <GeoJSON data={msaShape} style={{ color: "red" }} />
-            )}
-          </LayersControl.Overlay>
-          <LayersControl.Overlay
-            checked={mapData.displayLayer["Place shape"]}
-            name='Place shape'>
-            {Object.keys(placeShape).length && (
-              <GeoJSON data={placeShape} style={{ color: "green" }} />
-            )}
-          </LayersControl.Overlay>
-          <LayersControl.Overlay
-            checked={mapData.displayLayer["CT shape"]}
-            name='CT shape'>
-            {Object.keys(tractShape).length && (
-              <GeoJSON data={tractShape} style={{ color: "blue" }} />
-            )}
-          </LayersControl.Overlay>
-          <LayersControl.Overlay
-            checked={mapData.displayLayer["Property markers"]}
-            name='Property markers'>
-            {properties.length && <LayerGroup>{renderMarkers}</LayerGroup>}
-          </LayersControl.Overlay>
-        </LayersControl>
+        {Object.keys(msaShape).length && (
+          <LayersControl position='topright'>
+            <LayersControl.Overlay
+              checked={mapData.displayLayer["MSA shape"]}
+              name='MSA shape'>
+              {Object.keys(msaShape).length && (
+                <GeoJSON data={msaShape} style={{ color: "red" }} />
+              )}
+            </LayersControl.Overlay>
+            <LayersControl.Overlay
+              checked={mapData.displayLayer["Place shape"]}
+              name='Place shape'>
+              {Object.keys(placeShape).length && (
+                <GeoJSON data={placeShape} style={{ color: "green" }} />
+              )}
+            </LayersControl.Overlay>
+            <LayersControl.Overlay
+              checked={mapData.displayLayer["CT shape"]}
+              name='CT shape'>
+              {Object.keys(tractShape).length && (
+                <GeoJSON data={tractShape} style={{ color: "blue" }} />
+              )}
+            </LayersControl.Overlay>
+            <LayersControl.Overlay
+              checked={mapData.displayLayer["Property markers"]}
+              name='Property markers'>
+              {properties.length && <LayerGroup>{renderMarkers}</LayerGroup>}
+            </LayersControl.Overlay>
+          </LayersControl>
+        )}
 
         <CaptureMapState />
       </MapContainer>

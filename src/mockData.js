@@ -129,15 +129,6 @@ export const cities = [
   {
     name: "Conshohoken, PA",
   },
-  {
-    name: "Conshohoken, PA",
-  },
-  {
-    name: "Conshohoken, PA",
-  },
-  {
-    name: "Conshohoken, PA",
-  },
 ];
 
 export const placeholderProfile = {

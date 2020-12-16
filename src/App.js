@@ -125,7 +125,7 @@ function App() {
       setMenuState({
         menuOffset: "-250px",
         menuVisibility: "hidden"
-      })
+      });
     }
   };
 
