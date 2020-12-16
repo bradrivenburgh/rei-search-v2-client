@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {
   MapContainer,
   LayersControl,
@@ -17,6 +17,7 @@ function MapLeaflet({
   mapState: { mapData, setMapData },
   properties,
   defaultTab,
+  HUDPosition,
 }) {
   /* State from App */
   let {
@@ -30,6 +31,10 @@ function MapLeaflet({
     displayLayer,
   } = mapData;
 
+  /*
+    Attach to GeoJson shape for tractShape
+  */
+  let tractRef = useRef()
   /**
    * Component that will capture events from the map and save the
    * state of the zoom, center, and checked values for layers for
@@ -67,11 +72,25 @@ function MapLeaflet({
       });
     });
 
-    // Zoom and pan to specified address at zoom level 13
+    // Zoom and pan to Census Tract bounds
     let map = useMap();
     useEffect(() => {
+      let copyTractRef = tractRef.current;
       if (defaultTab) {
-        map.flyTo([lat, lng], 13);
+        // If HUD is at twoThirdsScreen
+        if (copyTractRef && HUDPosition === "67vh") {
+          map.flyToBounds(copyTractRef.getBounds(), {
+            paddingBottomRight: [0, 550],
+            maxZoom: 14,
+          });
+        }
+        // If HUD is at oneThirdScreen
+        else {
+          map.flyToBounds(copyTractRef.getBounds(), {
+            paddingBottomRight: [0, 300],
+            maxZoom: 14,
+          });
+        }
       }
     });
     return null;
@@ -131,7 +150,7 @@ function MapLeaflet({
               checked={mapData.displayLayer["CT shape"]}
               name='CT shape'>
               {Object.keys(tractShape).length && (
-                <GeoJSON data={tractShape} style={{ color: "blue" }} />
+                <GeoJSON ref={tractRef} data={tractShape} style={{ color: "blue" }} />
               )}
             </LayersControl.Overlay>
             <LayersControl.Overlay

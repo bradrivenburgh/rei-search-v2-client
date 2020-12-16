@@ -175,6 +175,9 @@ function App() {
           <Route path='/account/:component'>
             <AccountChild />
           </Route>
+          <Route path='/account'>
+            <Account />
+          </Route>
           <Route path='/about'>
             <About />
           </Route>
@@ -183,9 +186,6 @@ function App() {
           </Route>
           <Route path='/create-account'>
             <CreateAccount />
-          </Route>
-          <Route path='/account'>
-            <Account />
           </Route>
           <Route path='/property-profile'>
             <PropertyProfile
@@ -211,6 +211,7 @@ function App() {
                 defaultTab={defaultTab}
                 mapState={mapState}
                 properties={properties}
+                HUDPosition={HUDPosition}
               />
               <HUD
                 ref={mainViewNode}
