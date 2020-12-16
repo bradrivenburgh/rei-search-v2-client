@@ -76,7 +76,6 @@ function HUD({defaultTab, HUDState}) {
     };
 
     return () => {
-      // @QuickFix Conditional Guard
       if (
         !economicsTabContent.current ||
         !demographicsTabContent.current ||
