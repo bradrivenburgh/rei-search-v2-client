@@ -179,9 +179,6 @@ function App() {
           <Route path='/account'>
             <Account />
           </Route>
-          <Route path='/about'>
-            <About />
-          </Route>
           <Route path='/sign-in'>
             <SignIn />
           </Route>
@@ -202,7 +199,7 @@ function App() {
               onAddRemoveProperty={handleAddRemoveProperty}
             />
           </Route>
-          <Route path='/'>
+          <Route path='/main'>
             <Menu menuState={{menuState, setMenuState}} />
             <div
               ref={mainViewNode}
@@ -219,6 +216,9 @@ function App() {
                 HUDState={HUDState}
               />
             </div>
+          </Route>
+          <Route path='/'>
+            <About />
           </Route>
         </Switch>
       </Context.Provider>

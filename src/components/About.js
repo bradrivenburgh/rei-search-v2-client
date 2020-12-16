@@ -8,7 +8,7 @@ function About() {
   return (
     <section className='about'>
       <nav className='closing-nav'>
-        <button onClick={() => history.goBack()}>X</button>
+        <button onClick={() => history.push('/main')}>X</button>
       </nav>
       <header>
         <img
