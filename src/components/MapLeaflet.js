@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   MapContainer,
   LayersControl,
@@ -31,16 +31,25 @@ function MapLeaflet({
     displayLayer,
   } = mapData;
 
+  let [markerCoordinates, setMarkerCoordinates] = useState({
+    lat: 0,
+    lng: 0,
+  })
+
   /*
     Attach to GeoJson shape for tractShape
   */
-  let tractRef = useRef()
+  let tractRef = useRef();
+   
   /**
    * Component that will capture events from the map and save the
    * state of the zoom, center, and checked values for layers for
    * when MapLeaflet remounts.
    */
   const CaptureMapState = () => {
+    // Zoom and pan to Census Tract bounds
+    let map = useMap();
+
     // Captures map zoom and center and saves them to state
     const captureZoomCenter = useMapEvent("moveend", () => {
       setMapData({
@@ -72,8 +81,13 @@ function MapLeaflet({
       });
     });
 
-    // Zoom and pan to Census Tract bounds
-    let map = useMap();
+    /**
+     * Get coordinate of marker clicked
+     */
+    useMapEvent('popupopen', () => {
+      map.panTo([markerCoordinates.lat, markerCoordinates.lng])
+    });
+
     useEffect(() => {
       let copyTractRef = tractRef.current;
       if (copyTractRef && defaultTab) {
@@ -96,17 +110,30 @@ function MapLeaflet({
     return null;
   };
 
+
   /**
    * Renders property markers with address popups
    */
   const renderMarkers = properties.map((property) => (
     <Marker
       key={property.address.streetAddress}
+      eventHandlers={{
+        click: (e) => {
+          let markerCenter = e.target.getLatLng();
+//          map.panTo(e.target.getLatLng());
+          setMarkerCoordinates({
+            lat: e.target.getLatLng().lat,
+            lng: markerCenter.lng
+          });
+          console.log(markerCenter.lat)
+          console.log(markerCoordinates.lat)
+        }
+      }}
       position={[property.latitude, property.longitude]}>
       <Popup>
         <span>{property.address.streetAddress},</span> <br />
         <span>
-          {property.address.city}, {property.address.state}{" "}
+          {property.address.city}, {property.address.state + " "}
         </span>
         <span>{property.address.zipcode}</span>
       </Popup>
