@@ -215,7 +215,6 @@ function App() {
                 HUDPosition={HUDPosition}
               />
               <HUD
-                ref={mainViewNode}
                 defaultTab={defaultTab}
                 HUDState={HUDState}
               />
