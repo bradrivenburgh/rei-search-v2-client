@@ -20,7 +20,7 @@ function CreateAccount() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push("/");
+    history.push("/main");
   };
 
   const allFormValuesPresent = () => {

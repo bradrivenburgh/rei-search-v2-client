@@ -7,7 +7,7 @@ function ExportData() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.goBack();
+    history.push('/main');
   }
 
   return (

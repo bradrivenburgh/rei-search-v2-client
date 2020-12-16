@@ -17,7 +17,7 @@ function EditEmail() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.goBack();
+    history.push('/main');
   };
 
   const allFormValuesPresent = () => {

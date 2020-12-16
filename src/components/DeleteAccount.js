@@ -7,7 +7,7 @@ function DeleteAccount() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push('/');
+    history.push('/main');
   }
 
   return (
