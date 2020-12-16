@@ -14,15 +14,18 @@ import config from "../config";
 import "./MapLeaflet.css";
 
 function MapLeaflet({
-  mapState: { mapData, setMapData },
+  mapState: {
+    mapData,
+    setMapData,
+    currentMarkerLatLng,
+    setCurrentMarkerLatLng,
+  },
   properties,
   defaultTab,
   HUDPosition,
 }) {
   /* State from App */
   let {
-    lat,
-    lng,
     zoom,
     center,
     msaShape,
@@ -31,16 +34,11 @@ function MapLeaflet({
     displayLayer,
   } = mapData;
 
-  let [markerCoordinates, setMarkerCoordinates] = useState({
-    lat: 0,
-    lng: 0,
-  })
-
   /*
     Attach to GeoJson shape for tractShape
   */
   let tractRef = useRef();
-   
+
   /**
    * Component that will capture events from the map and save the
    * state of the zoom, center, and checked values for layers for
@@ -81,13 +79,6 @@ function MapLeaflet({
       });
     });
 
-    /**
-     * Get coordinate of marker clicked
-     */
-    useMapEvent('popupopen', () => {
-      map.panTo([markerCoordinates.lat, markerCoordinates.lng])
-    });
-
     useEffect(() => {
       let copyTractRef = tractRef.current;
       if (copyTractRef && defaultTab) {
@@ -110,7 +101,6 @@ function MapLeaflet({
     return null;
   };
 
-
   /**
    * Renders property markers with address popups
    */
@@ -120,14 +110,8 @@ function MapLeaflet({
       eventHandlers={{
         click: (e) => {
           let markerCenter = e.target.getLatLng();
-//          map.panTo(e.target.getLatLng());
-          setMarkerCoordinates({
-            lat: e.target.getLatLng().lat,
-            lng: markerCenter.lng
-          });
-          console.log(markerCenter.lat)
-          console.log(markerCoordinates.lat)
-        }
+          setCurrentMarkerLatLng([markerCenter.lat, markerCenter.lng]);
+        },
       }}
       position={[property.latitude, property.longitude]}>
       <Popup>
@@ -177,7 +161,11 @@ function MapLeaflet({
               checked={mapData.displayLayer["CT shape"]}
               name='CT shape'>
               {Object.keys(tractShape).length && (
-                <GeoJSON ref={tractRef} data={tractShape} style={{ color: "blue" }} />
+                <GeoJSON
+                  ref={tractRef}
+                  data={tractShape}
+                  style={{ color: "blue" }}
+                />
               )}
             </LayersControl.Overlay>
             <LayersControl.Overlay
