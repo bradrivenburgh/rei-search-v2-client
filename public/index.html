@@ -46,4 +46,11 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    document.onresize(() => {
+      document.documentElement.style.setProperty('overflow', 'auto')
+      const metaViewport = document.querySelector('meta[name=viewport]')
+      metaViewport.setAttribute('content', 'height=' + initialHeight + 'px, width=device-width, initial-scale=1.0')
+    })
+  </script>
 </html>
