@@ -114,8 +114,8 @@ function HUD({defaultTab, HUDState}) {
   const HUDHeights = () => {
     return {
       baseScreen: "69px",
-      oneThirdScreen: "38vh",
-      twoThirdsScreen: "67vh",
+      oneThirdScreen: "38%",
+      twoThirdsScreen: "67%",
       fullScreen: "100%",
     };
   };
@@ -139,7 +139,7 @@ function HUD({defaultTab, HUDState}) {
       setPressCount(pressCount);
 
       // Set HUDPosition; pressCount === 0 || 1 || 2 || 3
-      // corresponding to ["69px","33vh","67vh","100vh"]
+      // corresponding to ["69px","38%","67%","100%"]
       setHUDPosition(Object.values(HUDHeights())[pressCount]);
 
       // If no active tab, set it to 'econTab'
