@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -46,4 +46,13 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    setTimeout(function () {
+    var viewheight = $(window).height();
+    var viewwidth = $(window).width();
+    var viewport = $("meta[name=viewport]");
+    viewport.attr("content", "height=" + viewheight + "px, width=" + 
+    viewwidth + "px, initial-scale=1.0");
+}, 300);
+  </script>
 </html>
