@@ -116,7 +116,7 @@ function HUD({defaultTab, HUDState}) {
       baseScreen: "69px",
       oneThirdScreen: "38vh",
       twoThirdsScreen: "67vh",
-      fullScreen: "100vh",
+      fullScreen: "100%",
     };
   };
 
