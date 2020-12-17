@@ -48,8 +48,9 @@
   </body>
   <script>
     setTimeout(function () {
-    var viewheight = window.screen.height;
+    var viewheight = window.outerHeight;
     var viewport = document.querySelector("meta[name=viewport]");
+    console.log(viewport)
     viewport.setAttribute('content', viewport.getAttribute('content') + ' height=' + viewheight)
 }, 300);
   </script>
