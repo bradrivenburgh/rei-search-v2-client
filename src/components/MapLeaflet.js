@@ -81,13 +81,24 @@ function MapLeaflet({
 
     useEffect(() => {
       let copyTractRef = tractRef.current;
+      let paddingOffset;
       if (copyTractRef && defaultTab) {
         // If HUD is at twoThirdsScreen
         if (HUDPosition === "67%") {
+          if (window.innerHeight <= 600) {
+            paddingOffset = 425;
+          } else if (window.innerHeight > 600 && window.innerHeight <= 700){
+            paddingOffset = 500;
+          } else if (window.innerHeight > 700 && window.innerHeight <= 900) {
+            paddingOffset = 560;
+          } else if (window.innerHeight > 900) {
+            paddingOffset = 750;
+          }
           map.flyToBounds(copyTractRef.getBounds(), {
-            paddingBottomRight: [0, 550],
+            paddingBottomRight: [0, paddingOffset],
             maxZoom: 14,
-          });
+          });  
+
         }
         // If HUD is at oneThirdScreen
         else {
