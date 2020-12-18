@@ -68,8 +68,7 @@ function PropertiesTab() {
                             savedProperties
                           )
                         }>
-                        {/* &#10084; */}
-                        &#x2764;
+                        &#10084;
                       </button>
 
                   </li>
