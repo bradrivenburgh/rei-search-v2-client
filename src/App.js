@@ -211,10 +211,10 @@ function App() {
                 properties={properties}
                 HUDPosition={HUDPosition}
               />
-              <HUD
+              {/* <HUD
                 defaultTab={defaultTab}
                 HUDState={HUDState}
-              />
+              /> */}
             </div>
           </Route>
           <Route path='/'>
