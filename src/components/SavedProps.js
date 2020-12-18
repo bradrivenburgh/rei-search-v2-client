@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import {ReactComponent as HeartIcon} from '../images/heart.svg';
 import Image from './Image';
 import './SavedProps.css';
 
@@ -42,7 +43,7 @@ function SavedProps({
                         onClick={() =>
                           onAddRemoveProperty(true, property, savedProperties)
                         }>
-                        &#10084;
+                        <HeartIcon />
                       </button>
                   </li>
                   <div>

@@ -33,7 +33,7 @@
 
 .saved-properties .addRemove-button {
   position: absolute;
-  top: 19px;
+  top: 10px;
   left: 440px;
 }
 
@@ -46,7 +46,7 @@
   }  
   .saved-properties .addRemove-button {
     top: 5px;
-    left: 95px;
+    left: 100px;
   }
 
 

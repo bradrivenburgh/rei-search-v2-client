@@ -1,6 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import house from '../images/default-house.png';
+import {ReactComponent as HeartIcon} from '../images/heart.svg';
 import Carousel from './carousel/Carousel';
 import './PropertyProfile.css';
 
@@ -52,7 +53,7 @@ function PropertyProfile({
               savedProperties
             )
           }>
-          &#10084;
+          <HeartIcon />
         </button>
       </div>
 

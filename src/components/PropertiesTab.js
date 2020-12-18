@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
+import {ReactComponent as HeartIcon} from '../images/heart.svg';
 import Image from "./Image";
 import "./PropertiesTab.css";
 
@@ -68,9 +69,8 @@ function PropertiesTab() {
                             savedProperties
                           )
                         }>
-                        &#10084;
+                        <HeartIcon />
                       </button>
-                      <p style={{color: 'black', fill: 'black'}}>&#10084;</p>
 
                   </li>
                   <div>

@@ -46,7 +46,7 @@ h1 {
 .addRemove-button {
   background: rgba(255, 255, 255, 0.563);
   border-radius:50%;
-  padding: .5em .75em;
+  padding: .5em .5em .2em .5em;
   border: none;
   font-size: 1em;
   text-decoration: none;
@@ -59,8 +59,10 @@ h1 {
 
 .add-button {
   color: rgb(0, 0, 0);
+  fill:rgb(0, 0, 0);
 }
 
 .remove-button {
   color: rgb(192, 4, 4);
+  fill:rgb(192, 4, 4);
 }
