@@ -69,7 +69,7 @@ function CreateAccount() {
 
         <label htmlFor='password'>Password:</label>
         <input
-          type='text'
+          type='password'
           id='password'
           name='password'
           value={formData.password}
@@ -78,7 +78,7 @@ function CreateAccount() {
 
         <label htmlFor='repeatPassword'>Repeat Password:</label>
         <input
-          type='text'
+          type='password'
           id='repeatPassword'
           name='repeatPassword'
           value={formData.repeatPassword}

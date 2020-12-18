@@ -4,7 +4,7 @@ import './ChangePassword.css';
 
 function ChangePassword() {
   const [formData, setFormData] = useState({
-    currentPassword: "*************",
+    currentPassword: "currentPassword",
     newPassword: "",
     confirmPassword: "",
   });
@@ -40,7 +40,7 @@ function ChangePassword() {
       <form action='#' onSubmit={(e) => handleSubmit(e)}>
         <label htmlFor='currentPassword'>Current password:</label>
         <input
-          type='text'
+          type='password'
           id='currentPassword'
           name='currentPassword'
           value={formData.currentPassword}
@@ -49,7 +49,7 @@ function ChangePassword() {
 
         <label htmlFor='newPassword'>New Password:</label>
         <input
-          type='text'
+          type='password'
           id='newPassword'
           name='newPassword'
           value={formData.newPassword}
@@ -58,7 +58,7 @@ function ChangePassword() {
 
         <label htmlFor='confirmPassword'>Confirm password:</label>
         <input
-          type='text'
+          type='password'
           id='confirmPassword'
           name='confirmPassword'
           value={formData.confirmPassword}
