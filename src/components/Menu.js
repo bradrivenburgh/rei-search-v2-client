@@ -9,19 +9,24 @@ function Menu({
   },
 }) {
 
+  const handleMenuClose = (e) => {
+    if (e.target.tagName.toLowerCase() === "a" ||
+        e.target.tagName.toLowerCase() === "button") {
+      setMenuState({
+        menuOffset: "-250px",
+        menuVisibility: "hidden",
+      });
+    }
+  };
+
   return (
     <>
       <div
         className='menu'
+        onClick={(e) => handleMenuClose(e)}
         style={{ right: menuOffset, visibility: menuVisibility }}>
         <button
           className='menu__closebtn'
-          onClick={() => {
-            setMenuState({
-              menuOffset: "-250px",
-              menuVisibility: "hidden",
-            });
-          }}
           tabIndex='8'>
           ☰
         </button>
