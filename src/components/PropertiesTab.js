@@ -69,7 +69,7 @@ function PropertiesTab() {
                           )
                         }>
                         {/* &#10084; */}
-                        &#9733;
+                        &#x2764;
                       </button>
 
                   </li>
