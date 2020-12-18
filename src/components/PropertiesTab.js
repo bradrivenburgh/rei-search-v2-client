@@ -70,6 +70,7 @@ function PropertiesTab() {
                         }>
                         &#10084;
                       </button>
+                      <p style={{color: 'black'}}>&#10084;</p>
 
                   </li>
                   <div>
