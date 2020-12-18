@@ -142,12 +142,6 @@
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
-.example {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
 .HUD__tabcontent--visible {
   visibility: visible;
   z-index: 999;

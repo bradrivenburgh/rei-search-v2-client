@@ -6,8 +6,8 @@ function About() {
   let history = useHistory();
 
   return (
-    <section className='about-wrapper'>
-      <div className='about'>
+    <div className='about-wrapper'>
+      <section className='about'>
       <nav className='closing-nav'>
         <button onClick={() => history.push('/main')}>X</button>
       </nav>
@@ -117,8 +117,8 @@ function About() {
           </li>
         </ol>
       </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
 
