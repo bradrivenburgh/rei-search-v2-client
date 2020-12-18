@@ -1,34 +1,32 @@
-.about {
-  position: absolute;
-  z-index: 1000;
-}
-
 .about-wrapper {
   position: relative;
-  padding: 0 1em;
-  top: 80px;
-  background-color: #ccc;
-  width:90%;
-  height: 75%;
-  overflow-y: scroll;
-  border-radius: 10px;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
 
-  margin: 0 1em;
-  width: 85%;
-  z-index: 1002;
+.about {
+  position: relative;
+  top: 1.5em;
+  bottom: 1.5em;
+  background-color: #ccc;
+  height: 80%;
+  width: 80%;
+  padding: 1em;
   margin: 0 auto;
+  border-radius: 10px;
 }
 
 /* Blurred Overlay */
 
 .overlay {
-  position: absolute;
+  position: relative;
+  z-index: 1001;
   backdrop-filter: blur(5px);
 }    
 
 @supports not (backdrop-filter: blur(5px)) {
   .overlay {
-      position: absolute;
+      position: fixed;
       background-color: rgba(255, 255, 255, 0.253);
   }    
 }
@@ -55,7 +53,7 @@
   line-height: 1.5em;
 }
 
-.about, ul {
+.about ul {
   list-style-type: none;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -71,13 +69,11 @@
 
 .about img {
   display: block;
-  margin-left: 1em;
-  margin-right: 1em;
 }
 
 @media screen and (max-width: 767px) {
   .about img {
-    width: 150px;
+    width: 120px;
    }  
 }
 

@@ -6,8 +6,8 @@ function About() {
   let history = useHistory();
 
   return (
-    <section className='about overlay'>
-      <div className='about-wrapper'>
+    <section className='about-wrapper'>
+      <div className='about'>
       <nav className='closing-nav'>
         <button onClick={() => history.push('/main')}>X</button>
       </nav>
