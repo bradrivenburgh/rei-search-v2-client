@@ -6,7 +6,8 @@ function About() {
   let history = useHistory();
 
   return (
-    <section className='about'>
+    <section className='about overlay'>
+      <div className='about-wrapper'>
       <nav className='closing-nav'>
         <button onClick={() => history.push('/main')}>X</button>
       </nav>
@@ -115,6 +116,7 @@ function About() {
             narrow down where you will invest next.
           </li>
         </ol>
+      </div>
       </div>
     </section>
   );

@@ -200,6 +200,7 @@ function App() {
             />
           </Route>
           <Route path='/main'>
+            <About />
             <Menu menuState={{menuState, setMenuState}} />
             <div
               ref={mainViewNode}

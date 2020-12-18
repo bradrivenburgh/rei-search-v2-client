@@ -1,5 +1,40 @@
 .about {
+  position: absolute;
+  z-index: 1000;
+}
+
+.about-wrapper {
+  position: relative;
+  padding: 0 1em;
+  top: 80px;
+  background-color: #ccc;
+  width:90%;
+  height: 75%;
+  overflow-y: scroll;
+  border-radius: 10px;
+
   margin: 0 1em;
+  width: 85%;
+  z-index: 1002;
+  margin: 0 auto;
+}
+
+/* Blurred Overlay */
+
+.overlay {
+  position: absolute;
+  backdrop-filter: blur(5px);
+}    
+
+@supports not (backdrop-filter: blur(5px)) {
+  .overlay {
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.253);
+  }    
+}
+
+.about .closing-nav {
+  position: sticky;
 }
 
 .about header {
