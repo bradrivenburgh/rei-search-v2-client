@@ -83,7 +83,27 @@ function SavedProps({
 }
 
 SavedProps.defaultProps = {
-  savedProperties: {},
+  savedProperties: [{
+    address: {
+      streetAddress: "Placeholder St.",
+      city: "Somewhere",
+      state: "PA",
+      zipcode: "00000",
+      neighborhood: null,
+      community: null,
+      subdivision: null,
+    },
+    bedrooms: "2",
+    bathrooms: "2",
+    price: "200000",
+    yearBuilt: 1980,
+    longitude: -75.10820770263672,
+    latitude: 39.98884201049805,
+    description: "Placeholder description.",
+    livingArea: 1000,
+    currency: "USD",
+    photos: [],
+  },],
   setCurrentProperty: () => {},
   onAddRemoveProperty: () => {},
 }
