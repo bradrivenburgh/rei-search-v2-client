@@ -39,8 +39,8 @@ function Image({ photo, alt }) {
 }
 
 Image.defaultProps = {
-  photos: [],
-  alt: "",
+  photo: '',
+  alt: '',
 };
 
 export default Image;

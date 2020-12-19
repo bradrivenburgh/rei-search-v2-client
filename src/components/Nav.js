@@ -22,8 +22,10 @@ function Nav({ menuState: { setMenuState } }) {
   );
 }
 
-export default Nav;
-
 Nav.defaultProps = {
-  setMenuOffset: () => {},
+  menuState: {
+    setMenuState: () => {},
+  },
 };
+
+export default Nav;

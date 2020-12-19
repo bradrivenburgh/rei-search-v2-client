@@ -196,7 +196,47 @@ function MapLeaflet({
 export default MapLeaflet;
 
 MapLeaflet.defaultProps = {
-  mapState: { mapData: {}, setMapData: () => {} },
-  properties: [],
+  mapState: {
+    mapData: {
+      lat: 39.9,
+      lng: -75.16,
+      zoom: 9,
+      center: [39.9, -75.16],
+      msaShape: {},
+      placeShape: {},
+      tractShape: {},
+      displayLayer: {
+        "Property markers": true,
+        "MSA shape": true,
+        "Place shape": true,
+        "CT shape": true,
+      },
+      setMapData: () => {},
+    },
+  },
+  properties: [
+    {
+      address: {
+        streetAddress: "Placeholder St.",
+        city: "Somewhere",
+        state: "PA",
+        zipcode: "00000",
+        neighborhood: null,
+        community: null,
+        subdivision: null,
+      },
+      bedrooms: "2",
+      bathrooms: "2",
+      price: "200000",
+      yearBuilt: 1980,
+      longitude: -75.10820770263672,
+      latitude: 39.98884201049805,
+      description: "Placeholder description.",
+      livingArea: 1000,
+      currency: "USD",
+      photos: [],
+    },
+  ],
   defaultTab: false,
+  HUDPosition: "67%",
 };
