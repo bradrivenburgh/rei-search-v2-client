@@ -233,6 +233,7 @@ function HUD({defaultTab, HUDState}) {
         <div className='HUD__tab'>
           <button
             id='economics-btn'
+            value='economics'
             className={
               activeTab.econTab
                 ? "HUD__tab__tablinks active"
@@ -244,6 +245,7 @@ function HUD({defaultTab, HUDState}) {
           </button>
           <button
             id='demographics-btn'
+            value='demographics'
             className={
               activeTab.demogTab
                 ? "HUD__tab__tablinks active"
@@ -255,6 +257,7 @@ function HUD({defaultTab, HUDState}) {
           </button>
           <button
             id='properties-btn'
+            value='properties'
             className={
               activeTab.propsTab
                 ? "HUD__tab__tablinks active"

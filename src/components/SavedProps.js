@@ -39,6 +39,7 @@ function SavedProps({
                     </Link>
                     <button
                         className='addRemove-button remove-button'
+                        value='add-remove'
                         aria-pressed='true'
                         onClick={() =>
                           onAddRemoveProperty(true, property, savedProperties)

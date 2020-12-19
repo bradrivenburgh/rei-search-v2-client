@@ -75,6 +75,7 @@ class Search extends React.Component {
       placeholder: "Type a city name",
       value,
       tabIndex: "1",
+      title: 'search',
       onChange: this.onChange
     };
 

@@ -46,6 +46,7 @@ function PropertyProfile({
               : "addRemove-button add-button"
           }
           aria-pressed={inSavedProperties}
+          value='add-remove'
           onClick={() =>
             onAddRemoveProperty(
               inSavedProperties,
