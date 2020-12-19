@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "./About.css";
 
 function About() {
   let history = useHistory();
 
+  const [visited, setVisited] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('visited', visited)
+  }, [visited])
+
+  const handleAbout = () => {
+    setVisited(true);
+  }  
+
   return (
-    <div className='about-wrapper'>
+    <div className='about-wrapper' style={localStorage.getItem('visited') === null ? { display: 'block'} : {display: 'none'}}>
       <section className='about'>
       <nav className='closing-nav'>
-        <button onClick={() => history.push('/main')}>X</button>
+        <button onClick={() => handleAbout()}>X</button>
       </nav>
       <header>
         <img

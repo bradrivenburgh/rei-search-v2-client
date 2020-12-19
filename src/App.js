@@ -71,7 +71,7 @@ function App() {
       "CT shape": true
     }
   });
-  let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState([0, 0])
+  let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState([0, 0]);
 
   /* Handlers */
 
@@ -168,6 +168,8 @@ function App() {
     handleAddRemoveProperty,
     handleAPICall,
   };
+
+
 
   return (
     <main className='App'>
