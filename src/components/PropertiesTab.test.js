@@ -1,87 +1,61 @@
-import React, { useState } from "react";
-import { fireEvent, render, screen, cleanup } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Context } from "../Context";
 import { fakeProps, savedProps } from "../mockData";
 import PropertiesTab from "./PropertiesTab";
 
-function PropertiesTabTestComponent() {
-  let [properties, setProperties] = useState(fakeProps);
-  let [savedProperties, setSavedProperties] = useState(savedProps);
-  let [currentProperty, setCurrentProperty] = useState({
-    propertyData: properties[0],
-    inSavedProperties: false,
-  });
-
-  const handleAddRemoveProperty = (
-    inSavedProps = false,
-    prop = {},
-    savedProps = []
-  ) => {
-    let newSavedProps;
-    // Remove prop from savedProps
-    if (inSavedProps) {
-      newSavedProps = savedProps.filter((savedProp) => {
-        return savedProp.address.streetAddress !== prop.address.streetAddress;
-      });
-      inSavedProps = false;
-    }
-    // Add prop to savedProps
-    else {
-      inSavedProps = true;
-      newSavedProps = [...savedProps, prop];
-    }
-    setCurrentProperty({ ...currentProperty, inSavedProperties: inSavedProps });
-    setSavedProperties(newSavedProps);
-  };
-
-  let searchResults = {
-    properties,
-    setProperties,
-  };
-
-  const contextValues = {
-    searchResults,
-    savedProperties,
-    setSavedProperties,
-    currentProperty,
-    setCurrentProperty,
-    handleAddRemoveProperty,
-  };
-
-  return (
-    <Context.Provider value={contextValues}>
-      <BrowserRouter>
-        <PropertiesTab />
-      </BrowserRouter>
-    </Context.Provider>
-  );
-}
-
 afterAll(cleanup);
+
+const contextValues = {
+  searchResults: { properties: fakeProps, setProperties: () => {} },
+  savedProperties: savedProps,
+  setSavedProperties: () => {},
+  currentProperty: {
+    propertyData: fakeProps[0],
+    inSavedProperties: false,
+  },
+  setCurrentProperty: () => {},
+  handleAddRemoveProperty: () => {},
+};
 
 describe("PropertiesTab", () => {
   test("renders to the DOM", () => {
-    render(<PropertiesTabTestComponent />);
+    render(
+      <BrowserRouter>
+        <PropertiesTab />
+      </BrowserRouter>
+    );
   });
 
   test('contains an "Properties" heading', () => {
-    render(<PropertiesTabTestComponent />);
+    render(
+      <BrowserRouter>
+        <Context.Provider value={contextValues}>
+          <PropertiesTab />
+        </Context.Provider>
+      </BrowserRouter>
+    );
     expect(
       screen.getByRole("heading", { name: /properties/i })
     ).toBeInTheDocument();
   });
 
-  test("pressing Add/Remove button toggles aria-pressed value", () => {
-    render(<PropertiesTabTestComponent />);
+  test("contains a pressed and unpressed button", () => {
+    render(
+      <BrowserRouter>
+        <Context.Provider value={contextValues}>
+          <PropertiesTab />
+        </Context.Provider>
+      </BrowserRouter>
+    );
+    const unpressedButton = screen.getAllByRole("button", {
+      pressed: false,
+    });
+    const pressedButton = screen.getAllByRole("button", {
+      pressed: true,
+    });
 
-    const unpressedBtnsBefore = screen.getAllByRole("button", {
-      pressed: false,
-    });
-    fireEvent.click(unpressedBtnsBefore[0]);
-    const unpressedBtnsAfter = screen.getAllByRole("button", {
-      pressed: false,
-    });
-    expect(unpressedBtnsAfter.length).toBeLessThan(unpressedBtnsBefore.length);
+    expect(unpressedButton[0]).toBeInTheDocument();
+    expect(pressedButton[0]).toBeInTheDocument();
   });
 });
