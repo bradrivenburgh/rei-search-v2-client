@@ -36,4 +36,8 @@ function Carousel({photos}) {
   );
 }
 
+Carousel.defaultProps = {
+  photos: []
+}
+
 export default Carousel;

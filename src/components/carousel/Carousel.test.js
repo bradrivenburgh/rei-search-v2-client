@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import About from './About';
+import Carousel from './Carousel';
 
 describe('About', () => {
   test('renders to the DOM', () => {
-    render(<BrowserRouter><About /></BrowserRouter>)
+    render(<BrowserRouter><Carousel /></BrowserRouter>)
   });
 });
