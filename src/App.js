@@ -1,16 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
-import About from './components/About';
+import About from "./components/About";
 import Nav from "./components/Nav";
 import Menu from "./components/Menu";
 import MapLeaflet from "./components/MapLeaflet";
 import HUD from "./components/HUD";
 import SavedProps from "./components/SavedProps";
-import Account from './components/Account';
+import Account from "./components/Account";
 import CreateAccount from "./components/CreateAccount";
 import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
-import AccountChild from './components/AccountChild';
+import AccountChild from "./components/AccountChild";
 import { Context } from "./Context";
 import {
   fakeStats,
@@ -38,7 +38,7 @@ function App() {
   let [pressCount, setPressCount] = useState(0);
   let [HUDPosition, setHUDPosition] = useState("");
   let [defaultTab, setDefaultTab] = useState(false);
-  // Will hold refs in HUD in state
+  // Holds tab refs for each tab in HUD
   let [activeTab, setActiveTab] = useState({
     econTab: null,
     demogTab: null,
@@ -53,8 +53,8 @@ function App() {
   /* Menu State */
   let [menuState, setMenuState] = useState({
     menuOffset: "-250px",
-    menuVisibility: "hidden"
-  });  
+    menuVisibility: "hidden",
+  });
   //Reference to node holding Nav, Map, Search, and HUD
   let mainViewNode = useRef(null);
   /* Map State */
@@ -68,10 +68,21 @@ function App() {
       "Property markers": true,
       "MSA shape": true,
       "Place shape": true,
-      "CT shape": true
-    }
+      "CT shape": true,
+    },
   });
   let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState([0, 0]);
+  /* About page state */
+  const [visited, setVisited] = useState(localStorage.getItem("visited"));
+
+  useEffect(() => {
+    if (visited === null) {
+      localStorage.setItem("visited", "false");
+    }
+    if (visited === "true") {
+      localStorage.setItem("visited", visited);
+    }
+  }, [visited]);
 
   /* Handlers */
 
@@ -123,9 +134,17 @@ function App() {
     if (mainViewNode.current.contains(e.target)) {
       setMenuState({
         menuOffset: "-250px",
-        menuVisibility: "hidden"
+        menuVisibility: "hidden",
       });
     }
+  };
+
+  const handleRemoveAboutVisited = () => {
+    setVisited("false");
+  };
+
+  const handleAddAboutVisited = () => {
+    setVisited("true");
   };
 
   /* Objects with state values */
@@ -152,7 +171,7 @@ function App() {
     mapData,
     setMapData,
     currentMarkerLatLng,
-    setCurrentMarkerLatLng
+    setCurrentMarkerLatLng,
   };
 
   /* Context values */
@@ -168,8 +187,6 @@ function App() {
     handleAddRemoveProperty,
     handleAPICall,
   };
-
-
 
   return (
     <main className='App'>
@@ -202,22 +219,23 @@ function App() {
             />
           </Route>
           <Route path='/main'>
-            <About />
-            <Menu menuState={{menuState, setMenuState}} />
+            <About
+              aboutState={{ visited, setVisited, handleAddAboutVisited }}
+            />
+            <Menu
+              menuState={{ menuState, setMenuState, handleRemoveAboutVisited }}
+            />
             <div
               ref={mainViewNode}
               onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
-              <Nav menuState={{menuState, setMenuState}} />
+              <Nav menuState={{ menuState, setMenuState }} />
               <MapLeaflet
                 defaultTab={defaultTab}
                 mapState={mapState}
                 properties={properties}
                 HUDPosition={HUDPosition}
               />
-              <HUD
-                defaultTab={defaultTab}
-                HUDState={HUDState}
-              />
+              <HUD defaultTab={defaultTab} HUDState={HUDState} />
             </div>
           </Route>
           <Route path='/'>

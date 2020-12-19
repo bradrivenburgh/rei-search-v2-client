@@ -6,12 +6,14 @@ function Menu({
   menuState: {
     menuState: { menuOffset, menuVisibility },
     setMenuState,
+    handleRemoveAboutVisited,
   },
 }) {
-
   const handleMenuClose = (e) => {
-    if (e.target.tagName.toLowerCase() === "a" ||
-        e.target.tagName.toLowerCase() === "button") {
+    if (
+      e.target.tagName.toLowerCase() === "a" ||
+      e.target.tagName.toLowerCase() === "button"
+    ) {
       setMenuState({
         menuOffset: "-250px",
         menuVisibility: "hidden",
@@ -25,12 +27,12 @@ function Menu({
         className='menu'
         onClick={(e) => handleMenuClose(e)}
         style={{ right: menuOffset, visibility: menuVisibility }}>
-        <button
-          className='menu__closebtn'
-          tabIndex='8'>
+        <button className='menu__closebtn' tabIndex='8'>
           ☰
         </button>
-        <Link to='/about'>About</Link>
+        <Link to='/main' onClick={() => handleRemoveAboutVisited()}>
+          About
+        </Link>
         <Link to='/account'>My account</Link>
         <Link to='/saved-properties'>Saved properties</Link>
 
@@ -43,14 +45,15 @@ function Menu({
   );
 }
 
-export default Menu;  
+export default Menu;
 
 Menu.defaultProps = {
   menuState: {
-    menuState: { 
-      menuOffset: "0px", 
-      menuVisibility: "visible" 
+    menuState: {
+      menuOffset: "0px",
+      menuVisibility: "visible",
     },
     setMenuState: () => {},
-  }
+    handleAddAboutVisited: () => {},
+  },
 };
