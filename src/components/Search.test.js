@@ -1,23 +1,17 @@
-import React, {useState} from 'react';
-import {Context} from '../Context';
-import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import Search from './Search';
+import { Context } from "../Context";
+import { render } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import Search from "./Search";
 
-function SearchTestComponent() {
-  let [defaultTab, setDefaultTab] = useState(false);
-  return (
-    <Context.Provider value={{defaultTab, setDefaultTab}} >
+describe("Search", () => {
+  test("renders to the DOM", () => {
+    render(
       <BrowserRouter>
-        <Search />
+        <Context.Provider
+          value={{ defaultTab: false, setDefaultTab: () => {} }}>
+          <Search />
+        </Context.Provider>
       </BrowserRouter>
-    </Context.Provider>
-  )
-}
-
-describe('Search', () => {
-  test('renders to the DOM', () => {
-    render(<SearchTestComponent />);
+    );
   });
 });
-
