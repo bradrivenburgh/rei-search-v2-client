@@ -218,7 +218,7 @@ function App() {
               onAddRemoveProperty={handleAddRemoveProperty}
             />
           </Route>
-          <Route path='/main'>
+          <Route path='/'>
             <About
               aboutState={{ visited, setVisited, handleAddAboutVisited }}
             />
@@ -237,9 +237,6 @@ function App() {
               />
               <HUD defaultTab={defaultTab} HUDState={HUDState} />
             </div>
-          </Route>
-          <Route path='/'>
-            <About />
           </Route>
         </Switch>
       </Context.Provider>

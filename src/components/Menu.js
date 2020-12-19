@@ -30,7 +30,7 @@ function Menu({
         <button className='menu__closebtn' tabIndex='8'>
           ☰
         </button>
-        <Link to='/main' onClick={() => handleRemoveAboutVisited()}>
+        <Link to='/' onClick={() => handleRemoveAboutVisited()}>
           About
         </Link>
         <Link to='/account'>My account</Link>
