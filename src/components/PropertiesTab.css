@@ -25,12 +25,12 @@
 .properties .addRemove-button {
   position: absolute;
   top: 0px;
-  left: 440px;
+  left: 480px;
 }
 
 .properties__locate-button {
   position: absolute;
-  top: 0px;
+  top: 40px;
   left: 480px;
   background: rgba(255, 255, 255, 0.563);
   border-radius:50%;
@@ -57,12 +57,12 @@
 
   .properties .addRemove-button {
     top: -7px;
-    left: 220px;
+    left: 225px;
   }
 
   .properties__locate-button {
     top: -7px;
-    left: 260px;
+    left: 265px;
   }
   
 }
@@ -78,13 +78,11 @@
   }
 
   .properties .addRemove-button {
-    top: -7px;
-    left: 255px;
+    left: 305px;
   }
 
   .properties__locate-button {
-    top: -7px;
-    left: 295px;
+    left: 305px;
   }
   
 }
@@ -95,12 +93,6 @@
     height: 140px;
     object-fit: cover;
   }  
-  .properties .addRemove-button {
-    left: 350px;
-  }
-  .properties__locate-button {
-    left: 390px;
-  }
 }
 
 .properties p {

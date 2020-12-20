@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
 import {ReactComponent as HeartIcon} from '../images/heart.svg';
+import {ReactComponent as LocatorIcon} from '../images/locator.svg';
 import Image from "./Image";
 import "./PropertiesTab.css";
 
@@ -87,7 +88,7 @@ function PropertiesTab() {
                         }, 1)
                       }
                       }>
-                      Fly
+                      <LocatorIcon />
                     </button>
 
                   </li>
