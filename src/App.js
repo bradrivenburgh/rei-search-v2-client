@@ -72,6 +72,7 @@ function App() {
     },
   });
   let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState([0, 0]);
+  let [findMarker, setFindMarker] = useState(false);
   /* About page state */
   const [visited, setVisited] = useState(localStorage.getItem("visited"));
 
@@ -172,6 +173,7 @@ function App() {
     setMapData,
     currentMarkerLatLng,
     setCurrentMarkerLatLng,
+    findMarker,
   };
 
   /* Context values */
@@ -186,6 +188,8 @@ function App() {
     setDefaultTab,
     handleAddRemoveProperty,
     handleAPICall,
+    setCurrentMarkerLatLng,
+    setFindMarker,
   };
 
   return (

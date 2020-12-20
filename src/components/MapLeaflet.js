@@ -19,6 +19,7 @@ function MapLeaflet({
     setMapData,
     currentMarkerLatLng,
     setCurrentMarkerLatLng,
+    findMarker,
   },
   properties,
   defaultTab,
@@ -109,6 +110,17 @@ function MapLeaflet({
         }
       }
     });
+
+    /**
+     * Sets the center of the map when the user clicks the
+     * button to find the property on the map. 
+     */
+    useEffect(() => {
+      if(findMarker) {
+          map.panTo(currentMarkerLatLng);
+      }
+    })
+    
     return null;
   };
 
@@ -211,7 +223,10 @@ MapLeaflet.defaultProps = {
         "Place shape": true,
         "CT shape": true,
       },
+      findMarker: false,
       setMapData: () => {},
+      setCurrentMarkerLatLng: () => {},
+      
     },
   },
   properties: [

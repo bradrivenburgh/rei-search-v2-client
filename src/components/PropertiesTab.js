@@ -11,6 +11,8 @@ function PropertiesTab() {
     savedProperties,
     setCurrentProperty,
     handleAddRemoveProperty,
+    setCurrentMarkerLatLng,
+    setFindMarker,
   } = useContext(Context);
 
   const renderProperties = (data) => {
@@ -52,27 +54,26 @@ function PropertiesTab() {
                       <Image photo={photos[0]} alt={streetAddress} />
                     </Link>
                     <button
-                        className={
-                          inSavedProps(savedProperties, streetAddress)
-                            ? "addRemove-button remove-button"
-                            : "addRemove-button add-button"
-                        }
-                        tabIndex='6'
-                        value='add-remove'
-                        aria-pressed={inSavedProps(
-                          savedProperties,
-                          streetAddress
-                        )}
-                        onClick={() =>
-                          handleAddRemoveProperty(
-                            inSavedProps(savedProperties, streetAddress),
-                            property,
-                            savedProperties
-                          )
-                        }>
-                        <HeartIcon />
-                      </button>
-
+                      className={
+                        inSavedProps(savedProperties, streetAddress)
+                          ? "addRemove-button remove-button"
+                          : "addRemove-button add-button"
+                      }
+                      tabIndex='6'
+                      value='add-remove'
+                      aria-pressed={inSavedProps(
+                        savedProperties,
+                        streetAddress
+                      )}
+                      onClick={() =>
+                        handleAddRemoveProperty(
+                          inSavedProps(savedProperties, streetAddress),
+                          property,
+                          savedProperties
+                        )
+                      }>
+                      <HeartIcon />
+                    </button>
                   </li>
                   <div>
                     <li>
@@ -84,6 +85,22 @@ function PropertiesTab() {
                         {city}, {state} {zipcode}
                       </p>
                     </li>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => {
+                        setCurrentMarkerLatLng([
+                          property.latitude,
+                          property.longitude,
+                        ]);
+                        setFindMarker(true);
+                        setTimeout(() => {
+                          setFindMarker(false)
+                        }, 1)
+                      }
+                      }>
+                      Fly To
+                    </button>
                   </div>
                 </div>
                 <hr />
