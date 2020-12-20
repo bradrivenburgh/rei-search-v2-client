@@ -7,11 +7,13 @@
   overflow: hidden;
   transition: 0.5s;
   background-color: #aaa;
+  padding-top: 5px;
 }
 
 .HUD__button-container {
   display: flex;
   justify-content: center;
+  margin-top: -6px;
 }
 
 /* Styles for pill button that is currently not in use */

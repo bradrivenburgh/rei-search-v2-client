@@ -157,15 +157,17 @@ function MapLeaflet({
       }}
       position={[property.latitude, property.longitude]}>
       <Popup>
-        <span>{property.address.streetAddress},</span> <br />
-        <span>
-          {property.address.city}, {property.address.state + " "}
-        </span>
-        <span>{property.address.zipcode}</span>
+        <a href={`#${property.address.streetAddress}`}>
+          <span>{property.address.streetAddress},</span> <br />
+          <span>
+            {property.address.city}, {property.address.state + " "}
+          </span>
+          <span>{property.address.zipcode}</span>
+        </a>
       </Popup>
     </Marker>
   ));
-
+  
   return (
     <div tabIndex='9'>
       <MapContainer

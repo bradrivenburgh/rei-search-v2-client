@@ -39,6 +39,7 @@ function PropertiesTab() {
           return (
             <li
               key={index}
+              id={streetAddress}
               onClick={() =>
                 setCurrentProperty({
                   propertyData: property,
