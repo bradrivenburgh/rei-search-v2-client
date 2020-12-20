@@ -28,7 +28,24 @@
   left: 440px;
 }
 
-@media screen and (max-width: 420px) {
+.properties__locate-button {
+  position: absolute;
+  top: 0px;
+  left: 480px;
+  background: rgba(255, 255, 255, 0.563);
+  border-radius:50%;
+  padding: .5em .5em .2em .5em;
+  border: none;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.properties__locate-button:hover {
+  background-color: rgb(245, 242, 242);
+  transition: .2s;
+}
+
+@media screen and (max-width: 350px) {
   .properties img {
     width: 100px;
     height: 75px;
@@ -40,7 +57,34 @@
 
   .properties .addRemove-button {
     top: -7px;
+    left: 220px;
+  }
+
+  .properties__locate-button {
+    top: -7px;
     left: 260px;
+  }
+  
+}
+
+@media screen and (min-width: 351px) and (max-width: 420px) {
+  .properties img {
+    width: 100px;
+    height: 75px;
+  }
+
+  .properties p {
+    font-size: .8em;
+  }
+
+  .properties .addRemove-button {
+    top: -7px;
+    left: 255px;
+  }
+
+  .properties__locate-button {
+    top: -7px;
+    left: 295px;
   }
   
 }
@@ -53,6 +97,9 @@
   }  
   .properties .addRemove-button {
     left: 350px;
+  }
+  .properties__locate-button {
+    left: 390px;
   }
 }
 

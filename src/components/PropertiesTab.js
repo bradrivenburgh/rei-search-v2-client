@@ -74,20 +74,8 @@ function PropertiesTab() {
                       }>
                       <HeartIcon />
                     </button>
-                  </li>
-                  <div>
-                    <li>
-                      <p>${price}</p>
-                    </li>
-                    <li>
-                      <p>
-                        {streetAddress}, <br />
-                        {city}, {state} {zipcode}
-                      </p>
-                    </li>
-                  </div>
-                  <div>
                     <button
+                      className='properties__locate-button'
                       onClick={() => {
                         setCurrentMarkerLatLng([
                           property.latitude,
@@ -99,8 +87,20 @@ function PropertiesTab() {
                         }, 1)
                       }
                       }>
-                      Fly To
+                      Fly
                     </button>
+
+                  </li>
+                  <div>
+                    <li>
+                      <p>${price}</p>
+                    </li>
+                    <li>
+                      <p>
+                        {streetAddress}, <br />
+                        {city}, {state} {zipcode}
+                      </p>
+                    </li>
                   </div>
                 </div>
                 <hr />
