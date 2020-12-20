@@ -134,6 +134,7 @@ function MapLeaflet({
         }
         map.flyToBounds([currentMarkerLatLng, currentMarkerLatLng], {
           paddingBottomRight: [0, paddingOffset],
+          duration: 1.2,
         });  
 
       }
