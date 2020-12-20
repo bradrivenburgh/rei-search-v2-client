@@ -117,7 +117,25 @@ function MapLeaflet({
      */
     useEffect(() => {
       if(findMarker) {
-          map.panTo(currentMarkerLatLng);
+        let paddingOffset;
+
+        if (HUDPosition === "67%") {
+          if (window.innerHeight <= 600) {
+            paddingOffset = 425;
+          } else if (window.innerHeight > 600 && window.innerHeight <= 700) {
+            paddingOffset = 500;
+          } else if (window.innerHeight > 700 && window.innerHeight <= 900) {
+            paddingOffset = 560;
+          } else if (window.innerHeight > 900) {
+            paddingOffset = 750;
+          } 
+        } else {
+          paddingOffset = 100;
+        }
+        map.flyToBounds([currentMarkerLatLng, currentMarkerLatLng], {
+          paddingBottomRight: [0, paddingOffset],
+        });  
+
       }
     })
     
