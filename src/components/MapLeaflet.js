@@ -122,6 +122,7 @@ function MapLeaflet({
         findMarker &&
         currentMarkerLatLng.current[0] !== currentMarkerLatLng.previous[0]
       ) {
+        //
         let paddingOffset;
 
         // Offsets for map center to accommodate HUD
@@ -138,6 +139,10 @@ function MapLeaflet({
         } else {
           paddingOffset = 100;
         }
+        // Close all popups that will prevent map panning
+        map.closePopup()
+
+        // Fly to the marker with the specified padding offset
         map.flyToBounds(
           [currentMarkerLatLng.current, currentMarkerLatLng.current],
           {
@@ -165,7 +170,7 @@ function MapLeaflet({
     <Marker
       key={property.address.streetAddress}
       position={[property.latitude, property.longitude]}>
-      <Popup>
+      <Popup keepInView={false}>
         <a href={`#${property.address.streetAddress}`}>
           <span>{property.address.streetAddress},</span> <br />
           <span>
