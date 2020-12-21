@@ -100,6 +100,7 @@ function MapLeaflet({
         else {
           paddingOffset = 300
         }
+        map.closePopup();
         map.flyToBounds(copyTractRef.getBounds(), {
           paddingBottomRight: [0, paddingOffset],
           maxZoom: 14,
