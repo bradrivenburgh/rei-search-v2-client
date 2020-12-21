@@ -1,6 +1,5 @@
 .HUD {
-  /* position: fixed; */
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 69px;
   z-index: 2;
