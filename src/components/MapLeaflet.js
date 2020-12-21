@@ -116,9 +116,15 @@ function MapLeaflet({
      * button to find the property on the map. 
      */
     useEffect(() => {
-      if(findMarker) {
+      // Guard against flying to the marker already at the center 
+      // of the map
+      if (
+        findMarker &&
+        currentMarkerLatLng.current[0] !== currentMarkerLatLng.previous[0]
+      ) {
         let paddingOffset;
 
+        // Offsets for map center to accommodate HUD
         if (HUDPosition === "67%") {
           if (window.innerHeight <= 600) {
             paddingOffset = 425;
@@ -128,17 +134,26 @@ function MapLeaflet({
             paddingOffset = 560;
           } else if (window.innerHeight > 900) {
             paddingOffset = 750;
-          } 
+          }
         } else {
           paddingOffset = 100;
         }
-        map.flyToBounds([currentMarkerLatLng, currentMarkerLatLng], {
-          paddingBottomRight: [0, paddingOffset],
-          duration: 1.2,
-        });  
+        map.flyToBounds(
+          [currentMarkerLatLng.current, currentMarkerLatLng.current],
+          {
+            paddingBottomRight: [0, paddingOffset],
+            duration: 1.2,
+          }
+        );
 
+        // Sets the "previous" property to the "current" position to 
+        // prevent flying to same marker position
+        setCurrentMarkerLatLng({
+          ...currentMarkerLatLng,
+          previous: currentMarkerLatLng.current,
+        });
       }
-    })
+    });
     
     return null;
   };
@@ -149,12 +164,6 @@ function MapLeaflet({
   const renderMarkers = properties.map((property) => (
     <Marker
       key={property.address.streetAddress}
-      eventHandlers={{
-        click: (e) => {
-          let markerCenter = e.target.getLatLng();
-          setCurrentMarkerLatLng([markerCenter.lat, markerCenter.lng]);
-        },
-      }}
       position={[property.latitude, property.longitude]}>
       <Popup>
         <a href={`#${property.address.streetAddress}`}>

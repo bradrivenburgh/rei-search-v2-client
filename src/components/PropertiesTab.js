@@ -12,9 +12,21 @@ function PropertiesTab() {
     savedProperties,
     setCurrentProperty,
     handleAddRemoveProperty,
+    currentMarkerLatLng,
     setCurrentMarkerLatLng,
     setFindMarker,
   } = useContext(Context);
+
+  const handleFindMarker = (property) => {
+    setCurrentMarkerLatLng({
+      ...currentMarkerLatLng,
+      current: [property.latitude, property.longitude],
+    });
+    setFindMarker(true);
+    setTimeout(() => {
+      setFindMarker(false);
+    }, 1);
+  };
 
   const renderProperties = (data) => {
     return (
@@ -78,17 +90,8 @@ function PropertiesTab() {
                     </button>
                     <button
                       className='properties__locate-button'
-                      onClick={() => {
-                        setCurrentMarkerLatLng([
-                          property.latitude,
-                          property.longitude,
-                        ]);
-                        setFindMarker(true);
-                        setTimeout(() => {
-                          setFindMarker(false)
-                        }, 1)
-                      }
-                      }>
+                      onClick={() => handleFindMarker(property)}
+                      >
                       <LocatorIcon />
                     </button>
 

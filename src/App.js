@@ -71,7 +71,10 @@ function App() {
       "CT shape": true,
     },
   });
-  let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState([0, 0]);
+  let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState({
+    current: [],
+    previous: []
+  });
   let [findMarker, setFindMarker] = useState(false);
   /* About page state */
   const [visited, setVisited] = useState(localStorage.getItem("visited"));
@@ -188,6 +191,7 @@ function App() {
     setDefaultTab,
     handleAddRemoveProperty,
     handleAPICall,
+    currentMarkerLatLng,
     setCurrentMarkerLatLng,
     setFindMarker,
   };
