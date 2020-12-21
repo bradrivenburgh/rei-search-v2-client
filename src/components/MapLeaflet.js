@@ -88,47 +88,6 @@ function MapLeaflet({
         if (HUDPosition === "67%") {
           if (window.innerHeight <= 600) {
             paddingOffset = 425;
-          } else if (window.innerHeight > 600 && window.innerHeight <= 700){
-            paddingOffset = 500;
-          } else if (window.innerHeight > 700 && window.innerHeight <= 900) {
-            paddingOffset = 560;
-          } else if (window.innerHeight > 900) {
-            paddingOffset = 750;
-          }
-          map.flyToBounds(copyTractRef.getBounds(), {
-            paddingBottomRight: [0, paddingOffset],
-            maxZoom: 14,
-          });  
-
-        }
-        // If HUD is at oneThirdScreen
-        else {
-          map.flyToBounds(copyTractRef.getBounds(), {
-            paddingBottomRight: [0, 300],
-            maxZoom: 14,
-          });
-        }
-      }
-    });
-
-    /**
-     * Sets the center of the map when the user clicks the
-     * button to find the property on the map. 
-     */
-    useEffect(() => {
-      // Guard against flying to the marker already at the center 
-      // of the map
-      if (
-        findMarker &&
-        currentMarkerLatLng.current[0] !== currentMarkerLatLng.previous[0]
-      ) {
-        //
-        let paddingOffset;
-
-        // Offsets for map center to accommodate HUD
-        if (HUDPosition === "67%") {
-          if (window.innerHeight <= 600) {
-            paddingOffset = 425;
           } else if (window.innerHeight > 600 && window.innerHeight <= 700) {
             paddingOffset = 500;
           } else if (window.innerHeight > 700 && window.innerHeight <= 900) {
@@ -136,30 +95,71 @@ function MapLeaflet({
           } else if (window.innerHeight > 900) {
             paddingOffset = 750;
           }
-        } else {
-          paddingOffset = 100;
         }
-        // Close all popups that will prevent map panning
-        map.closePopup()
-
-        // Fly to the marker with the specified padding offset
-        map.flyToBounds(
-          [currentMarkerLatLng.current, currentMarkerLatLng.current],
-          {
-            paddingBottomRight: [0, paddingOffset],
-            duration: 1.2,
-          }
-        );
-
-        // Sets the "previous" property to the "current" position to 
-        // prevent flying to same marker position
-        setCurrentMarkerLatLng({
-          ...currentMarkerLatLng,
-          previous: currentMarkerLatLng.current,
+        // If HUD is at oneThirdScreen
+        else {
+          paddingOffset = 300
+        }
+        map.flyToBounds(copyTractRef.getBounds(), {
+          paddingBottomRight: [0, paddingOffset],
+          maxZoom: 14,
+          duration: 0.5
         });
+
       }
     });
-    
+
+    /**
+     * Sets the center of the map when the user clicks the
+     * button to find the property on the map.
+     */
+    useEffect(() => {
+      // Guard against panning to the marker already at the center
+      // of the map
+      if (findMarker) {
+        if (
+          currentMarkerLatLng.current[0] !== currentMarkerLatLng.previous[0] ||
+          center.lat !== currentMarkerLatLng.center.lat
+        ) {
+          let paddingOffset;
+
+          // Offsets for map center to accommodate HUD
+          if (HUDPosition === "67%") {
+            if (window.innerHeight <= 600) {
+              paddingOffset = 425;
+            } else if (window.innerHeight > 600 && window.innerHeight <= 700) {
+              paddingOffset = 500;
+            } else if (window.innerHeight > 700 && window.innerHeight <= 900) {
+              paddingOffset = 560;
+            } else if (window.innerHeight > 900) {
+              paddingOffset = 750;
+            }
+          } else {
+            paddingOffset = 100;
+          }
+          // Close all popups that will prevent map panning
+          map.closePopup();
+
+          // Pan to the marker with the specified padding offset
+          map.fitBounds(
+            [currentMarkerLatLng.current, currentMarkerLatLng.current],
+            {
+              paddingBottomRight: [0, paddingOffset],
+              duration: 0.25,
+            }
+          );
+
+          // Sets the "previous" property to the "current" position to
+          // prevent panning to same marker position
+          setCurrentMarkerLatLng({
+            ...currentMarkerLatLng,
+            previous: currentMarkerLatLng.current,
+            center: center,
+          });
+        }
+      }
+    });
+
     return null;
   };
 

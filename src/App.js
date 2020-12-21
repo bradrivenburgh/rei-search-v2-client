@@ -73,7 +73,8 @@ function App() {
   });
   let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState({
     current: [],
-    previous: []
+    previous: [],
+    center: []
   });
   let [findMarker, setFindMarker] = useState(false);
   /* About page state */
