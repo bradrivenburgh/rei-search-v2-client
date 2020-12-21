@@ -46,4 +46,10 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    var meta = document.createElement('meta');
+    meta.name = 'viewport';
+    meta.content = 'width=device-width,height='+window.innerHeight+', initial-scale=1.0';
+    document.getElementsByTagName('head')[0].appendChild(meta);
+  </script>
 </html>
