@@ -7,9 +7,9 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
     <div
       className='about-wrapper'
       style={
-        visited === "false" || visited === null
-          ? { display: "block" }
-          : { display: "none" }
+        visited === "true"
+          ? { display: "none" }
+          : { display: "block" }
       }>
       <section className='about'>
         <nav className='closing-nav'>

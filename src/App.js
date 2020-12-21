@@ -81,11 +81,10 @@ function App() {
   const [visited, setVisited] = useState(localStorage.getItem("visited"));
 
   useEffect(() => {
-    if (visited === null) {
-      localStorage.setItem("visited", "false");
-    }
     if (visited === "true") {
       localStorage.setItem("visited", visited);
+    } else {
+      localStorage.setItem("visited", "false");
     }
   }, [visited]);
 

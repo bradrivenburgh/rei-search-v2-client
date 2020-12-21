@@ -171,7 +171,7 @@ function MapLeaflet({
     <Marker
       key={property.address.streetAddress}
       position={[property.latitude, property.longitude]}>
-      <Popup keepInView={false}>
+      <Popup keepInView={false} autoPan={false}> 
         <a href={`#${property.address.streetAddress}`}>
           <span>{property.address.streetAddress},</span> <br />
           <span>
