@@ -148,8 +148,8 @@ function MapLeaflet({
         // on the marker; can't access original marker
         setTimeout(() => {
           map.openPopup(currentMarkerLatLng.popup, [
-            currentMarkerLatLng.current[0] + .00014,
-            currentMarkerLatLng.current[1], {
+            currentMarkerLatLng.current[0] + .000139,
+            currentMarkerLatLng.current[1] + .000005, {
               autoPan: false,
               keepInView: false
             }
