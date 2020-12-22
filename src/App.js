@@ -74,7 +74,8 @@ function App() {
   let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState({
     current: [],
     previous: [],
-    center: []
+    center: [],
+    popup: '',
   });
   let [findMarker, setFindMarker] = useState(false);
   /* About page state */

@@ -115,49 +115,52 @@ function MapLeaflet({
      * button to find the property on the map.
      */
     useEffect(() => {
-      // Guard against panning to the marker already at the center
-      // of the map
       if (findMarker) {
-        if (
-          currentMarkerLatLng.current[0] !== currentMarkerLatLng.previous[0] ||
-          center.lat !== currentMarkerLatLng.center.lat
-        ) {
-          let paddingOffset;
+        let paddingOffset;
 
-          // Offsets for map center to accommodate HUD
-          if (HUDPosition === "67%") {
-            if (window.innerHeight <= 600) {
-              paddingOffset = 425;
-            } else if (window.innerHeight > 600 && window.innerHeight <= 700) {
-              paddingOffset = 500;
-            } else if (window.innerHeight > 700 && window.innerHeight <= 900) {
-              paddingOffset = 560;
-            } else if (window.innerHeight > 900) {
-              paddingOffset = 750;
-            }
+        // Offsets for map center to accommodate HUD
+        if (HUDPosition === "67%") {
+          if (window.innerHeight <= 600) {
+            paddingOffset = 324;
+          } else if (window.innerHeight > 600 && window.innerHeight <= 700) {
+            paddingOffset = 399;
+          } else if (window.innerHeight > 700 && window.innerHeight <= 900) {
+            paddingOffset = 450;
           } else {
-            paddingOffset = 100;
+            paddingOffset = 600;
           }
-          // Close all popups that will prevent map panning
-          map.closePopup();
+        } 
+        // Close all popups that will prevent map panning
+        map.closePopup();
 
-          // Pan to the marker with the specified padding offset
-          map.fitBounds(
-            [currentMarkerLatLng.current, currentMarkerLatLng.current],
-            {
-              paddingBottomRight: [0, paddingOffset],
-              duration: 0.25,
+        // Pan to the marker with the specified padding offset
+        map.fitBounds(
+          [currentMarkerLatLng.current, currentMarkerLatLng.current],
+          {
+            paddingBottomRight: [0, paddingOffset],
+            duration: 0.25,
+          }
+        );
+
+        // QuickFix: opens the same popup content bound to marker
+        // on the marker; can't access original marker
+        setTimeout(() => {
+          map.openPopup(currentMarkerLatLng.popup, [
+            currentMarkerLatLng.current[0] + .00014,
+            currentMarkerLatLng.current[1], {
+              autoPan: false,
+              keepInView: false
             }
-          );
+          ]);
+        }, 325);
 
-          // Sets the "previous" property to the "current" position to
-          // prevent panning to same marker position
-          setCurrentMarkerLatLng({
-            ...currentMarkerLatLng,
-            previous: currentMarkerLatLng.current,
-            center: center,
-          });
-        }
+        // Sets the "previous" property to the "current" position to
+        // prevent panning to same marker position
+        setCurrentMarkerLatLng({
+          ...currentMarkerLatLng,
+          previous: currentMarkerLatLng.current,
+          center: center,
+        });
       }
     });
 

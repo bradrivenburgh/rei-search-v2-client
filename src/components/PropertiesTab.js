@@ -21,6 +21,15 @@ function PropertiesTab() {
     setCurrentMarkerLatLng({
       ...currentMarkerLatLng,
       current: [property.latitude, property.longitude],
+      popup: `
+        <a href="#${property.address.streetAddress}">
+          <span>${property.address.streetAddress},</span> <br />
+          <span>
+            ${property.address.city}, ${property.address.state + " "}
+          </span>
+          <span>${property.address.zipcode}</span>
+          </a>
+      `,
     });
     setFindMarker(true);
     setTimeout(() => {
