@@ -130,7 +130,7 @@ function MapLeaflet({
             paddingOffset = 600;
           } 
         } else {
-          paddingOffset = 0;
+          paddingOffset = 100;
         }
         // Close all popups that will prevent map panning
         map.closePopup();
