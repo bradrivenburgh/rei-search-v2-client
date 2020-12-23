@@ -157,14 +157,6 @@ function MapLeaflet({
             }
           ]);
         }, 325);
-
-        // Sets the "previous" property to the "current" position to
-        // prevent panning to same marker position
-        setCurrentMarkerLatLng({
-          ...currentMarkerLatLng,
-          previous: currentMarkerLatLng.current,
-          center: center,
-        });
       }
     });
 

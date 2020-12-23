@@ -15,7 +15,7 @@ export const Context = createContext({
   setDefaultTab: () => {},
   handleAddRemoveProperty: () => {},
   handleAPICall: () => {},
-  currentMarkerLatLng: [],
+  currentMarkerLatLng: {},
   setCurrentMarkerLatLng: () => {},
   setFindMarker: () => {},
 });
