@@ -28,8 +28,8 @@ function App() {
   /* Data from API */
   let [statistics, setStatistics] = useState({});
   let [properties, setProperties] = useState([]);
-  /* Properties State */
   let [savedProperties, setSavedProperties] = useState(savedProps);
+  /* Properties State */
   let [currentProperty, setCurrentProperty] = useState({
     propertyData: properties[0] || placeholderProfile,
     inSavedProperties: false,
@@ -90,14 +90,30 @@ function App() {
   /* Handlers */
 
   const handleAPICall = () => {
-    setStatistics(fakeStats);
-    setProperties(fakeProps);
-    setMapData({
-      ...mapData,
-      msaShape: phillyMSAGeoJson,
-      placeShape: philadelphiaPlaceGeoJson,
-      tractShape: phillyTractGeoJson,
-    });
+    fetch('http://localhost:8000/api/')
+      .then(response => {
+        if (response.status >= 200 && response.status <= 299) {
+          return response.json()
+        }
+        throw new Error('There was an error retrieving the search results');
+      })
+      .then(data => {
+        setStatistics(data.fakeStats);
+        setProperties(data.fakeProps);
+        setMapData({
+          ...mapData,
+          msaShape: data.phillyMSAGeoJson,
+          placeShape: data.philadelphiaPlaceGeoJson,
+          tractShape: data.phillyTractGeoJson,
+        });
+        // Used to set defaultTab to true for an instant;
+        // triggers HUD events and Map events
+        setDefaultTab(true);
+        setDefaultTab(false);
+      })
+      .catch(e => {
+        console.error(e)
+      });
   };
 
   /**
