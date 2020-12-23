@@ -33,6 +33,8 @@ class Search extends React.Component {
   constructor() {
     super();
 
+    this.autosuggest = React.createRef();
+
     this.state = {
       value: '',
       suggestions: [],
@@ -66,7 +68,8 @@ class Search extends React.Component {
     this.context.setDefaultTab(true)
     setTimeout(() => {
       this.context.setDefaultTab(false)
-    }, 1);  
+    }, 1);
+    this.autosuggest.current.input.blur()  
   }
 
   render() {
@@ -83,6 +86,7 @@ class Search extends React.Component {
     return (
       <form onSubmit={(e) => this.onSubmit(e)}>
         <Autosuggest
+          ref={this.autosuggest}
           suggestions={suggestions}
           onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
           onSuggestionsClearRequested={this.onSuggestionsClearRequested}
