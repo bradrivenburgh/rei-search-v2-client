@@ -240,7 +240,8 @@ function App() {
                 defaultTab={defaultTab}
                 mapState={mapState}
                 properties={properties}
-                HUDPosition={HUDPosition}
+                HUDState={HUDState}
+                
               />
               <HUD defaultTab={defaultTab} HUDState={HUDState} />
             </div>

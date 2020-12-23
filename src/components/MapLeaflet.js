@@ -14,16 +14,10 @@ import config from "../config";
 import "./MapLeaflet.css";
 
 function MapLeaflet({
-  mapState: {
-    mapData,
-    setMapData,
-    currentMarkerLatLng,
-    setCurrentMarkerLatLng,
-    findMarker,
-  },
+  mapState: { mapData, setMapData, currentMarkerLatLng, findMarker },
   properties,
   defaultTab,
-  HUDPosition,
+  HUDState: { HUDPosition, activeTab, setHUDPosition, setActiveTab, setPressCount },
 }) {
   /* State from App */
   let {
@@ -100,15 +94,14 @@ function MapLeaflet({
         }
         // If HUD is at oneThirdScreen
         else {
-          paddingOffset = 300
+          paddingOffset = 300;
         }
         map.closePopup();
         map.flyToBounds(copyTractRef.getBounds(), {
           paddingBottomRight: [0, paddingOffset],
           maxZoom: 14,
-          duration: 0.5
+          duration: 0.5,
         });
-
       }
     });
 
@@ -130,7 +123,7 @@ function MapLeaflet({
             paddingOffset = 450;
           } else {
             paddingOffset = 600;
-          } 
+          }
         } else {
           paddingOffset = 100;
         }
@@ -150,11 +143,12 @@ function MapLeaflet({
         // on the marker; can't access original marker
         setTimeout(() => {
           map.openPopup(currentMarkerLatLng.popup, [
-            currentMarkerLatLng.current[0] + .000139,
-            currentMarkerLatLng.current[1] + .000005, {
+            currentMarkerLatLng.current[0] + 0.000139,
+            currentMarkerLatLng.current[1] + 0.000005,
+            {
               autoPan: false,
-              keepInView: false
-            }
+              keepInView: false,
+            },
           ]);
         }, 325);
       }
@@ -163,6 +157,22 @@ function MapLeaflet({
     return null;
   };
 
+
+  const handleOpenPropTab = () => {
+    if (!activeTab.propsTab) {
+      setActiveTab({
+        econTab: null,
+        demogTab: null,
+        propsTab: true
+      });
+    }
+
+    if (HUDPosition === "69px") {
+      setHUDPosition("38%");
+      setPressCount(1);
+    }
+  }
+
   /**
    * Renders property markers with address popups
    */
@@ -170,8 +180,8 @@ function MapLeaflet({
     <Marker
       key={property.address.streetAddress}
       position={[property.latitude, property.longitude]}>
-      <Popup keepInView={false} autoPan={false}> 
-        <a href={`#${property.address.streetAddress}`}>
+      <Popup keepInView={false} autoPan={false}>
+        <a href={`#${property.address.streetAddress}`} onClick={() => handleOpenPropTab()}>
           <span>{property.address.streetAddress},</span> <br />
           <span>
             {property.address.city}, {property.address.state + " "}
@@ -181,7 +191,7 @@ function MapLeaflet({
       </Popup>
     </Marker>
   ));
-  
+
   return (
     <div tabIndex='9'>
       <MapContainer
@@ -261,7 +271,6 @@ MapLeaflet.defaultProps = {
       findMarker: false,
       setMapData: () => {},
       setCurrentMarkerLatLng: () => {},
-      
     },
   },
   properties: [
@@ -288,5 +297,11 @@ MapLeaflet.defaultProps = {
     },
   ],
   defaultTab: false,
-  HUDPosition: "67%",
+  HUDState: {
+    HUDPosition: "67%",
+    activeTab: false,
+    setHUDPosition: () => {},
+    setActiveTab: () => {},
+    setPressCount: () => {},
+  },
 };
