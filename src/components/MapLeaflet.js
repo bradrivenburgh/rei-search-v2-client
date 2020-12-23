@@ -34,6 +34,20 @@ function MapLeaflet({
   */
   let tractRef = useRef();
 
+  const handleOpenPropTab = () => {
+    if (!activeTab.propsTab) {
+      setActiveTab({
+        econTab: null,
+        demogTab: null,
+        propsTab: true
+      });
+    }
+
+    if (HUDPosition === "69px") {
+      setHUDPosition("38%");
+      setPressCount(1);
+    }
+  }
   /**
    * Component that will capture events from the map and save the
    * state of the zoom, center, and checked values for layers for
@@ -156,22 +170,6 @@ function MapLeaflet({
 
     return null;
   };
-
-
-  const handleOpenPropTab = () => {
-    if (!activeTab.propsTab) {
-      setActiveTab({
-        econTab: null,
-        demogTab: null,
-        propsTab: true
-      });
-    }
-
-    if (HUDPosition === "69px") {
-      setHUDPosition("38%");
-      setPressCount(1);
-    }
-  }
 
   /**
    * Renders property markers with address popups

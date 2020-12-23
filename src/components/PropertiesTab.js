@@ -22,7 +22,10 @@ function PropertiesTab() {
       ...currentMarkerLatLng,
       current: [property.latitude, property.longitude],
       popup: `
-        <a href="#${property.address.streetAddress}">
+        <a 
+          href="#${property.address.streetAddress}" 
+          onclick="handleOpenPropTab()" 
+          id=${property.latitude}>
           <span>${property.address.streetAddress},</span> <br />
           <span>
             ${property.address.city}, ${property.address.state + " "}
@@ -99,11 +102,9 @@ function PropertiesTab() {
                     </button>
                     <button
                       className='properties__locate-button'
-                      onClick={() => handleFindMarker(property)}
-                      >
+                      onClick={() => handleFindMarker(property)}>
                       <LocatorIcon />
                     </button>
-
                   </li>
                   <div>
                     <li>
