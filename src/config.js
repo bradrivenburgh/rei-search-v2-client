@@ -1,8 +1,16 @@
+let REISEARCH_API_ENDPOINT = "";
+
+(process.env.NODE_ENV === 'development')
+  ? REISEARCH_API_ENDPOINT = "http://localhost:8000/api/"
+  : REISEARCH_API_ENDPOINT = process.env.REACT_APP_REISEARCH_API_ENDPOINT
+
+
 const config = {
   STREETVIEW_API_KEY: process.env.REACT_APP_STREETVIEW_API_KEY,
   STREETVIEW_SIGNATURE: process.env.REACT_APP_STREETVIEW_SIGNATURE,
   MAPBOX_API_KEY: process.env.REACT_APP_MAPBOX_API_KEY,
-  CENSUS_API_KEY: process.env.CENSUS_API_KEY
+  CENSUS_API_KEY: process.env.CENSUS_API_KEY,
+  REISEARCH_API_ENDPOINT,
 }
 
 export default config;

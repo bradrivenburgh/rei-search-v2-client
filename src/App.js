@@ -12,6 +12,7 @@ import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import AccountChild from "./components/AccountChild";
 import { Context } from "./Context";
+import config from './config';
 import {
   fakeStats,
   fakeProps,
@@ -90,7 +91,7 @@ function App() {
   /* Handlers */
 
   const handleAPICall = () => {
-    fetch('http://localhost:8000/api/')
+    fetch(config.REISEARCH_API_ENDPOINT)
       .then(response => {
         if (response.status >= 200 && response.status <= 299) {
           return response.json()
