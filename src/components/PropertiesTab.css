@@ -1,3 +1,16 @@
+/* 
+  Add cushion before property list items so they
+  don't headbutt browser when linked to 
+*/
+.properties .goto::before {
+  display: block; 
+  content: " "; 
+  margin-top: -20px; 
+  height: 20px; 
+  visibility: hidden; 
+  pointer-events: none;
+}
+
 .properties, ul {
   list-style-type: none;
   margin-block-start: 0;

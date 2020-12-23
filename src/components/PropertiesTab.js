@@ -24,8 +24,7 @@ function PropertiesTab() {
       popup: `
         <a 
           href="#${property.address.streetAddress}" 
-          onclick="handleOpenPropTab()" 
-          id=${property.latitude}>
+          onclick="handleOpenPropTab()">
           <span>${property.address.streetAddress},</span> <br />
           <span>
             ${property.address.city}, ${property.address.state + " "}
@@ -64,6 +63,7 @@ function PropertiesTab() {
             <li
               key={index}
               id={streetAddress}
+              className="goto"
               onClick={() =>
                 setCurrentProperty({
                   propertyData: property,
