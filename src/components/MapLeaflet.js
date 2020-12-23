@@ -87,7 +87,7 @@ function MapLeaflet({
         // If HUD is at twoThirdsScreen
         if (HUDPosition === "67%") {
           if (window.innerHeight <= 400) {
-            paddingOffset = 225;
+            paddingOffset = 600;
           } else if (window.innerHeight > 400 && window.innerHeight <= 600) {
             paddingOffset = 425;
           } else if (window.innerHeight > 600 && window.innerHeight <= 700) {
