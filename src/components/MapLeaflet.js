@@ -33,6 +33,8 @@ function MapLeaflet({
     Attach to GeoJson shape for tractShape
   */
   let tractRef = useRef();
+  const markerRefs = useRef([]);
+  markerRefs.current = []
 
   const handleOpenPropTab = () => {
     if (!activeTab.propsTab) {
@@ -42,12 +44,40 @@ function MapLeaflet({
         propsTab: true
       });
     }
-
     if (HUDPosition === "69px") {
       setHUDPosition("38%");
       setPressCount(1);
     }
   }
+
+  const addToRefs = (el) => {
+    if (el && !markerRefs.current.includes(el)) {
+      markerRefs.current.push(el);
+    }
+  }
+
+  /**
+   * Renders property markers with address popups
+   */
+  const renderMarkers = properties.map((property) => (
+    <Marker
+      key={property.address.streetAddress}
+      position={[property.latitude, property.longitude]}
+      ref={addToRefs}>
+      <Popup keepInView={false} autoPan={false}>
+        <a href={`#${property.address.streetAddress}`} onClick={() => handleOpenPropTab()}>
+          <span>{property.address.streetAddress},</span> <br />
+          <span>
+            {property.address.city}, {property.address.state + " "}
+          </span>
+          <span>{property.address.zipcode}</span>
+        </a>
+      </Popup>
+    </Marker>
+  ));
+
+
+
   /**
    * Component that will capture events from the map and save the
    * state of the zoom, center, and checked values for layers for
@@ -120,8 +150,8 @@ function MapLeaflet({
     });
 
     /**
-     * Sets the center of the map when the user clicks the
-     * button to find the property on the map.
+     * When the use clicks the findMarker button in the HUD this effect 
+     * centers the map on the corresponding marker and opens its popup.
      */
     useEffect(() => {
       if (findMarker) {
@@ -153,42 +183,16 @@ function MapLeaflet({
           }
         );
 
-        // QuickFix: opens the same popup content bound to marker
-        // on the marker; can't access original marker
-        setTimeout(() => {
-          map.openPopup(currentMarkerLatLng.popup, [
-            currentMarkerLatLng.current[0] + 0.000139,
-            currentMarkerLatLng.current[1] + 0.000005,
-            {
-              autoPan: false,
-              keepInView: false,
-            },
-          ]);
-        }, 325);
+        // Find the markerRef with the same latitude as property and fire a click
+        const foundMarker = markerRefs.current.find(
+          (marker) => marker._latlng.lat === currentMarkerLatLng.current[0]
+        );
+        foundMarker.fire("click");
       }
     });
 
     return null;
   };
-
-  /**
-   * Renders property markers with address popups
-   */
-  const renderMarkers = properties.map((property) => (
-    <Marker
-      key={property.address.streetAddress}
-      position={[property.latitude, property.longitude]}>
-      <Popup keepInView={false} autoPan={false}>
-        <a href={`#${property.address.streetAddress}`} onClick={() => handleOpenPropTab()}>
-          <span>{property.address.streetAddress},</span> <br />
-          <span>
-            {property.address.city}, {property.address.state + " "}
-          </span>
-          <span>{property.address.zipcode}</span>
-        </a>
-      </Popup>
-    </Marker>
-  ));
 
   return (
     <div tabIndex='9'>

@@ -12,26 +12,13 @@ function PropertiesTab() {
     savedProperties,
     setCurrentProperty,
     handleAddRemoveProperty,
-    currentMarkerLatLng,
     setCurrentMarkerLatLng,
     setFindMarker,
   } = useContext(Context);
 
   const handleFindMarker = (property) => {
     setCurrentMarkerLatLng({
-      ...currentMarkerLatLng,
-      current: [property.latitude, property.longitude],
-      popup: `
-        <a 
-          href="#${property.address.streetAddress}" 
-          onclick="handleOpenPropTab()">
-          <span>${property.address.streetAddress},</span> <br />
-          <span>
-            ${property.address.city}, ${property.address.state + " "}
-          </span>
-          <span>${property.address.zipcode}</span>
-          </a>
-      `,
+      current: [property.latitude, property.longitude]
     });
     setFindMarker(true);
     setTimeout(() => {
