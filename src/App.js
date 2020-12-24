@@ -14,13 +14,8 @@ import AccountChild from "./components/AccountChild";
 import { Context } from "./Context";
 import config from './config';
 import {
-  fakeStats,
-  fakeProps,
   savedProps,
   placeholderProfile,
-  phillyMSAGeoJson,
-  philadelphiaPlaceGeoJson,
-  phillyTractGeoJson,
 } from "./mockData";
 
 function App() {
