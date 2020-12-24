@@ -17,7 +17,13 @@ function MapLeaflet({
   mapState: { mapData, setMapData, currentMarkerLatLng, findMarker },
   properties,
   defaultTab,
-  HUDState: { HUDPosition, activeTab, setHUDPosition, setActiveTab, setPressCount },
+  HUDState: {
+    HUDPosition,
+    activeTab,
+    setHUDPosition,
+    setActiveTab,
+    setPressCount,
+  },
 }) {
   /* State from App */
   let {
@@ -34,27 +40,27 @@ function MapLeaflet({
   */
   let tractRef = useRef();
   const markerRefs = useRef([]);
-  markerRefs.current = []
+  markerRefs.current = [];
 
   const handleOpenPropTab = () => {
     if (!activeTab.propsTab) {
       setActiveTab({
         econTab: null,
         demogTab: null,
-        propsTab: true
+        propsTab: true,
       });
     }
     if (HUDPosition === "69px") {
       setHUDPosition("38%");
       setPressCount(1);
     }
-  }
+  };
 
   const addToRefs = (el) => {
     if (el && !markerRefs.current.includes(el)) {
       markerRefs.current.push(el);
     }
-  }
+  };
 
   /**
    * Renders property markers with address popups
@@ -65,7 +71,9 @@ function MapLeaflet({
       position={[property.latitude, property.longitude]}
       ref={addToRefs}>
       <Popup keepInView={false} autoPan={false}>
-        <a href={`#${property.address.streetAddress}`} onClick={() => handleOpenPropTab()}>
+        <a
+          href={`#${property.address.streetAddress}`}
+          onClick={() => handleOpenPropTab()}>
           <span>{property.address.streetAddress},</span> <br />
           <span>
             {property.address.city}, {property.address.state + " "}
@@ -76,14 +84,12 @@ function MapLeaflet({
     </Marker>
   ));
 
-
-
   /**
    * Component that will capture events from the map and save the
    * state of the zoom, center, and checked values for layers for
    * when MapLeaflet remounts.
    */
-  const CaptureMapState = () => {
+  const ManageMapState = () => {
     // Zoom and pan to Census Tract bounds
     let map = useMap();
 
@@ -150,7 +156,7 @@ function MapLeaflet({
     });
 
     /**
-     * When the use clicks the findMarker button in the HUD this effect 
+     * When the use clicks the findMarker button in the HUD this effect
      * centers the map on the corresponding marker and opens its popup.
      */
     useEffect(() => {
@@ -246,7 +252,7 @@ function MapLeaflet({
           </LayersControl>
         )}
 
-        <CaptureMapState />
+        <ManageMapState />
       </MapContainer>
     </div>
   );
