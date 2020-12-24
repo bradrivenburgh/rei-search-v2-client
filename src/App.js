@@ -11,8 +11,8 @@ import CreateAccount from "./components/CreateAccount";
 import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import AccountChild from "./components/AccountChild";
+import { search } from './APIService';
 import { Context } from "./Context";
-import config from './config';
 import {
   savedProps,
   placeholderProfile,
@@ -84,32 +84,22 @@ function App() {
 
   /* Handlers */
 
-  const handleAPICall = () => {
-    fetch(config.REISEARCH_API_ENDPOINT)
-      .then(response => {
-        if (response.status >= 200 && response.status <= 299) {
-          return response.json()
-        }
-        throw new Error('There was an error retrieving the search results');
-      })
-      .then(data => {
-        setStatistics(data.fakeStats);
-        setProperties(data.fakeProps);
-        setMapData({
-          ...mapData,
-          msaShape: data.phillyMSAGeoJson,
-          placeShape: data.philadelphiaPlaceGeoJson,
-          tractShape: data.phillyTractGeoJson,
-        });
-        // Used to set defaultTab to true for an instant;
-        // triggers HUD events and Map events
-        setDefaultTab(true);
-        setDefaultTab(false);
-      })
-      .catch(e => {
-        console.error(e)
+  const handleSearch = () => {
+    search().then((data) => {
+      setStatistics(data.fakeStats);
+      setProperties(data.fakeProps);
+      setMapData({
+        ...mapData,
+        msaShape: data.phillyMSAGeoJson,
+        placeShape: data.philadelphiaPlaceGeoJson,
+        tractShape: data.phillyTractGeoJson,
       });
-  };
+      // Used to set defaultTab to true for an instant;
+      // triggers HUD events and Map events
+      setDefaultTab(true);
+      setDefaultTab(false);
+    })  
+  }
 
   /**
    * Adds or removes a property from the savedProperties array
@@ -200,7 +190,7 @@ function App() {
     defaultTab,
     setDefaultTab,
     handleAddRemoveProperty,
-    handleAPICall,
+    handleSearch,
     currentMarkerLatLng,
     setCurrentMarkerLatLng,
     setFindMarker,
