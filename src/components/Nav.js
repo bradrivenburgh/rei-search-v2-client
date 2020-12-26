@@ -5,7 +5,7 @@ import "./Nav.css";
 function Nav({ menuState: { setMenuState } }) {
   return (
     <nav className='nav'>
-      <img src='https://via.placeholder.com/35x35?text=LOGO' alt='Logo' />
+      <img src='https://dummyimage.com/35x35/DDD.png?text=LOGO' alt='Logo' />
       <Search />
       <button
         className='menu-button'

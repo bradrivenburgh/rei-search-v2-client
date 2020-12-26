@@ -1,5 +1,4 @@
 import React from "react";
-//import { useHistory } from "react-router-dom";
 import "./About.css";
 
 function About({ aboutState: { visited, handleAddAboutVisited } }) {
@@ -17,8 +16,8 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
         </nav>
         <header>
           <img
-            src='https://via.placeholder.com/250x125?text=LOGO'
-            alt='LOGO'
+              src='https://dummyimage.com/250x125/ddd.png?text=REI-SEARCH-LOGO'
+              alt='LOGO'
           />
           <h1>rei-search</h1>
           <h2>
@@ -73,11 +72,11 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
           </p>
           <div className='about__flex-container'>
             <img
-              src='https://via.placeholder.com/250x350?text=Economy Tab'
+              src='https://dummyimage.com/200x350/ddd.png?text=Economics%20Tab'
               alt='screenshot of econ tab selected in dashboard'
             />
             <img
-              src='https://via.placeholder.com/250x350?text=Demographics Tab'
+              src='https://dummyimage.com/200x350/ddd.png?text=Demographics%20Tab'
               alt='screenshot of demo tab selected in dashboard'
             />
           </div>
@@ -97,11 +96,11 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
           </p>
           <div className='about__flex-container'>
             <img
-              src='https://via.placeholder.com/250x350?text=Properties Tab / Map'
+              src='https://dummyimage.com/200x350/ddd.png?text=Properties%20Tab%20%2F%20Map'
               alt='screenshot of properties tab and map with icons'
             />
             <img
-              src='https://via.placeholder.com/250x350?text=Property Profile'
+              src='https://dummyimage.com/200x350/ddd.png?text=Property%20Profile'
               alt='screenshot of property profile'
             />
           </div>
