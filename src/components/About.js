@@ -17,8 +17,8 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
         </nav>
         <header>
           <img
-            src='https://via.placeholder.com/250x125?text=REI-SEARCH LOGO'
-            alt='[LOGO]'
+            src='https://via.placeholder.com/250x125?text=LOGO'
+            alt='LOGO'
           />
           <h1>rei-search</h1>
           <h2>
@@ -97,12 +97,12 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
           </p>
           <div className='about__flex-container'>
             <img
-              src='https://via.placeholder.com/250x350?text=Property  List / Map'
-              alt='screenshot of econ tab selected in dashboard'
+              src='https://via.placeholder.com/250x350?text=Properties Tab / Map'
+              alt='screenshot of properties tab and map with icons'
             />
             <img
-              src='https://via.placeholder.com/250x350?text=Individual Property Profile'
-              alt='screenshot of demo tab selected in dashboard'
+              src='https://via.placeholder.com/250x350?text=Property Profile'
+              alt='screenshot of property profile'
             />
           </div>
         </div>
