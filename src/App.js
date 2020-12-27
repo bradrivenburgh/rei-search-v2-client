@@ -84,8 +84,8 @@ function App() {
 
   /* Handlers */
 
-  const handleSearch = () => {
-    search().then((data) => {
+  const handleSearch = (value) => {
+    search(value).then((data) => {
       setStatistics(data.fakeStats);
       setProperties(data.fakeProps);
       setMapData({

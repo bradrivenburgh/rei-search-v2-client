@@ -38,7 +38,6 @@ function MapLeaflet({
   /*
     Attach to GeoJson shape for tractShape
   */
-  let tractRef = useRef();
   const markerRefs = useRef([]);
   markerRefs.current = [];
 
@@ -85,6 +84,24 @@ function MapLeaflet({
   ));
 
   /**
+   * Create references to county and tract geoJson shapes
+   */
+  let countyRef = useRef();
+  let tractRef = useRef();
+
+  /**
+   * clears Leaflet layer from DOM node holding geoJson shape;
+   * uses Leaflet's addData method to refresh the data and add
+   * the new shapes
+   */
+  useEffect(() => {
+    if (countyRef.current && tractRef.current) {
+      countyRef.current.clearLayers().addData(placeShape);
+      tractRef.current.clearLayers().addData(tractShape);
+    }
+}, [placeShape, tractShape]);
+
+  /**
    * Component that will capture events from the map and save the
    * state of the zoom, center, and checked values for layers for
    * when MapLeaflet remounts.
@@ -125,9 +142,8 @@ function MapLeaflet({
     });
 
     useEffect(() => {
-      let copyTractRef = tractRef.current;
       let paddingOffset;
-      if (copyTractRef && defaultTab) {
+      if (tractShape && defaultTab) {
         // If HUD is at twoThirdsScreen
         if (HUDPosition === "67%") {
           if (window.innerHeight <= 400) {
@@ -147,7 +163,11 @@ function MapLeaflet({
           paddingOffset = 300;
         }
         map.closePopup();
-        map.flyToBounds(copyTractRef.getBounds(), {
+        const tractBounds = [
+          [tractShape.features[0].geometry.bbox[1], tractShape.features[0].geometry.bbox[0]],
+          [tractShape.features[0].geometry.bbox[3], tractShape.features[0].geometry.bbox[2]]
+        ]
+        map.flyToBounds(tractBounds, {
           paddingBottomRight: [0, paddingOffset],
           maxZoom: 14,
           duration: 0.5,
@@ -196,9 +216,9 @@ function MapLeaflet({
         foundMarker.fire("click");
       }
     });
-
     return null;
   };
+
 
   return (
     <div tabIndex='9'>
@@ -229,19 +249,15 @@ function MapLeaflet({
             <LayersControl.Overlay
               checked={mapData.displayLayer["Place shape"]}
               name='Place shape'>
-              {Object.keys(placeShape).length && (
-                <GeoJSON data={placeShape} style={{ color: "green" }} />
-              )}
+              {Object.keys(placeShape).length &&                
+                <GeoJSON ref={countyRef} data={placeShape} style={{color: 'green'}} />
+              }
             </LayersControl.Overlay>
             <LayersControl.Overlay
               checked={mapData.displayLayer["CT shape"]}
               name='CT shape'>
               {Object.keys(tractShape).length && (
-                <GeoJSON
-                  ref={tractRef}
-                  data={tractShape}
-                  style={{ color: "blue" }}
-                />
+                <GeoJSON ref={tractRef} data={tractShape} style={{color: 'blue'}} />
               )}
             </LayersControl.Overlay>
             <LayersControl.Overlay

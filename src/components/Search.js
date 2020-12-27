@@ -62,7 +62,7 @@ class Search extends React.Component {
  
   onSubmit = (e) => {
     e.preventDefault();
-    this.context.handleSearch();
+    this.context.handleSearch(this.state.value);
     this.autosuggest.current.input.blur()  
   }
 
