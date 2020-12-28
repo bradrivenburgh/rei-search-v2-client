@@ -1,4 +1,5 @@
 import config from './config';
+
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
     (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
@@ -8,11 +9,11 @@ function formatQueryParams(params) {
 
 export const search = (value) => {
   const params = {
-    address: value,
+    address: value.toLowerCase(),
   };
   const queryString = formatQueryParams(params);
   const url = config.REISEARCH_API_ENDPOINT + "?" + queryString;
-
+  console.log(url)
   return fetch(url)
     .then((response) => {
       if (response.ok) {
