@@ -69,7 +69,7 @@ class Search extends React.Component {
   render() {
     const { value, suggestions } = this.state;
     const inputProps = {
-      placeholder: "Type a city name",
+      placeholder: "Enter a location ",
       value,
       tabIndex: "1",
       title: 'search',
