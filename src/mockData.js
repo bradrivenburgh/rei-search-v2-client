@@ -111,25 +111,913 @@ export const fakeStats = {
 };
 
 export const cities = [
-  {
-    name: "Philadelphia, PA",
-  },
-  {
-    name: "Moorestown, NJ",
-  },
-  {
-    name: "Cinnaminson, NJ",
-  },
-  {
-    name: "Langhorne, PA",
-  },
-  {
-    name: "Haddonfield, NJ",
-  },
-  {
-    name: "Conshohoken, PA",
-  },
-];
+ {
+   "city": "Aldan, PA"
+ },
+ {
+   "city": "Alloway, NJ"
+ },
+ {
+   "city": "Ambler, PA"
+ },
+ {
+   "city": "Arcadia University, PA"
+ },
+ {
+   "city": "Arden, DE"
+ },
+ {
+   "city": "Ardencroft, DE"
+ },
+ {
+   "city": "Ardentown, DE"
+ },
+ {
+   "city": "Ardmore, PA"
+ },
+ {
+   "city": "Ashland, NJ"
+ },
+ {
+   "city": "Atglen, PA"
+ },
+ {
+   "city": "Audubon, NJ"
+ },
+ {
+   "city": "Audubon, PA"
+ },
+ {
+   "city": "Audubon Park, NJ"
+ },
+ {
+   "city": "Avondale, PA"
+ },
+ {
+   "city": "Barclay, NJ"
+ },
+ {
+   "city": "Barrington, NJ"
+ },
+ {
+   "city": "Bear, DE"
+ },
+ {
+   "city": "Beckett, NJ"
+ },
+ {
+   "city": "Bellefonte, DE"
+ },
+ {
+   "city": "Bellmawr, NJ"
+ },
+ {
+   "city": "Berlin, NJ"
+ },
+ {
+   "city": "Berwyn, PA"
+ },
+ {
+   "city": "Beverly, NJ"
+ },
+ {
+   "city": "Blackwood, NJ"
+ },
+ {
+   "city": "Blue Bell, PA"
+ },
+ {
+   "city": "Boothwyn, PA"
+ },
+ {
+   "city": "Bordentown, NJ"
+ },
+ {
+   "city": "Bridgeport, PA"
+ },
+ {
+   "city": "Bristol, PA"
+ },
+ {
+   "city": "Brittany Farms-The Highlands, PA"
+ },
+ {
+   "city": "Brookhaven, PA"
+ },
+ {
+   "city": "Brooklawn, NJ"
+ },
+ {
+   "city": "Brookside, DE"
+ },
+ {
+   "city": "Broomall, PA"
+ },
+ {
+   "city": "Browns Mills, NJ"
+ },
+ {
+   "city": "Bryn Athyn, PA"
+ },
+ {
+   "city": "Bryn Mawr, PA"
+ },
+ {
+   "city": "Burlington, NJ"
+ },
+ {
+   "city": "Caln, PA"
+ },
+ {
+   "city": "Camden, NJ"
+ },
+ {
+   "city": "Carneys Point, NJ"
+ },
+ {
+   "city": "Cecilton, MD"
+ },
+ {
+   "city": "Chalfont, PA"
+ },
+ {
+   "city": "Charlestown, MD"
+ },
+ {
+   "city": "Cherry Hill Mall, NJ"
+ },
+ {
+   "city": "Chesapeake City, MD"
+ },
+ {
+   "city": "Chesilhurst, NJ"
+ },
+ {
+   "city": "Chester, PA"
+ },
+ {
+   "city": "Chesterbrook, PA"
+ },
+ {
+   "city": "Chester Heights, PA"
+ },
+ {
+   "city": "Chester Township, PA"
+ },
+ {
+   "city": "Cheyney University, PA"
+ },
+ {
+   "city": "Churchville, PA"
+ },
+ {
+   "city": "Claymont, DE"
+ },
+ {
+   "city": "Clayton, NJ"
+ },
+ {
+   "city": "Clementon, NJ"
+ },
+ {
+   "city": "Clifton Heights, PA"
+ },
+ {
+   "city": "Coatesville, PA"
+ },
+ {
+   "city": "Cochranville, PA"
+ },
+ {
+   "city": "Collegeville, PA"
+ },
+ {
+   "city": "Collingdale, PA"
+ },
+ {
+   "city": "Collingswood, NJ"
+ },
+ {
+   "city": "Colwyn, PA"
+ },
+ {
+   "city": "Conshohocken, PA"
+ },
+ {
+   "city": "Cornwells Heights, PA"
+ },
+ {
+   "city": "Country Lake Estates, NJ"
+ },
+ {
+   "city": "Croydon, PA"
+ },
+ {
+   "city": "Darby, PA"
+ },
+ {
+   "city": "Darby Township, PA"
+ },
+ {
+   "city": "DE City, DE"
+ },
+ {
+   "city": "Devon, PA"
+ },
+ {
+   "city": "Downingtown, PA"
+ },
+ {
+   "city": "Doylestown, PA"
+ },
+ {
+   "city": "Drexel Hill, PA"
+ },
+ {
+   "city": "Dublin, PA"
+ },
+ {
+   "city": "Eagleview, PA"
+ },
+ {
+   "city": "Eagleville, PA"
+ },
+ {
+   "city": "East Greenville, PA"
+ },
+ {
+   "city": "East Lansdowne, PA"
+ },
+ {
+   "city": "East Norriton Township, PA"
+ },
+ {
+   "city": "Echelon, NJ"
+ },
+ {
+   "city": "Eddington, PA"
+ },
+ {
+   "city": "Eddystone, PA"
+ },
+ {
+   "city": "Edgemoor, DE"
+ },
+ {
+   "city": "Elkton, MD"
+ },
+ {
+   "city": "Ellisburg, NJ"
+ },
+ {
+   "city": "Elmer, NJ"
+ },
+ {
+   "city": "Elsmere, DE"
+ },
+ {
+   "city": "Elverson, PA"
+ },
+ {
+   "city": "Evansburg, PA"
+ },
+ {
+   "city": "Exton, PA"
+ },
+ {
+   "city": "Fairless Hills, PA"
+ },
+ {
+   "city": "Feasterville, PA"
+ },
+ {
+   "city": "Fieldsboro, NJ"
+ },
+ {
+   "city": "Florence, NJ"
+ },
+ {
+   "city": "Flourtown, PA"
+ },
+ {
+   "city": "Folcroft, PA"
+ },
+ {
+   "city": "Folsom, PA"
+ },
+ {
+   "city": "Fort Dix, NJ"
+ },
+ {
+   "city": "Fort Washington, PA"
+ },
+ {
+   "city": "Gibbsboro, NJ"
+ },
+ {
+   "city": "Gibbstown, NJ"
+ },
+ {
+   "city": "Gilbertsville, PA"
+ },
+ {
+   "city": "Glasgow, DE"
+ },
+ {
+   "city": "Glassboro, NJ"
+ },
+ {
+   "city": "Glendora, NJ"
+ },
+ {
+   "city": "Glenolden, PA"
+ },
+ {
+   "city": "Glenside, PA"
+ },
+ {
+   "city": "Gloucester City, NJ"
+ },
+ {
+   "city": "Golden Triangle, NJ"
+ },
+ {
+   "city": "Green Lane, PA"
+ },
+ {
+   "city": "Greentree, NJ"
+ },
+ {
+   "city": "Greenville, DE"
+ },
+ {
+   "city": "Haddonfield, NJ"
+ },
+ {
+   "city": "Haddon Heights, NJ"
+ },
+ {
+   "city": "Halfway House, PA"
+ },
+ {
+   "city": "Hancocks Bridge, NJ"
+ },
+ {
+   "city": "Harleysville, PA"
+ },
+ {
+   "city": "Hatboro, PA"
+ },
+ {
+   "city": "Hatfield, PA"
+ },
+ {
+   "city": "Haverford College, PA"
+ },
+ {
+   "city": "Hi-Nella, NJ"
+ },
+ {
+   "city": "Hockessin, DE"
+ },
+ {
+   "city": "Honey Brook, PA"
+ },
+ {
+   "city": "Horsham, PA"
+ },
+ {
+   "city": "Hulmeville, PA"
+ },
+ {
+   "city": "Ivyland, PA"
+ },
+ {
+   "city": "Jenkintown, PA"
+ },
+ {
+   "city": "Juliustown, NJ"
+ },
+ {
+   "city": "Kenilworth, PA"
+ },
+ {
+   "city": "Kennett Square, PA"
+ },
+ {
+   "city": "King of Prussia, PA"
+ },
+ {
+   "city": "Kingston Estates, NJ"
+ },
+ {
+   "city": "Kulpsville, PA"
+ },
+ {
+   "city": "Langhorne, PA"
+ },
+ {
+   "city": "Langhorne Manor, PA"
+ },
+ {
+   "city": "Lansdale, PA"
+ },
+ {
+   "city": "Lansdowne, PA"
+ },
+ {
+   "city": "Laurel Springs, NJ"
+ },
+ {
+   "city": "Lawnside, NJ"
+ },
+ {
+   "city": "Leisuretowne, NJ"
+ },
+ {
+   "city": "Levittown, PA"
+ },
+ {
+   "city": "Lima, PA"
+ },
+ {
+   "city": "Lincoln University, PA"
+ },
+ {
+   "city": "Lindenwold, NJ"
+ },
+ {
+   "city": "Linwood, PA"
+ },
+ {
+   "city": "Lionville, PA"
+ },
+ {
+   "city": "Magnolia, NJ"
+ },
+ {
+   "city": "Malvern, PA"
+ },
+ {
+   "city": "Maple Glen, PA"
+ },
+ {
+   "city": "Marcus Hook, PA"
+ },
+ {
+   "city": "Marlton, NJ"
+ },
+ {
+   "city": "McGuire AFB, NJ"
+ },
+ {
+   "city": "Medford Lakes, NJ"
+ },
+ {
+   "city": "Media, PA"
+ },
+ {
+   "city": "Merchantville, NJ"
+ },
+ {
+   "city": "Middletown, DE"
+ },
+ {
+   "city": "Milford Square, PA"
+ },
+ {
+   "city": "Millbourne, PA"
+ },
+ {
+   "city": "Modena, PA"
+ },
+ {
+   "city": "Montgomeryville, PA"
+ },
+ {
+   "city": "Moorestown-Lenola, NJ"
+ },
+ {
+   "city": "Morrisville, PA"
+ },
+ {
+   "city": "Morton, PA"
+ },
+ {
+   "city": "Mount Ephraim, NJ"
+ },
+ {
+   "city": "Mullica Hill, NJ"
+ },
+ {
+   "city": "Narberth, PA"
+ },
+ {
+   "city": "National Park, NJ"
+ },
+ {
+   "city": "Nether Providence Township, PA"
+ },
+ {
+   "city": "Newark, DE"
+ },
+ {
+   "city": "New Britain, PA"
+ },
+ {
+   "city": "New Castle, DE"
+ },
+ {
+   "city": "Newfield, NJ"
+ },
+ {
+   "city": "New Hope, PA"
+ },
+ {
+   "city": "Newport, DE"
+ },
+ {
+   "city": "Newtown, PA"
+ },
+ {
+   "city": "Newtown Grant, PA"
+ },
+ {
+   "city": "Norristown, PA"
+ },
+ {
+   "city": "North East, MD"
+ },
+ {
+   "city": "North Star, DE"
+ },
+ {
+   "city": "North Wales, PA"
+ },
+ {
+   "city": "Norwood, PA"
+ },
+ {
+   "city": "Oaklyn, NJ"
+ },
+ {
+   "city": "Oak Valley, NJ"
+ },
+ {
+   "city": "Odessa, DE"
+ },
+ {
+   "city": "Olivet, NJ"
+ },
+ {
+   "city": "Oreland, PA"
+ },
+ {
+   "city": "Oxford, PA"
+ },
+ {
+   "city": "Palmyra, NJ"
+ },
+ {
+   "city": "Paoli, PA"
+ },
+ {
+   "city": "Parkesburg, PA"
+ },
+ {
+   "city": "Parkside, PA"
+ },
+ {
+   "city": "Paulsboro, NJ"
+ },
+ {
+   "city": "Pedricktown, NJ"
+ },
+ {
+   "city": "Pemberton, NJ"
+ },
+ {
+   "city": "Pemberton Heights, NJ"
+ },
+ {
+   "city": "Penndel, PA"
+ },
+ {
+   "city": "Pennsauken Township, NJ"
+ },
+ {
+   "city": "Pennsburg, PA"
+ },
+ {
+   "city": "Penns Grove, NJ"
+ },
+ {
+   "city": "Pennsville, NJ"
+ },
+ {
+   "city": "Penn Wynne, PA"
+ },
+ {
+   "city": "Perkasie, PA"
+ },
+ {
+   "city": "Perryville, MD"
+ },
+ {
+   "city": "Philadelphia, PA"
+ },
+ {
+   "city": "Phoenixville, PA"
+ },
+ {
+   "city": "Pike Creek, DE"
+ },
+ {
+   "city": "Pike Creek Valley, DE"
+ },
+ {
+   "city": "Pine Hill, NJ"
+ },
+ {
+   "city": "Pine Valley, NJ"
+ },
+ {
+   "city": "Pitman, NJ"
+ },
+ {
+   "city": "Plumsteadville, PA"
+ },
+ {
+   "city": "Plymouth Meeting, PA"
+ },
+ {
+   "city": "Pomeroy, PA"
+ },
+ {
+   "city": "Port Deposit, MD"
+ },
+ {
+   "city": "Pottsgrove, PA"
+ },
+ {
+   "city": "Pottstown, PA"
+ },
+ {
+   "city": "Presidential Lakes Estates, NJ"
+ },
+ {
+   "city": "Prospect Park, PA"
+ },
+ {
+   "city": "Quakertown, PA"
+ },
+ {
+   "city": "Quinton, NJ"
+ },
+ {
+   "city": "Radnor Township, PA"
+ },
+ {
+   "city": "Ramblewood, NJ"
+ },
+ {
+   "city": "Red Hill, PA"
+ },
+ {
+   "city": "Remaining Area of Philadelphia - Camden - Wilmington MSA, "
+ },
+ {
+   "city": "Richboro, PA"
+ },
+ {
+   "city": "Richlandtown, PA"
+ },
+ {
+   "city": "Richwood, NJ"
+ },
+ {
+   "city": "Ridley Park, PA"
+ },
+ {
+   "city": "Riegelsville, PA"
+ },
+ {
+   "city": "Rising Sun, MD"
+ },
+ {
+   "city": "Riverton, NJ"
+ },
+ {
+   "city": "Rockledge, PA"
+ },
+ {
+   "city": "Roebling, NJ"
+ },
+ {
+   "city": "Rose Valley, PA"
+ },
+ {
+   "city": "Royersford, PA"
+ },
+ {
+   "city": "Runnemede, NJ"
+ },
+ {
+   "city": "Rutledge, PA"
+ },
+ {
+   "city": "Salem, NJ"
+ },
+ {
+   "city": "Sanatoga, PA"
+ },
+ {
+   "city": "Schwenksville, PA"
+ },
+ {
+   "city": "Sellersville, PA"
+ },
+ {
+   "city": "Sharon Hill, PA"
+ },
+ {
+   "city": "Silverdale, PA"
+ },
+ {
+   "city": "Skippack, PA"
+ },
+ {
+   "city": "Somerdale, NJ"
+ },
+ {
+   "city": "Souderton, PA"
+ },
+ {
+   "city": "South Coatesville, PA"
+ },
+ {
+   "city": "South Pottstown, PA"
+ },
+ {
+   "city": "Spinnerstown, PA"
+ },
+ {
+   "city": "Spring City, PA"
+ },
+ {
+   "city": "Springdale, NJ"
+ },
+ {
+   "city": "Springfield Township, PA"
+ },
+ {
+   "city": "Spring House, PA"
+ },
+ {
+   "city": "Spring Mount, PA"
+ },
+ {
+   "city": "Stowe, PA"
+ },
+ {
+   "city": "Stratford, NJ"
+ },
+ {
+   "city": "Swarthmore, PA"
+ },
+ {
+   "city": "Swedesboro, NJ"
+ },
+ {
+   "city": "Tavistock, NJ"
+ },
+ {
+   "city": "Telford, PA"
+ },
+ {
+   "city": "Thorndale, PA"
+ },
+ {
+   "city": "Tinicum Township, PA"
+ },
+ {
+   "city": "Toughkenamon, PA"
+ },
+ {
+   "city": "Townsend, DE"
+ },
+ {
+   "city": "Trainer, PA"
+ },
+ {
+   "city": "Trappe, PA"
+ },
+ {
+   "city": "Trevose, PA"
+ },
+ {
+   "city": "Trooper, PA"
+ },
+ {
+   "city": "Trumbauersville, PA"
+ },
+ {
+   "city": "Tullytown, PA"
+ },
+ {
+   "city": "Turnersville, NJ"
+ },
+ {
+   "city": "Upland, PA"
+ },
+ {
+   "city": "Upper Providence Township, PA"
+ },
+ {
+   "city": "Victory Lakes, NJ"
+ },
+ {
+   "city": "Village Green-Green Ridge, PA"
+ },
+ {
+   "city": "Village Shires, PA"
+ },
+ {
+   "city": "Warminster Heights, PA"
+ },
+ {
+   "city": "Wenonah, NJ"
+ },
+ {
+   "city": "West Chester, PA"
+ },
+ {
+   "city": "West Conshohocken, PA"
+ },
+ {
+   "city": "West Grove, PA"
+ },
+ {
+   "city": "West Norriton Township, PA"
+ },
+ {
+   "city": "Westville, NJ"
+ },
+ {
+   "city": "Westwood, PA"
+ },
+ {
+   "city": "Williamstown, NJ"
+ },
+ {
+   "city": "Willow Grove, PA"
+ },
+ {
+   "city": "Wilmington, DE"
+ },
+ {
+   "city": "Wilmington Manor, DE"
+ },
+ {
+   "city": "Woodbourne, PA"
+ },
+ {
+   "city": "Woodbury, NJ"
+ },
+ {
+   "city": "Woodbury Heights, NJ"
+ },
+ {
+   "city": "Woodlyn, PA"
+ },
+ {
+   "city": "Woodlynne, NJ"
+ },
+ {
+   "city": "Woodside, PA"
+ },
+ {
+   "city": "Woodstown, NJ"
+ },
+ {
+   "city": "Woxhall, PA"
+ },
+ {
+   "city": "Wrightstown, NJ"
+ },
+ {
+   "city": "Wyncote, PA"
+ },
+ {
+   "city": "Wyndmoor, PA"
+ },
+ {
+   "city": "Yardley, PA"
+ },
+ {
+   "city": "Yeadon, PA"
+ }
+]
 
 export const placeholderProfile = {
   address: {

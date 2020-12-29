@@ -12,11 +12,11 @@ function getSuggestions(value) {
   const escapedValue = escapeRegexCharacters(value.trim());
   const regex = new RegExp('^' + escapedValue, 'i');
 
-  return cities.filter(language => regex.test(language.name));
+  return cities.filter(city => regex.test(city.city));
 }
 
 function getSuggestionValue(suggestion) {
-  return suggestion.name;
+  return suggestion.city;
 }
 
 function shouldRenderSuggestions() {
@@ -25,7 +25,7 @@ function shouldRenderSuggestions() {
 
 function renderSuggestion(suggestion) {
   return (
-    <span>{suggestion.name}</span>
+    <span>{suggestion.city}</span>
   );
 }
 

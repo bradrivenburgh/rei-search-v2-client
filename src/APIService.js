@@ -13,7 +13,7 @@ export const search = (value) => {
   };
   const queryString = formatQueryParams(params);
   const url = config.REISEARCH_API_ENDPOINT + "?" + queryString;
-  console.log(url)
+
   return fetch(url)
     .then((response) => {
       if (response.ok) {
