@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Context } from "../Context";
-import { statsTemplate } from '../mockData';
 import './StatsTabs.css';
 
 function StatsTabs({ id }) {
+  
+  // Need to deconstruct statsTemplate: {economic = [], demographic = []}
+  // Need to deconstruct statistics: { apiStatistics: { msaStats = {}, countyStats = {}, tractStats = {} } }
   const {
     searchResults: {
       statistics: { economic = [], demographic = [] },

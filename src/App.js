@@ -16,6 +16,7 @@ import { Context } from "./Context";
 import {
   savedProps,
   placeholderProfile,
+  statsTemplate,
 } from "./mockData";
 
 function App() {
@@ -167,6 +168,7 @@ function App() {
   let searchResults = {
     statistics,
     setStatistics,
+    statsTemplate,
     properties,
     setProperties,
   };
