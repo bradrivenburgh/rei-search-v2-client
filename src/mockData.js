@@ -3186,7 +3186,7 @@ export const phillyMSAGeoJson = {
     }
   }]}
 
-  export const phillyTractGeoJson = {
+  export const tractGeoJson = {
     type: "FeatureCollection",
     features: [
       {
@@ -3232,7 +3232,7 @@ export const phillyMSAGeoJson = {
     ],
   };
 
-  export const philadelphiaPlaceGeoJson = {
+  export const countyGeoJson = {
     type: "FeatureCollection",
     features: [
       {
