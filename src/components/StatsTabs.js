@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../Context";
+import { statsTemplate } from '../mockData';
 import './StatsTabs.css';
 
 function StatsTabs({ id }) {
@@ -41,7 +42,7 @@ function StatsTabs({ id }) {
    */
   const renderTable = (data) => {
     return data.map((entry) => {
-      const { id, statistic, CT, MSA, USA } = entry;
+      const { id, statistic, CT, CTY, MSA } = entry;
       return (
         <li key={id}>
           <h4>{statistic}</h4>
@@ -57,8 +58,8 @@ function StatsTabs({ id }) {
             <tbody>
               <tr>
                 <td>{renderValue(CT)}</td>
+                <td>{renderValue(CTY)}</td>
                 <td>{renderValue(MSA)}</td>
-                <td>{renderValue(USA)}</td>
               </tr>
             </tbody>
           </table>
