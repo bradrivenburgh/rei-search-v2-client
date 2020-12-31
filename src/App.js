@@ -90,9 +90,9 @@ function App() {
       setProperties(data.fakeProps);
       setMapData({
         ...mapData,
-        msaShape: data.phillyMSAGeoJson,
-        countyShape: data.countyGeoJson,
-        tractShape: data.tractGeoJson,
+        msaShape: data.msa,
+        countyShape: data.county,
+        tractShape: data.tract,
       });
       // Used to set defaultTab to true for an instant;
       // triggers HUD events and Map events
