@@ -784,9 +784,6 @@ export const cities = [
    "city": "Red Hill, PA"
  },
  {
-   "city": "Remaining Area of Philadelphia - Camden - Wilmington MSA, "
- },
- {
    "city": "Richboro, PA"
  },
  {
