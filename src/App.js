@@ -59,11 +59,11 @@ function App() {
     center: [39.9, -75.16],
     msaShape: {},
     tractShape: {},
-    placeShape: {},
+    countyShape: {},
     displayLayer: {
       "Property markers": true,
       "MSA shape": true,
-      "Place shape": true,
+      "County shape": true,
       "CT shape": true,
     },
   });
@@ -91,7 +91,7 @@ function App() {
       setMapData({
         ...mapData,
         msaShape: data.phillyMSAGeoJson,
-        placeShape: data.philadelphiaPlaceGeoJson,
+        countyShape: data.philadelphiaPlaceGeoJson,
         tractShape: data.phillyTractGeoJson,
       });
       // Used to set defaultTab to true for an instant;

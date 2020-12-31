@@ -30,7 +30,7 @@ function MapLeaflet({
     zoom,
     center,
     msaShape,
-    placeShape,
+    countyShape,
     tractShape,
     displayLayer,
   } = mapData;
@@ -96,10 +96,10 @@ function MapLeaflet({
    */
   useEffect(() => {
     if (countyRef.current && tractRef.current) {
-      countyRef.current.clearLayers().addData(placeShape);
+      countyRef.current.clearLayers().addData(countyShape);
       tractRef.current.clearLayers().addData(tractShape);
     }
-}, [placeShape, tractShape]);
+}, [countyShape, tractShape]);
 
   /**
    * Component that will capture events from the map and save the
@@ -247,10 +247,10 @@ function MapLeaflet({
               )}
             </LayersControl.Overlay>
             <LayersControl.Overlay
-              checked={mapData.displayLayer["Place shape"]}
-              name='Place shape'>
-              {Object.keys(placeShape).length &&                
-                <GeoJSON ref={countyRef} data={placeShape} style={{color: 'green'}} />
+              checked={mapData.displayLayer["County shape"]}
+              name='County shape'>
+              {Object.keys(countyShape).length &&                
+                <GeoJSON ref={countyRef} data={countyShape} style={{color: 'green'}} />
               }
             </LayersControl.Overlay>
             <LayersControl.Overlay
@@ -284,12 +284,12 @@ MapLeaflet.defaultProps = {
       zoom: 9,
       center: [39.9, -75.16],
       msaShape: {},
-      placeShape: {},
+      countyShape: {},
       tractShape: {},
       displayLayer: {
         "Property markers": true,
         "MSA shape": true,
-        "Place shape": true,
+        "County shape": true,
         "CT shape": true,
       },
       findMarker: false,
