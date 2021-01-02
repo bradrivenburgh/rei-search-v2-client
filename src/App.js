@@ -16,7 +16,6 @@ import { Context } from "./Context";
 import {
   savedProps,
   placeholderProfile,
-  statsTemplate,
 } from "./mockData";
 
 function App() {
@@ -87,7 +86,7 @@ function App() {
 
   const handleSearch = (value) => {
     search(value).then((data) => {
-      setStatistics(data.fakeStats);
+      setStatistics(data.apiStatistics);
       setProperties(data.fakeProps);
       setMapData({
         ...mapData,
@@ -168,7 +167,6 @@ function App() {
   let searchResults = {
     statistics,
     setStatistics,
-    statsTemplate,
     properties,
     setProperties,
   };
