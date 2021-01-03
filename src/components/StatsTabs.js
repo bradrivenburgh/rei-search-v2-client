@@ -43,10 +43,10 @@ function StatsTabs({ id }) {
    * @param {array} data
    */
   const renderTable = (data) => {
-    return data.map((entry) => {
-      const { id, statistic, CT, CTY, MSA } = entry;
+    return data.map((entry, index) => {
+      const { statistic, CT, CTY, MSA } = entry;
       return (
-        <li key={id}>
+        <li key={index}>
           <h4>{statistic}</h4>
           {entry.advisory && (
             <p>
