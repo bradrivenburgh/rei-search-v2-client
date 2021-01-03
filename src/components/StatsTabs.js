@@ -101,6 +101,9 @@ function StatsTabs({ id }) {
 
 StatsTabs.defaultProps = {
   id: '',
+  searchResults: {
+    statistics: { economic: [], demographic: [] }
+  },
 }
 
 export default StatsTabs;

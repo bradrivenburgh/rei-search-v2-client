@@ -1,7 +1,12 @@
 import { createContext } from 'react';
 
 export const Context = createContext({
-  searchResults: {},
+  searchResults: {
+    statistics: [],
+    setStatistics: () => {},
+    properties: [],
+    setProperties: () => {},
+  },
   currentProperty: {},
   setCurrentProperty: () => {},
   savedProperties: [], 
