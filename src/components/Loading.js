@@ -23,3 +23,7 @@ export default function Loading({ isLoading }) {
     </div>
   );
 }
+
+Loading.defaultProps = {
+  isLoading: false,
+}
