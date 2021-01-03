@@ -11,6 +11,7 @@ import CreateAccount from "./components/CreateAccount";
 import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import AccountChild from "./components/AccountChild";
+import Loading from './components/Loading';
 import { search } from './APIService';
 import { Context } from "./Context";
 import {
@@ -25,6 +26,8 @@ function App() {
   let [statistics, setStatistics] = useState({});
   let [properties, setProperties] = useState([]);
   let [savedProperties, setSavedProperties] = useState(savedProps);
+  /* Loading Indicator State */
+  let [isLoading, setIsLoading] = useState(false);
   /* Properties State */
   let [currentProperty, setCurrentProperty] = useState({
     propertyData: properties[0] || placeholderProfile,
@@ -85,6 +88,7 @@ function App() {
   /* Handlers */
 
   const handleSearch = (value) => {
+    setIsLoading(true);
     search(value).then((data) => {
       setStatistics(data.apiStatistics);
       setProperties(data.fakeProps);
@@ -98,6 +102,7 @@ function App() {
       // triggers HUD events and Map events
       setDefaultTab(true);
       setDefaultTab(false);
+      setIsLoading(false);
     })  
   }
 
@@ -237,6 +242,7 @@ function App() {
               ref={mainViewNode}
               onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
               <Nav menuState={{ menuState, setMenuState }} />
+              <Loading isLoading={isLoading} />
               <MapLeaflet
                 defaultTab={defaultTab}
                 mapState={mapState}

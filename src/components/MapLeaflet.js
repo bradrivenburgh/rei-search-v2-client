@@ -10,7 +10,6 @@ import {
   useMapEvent,
   useMap,
 } from "react-leaflet";
-import Loading from './Loading';
 import config from "../config";
 import "./MapLeaflet.css";
 
@@ -222,8 +221,6 @@ function MapLeaflet({
 
 
   return (
-    <>
-    <Loading />
     <div tabIndex='9'>
       <MapContainer
         center={center}
@@ -274,7 +271,6 @@ function MapLeaflet({
         <ManageMapState />
       </MapContainer>
     </div>
-    </>
   );
 }
 
