@@ -16,7 +16,7 @@ function StatsTabs({ id }) {
    */
   const renderTableHeaders = (data) => {
     let keys = Object.keys(data[0]);
-    let header = keys.slice(3);
+    let header = keys.slice(2);
     return header.map((key, index) => {
       return <th key={index}>{key}</th>;
     });
