@@ -7,12 +7,26 @@ function formatQueryParams(params) {
   return queryItems.join("&");
 }
 
+export const pingServer = () => {
+  const url = `${config.REISEARCH_API_ENDPOINT}`;
+  fetch(url)
+  .then((response) => {
+    if (response.ok) {
+      return;
+    }
+    throw new Error("There was a server error");
+  })
+  .catch((e) => {
+    console.error(e);
+  });
+}
+
 export const search = (value) => {
   const params = {
     address: value.toLowerCase(),
   };
   const queryString = formatQueryParams(params);
-  const url = config.REISEARCH_API_ENDPOINT + "?" + queryString;
+  const url = `${config.REISEARCH_API_ENDPOINT}search/?${queryString}`;
 
   return fetch(url)
     .then((response) => {

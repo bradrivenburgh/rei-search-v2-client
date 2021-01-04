@@ -12,7 +12,7 @@ import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import AccountChild from "./components/AccountChild";
 import Loading from './components/Loading';
-import { search } from './APIService';
+import { search, pingServer } from './APIService';
 import { Context } from "./Context";
 import {
   savedProps,
@@ -26,8 +26,6 @@ function App() {
   let [statistics, setStatistics] = useState({});
   let [properties, setProperties] = useState([]);
   let [savedProperties, setSavedProperties] = useState(savedProps);
-  /* Loading Indicator State */
-  let [isLoading, setIsLoading] = useState(false);
   /* Properties State */
   let [currentProperty, setCurrentProperty] = useState({
     propertyData: properties[0] || placeholderProfile,
@@ -76,6 +74,17 @@ function App() {
   let [findMarker, setFindMarker] = useState(false);
   /* About page state */
   const [visited, setVisited] = useState(localStorage.getItem("visited"));
+  /* Loading Indicator State */
+  let [isLoading, setIsLoading] = useState(false);
+  /* Server Ping State */
+  let [isAwake, setIsAwake] = useState(false);
+
+  useEffect(() => {
+    if (!isAwake) {
+      pingServer();
+      setIsAwake(true);
+    }
+  }, [isAwake])
 
   useEffect(() => {
     if (visited === "true") {
