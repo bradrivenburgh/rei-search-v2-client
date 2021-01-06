@@ -23,7 +23,10 @@ function App() {
   /* State */
 
   /* Data from API */
-  let [statistics, setStatistics] = useState({});
+  let [statistics, setStatistics] = useState({
+    economic: [],
+    demographic: []
+  });
   let [properties, setProperties] = useState([]);
   let [savedProperties, setSavedProperties] = useState(savedProps);
   /* Properties State */

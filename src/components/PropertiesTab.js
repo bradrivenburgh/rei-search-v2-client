@@ -8,7 +8,7 @@ import "./PropertiesTab.css";
 
 function PropertiesTab() {
   const {
-    searchResults: { properties = [] },
+    searchResults: { statistics = [], properties = [] },
     savedProperties,
     setCurrentProperty,
     handleAddRemoveProperty,
@@ -116,14 +116,19 @@ function PropertiesTab() {
 
   return (
     <>
-      {properties.length ? (
+      {
+      properties.length ? (
         <>
           <h3>Properties</h3>
           {renderProperties(properties)}
         </>
+      ) : (!properties.length && statistics.economic.length)
+      ? (
+        <p>No properties are available. Please search another location.</p>
       ) : (
         <p>Please conduct a search to retrieve a list of properties.</p>
-      )}
+      )
+      }
     </>
   );
 }
