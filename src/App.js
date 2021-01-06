@@ -100,7 +100,7 @@ function App() {
     setIsLoading(true);
     search(value).then((data) => {
       setStatistics(data.apiStatistics);
-      setProperties(data.fakeProps);
+      setProperties(data.properties);
       setMapData({
         ...mapData,
         msaShape: data.msa,
