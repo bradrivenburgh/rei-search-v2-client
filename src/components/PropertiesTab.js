@@ -8,7 +8,7 @@ import "./PropertiesTab.css";
 
 function PropertiesTab() {
   const {
-    searchResults: { statistics = [], properties = [] },
+    searchResults: { statistics, properties },
     savedProperties,
     setCurrentProperty,
     handleAddRemoveProperty,
