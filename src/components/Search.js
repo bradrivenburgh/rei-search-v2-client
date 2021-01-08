@@ -4,15 +4,13 @@ import { cities } from '../mockData';
 import Autosuggest from 'react-autosuggest';
 import './Search.css';
 
-function escapeRegexCharacters(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 function getSuggestions(value) {
-  const escapedValue = escapeRegexCharacters(value.trim());
-  const regex = new RegExp('^' + escapedValue, 'i');
+  const trimmedInputValue = value.trim().toLowerCase();
 
-  return cities.filter(city => regex.test(city.city));
+  return cities.filter(city => {
+    const preppedValue = city.city.trim().toLowerCase();
+    return preppedValue.includes(trimmedInputValue);
+  });
 }
 
 function getSuggestionValue(suggestion) {
@@ -41,7 +39,6 @@ class Search extends React.Component {
 
     };
   }
-  static contextType = Context;
   onChange = (event, { newValue, method }) => {
     this.setState({
       value: newValue
@@ -59,7 +56,9 @@ class Search extends React.Component {
       suggestions: []
     });
   };
- 
+
+  static contextType = Context;
+
   onSubmit = (e) => {
     e.preventDefault();
     this.context.handleSearch(this.state.value);
