@@ -114,7 +114,7 @@ function App() {
       // triggers HUD events and Map events
       setDefaultTab(true);
       setDefaultTab(false);
-      setIsLoading(false);
+      setIsLoading(false);  
     })  
   }
 
