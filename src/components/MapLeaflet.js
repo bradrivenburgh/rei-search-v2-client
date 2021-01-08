@@ -167,7 +167,7 @@ function MapLeaflet({
           [tractShape.features[0].geometry.bbox[1], tractShape.features[0].geometry.bbox[0]],
           [tractShape.features[0].geometry.bbox[3], tractShape.features[0].geometry.bbox[2]]
         ]
-        map.flyToBounds(tractBounds, {
+        map.fitBounds(tractBounds, {
           paddingBottomRight: [0, paddingOffset],
           maxZoom: 14,
           duration: 0.5,
