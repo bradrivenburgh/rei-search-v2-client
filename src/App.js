@@ -21,7 +21,6 @@ import {
 } from "./APIService";
 import { Context } from "./Context";
 import {
-  savedProps,
   placeholderProfile,
 } from "./mockData";
 
@@ -143,23 +142,31 @@ function App() {
     prop = {},
     savedProps = []
   ) => {
-    let newSavedProps;
-    // Remove prop from savedProps
+    let idToDelete;
+    // Remove prop from savedProperties
     if (inSavedProps) {
-      newSavedProps = savedProps.filter((savedProp) => {
-        deleteSavedProperty(prop.id)   
-        return savedProp.address.streetAddress !== prop.address.streetAddress;
-      });
+      if (!prop.property) {
+        idToDelete = savedProps.find((savedProp) => savedProp.property.address.streetAddress === prop.address.streetAddress).id;
+      } else {
+        idToDelete = savedProps.find((savedProp) => savedProp.property.address.streetAddress === prop.property.address.streetAddress).id;
+      }
+
       inSavedProps = false;
-    }
-    // Add prop to savedProps
+      deleteSavedProperty(idToDelete);
+    } 
+    // Add propt to savedProperties
     else {
       inSavedProps = true;
-      newSavedProps = [...savedProps, prop];
-      postSavedProperty({property: prop})
+      postSavedProperty({property: prop});
     }
     setCurrentProperty({ ...currentProperty, inSavedProperties: inSavedProps });
-    setSavedProperties(newSavedProps);
+    
+    // Slightly delay call to database to give it time to update the favorites
+    setTimeout(() => {
+      getSavedProperties().then(data => {
+        setSavedProperties(data);
+      });  
+    }, 12);
   };
 
   /**

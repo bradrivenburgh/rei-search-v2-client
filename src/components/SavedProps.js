@@ -20,14 +20,14 @@ function SavedProps({
             address: { streetAddress, city, state, zipcode },
             price,
             photos,
-          } = property;
+          } = property.property;
 
           return (
             <li
               key={index}
               onClick={() =>
                 setCurrentProperty({
-                  propertyData: property,
+                  propertyData: property.property,
                   inSavedProperties: true,
                 })
               }>
@@ -84,6 +84,8 @@ function SavedProps({
 
 SavedProps.defaultProps = {
   savedProperties: [{
+    id: 1,
+    property: {
     address: {
       streetAddress: "Placeholder St.",
       city: "Somewhere",
@@ -103,7 +105,7 @@ SavedProps.defaultProps = {
     livingArea: 1000,
     currency: "USD",
     photos: [],
-  },],
+  }}],
   setCurrentProperty: () => {},
   onAddRemoveProperty: () => {},
 }

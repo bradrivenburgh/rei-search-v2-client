@@ -28,6 +28,7 @@ const deleteOptions = {
   },
 };
 
+
 // Helper function for fetch calls
 function fetchCall(url, options = {}) {
   return fetch(url, options)

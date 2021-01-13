@@ -40,7 +40,7 @@ function PropertiesTab() {
             let hasProperty = false;
             if (savedProps.length) {
               hasProperty = savedProps.some((savedProp) => {
-                return savedProp.address.streetAddress === street;
+                return savedProp.property.address.streetAddress === street;
               });
             }
             return hasProperty;
