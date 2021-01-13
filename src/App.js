@@ -12,7 +12,13 @@ import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import AccountChild from "./components/AccountChild";
 import Loading from './components/Loading';
-import { search, pingServer } from './APIService';
+import {
+  search,
+  pingServer,
+  getSavedProperties,
+  postSavedProperty,
+  deleteSavedProperty,
+} from "./APIService";
 import { Context } from "./Context";
 import {
   savedProps,
@@ -28,7 +34,7 @@ function App() {
     demographic: []
   });
   let [properties, setProperties] = useState([]);
-  let [savedProperties, setSavedProperties] = useState(savedProps);
+  let [savedProperties, setSavedProperties] = useState([]);
   /* Properties State */
   let [currentProperty, setCurrentProperty] = useState({
     propertyData: properties[0] || placeholderProfile,
@@ -97,6 +103,7 @@ function App() {
     }
   }, [visited]);
 
+
   /* Handlers */
 
   const handleSearch = (value) => {
@@ -118,6 +125,13 @@ function App() {
     })  
   }
 
+  useEffect(() => {
+    getSavedProperties().then(data => {
+      setSavedProperties(data)
+    })
+  }, [])
+
+
   /**
    * Adds or removes a property from the savedProperties array
    * @param {boolean} inSavedProps
@@ -133,6 +147,7 @@ function App() {
     // Remove prop from savedProps
     if (inSavedProps) {
       newSavedProps = savedProps.filter((savedProp) => {
+        deleteSavedProperty(prop.id)   
         return savedProp.address.streetAddress !== prop.address.streetAddress;
       });
       inSavedProps = false;
@@ -141,6 +156,7 @@ function App() {
     else {
       inSavedProps = true;
       newSavedProps = [...savedProps, prop];
+      postSavedProperty({property: prop})
     }
     setCurrentProperty({ ...currentProperty, inSavedProperties: inSavedProps });
     setSavedProperties(newSavedProps);
