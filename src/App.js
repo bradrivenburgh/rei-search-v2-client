@@ -166,7 +166,7 @@ function App() {
       getSavedProperties().then(data => {
         setSavedProperties(data);
       });  
-    }, 12);
+    }, 500);
   };
 
   /**
