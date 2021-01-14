@@ -40,7 +40,7 @@ describe("PropertiesTab", () => {
     ).toBeInTheDocument();
   });
 
-  test.skip("contains a pressed and unpressed button", () => {
+  test("contains a pressed and unpressed button", () => {
     render(
       <BrowserRouter>
         <Context.Provider value={contextValues}>
@@ -52,7 +52,7 @@ describe("PropertiesTab", () => {
       pressed: false,
     });
     const pressedButton = screen.getAllByRole("button", {
-      pressed: false,
+      pressed: true,
     });
 
     expect(unpressedButton[0]).toBeInTheDocument();

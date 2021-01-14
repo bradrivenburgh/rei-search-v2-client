@@ -142,31 +142,22 @@ function App() {
     prop = {},
     savedProps = []
   ) => {
-    let idToDelete;
+    let newSavedProps;
+
     // Remove prop from savedProperties
     if (inSavedProps) {
-      if (!prop.property) {
-        idToDelete = savedProps.find((savedProp) => savedProp.property.address.streetAddress === prop.address.streetAddress).id;
-      } else {
-        idToDelete = savedProps.find((savedProp) => savedProp.property.address.streetAddress === prop.property.address.streetAddress).id;
-      }
-
+      newSavedProps = savedProps.filter((savedProp) => savedProp.property.address.streetAddress !== prop.property.address.streetAddress)
       inSavedProps = false;
-      deleteSavedProperty(idToDelete);
+      deleteSavedProperty(prop.id);
     } 
-    // Add propt to savedProperties
+    // Add property to savedProperties
     else {
+      newSavedProps = [...savedProps, prop]
       inSavedProps = true;
-      postSavedProperty({property: prop});
+      postSavedProperty(prop);
     }
     setCurrentProperty({ ...currentProperty, inSavedProperties: inSavedProps });
-    
-    // Slightly delay call to database to give it time to update the favorites
-    setTimeout(() => {
-      getSavedProperties().then(data => {
-        setSavedProperties(data);
-      });  
-    }, 350);
+    setSavedProperties(newSavedProps);
   };
 
   /**
