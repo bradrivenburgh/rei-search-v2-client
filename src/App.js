@@ -11,7 +11,8 @@ import CreateAccount from "./components/CreateAccount";
 import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import AccountChild from "./components/AccountChild";
-import Loading from './components/Loading';
+import Loading from "./components/Loading";
+import BoundaryError from "./components/BoundaryError";
 import {
   search,
   pingServer,
@@ -20,9 +21,7 @@ import {
   deleteSavedProperty,
 } from "./APIService";
 import { Context } from "./Context";
-import {
-  placeholderProfile,
-} from "./mockData";
+import { placeholderProfile } from "./mockData";
 
 function App() {
   /* State */
@@ -30,7 +29,7 @@ function App() {
   /* Data from API */
   let [statistics, setStatistics] = useState({
     economic: [],
-    demographic: []
+    demographic: [],
   });
   let [properties, setProperties] = useState([]);
   let [savedProperties, setSavedProperties] = useState([]);
@@ -92,7 +91,7 @@ function App() {
       pingServer();
       setIsAwake(true);
     }
-  }, [isAwake])
+  }, [isAwake]);
 
   useEffect(() => {
     if (visited === "true") {
@@ -101,7 +100,6 @@ function App() {
       localStorage.setItem("visited", "false");
     }
   }, [visited]);
-
 
   /* Handlers */
 
@@ -120,16 +118,15 @@ function App() {
       // triggers HUD events and Map events
       setDefaultTab(true);
       setDefaultTab(false);
-      setIsLoading(false);  
-    })  
-  }
+      setIsLoading(false);
+    });
+  };
 
   useEffect(() => {
-    getSavedProperties().then(data => {
-      setSavedProperties(data)
-    })
-  }, [])
-
+    getSavedProperties().then((data) => {
+      setSavedProperties(data);
+    });
+  }, []);
 
   /**
    * Adds or removes a property from the savedProperties array
@@ -146,13 +143,17 @@ function App() {
 
     // Remove prop from savedProperties
     if (inSavedProps) {
-      newSavedProps = savedProps.filter((savedProp) => savedProp.property.address.streetAddress !== prop.property.address.streetAddress)
+      newSavedProps = savedProps.filter(
+        (savedProp) =>
+          savedProp.property.address.streetAddress !==
+          prop.property.address.streetAddress
+      );
       inSavedProps = false;
       deleteSavedProperty(prop.id);
-    } 
+    }
     // Add property to savedProperties
     else {
-      newSavedProps = [...savedProps, prop]
+      newSavedProps = [...savedProps, prop];
       inSavedProps = true;
       postSavedProperty(prop);
     }
@@ -229,58 +230,63 @@ function App() {
 
   return (
     <main className='App'>
-      <Context.Provider value={contextValues}>
-        <Switch>
-          <Route path='/account/:component'>
-            <AccountChild />
-          </Route>
-          <Route path='/account'>
-            <Account />
-          </Route>
-          <Route path='/sign-in'>
-            <SignIn />
-          </Route>
-          <Route path='/create-account'>
-            <CreateAccount />
-          </Route>
-          <Route path='/property-profile'>
-            <PropertyProfile
-              currentProperty={currentProperty}
-              savedProperties={savedProperties}
-              onAddRemoveProperty={handleAddRemoveProperty}
-            />
-          </Route>
-          <Route path='/saved-properties'>
-            <SavedProps
-              savedProperties={savedProperties}
-              setCurrentProperty={setCurrentProperty}
-              onAddRemoveProperty={handleAddRemoveProperty}
-            />
-          </Route>
-          <Route path='/'>
-            <About
-              aboutState={{ visited, setVisited, handleAddAboutVisited }}
-            />
-            <Menu
-              menuState={{ menuState, setMenuState, handleRemoveAboutVisited }}
-            />
-            <div
-              ref={mainViewNode}
-              onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
-              <Nav menuState={{ menuState, setMenuState }} />
-              <Loading isLoading={isLoading} />
-              <MapLeaflet
-                defaultTab={defaultTab}
-                mapState={mapState}
-                properties={properties}
-                HUDState={HUDState}
-                
+      <BoundaryError>
+        <Context.Provider value={contextValues}>
+          <Switch>
+            <Route path='/account/:component'>
+              <AccountChild />
+            </Route>
+            <Route path='/account'>
+              <Account />
+            </Route>
+            <Route path='/sign-in'>
+              <SignIn />
+            </Route>
+            <Route path='/create-account'>
+              <CreateAccount />
+            </Route>
+            <Route path='/property-profile'>
+              <PropertyProfile
+                currentProperty={currentProperty}
+                savedProperties={savedProperties}
+                onAddRemoveProperty={handleAddRemoveProperty}
               />
-              <HUD defaultTab={defaultTab} HUDState={HUDState} />
-            </div>
-          </Route>
-        </Switch>
-      </Context.Provider>
+            </Route>
+            <Route path='/saved-properties'>
+              <SavedProps
+                savedProperties={savedProperties}
+                setCurrentProperty={setCurrentProperty}
+                onAddRemoveProperty={handleAddRemoveProperty}
+              />
+            </Route>
+            <Route path='/'>
+              <About
+                aboutState={{ visited, setVisited, handleAddAboutVisited }}
+              />
+              <Menu
+                menuState={{
+                  menuState,
+                  setMenuState,
+                  handleRemoveAboutVisited,
+                }}
+              />
+              <div
+                ref={mainViewNode}
+                onMouseDown={(e) => handleMenuClose(e, mainViewNode)}>
+                <Nav menuState={{ menuState, setMenuState }} />
+                <Loading isLoading={isLoading} />
+                <MapLeaflet
+                  defaultTab={defaultTab}
+                  mapState={mapState}
+                  properties={properties}
+                  HUDState={HUDState}
+                />
+                <HUD defaultTab={defaultTab} HUDState={HUDState} />
+              </div>
+            </Route>
+          </Switch>
+        </Context.Provider>
+      </BoundaryError>
     </main>
   );
 }
