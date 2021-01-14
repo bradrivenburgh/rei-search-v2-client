@@ -53,7 +53,7 @@ function PropertiesTab() {
               id={streetAddress}
               onClick={() =>
                 setCurrentProperty({
-                  propertyData: property.property,
+                  propertyData: property,
                   inSavedProperties: inSavedProps(
                     savedProperties,
                     streetAddress

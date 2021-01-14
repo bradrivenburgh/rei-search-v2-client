@@ -25,7 +25,7 @@ function PropertyProfile({
     livingArea,
     yearBuilt,
     description,
-  } = propertyData;
+  } = propertyData.property;
 
   return (
     <section>
@@ -97,25 +97,28 @@ PropertyProfile.defaultProps = {
   currentProperty: {
     inSavedProperties: true,
     propertyData: {
-      address: {
-        streetAddress: "Placeholder St.",
-        city: "Somewhere",
-        state: "PA",
-        zipcode: "00000",
-        neighborhood: null,
-        community: null,
-        subdivision: null,
+      id: 1,
+      property: {
+        address: {
+          streetAddress: "Placeholder St.",
+          city: "Somewhere",
+          state: "PA",
+          zipcode: "00000",
+          neighborhood: null,
+          community: null,
+          subdivision: null,
+        },
+        bedrooms: "2",
+        bathrooms: "2",
+        price: "200000",
+        yearBuilt: 1980,
+        longitude: -75.10820770263672,
+        latitude: 39.98884201049805,
+        description: "Placeholder description.",
+        livingArea: 1000,
+        currency: "USD",
+        photos: [],
       },
-      bedrooms: "2",
-      bathrooms: "2",
-      price: "200000",
-      yearBuilt: 1980,
-      longitude: -75.10820770263672,
-      latitude: 39.98884201049805,
-      description: "Placeholder description.",
-      livingArea: 1000,
-      currency: "USD",
-      photos: [],
     },
   },
   savedProperties: [{}],
