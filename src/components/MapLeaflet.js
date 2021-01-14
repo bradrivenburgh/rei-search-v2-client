@@ -324,7 +324,7 @@ MapLeaflet.defaultProps = {
   defaultTab: false,
   HUDState: {
     HUDPosition: "67%",
-    activeTab: false,
+    activeTab: {},
     setHUDPosition: () => {},
     setActiveTab: () => {},
     setPressCount: () => {},

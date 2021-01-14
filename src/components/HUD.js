@@ -314,7 +314,7 @@ HUD.defaultProps = {
   defaultTab: false,
   HUDState: {
     pressCount: 0,
-    HUDPosition: 0,
+    HUDPosition: "67px",
     activeTab: {},
     setPressCount: () => {},
     setHUDPosition: () => {},
