@@ -64,20 +64,20 @@ function MapLeaflet({
   /**
    * Renders property markers with address popups
    */
-  const renderMarkers = properties.map((property) => (
+  const renderMarkers = properties.map((data) => (
     <Marker
-      key={property.address.streetAddress}
-      position={[property.latitude, property.longitude]}
+      key={data.property.address.streetAddress}
+      position={[data.property.latitude, data.property.longitude]}
       ref={addToRefs}>
       <Popup keepInView={false} autoPan={false}>
         <a
-          href={`#${property.address.streetAddress}`}
+          href={`#${data.property.address.streetAddress}`}
           onClick={() => handleOpenPropTab()}>
-          <span>{property.address.streetAddress},</span> <br />
+          <span>{data.property.address.streetAddress},</span> <br />
           <span>
-            {property.address.city}, {property.address.state + " "}
+            {data.property.address.city}, {data.property.address.state + " "}
           </span>
-          <span>{property.address.zipcode}</span>
+          <span>{data.property.address.zipcode}</span>
         </a>
       </Popup>
     </Marker>
@@ -299,25 +299,28 @@ MapLeaflet.defaultProps = {
   },
   properties: [
     {
-      address: {
-        streetAddress: "Placeholder St.",
-        city: "Somewhere",
-        state: "PA",
-        zipcode: "00000",
-        neighborhood: null,
-        community: null,
-        subdivision: null,
+      id: 1,
+      property: {
+        address: {
+          streetAddress: "Placeholder St.",
+          city: "Somewhere",
+          state: "PA",
+          zipcode: "00000",
+          neighborhood: null,
+          community: null,
+          subdivision: null,
+        },
+        bedrooms: "2",
+        bathrooms: "2",
+        price: "200000",
+        yearBuilt: 1980,
+        longitude: -75.10820770263672,
+        latitude: 39.98884201049805,
+        description: "Placeholder description.",
+        livingArea: 1000,
+        currency: "USD",
+        photos: [],
       },
-      bedrooms: "2",
-      bathrooms: "2",
-      price: "200000",
-      yearBuilt: 1980,
-      longitude: -75.10820770263672,
-      latitude: 39.98884201049805,
-      description: "Placeholder description.",
-      livingArea: 1000,
-      currency: "USD",
-      photos: [],
     },
   ],
   defaultTab: false,

@@ -16,7 +16,7 @@ function PropertiesTab() {
     setFindMarker,
   } = useContext(Context);
 
-  const handleFindMarker = (property) => {
+  const handleFindMarker = ({property}) => {
     setCurrentMarkerLatLng({
       current: [property.latitude, property.longitude]
     });
@@ -34,7 +34,7 @@ function PropertiesTab() {
             address: { streetAddress, city, state, zipcode },
             price,
             photos,
-          } = property;
+          } = property.property;
 
           const inSavedProps = (savedProps = [], street = "") => {
             let hasProperty = false;
@@ -53,7 +53,7 @@ function PropertiesTab() {
               id={streetAddress}
               onClick={() =>
                 setCurrentProperty({
-                  propertyData: property,
+                  propertyData: property.property,
                   inSavedProperties: inSavedProps(
                     savedProperties,
                     streetAddress
