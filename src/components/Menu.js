@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import "./Menu.css";
 
@@ -45,7 +46,6 @@ function Menu({
   );
 }
 
-export default Menu;
 
 Menu.defaultProps = {
   menuState: {
@@ -57,3 +57,14 @@ Menu.defaultProps = {
     handleAddAboutVisited: () => {},
   },
 };
+
+Menu.propTypes = {
+  menuState: PropTypes.shape({
+    menuState: PropTypes.shape({
+      menuOffset: PropTypes.string.isRequired,
+      menuVisibility: PropTypes.string.isRequired
+    })
+  })
+}
+
+export default Menu;

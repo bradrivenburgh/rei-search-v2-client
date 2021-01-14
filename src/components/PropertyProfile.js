@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import house from '../images/default-house.png';
 import {ReactComponent as HeartIcon} from '../images/heart.svg';
@@ -124,5 +125,14 @@ PropertyProfile.defaultProps = {
   savedProperties: [{}],
   onAddRemoveProperty: () => {},
 };
+
+PropertyProfile.propTypes = {
+  currentProperty: PropTypes.shape({
+    inSavedProperties: PropTypes.bool.isRequired,
+    propertyData: PropTypes.object.isRequired,
+  }),
+  savedProperties: PropTypes.array.isRequired,
+  onAddRemoveProperty: PropTypes.func.isRequired,
+}
 
 export default PropertyProfile;

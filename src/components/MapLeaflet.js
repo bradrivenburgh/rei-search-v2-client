@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import PropTypes from 'prop-types';
 import {
   MapContainer,
   LayersControl,
@@ -274,13 +275,10 @@ function MapLeaflet({
   );
 }
 
-export default MapLeaflet;
 
 MapLeaflet.defaultProps = {
   mapState: {
     mapData: {
-      lat: 39.9,
-      lng: -75.16,
       zoom: 9,
       center: [39.9, -75.16],
       msaShape: {},
@@ -332,3 +330,33 @@ MapLeaflet.defaultProps = {
     setPressCount: () => {},
   },
 };
+
+MapLeaflet.propTypes = {
+    mapData: PropTypes.shape({
+      zoom: PropTypes.number.isRequired,
+      center: PropTypes.array.isRequired,
+      msaShape: PropTypes.object.isRequired,
+      countyShape: PropTypes.object.isRequired,
+      tractShape: PropTypes.object.isRequired,
+      displayLayer: PropTypes.shape({
+        "Property markers": PropTypes.bool.isRequired,
+        "MSA shape": PropTypes.bool.isRequired,
+        "County shape": PropTypes.bool.isRequired,
+        "CT shape": PropTypes.bool.isRequired,
+      }),
+      findMarker: PropTypes.bool,
+      setMapData: PropTypes.func.isRequired,
+      setCurrentMarkerLatLng: PropTypes.func.isRequired,
+    }),
+  properties: PropTypes.array.isRequired,
+  defaultTab: PropTypes.bool.isRequired,
+  HUDState: PropTypes.shape({
+    HUDPosition: PropTypes.string.isRequired,
+    activeTab: PropTypes.object.isRequired,
+    setHUDPosition: PropTypes.func.isRequired,
+    setActiveTab: PropTypes.func.isRequired,
+    setPressCount: PropTypes.func.isRequired,
+  }),
+}
+
+export default MapLeaflet;

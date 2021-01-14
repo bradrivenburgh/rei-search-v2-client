@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import house from "../images/default-house.png";
 
 function Image({ photo, alt }) {
@@ -42,5 +43,10 @@ Image.defaultProps = {
   photo: '',
   alt: '',
 };
+
+Image.propTypes = {
+  photo: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired
+}
 
 export default Image;

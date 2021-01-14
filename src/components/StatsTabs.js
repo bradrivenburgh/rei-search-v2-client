@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PropTypes from 'prop-types';
 import { Context } from "../Context";
 import './StatsTabs.css';
 
@@ -101,6 +102,16 @@ StatsTabs.defaultProps = {
   searchResults: {
     statistics: { economic: [], demographic: [] }
   },
+}
+
+StatsTabs.propTypes = {
+  id: PropTypes.string.isRequired,
+  searchResults: PropTypes.shape({
+    statistics: PropTypes.shape({
+      economic: PropTypes.array.isRequired,
+      demographic: PropTypes.array.isRequired,
+    })
+  })
 }
 
 export default StatsTabs;

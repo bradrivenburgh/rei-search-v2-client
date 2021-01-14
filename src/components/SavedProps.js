@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, useHistory } from 'react-router-dom';
 import {ReactComponent as HeartIcon} from '../images/heart.svg';
 import Image from './Image';
@@ -108,6 +109,12 @@ SavedProps.defaultProps = {
   }}],
   setCurrentProperty: () => {},
   onAddRemoveProperty: () => {},
+}
+
+SavedProps.propTypes = {
+  savedProperties: PropTypes.array.isRequired,
+  setCurrentProperty: PropTypes.func.isRequired,
+  onAddRemoveProperty: PropTypes.func.isRequired,
 }
 
 export default SavedProps;

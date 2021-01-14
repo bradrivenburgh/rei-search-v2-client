@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./About.css";
 
 function About({ aboutState: { visited, handleAddAboutVisited } }) {
@@ -134,6 +135,11 @@ About.defaultProps = {
     visited: 'false', 
     handleAddAboutVisited: () => {} 
   }
+}
+
+About.propTypes = {
+  visited: PropTypes.string,
+  handleAddAboutVisited: PropTypes.func
 }
 
 export default About;

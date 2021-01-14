@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef } from "react";
+import PropTypes from 'prop-types';
 import {ReactComponent as EconomicsIcon} from '../images/economics-resized.svg';
 import {ReactComponent as DemographicsIcon} from '../images/demographics-resized.svg';
 import {ReactComponent as PropertiesIcon} from '../images/properties-resized.svg';
@@ -326,5 +327,24 @@ HUD.defaultProps = {
     setHUDScrollTops: () => {}
   }
 };
+
+HUD.propTypes = {
+  defaultTab: PropTypes.bool.isRequired,
+  HUDState: PropTypes.shape({
+    pressCount: PropTypes.number.isRequired,
+    HUDPosition: PropTypes.string.isRequired,
+    activeTab: PropTypes.object || PropTypes.bool,
+    setPressCount: PropTypes.func.isRequired,
+    setHUDPosition: PropTypes.func.isRequired,
+    setActiveTab: PropTypes.func.isRequired,
+    HUDScrollTops: PropTypes.shape({
+      econTab: PropTypes.number,
+      demogTab: PropTypes.number,
+      propsTab: PropTypes.number
+    }).isRequired,
+    setHUDScrollTops: PropTypes.func.isRequired
+
+  })
+}
 
 export default HUD;

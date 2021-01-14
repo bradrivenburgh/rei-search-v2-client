@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./Loading.css";
 
 export default function Loading({ isLoading }) {
@@ -26,4 +27,8 @@ export default function Loading({ isLoading }) {
 
 Loading.defaultProps = {
   isLoading: false,
+}
+
+Loading.propTypes = {
+  isLoading: PropTypes.bool.isRequired
 }

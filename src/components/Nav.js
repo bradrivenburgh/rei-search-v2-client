@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Search from "./Search";
 import "./Nav.css";
 
@@ -27,5 +28,11 @@ Nav.defaultProps = {
     setMenuState: () => {},
   },
 };
+
+Nav.propTypes = {
+  menuState: PropTypes.shape({
+    setMenuState: PropTypes.func.isRequired,
+  })
+}
 
 export default Nav;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import LeftArrow from './LeftArrow';
 import RightArrow from './RightArrow';
 import Slide from './Slide';
@@ -38,6 +39,11 @@ function Carousel({photos}) {
 
 Carousel.defaultProps = {
   photos: []
+}
+
+Carousel.propTypes = {
+  photos: PropTypes.array.isRequired
+  
 }
 
 export default Carousel;

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import house from '../../images/default-house.png';
+import PropTypes from 'prop-types';
 
 function Slide({photos, activeIndex}) {
   let [isValid, setIsValid] = useState(true);
@@ -43,9 +44,14 @@ function Slide({photos, activeIndex}) {
   );
 } 
 
-export default Slide;
-
 Slide.defaultProps = {
   photos: [],
   activeIndex: 1
 }
+
+Slide.propTypes = {
+  photos: PropTypes.array.isRequired,
+  activeIndex: PropTypes.number.isRequired
+}
+
+export default Slide;
