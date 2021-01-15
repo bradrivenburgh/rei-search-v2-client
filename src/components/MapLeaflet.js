@@ -238,7 +238,7 @@ function MapLeaflet({
           tileSize={512}
         />
 
-        {Object.keys(msaShape).length && (
+        {Object.keys(msaShape).length > 0 && (
           <LayersControl position='topright'>
             <LayersControl.Overlay
               checked={mapData.displayLayer["MSA shape"]}
