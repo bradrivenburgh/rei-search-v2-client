@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import house from "../images/default-house.png";
 
 function Image({ photo, alt }) {
-  // try fetch call to see if there is a successful response and replace
-  // src with the value of data-src
-  // https://stackoverflow.com/questions/47263773/add-image-data-to-html-file
-
   let [isValid, setIsValid] = useState(true);
 
   /**
