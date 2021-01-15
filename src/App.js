@@ -12,6 +12,7 @@ import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
 import AccountChild from "./components/AccountChild";
 import Loading from "./components/Loading";
+import BadSearch from "./components/BadSearch";
 import BoundaryError from "./components/BoundaryError";
 import {
   search,
@@ -81,6 +82,8 @@ function App() {
   let [findMarker, setFindMarker] = useState(false);
   /* About page state */
   const [visited, setVisited] = useState(localStorage.getItem("visited"));
+  /* BadSearch Modal */
+  let [badSearch, setBadSearch] = useState(false);
   /* Loading Indicator State */
   let [isLoading, setIsLoading] = useState(false);
   /* Server Ping State */
@@ -119,6 +122,9 @@ function App() {
 
   /* Handlers */
 
+  /**
+   * Handlers to manage visited State for About
+   */
   const handleRemoveAboutVisited = () => {
     setVisited("false");
   };
@@ -133,8 +139,13 @@ function App() {
    * @param {string} value
    */
   const handleSearch = (value) => {
+    // Start loading animation
     setIsLoading(true);
+
     search(value).then((data) => {
+      if (data.badRequest) {
+        setBadSearch(true);
+      }
       setStatistics(data.apiStatistics);
       setProperties(data.properties);
       setMapData({
@@ -147,8 +158,13 @@ function App() {
       // triggers HUD events and Map events
       setDefaultTab(true);
       setDefaultTab(false);
+
+      // End loading animation
       setIsLoading(false);
-    });
+    })
+    .catch(e => {
+      throw new Error(e);
+    })
   };
 
   /**
@@ -278,6 +294,7 @@ function App() {
               <About
                 aboutState={{ visited, setVisited, handleAddAboutVisited }}
               />
+              <BadSearch badSearchState={{badSearch, setBadSearch}} />
               <Menu
                 menuState={{
                   menuState,
