@@ -60,6 +60,11 @@ Each search will produce a list of properties for sale within ten kilometers of 
 - Clone the repository
 - Run `npm install` in the project directory to install the dependencies
 - Clone and setup [the API](https://github.com/bradrivenburgh/rei-search-v2-server)
+- Create an `.env` file and insert the following environmental variables.  These will also need \
+need to be configured on your deployed client (e.g., on Vercel):
+- REACT_APP_REISEARCH_API_TOKEN (use the same value you used for your API)
+- REACT_APP REISEARCH_API_ENDPOINT (the url of where you are hosting your API (e.g., Heroku))
+- REACT_APP_MAPBOX_API_KEY (create a different Mapbox API key that you used in your API)
 
 ## Available Scripts
 
