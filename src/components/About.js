@@ -41,7 +41,7 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
         <div>
           <h4>Get marketplace statistics</h4>
           <p>
-            The app produces statistical data primarily on two geographic
+            The app produces statistical data on three geographic
             levels:
           </p>
 
@@ -51,19 +51,19 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
                 Philadelphia-Camden-Wilmington, PA-NJ-DE-MD Metropolitan
                 Statistical Area:
               </strong>{" "}
-              MSAs are geographic regions centered around areas of high
+              MSAs are large geographic regions centered around areas of high
               population density (i.e., big cities) with integrated economies.
-              The Philadelphia-Camden-Wilmington, PA-NJ-DE-MD MSA will provide
-              investors with useful context when viewing comparable Census Tract
-              statistics.
             </li>
             <br />
             <li>
-              <strong>Census Tracts:</strong> a CT is a smaller geographic unit
-              used for statistical purposes by the US Census Bureau, often
-              correlating closely to city town boundaries. The more granular
-              focus will provide investors with a better idea of how a
-              municipality compares to the MSA as a whole.
+            <strong>County:</strong> a moderately-sized geography
+              that will provide context for the granular census tract data.
+            </li>
+            <br />
+            <li>
+              <strong>Census Tracts:</strong> a CT is a small geographic unit
+              used for statistical purposes by the US Census Bureau. CT data can
+              provide investors with insights into the desirability of a neighborhood.
             </li>
           </ul>
 
@@ -86,9 +86,8 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
         <div>
           <h4>Find your next rental property</h4>
           <p>
-            Each search will produce a list of properties for sale in the
-            geography you selected with the option to save them to your account
-            for later viewing.
+            Each search will produce a list of properties for sale within ten kilometers
+            of a location. You have the option to save properties for later viewing.
           </p>
 
           <p>
@@ -116,14 +115,31 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
               this page
             </li>
             <li>
-              Create an account to save select properties or proceed as a
-              visitor and create an account at another time
+              Use the search bar to search for a location in the Philadelphia region.  You may
+              search using an address or just a city and state.
             </li>
             <li>
-              Select a place in the Philadelphia region and review the data to
-              narrow down where you will invest next.
+              View statistics (economic and demographic data) and a list of properties using the tabs
+              of the head-up-display (HUD) at the bottom of the app. 
+            </li>
+            <li>
+              Navigate to any property on the map by pressing the location button that accompany each property.
+              Clicking on the address in the popup marker for each property will navigate to that property in the
+              HUD properties tab.
+            </li>
+            <l>
+              View a description and photos of each property by clicking on its photo in the Hud properties tab.
+            </l>
+            <li>
+              Save properties for later viewing by selecting the heart icon that accompany each property.
+              Saved properties may be accessed by navigating to them using the menu in the top-right corner
+              of the app.
             </li>
           </ol>
+        </div>
+        <div>
+          <h3>Attributions</h3>
+          <p>All icons used in this app were created and used with permission by <a href="https://thenounproject.com/" target="_new">the Noun Project</a> </p>
         </div>
       </section>
     </div>
