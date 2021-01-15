@@ -28,7 +28,7 @@ function SavedProps({
               key={index}
               onClick={() =>
                 setCurrentProperty({
-                  propertyData: property.property,
+                  propertyData: property,
                   inSavedProperties: true,
                 })
               }>
