@@ -11,6 +11,7 @@ const config = {
   MAPBOX_API_KEY: process.env.REACT_APP_MAPBOX_API_KEY,
   CENSUS_API_KEY: process.env.CENSUS_API_KEY,
   REISEARCH_API_ENDPOINT,
+  REISEARCH_API_TOKEN: process.env.REACT_APP_REISEARCH_API_TOKEN,
 }
 
 export default config;

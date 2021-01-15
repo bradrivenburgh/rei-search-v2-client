@@ -13,7 +13,7 @@ const postOptions = (data = {}) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      // "Authorization": `Bearer ${API_KEY}`
+      "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
     },
     body: JSON.stringify(data),
   };
@@ -24,10 +24,9 @@ const deleteOptions = {
   method: "DELETE",
   headers: {
     "Content-Type": "application/json",
-    //  "Authorization": `Bearer ${API_KEY}`
+    "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
   },
 };
-
 
 // Helper function for fetch calls
 function fetchCall(url, options = {}) {
@@ -55,7 +54,12 @@ function fetchCall(url, options = {}) {
 }
 
 export const pingServer = () => {
-  fetchCall(config.REISEARCH_API_ENDPOINT);
+  fetchCall(config.REISEARCH_API_ENDPOINT, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
+    },
+  });
 };
 
 export const search = (value) => {
@@ -65,17 +69,33 @@ export const search = (value) => {
   const queryString = formatQueryParams(params);
   const url = `${config.REISEARCH_API_ENDPOINT}search/?${queryString}`;
 
-  return fetchCall(url);
+  return fetchCall(url, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
+    },
+  });
 };
 
 export const getSavedProperties = () => {
-  return fetchCall(`${config.REISEARCH_API_ENDPOINT}/favorites`)
-}
+  return fetchCall(`${config.REISEARCH_API_ENDPOINT}/favorites`, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
+    },
+  });
+};
 
 export const postSavedProperty = (data) => {
-  return fetchCall(`${config.REISEARCH_API_ENDPOINT}/favorites`, postOptions(data))
-}
+  return fetchCall(
+    `${config.REISEARCH_API_ENDPOINT}/favorites`,
+    postOptions(data)
+  );
+};
 
 export const deleteSavedProperty = (id) => {
-  return fetchCall(`${config.REISEARCH_API_ENDPOINT}/favorites/${id}`, deleteOptions)
-}
+  return fetchCall(
+    `${config.REISEARCH_API_ENDPOINT}/favorites/${id}`,
+    deleteOptions
+  );
+};
