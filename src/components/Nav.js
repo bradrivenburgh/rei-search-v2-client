@@ -1,12 +1,14 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import Search from "./Search";
+import {ReactComponent as Logo} from '../images/reisearch-icon-small.svg';
+
 import "./Nav.css";
 
 function Nav({ menuState: { setMenuState } }) {
   return (
     <nav className='nav'>
-      <img src='https://dummyimage.com/35x35/DDD.png?text=LOGO' alt='Logo' />
+      <div style={{marginLeft:10, marginTop:3}}><Logo /></div>
       <Search />
       <button
         className='menu-button'

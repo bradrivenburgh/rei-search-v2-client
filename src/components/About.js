@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import {ReactComponent as Logo} from '../images/reisearch-icon-large.svg';
 import "./About.css";
 
 function About({ aboutState: { visited, handleAddAboutVisited } }) {
@@ -16,11 +17,8 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
           <button onClick={() => handleAddAboutVisited()}>X</button>
         </nav>
         <header>
-          <img
-              src='https://dummyimage.com/250x125/ddd.png?text=REI-SEARCH-LOGO'
-              alt='LOGO'
-          />
           <h1>rei-search</h1>
+          <Logo />
           <h2>
             Start investing <br /> the right way
           </h2>
@@ -139,7 +137,9 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
         </div>
         <div>
           <h3>Attributions</h3>
-          <p>All icons used in this app were created and used with permission by <a href="https://thenounproject.com/" target="_new">the Noun Project</a> </p>
+          <p>All icons used in this app were created and used with permission by artists from 
+             <a href="https://thenounproject.com/" target="_new">The Noun Project</a>.
+          </p>
         </div>
       </section>
     </div>
