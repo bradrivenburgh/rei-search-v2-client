@@ -82,16 +82,18 @@
 
 .about__flex-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .about img {
+  margin-top: 1em;
   display: block;
 }
 
 @media screen and (max-width: 767px) {
   .about img {
-    width: 120px;
+    width: 200px;
    }  
 }

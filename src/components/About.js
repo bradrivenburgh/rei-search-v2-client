@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {ReactComponent as Logo} from '../images/reisearch-icon-large.svg';
+import econStatsImage from '../images/econ-stats.png' 
+import propertiesImage from '../images/properties.png'
+import propertyProfileImage from '../images/property-profile.png'
 import "./About.css";
 
 function About({ aboutState: { visited, handleAddAboutVisited } }) {
@@ -65,18 +68,10 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
             </li>
           </ul>
 
-          <p>
-            [images from app showing the dashboard with Economy and Demographics
-            tabs selected]
-          </p>
           <div className='about__flex-container'>
             <img
-              src='https://dummyimage.com/200x350/ddd.png?text=Economics%20Tab'
+              src={econStatsImage}
               alt='screenshot of econ tab selected in dashboard'
-            />
-            <img
-              src='https://dummyimage.com/200x350/ddd.png?text=Demographics%20Tab'
-              alt='screenshot of demo tab selected in dashboard'
             />
           </div>
         </div>
@@ -88,17 +83,14 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
             of a location. You have the option to save properties for later viewing.
           </p>
 
-          <p>
-            [images from app showing list of properties and markers on map;
-            individual property profile]
-          </p>
           <div className='about__flex-container'>
             <img
-              src='https://dummyimage.com/200x350/ddd.png?text=Properties%20Tab%20%2F%20Map'
+              src={propertiesImage}
               alt='screenshot of properties tab and map with icons'
             />
+            <br />
             <img
-              src='https://dummyimage.com/200x350/ddd.png?text=Property%20Profile'
+              src={propertyProfileImage}
               alt='screenshot of property profile'
             />
           </div>
