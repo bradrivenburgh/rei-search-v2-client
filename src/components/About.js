@@ -125,9 +125,9 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
               Clicking on the address in the popup marker for each property will navigate to that property in the
               HUD properties tab.
             </li>
-            <l>
+            <li>
               View a description and photos of each property by clicking on its photo in the Hud properties tab.
-            </l>
+            </li>
             <li>
               Save properties for later viewing by selecting the heart icon that accompany each property.
               Saved properties may be accessed by navigating to them using the menu in the top-right corner
