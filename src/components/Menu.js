@@ -34,13 +34,7 @@ function Menu({
         <Link to='/' onClick={() => handleRemoveAboutVisited()}>
           About
         </Link>
-        <Link to='/account'>My account</Link>
-        <Link to='/saved-properties'>Saved properties</Link>
-
-        <hr />
-
-        <Link to='/create-account'>Create account</Link>
-        <Link to='/sign-in'>Sign-in / Sign-out</Link>
+        <Link to='/saved-properties'>Saved properties</Link> 
       </div>
     </>
   );

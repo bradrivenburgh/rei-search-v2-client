@@ -6,11 +6,7 @@ import Menu from "./components/Menu";
 import MapLeaflet from "./components/MapLeaflet";
 import HUD from "./components/HUD";
 import SavedProps from "./components/SavedProps";
-import Account from "./components/Account";
-import CreateAccount from "./components/CreateAccount";
-import SignIn from "./components/SignIn";
 import PropertyProfile from "./components/PropertyProfile";
-import AccountChild from "./components/AccountChild";
 import Loading from "./components/Loading";
 import BadSearch from "./components/BadSearch";
 import BoundaryError from "./components/BoundaryError";
@@ -264,18 +260,6 @@ function App() {
       <BoundaryError>
         <Context.Provider value={contextValues}>
           <Switch>
-            <Route path='/account/:component'>
-              <AccountChild />
-            </Route>
-            <Route path='/account'>
-              <Account />
-            </Route>
-            <Route path='/sign-in'>
-              <SignIn />
-            </Route>
-            <Route path='/create-account'>
-              <CreateAccount />
-            </Route>
             <Route path='/property-profile'>
               <PropertyProfile
                 currentProperty={currentProperty}
