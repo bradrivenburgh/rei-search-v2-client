@@ -86,6 +86,9 @@ function App() {
   /* Server Ping State */
   let [isAwake, setIsAwake] = useState(false);
 
+  /**
+   * Wake up Heroku server
+   */
   useEffect(() => {
     if (!isAwake) {
       pingServer();
@@ -93,6 +96,19 @@ function App() {
     }
   }, [isAwake]);
 
+  /**
+   * Load saved properties when app loads; if user accounts
+   * are enabled, change to when login occurs
+   */
+  useEffect(() => {
+    getSavedProperties().then((data) => {
+      setSavedProperties(data);
+    });
+  }, []);
+
+  /**
+   * If the user has visited before, do not show About
+   */
   useEffect(() => {
     if (visited === "true") {
       localStorage.setItem("visited", visited);
@@ -103,6 +119,19 @@ function App() {
 
   /* Handlers */
 
+  const handleRemoveAboutVisited = () => {
+    setVisited("false");
+  };
+
+  const handleAddAboutVisited = () => {
+    setVisited("true");
+  };
+
+  /**
+   * Query api with search value to get and set statistics
+   * and properties
+   * @param {string} value
+   */
   const handleSearch = (value) => {
     setIsLoading(true);
     search(value).then((data) => {
@@ -121,12 +150,6 @@ function App() {
       setIsLoading(false);
     });
   };
-
-  useEffect(() => {
-    getSavedProperties().then((data) => {
-      setSavedProperties(data);
-    });
-  }, []);
 
   /**
    * Adds or removes a property from the savedProperties array
@@ -173,14 +196,6 @@ function App() {
         menuVisibility: "hidden",
       });
     }
-  };
-
-  const handleRemoveAboutVisited = () => {
-    setVisited("false");
-  };
-
-  const handleAddAboutVisited = () => {
-    setVisited("true");
   };
 
   /* Objects with state values */
