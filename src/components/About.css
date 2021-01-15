@@ -90,10 +90,11 @@
 .about img {
   margin-top: 1em;
   display: block;
+  max-width: 400px;
 }
 
 @media screen and (max-width: 767px) {
   .about img {
-    width: 200px;
+    max-width: 200px;
    }  
 }
