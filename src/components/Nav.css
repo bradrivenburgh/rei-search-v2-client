@@ -21,6 +21,7 @@
   margin-right: 15px;
   cursor: pointer;
   border: none;
+  border-radius: 5px;
 }
 
 .nav button:hover {
