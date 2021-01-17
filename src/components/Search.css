@@ -14,7 +14,7 @@
   font-weight: 300;
   font-size: 16px;
   border: 1px solid #aaa;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .react-autosuggest__input--focused {
