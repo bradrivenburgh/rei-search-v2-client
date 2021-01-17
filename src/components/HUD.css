@@ -3,11 +3,9 @@
   width: 100%;
   height: 69px;
   z-index: 2;
-  bottom: -5px;
-  overflow: hidden;
+  bottom: 0px;
   transition: 0.5s;
-  background-color: #aaa;
-  padding-top: 7px;
+  background-color: #fff;
 }
 
 @media only screen and (max-height: 400px) {
@@ -19,33 +17,8 @@
 .HUD__button-container {
   display: flex;
   justify-content: center;
-  margin-top: -8px;
+  margin-top: -3px;
 }
-
-/* Styles for pill button that is currently not in use */
-.HUD__pill-button {
-  background-color: #ddd;
-  border: none;
-  padding: 3px 15px;
-  display: block;
-  margin: 0.5em auto 1em auto;
-  cursor: pointer;
-  border-radius: 16px;
-}
-
-.HUD__pill-button:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20px;
-}
-
-.HUD__pill-button:hover {
-  background-color: #f1f1f1;
-}
-/* -------- */
 
 .HUD__expand-button,
 .HUD__contract-button {
@@ -95,8 +68,7 @@
   position: relative;
   z-index: 3;
   background-color: #aaa;
-  box-shadow: 0px -8px 26px 1px rgba(0,0,0,0.35);
-}
+  box-shadow: 0px 10px 13px -7px #707070, 5px 5px 15px 5px rgba(0,0,0,0);}
 
 .HUD__tab {
   overflow: hidden;
@@ -153,7 +125,7 @@
 
 .HUD__tabcontent--visible {
   visibility: visible;
-  z-index: 999;
+  z-index: 2;
   height: 100%;
   padding: 6px 12px;
 }
