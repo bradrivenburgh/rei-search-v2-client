@@ -15,8 +15,11 @@ code {
     monospace;
 }
 
-a:hover {
+a {
   text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 h1 {
