@@ -1,17 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
-import house from '../images/default-house.png';
-import {ReactComponent as HeartIcon} from '../images/heart.svg';
-import Carousel from './carousel/Carousel';
-import './PropertyProfile.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
+import house from "../images/default-house.png";
+import { ReactComponent as HeartIcon } from "../images/heart.svg";
+import Carousel from "./carousel/Carousel";
+import "./PropertyProfile.css";
 
 function PropertyProfile({
   savedProperties,
   currentProperty,
   onAddRemoveProperty,
 }) {
-
   // Get history object to allow navigating back to the last page
   let history = useHistory();
 
@@ -30,7 +29,7 @@ function PropertyProfile({
 
   return (
     <section className='property-profile'>
-      <header >
+      <header>
         <nav className='closing-nav'>
           <button onClick={() => history.goBack()}>X</button>
         </nav>
@@ -64,25 +63,29 @@ function PropertyProfile({
           {streetAddress}, <br />
           {city}, {state} {zipcode}
         </p>
+      </div>
+      
+      <div className='property_profile__basic-stats-container'>
+        <h2>Basic Facts</h2>
 
-        <div >
-          <h2>Basic Facts</h2>
+        <ul className='property-profile__basic-stats'>
+          <li>
+            <strong>bed</strong> <br /> {bedrooms}
+          </li>
+          <li>
+            <strong>bath</strong> <br /> {bathrooms}
+          </li>
+          <li>
+            <strong>sqft</strong> <br /> {livingArea}
+          </li>
+          <li>
+            <strong>built</strong> <br /> {yearBuilt}
+          </li>
+        </ul>
+      </div>
 
-          <ul className='property-profile__basic-stats'>
-            <li>
-              <strong>bed</strong> <br /> {bedrooms}
-            </li>
-            <li>
-              <strong>bath</strong> <br /> {bathrooms}
-            </li>
-            <li>
-              <strong>sqft</strong> <br /> {livingArea}
-            </li>
-            <li>
-              <strong>built</strong> <br /> {yearBuilt}
-            </li>
-          </ul>
-
+      <div className='property-profile__info'>
+        <div>
           <div className='property-profile__description'>
             <h2>Description</h2>
             <p> {description} </p>
@@ -132,6 +135,6 @@ PropertyProfile.propTypes = {
   }),
   savedProperties: PropTypes.array.isRequired,
   onAddRemoveProperty: PropTypes.func.isRequired,
-}
+};
 
 export default PropertyProfile;
