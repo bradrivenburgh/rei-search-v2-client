@@ -12,7 +12,6 @@
   background-color: #ccc;
   height: 90%;
   width: 80%;
-  padding: 1em;
   margin: 0 auto;
   border-radius: 10px;
   overflow-y: scroll;
@@ -50,13 +49,17 @@
   }  
 }
 
+.about div {
+  padding:0 1em;
+}
+
 .about .closing-nav {
   position: sticky;
 }
 
 .about header {
   text-align: center;
-  margin: 2em 0 3em 0;
+  padding-top: 0;
 }
 
 .about header img {

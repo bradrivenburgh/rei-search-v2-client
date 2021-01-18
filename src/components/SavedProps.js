@@ -71,10 +71,11 @@ function SavedProps({
 
   return (
     <section className='saved-properties'>
-      <nav className='closing-nav'>
-        <button onClick={() => history.goBack()}>X</button>
-      </nav>
       <header>
+        <nav className='closing-nav'>
+          <button onClick={() => history.goBack()}>X</button>
+        </nav>
+
         <h1>Saved Properties</h1>
       </header>
 

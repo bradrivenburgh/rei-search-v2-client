@@ -1,13 +1,9 @@
-.saved-properties {
-  margin: 0 1em;
-}
-
 .saved-properties h1 {
   text-align: center;
-  margin: 2em 0 3em 0;
+
 }
 
-.saved-properties, ul {
+.saved-properties ul {
   list-style-type: none;
   margin-block-start: 0;
   margin-block-end: 0;
@@ -18,6 +14,7 @@
 .saved-properties__flex-container {
   display: flex;
   align-items: center;
+  margin: 0 1em;
 }
 
 .saved-properties img {
@@ -48,8 +45,6 @@
     top: 5px;
     left: 100px;
   }
-
-
 }
 
 .saved-properties p {

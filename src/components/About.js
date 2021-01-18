@@ -16,10 +16,10 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
           : { display: "block" }
       }>
       <section className='about'>
-        <nav className='closing-nav'>
-          <button onClick={() => handleAddAboutVisited()}>X</button>
-        </nav>
         <header>
+          <nav className='closing-nav'>
+            <button onClick={() => handleAddAboutVisited()}>X</button>
+          </nav>
           <h1>rei-search</h1>
           <Logo />
           <h2>

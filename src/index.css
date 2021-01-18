@@ -7,8 +7,6 @@ body {
   'Droid Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* Temporary */
   background-color: #ccc;
 }
 
@@ -21,9 +19,16 @@ h1 {
   font-size: 2em;
 }
 
+header {
+  background-color: #aaa;
+  padding: 2em 0 3em 0;
+  margin: 0 0 1em;
+}
+
 .closing-nav {
   text-align:right;
   height: 4em;
+  background-color: #aaa;
 }
 
 .closing-nav button {
