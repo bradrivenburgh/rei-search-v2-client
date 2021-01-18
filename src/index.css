@@ -15,6 +15,10 @@ code {
     monospace;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 h1 {
   font-size: 2em;
 }
