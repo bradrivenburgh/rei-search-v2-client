@@ -40,7 +40,8 @@ header {
   color: black;
   padding: .2em .5em;
   border: 0;
-  background: none;
+  background-color: #ccc;
+  border-radius: 10px;
 }
 
 .closing-nav button:hover {
