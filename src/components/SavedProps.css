@@ -1,6 +1,5 @@
 .saved-properties h1 {
   text-align: center;
-
 }
 
 .saved-properties ul {
@@ -31,11 +30,11 @@
 .saved-properties .addRemove-button {
   position: absolute;
   top: 10px;
-  left: 440px;
+  left: 500px;
 }
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 560px) {
   .saved-properties img {
     width: 140px;
     height: 160px;
@@ -52,7 +51,7 @@
 }
 
 .saved-properties hr {
-  width: 80%;
+  width: 70%;
   margin: 1em auto;
 }
 
@@ -66,7 +65,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .saved-properties {  
+  .saved-properties__flex-container {
     max-width: 70%;
     margin: 0 auto;
   }
