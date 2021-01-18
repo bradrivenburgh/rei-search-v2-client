@@ -12,8 +12,9 @@
   background-color: #ccc;
   height: 50%;
   width: 80%;
-  padding: 1em;
+  /* padding: 1em; */
   margin: 0 auto;
+  box-shadow: 2px 5px 16px 0px #000, 5px 5px 15px 5px rgba(0,0,0,0);
   border-radius: 10px;
   overflow-y: scroll;
  /* Hide scroll bar for IE, Edge, and Firefox */
@@ -70,12 +71,13 @@
 }
 
 .search .closing-nav {
-  position: sticky;
+  position: relative;
 }
 
 .search header {
   text-align: center;
-  margin: 1.25em 0 2.25em 0;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .search header img {
@@ -87,8 +89,9 @@
   text-align: center;
 }
 
-.search p, .search li {
+.search p {
   line-height: 1.5em;
+  margin: 0 1em;
 }
 
 .search img {

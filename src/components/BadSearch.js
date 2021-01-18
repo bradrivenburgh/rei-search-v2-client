@@ -12,10 +12,10 @@ function BadSearch({ badSearchState: { badSearch, setBadSearch } }) {
           : { display: "block" }
       }>
       <section className='search'>
-        <nav className='closing-nav'>
-          <button onClick={() => setBadSearch(false)}>X</button>
-        </nav>
         <header>
+          <nav className='closing-nav'>
+            <button onClick={() => setBadSearch(false)}>X</button>
+          </nav>
           <h1>Whoops!</h1>
         </header>
         <div>
