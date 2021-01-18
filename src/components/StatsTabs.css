@@ -7,7 +7,9 @@
 }
 
 .stats table {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
+	border-collapse: collapse;
+	border: 2px solid #eee;
 }
 
 .stats table td {
@@ -15,13 +17,14 @@
 }
 
 .stats td, th { 
-  border: 1px solid rgb(233, 221, 221);
+  border: 2px solid #eee;
 }
 
 .stats th {
   display: table-cell;
   text-align: center;
-  vertical-align: center;
+	vertical-align: center;
+	padding: 0 1em;
 }
 
 .stats__table-list li {
@@ -47,25 +50,25 @@ only screen and (max-width: 760px),
 		top: -9999px;
 		left: -9999px;
 	}
-	
-	.stats tr { 
-    border: 1px solid rgb(233, 221, 221);
-  }
-	
+		
 	.stats table td { 
 		/* Behave  like a "row" */
 		border: none;
-		border-bottom: 1px solid #eee; 
+		border-bottom: 2px solid #eee; 
     position: relative;
     padding-right: 0;
 		padding-left: 25%; 
+	}
+
+	.stats table td:last-of-type {
+		border-bottom: 1px solid #eee;
 	}
 	
 	.stats td:before { 
 		/* Now like a table header */
 		position: absolute;
 		/* Top/left values mimic padding */
-		top: 4px;
+		top: 8px;
 		left: 6px;
     width: 45%;
 		padding-right: 10px; 
