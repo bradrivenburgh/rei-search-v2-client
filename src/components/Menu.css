@@ -20,6 +20,10 @@
   color: #000;
 }
 
+.menu a:hover {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 550px) {
   .menu {
     width: 150px;
