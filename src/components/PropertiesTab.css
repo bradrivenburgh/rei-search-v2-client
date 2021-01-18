@@ -69,12 +69,12 @@
   }
 
   .properties .addRemove-button {
-    top: -7px;
+    top: -11px;
     left: 225px;
   }
 
   .properties__locate-button {
-    top: -7px;
+    top: -11px;
     left: 265px;
   }
   
@@ -84,6 +84,10 @@
   .properties img {
     width: 100px;
     height: 75px;
+  }
+
+  .properties-info {
+    max-width: 150px;
   }
 
   .properties p {

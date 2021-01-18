@@ -93,7 +93,7 @@ function PropertiesTab() {
                       <LocatorIcon />
                     </button>
                   </li>
-                  <div>
+                  <div className='properties-info'>
                     <li>
                       <p>${price}</p>
                     </li>
