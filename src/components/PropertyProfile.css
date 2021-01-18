@@ -1,13 +1,5 @@
 .property-profile {
-  margin: 0 1em;
   text-align: left;
-}
-
-@media only screen and (min-width: 900px) {
-  .property-profile {
-    max-width: 70%;
-    margin: 0 auto;
-  }
 }
 
 .property-profile p {
@@ -17,23 +9,34 @@
 
 .property-profile h1 {
   text-align: center;
-  margin: 2em 0 3em 0;
+}
+
+.property-profile header {
+  margin: 0;
 }
 
 .property-profile__price {
   padding-top: 0;
-  margin-left: 0.25em;
   font-size: 1.5em;
   font-weight: bold;
 }
 
 .property-profile__address {
   font-weight: bold;
-  margin-left: 0.25em;
 }
 
 .property-profile__info {
-  margin: 1em 0.25em 0 0.25em;
+  margin: 1em 1em 0 1em;
+}
+
+@media only screen and (min-width: 900px) {
+  .property-profile__info {
+    max-width: 70%;
+    margin: 1em auto;
+  }
+  .property-profile header {
+    margin-bottom: 1em;
+  }
 }
 
 .property-profile__basic-stats {

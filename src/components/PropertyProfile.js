@@ -29,12 +29,11 @@ function PropertyProfile({
   } = propertyData.property;
 
   return (
-    <section>
-      <nav className='closing-nav'>
-        <button onClick={() => history.goBack()}>X</button>
-      </nav>
-
-      <header className='property-profile'>
+    <section className='property-profile'>
+      <header >
+        <nav className='closing-nav'>
+          <button onClick={() => history.goBack()}>X</button>
+        </nav>
         <h1>Property Profile</h1>
       </header>
 
@@ -59,14 +58,14 @@ function PropertyProfile({
         </button>
       </div>
 
-      <div className='property-profile'>
+      <div className='property-profile__info'>
         <p className='property-profile__price'>${price}</p>
         <p className='property-profile__address'>
           {streetAddress}, <br />
           {city}, {state} {zipcode}
         </p>
 
-        <div className='property-profile__info'>
+        <div >
           <h2>Basic Facts</h2>
 
           <ul className='property-profile__basic-stats'>
