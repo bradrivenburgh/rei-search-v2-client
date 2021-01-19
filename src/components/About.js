@@ -34,16 +34,14 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
             buying rental real estate in and around Philadelphia, PA. Users will
             be able to discover and evaluate key statistics about the population
             and economy of municipalities in this geography. They will also be
-            able to view properties for sale and catalogue them for later
-            viewing.
+            able to view properties for sale and save them for later viewing.
           </p>
         </div>
 
         <div>
           <h4>Get marketplace statistics</h4>
           <p>
-            The app produces statistical data on three geographic
-            levels:
+            The app produces statistical data on three geographic levels:
           </p>
 
           <ul>
@@ -57,14 +55,15 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
             </li>
             <br />
             <li>
-            <strong>County:</strong> a moderately-sized geography
-              that will provide context for the granular census tract data.
+            <strong>County:</strong> moderately-sized geographies
+              that provide context for more granular census tract data.
             </li>
             <br />
             <li>
-              <strong>Census Tracts:</strong> a CT is a small geographic unit
-              used for statistical purposes by the US Census Bureau. CT data can
-              provide investors with insights into the desirability of a neighborhood.
+              <strong>Census Tracts:</strong> small geographic units
+              used for statistical purposes by the US Census Bureau. CT data may
+              provide investors with strong insights into the desirability 
+              of a neighborhood.
             </li>
           </ul>
 
@@ -102,35 +101,35 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
           <ol>
             <li>
               Navigate to the main page by clicking the "X" icon at the top of
-              this page
+              this page.
             </li>
             <li>
-              Use the search bar to search for a location in the Philadelphia region.  You may
-              search using an address or just a city and state.
+              Use the input at the top to search for a location in the Philadelphia region.  
+              You may search using an address or just a city and state.
             </li>
             <li>
-              View statistics (economic and demographic data) and a list of properties using the tabs
-              of the head-up-display (HUD) at the bottom of the app. 
+              View returned statistics and properties using the tabs on the expandable
+              head-up-display (HUD) positioned at the bottom of the app. 
             </li>
             <li>
-              Navigate to any property on the map by pressing the location button that accompany each property.
-              Clicking on the address in the popup marker for each property will navigate to that property in the
-              HUD properties tab.
+              Navigate to markers representing individual properties on the map by pressing 
+              the location button that accompanies each property in the HUD. Similarly, navigate to properties
+              listed in the HUD by clicking on the address appearing in the popups attached to each marker. 
             </li>
             <li>
-              View a description and photos of each property by clicking on its photo in the Hud properties tab.
+              View photos and a description of each property by clicking on its photo in the HUD properties tab.
             </li>
             <li>
-              Save properties for later viewing by selecting the heart icon that accompany each property.
-              Saved properties may be accessed by navigating to them using the menu in the top-right corner
-              of the app.
+              Save properties for later viewing by selecting the heart icon that accompanies each property.
+              The list of saved properties may be accessed by selecting the "Saved properties" link in 
+              the menu appearing in the top-right corner of the app.
             </li>
           </ol>
         </div>
         <div>
           <h3>Attributions</h3>
           <p>All icons used in this app were created and used with permission by artists from 
-             <a href="https://thenounproject.com/" target="_new">The Noun Project</a>.
+             <a href="https://thenounproject.com/" target="_new"> The Noun Project</a>.
           </p>
         </div>
       </section>
