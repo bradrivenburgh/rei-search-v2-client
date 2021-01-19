@@ -1,4 +1,4 @@
-# rei-search
+# rei-search-v2
 
 ## About rei-search-v2
 
@@ -17,12 +17,12 @@ The app produces statistical data on three geographic levels:
 Statistical Area:** MSAs are large geographic regions centered around areas of high
 population density (i.e., big cities) with integrated economies.
 
-* **County:** a moderately-sized geography
-that will provide context for the granular census tract data.
+* **County:** moderately-sized geographies
+that provide context for the more granular census tract data.
 
-* **Census Tracts:** a CT is a small geographic unit
-used for statistical purposes by the US Census Bureau. CT data can
-provide investors with insights into the desirability of a neighborhood.
+* **Census Tracts:** small geographic units
+used for statistical purposes by the US Census Bureau. CT data may
+provide investors with valuable insights into the desirability of a neighborhood.
 
 ### Find your next rental property
 Each search will produce a list of properties for sale within ten kilometers of a location. You have the option to save properties for later viewing.
@@ -31,7 +31,22 @@ Each search will produce a list of properties for sale within ten kilometers of 
 - [rei-search-v2](http://rei-search-v2-client.vercel.app/)
 
 ## Screenshots
-* TO COME
+### Landing screen
+![Landing screen](src/images/landing.png)
+
+### Responsive mobile-first design
+|Mobile stats | Mobile properties |
+| --- | --- |
+|![Mobile stats](src/images/mobile-econ-stats.png) | ![Mobile properties](src/images/mobile-properties.png) |
+
+### Learn more about individual properties 
+![Property profile](src/images/property-profile.png)
+
+### Save properties for later viewing
+![Saved properties](src/images/saved-properties.png)
+
+
+
 ## Technologies used
 
 - HTML

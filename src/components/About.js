@@ -63,7 +63,7 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
             <li>
               <strong>Census Tracts:</strong> small geographic units
               used for statistical purposes by the US Census Bureau. CT data may
-              provide investors with strong insights into the desirability 
+              provide investors with valuable insights into the desirability 
               of a neighborhood.
             </li>
           </ul>
@@ -96,7 +96,7 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
             <br />
             <img
               src={savedPropsImage}
-              alt='screenshot of property profile'
+              alt='screenshot of saved properties'
             />
           </div>
         </div>
