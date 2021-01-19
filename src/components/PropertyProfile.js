@@ -10,6 +10,7 @@ function PropertyProfile({
   savedProperties,
   currentProperty,
   onAddRemoveProperty,
+  formatNumber,
 }) {
   // Get history object to allow navigating back to the last page
   let history = useHistory();
@@ -58,7 +59,7 @@ function PropertyProfile({
       </div>
 
       <div className='property-profile__info'>
-        <p className='property-profile__price'>${price}</p>
+        <p className='property-profile__price'>${formatNumber(price)}</p>
         <p className='property-profile__address'>
           {streetAddress}, <br />
           {city}, {state} {zipcode}
@@ -126,6 +127,7 @@ PropertyProfile.defaultProps = {
   },
   savedProperties: [{}],
   onAddRemoveProperty: () => {},
+  formatNumber: () => {}
 };
 
 PropertyProfile.propTypes = {
@@ -135,6 +137,7 @@ PropertyProfile.propTypes = {
   }),
   savedProperties: PropTypes.array.isRequired,
   onAddRemoveProperty: PropTypes.func.isRequired,
+  formatNumber: PropTypes.func.isRequired,
 };
 
 export default PropertyProfile;

@@ -9,6 +9,7 @@ function SavedProps({
   savedProperties,
   setCurrentProperty,
   onAddRemoveProperty,
+  formatNumber
 }) {
 
   let history = useHistory();
@@ -50,7 +51,7 @@ function SavedProps({
                   </li>
                   <div>
                     <li>
-                      <p>${price}</p>
+                      <p>${formatNumber(price)}</p>
                     </li>
                     <li>
                       <p>
@@ -110,12 +111,14 @@ SavedProps.defaultProps = {
   }}],
   setCurrentProperty: () => {},
   onAddRemoveProperty: () => {},
+  formatNumber: () => {}
 }
 
 SavedProps.propTypes = {
   savedProperties: PropTypes.array.isRequired,
   setCurrentProperty: PropTypes.func.isRequired,
   onAddRemoveProperty: PropTypes.func.isRequired,
+  formatNumber: PropTypes.func.isRequired,
 }
 
 export default SavedProps;

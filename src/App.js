@@ -128,7 +128,7 @@ function App() {
   const handleAddAboutVisited = () => {
     setVisited("true");
   };
-
+  
   /**
    * Query api with search value to get and set statistics
    * and properties
@@ -210,6 +210,19 @@ function App() {
     }
   };
 
+  /**
+   * Uses a regular expression to insert commas in the appropriate
+   * places for a value representing currency.
+   * @param {number} value 
+   */
+  const formatNumber = (value) => {
+    if (value) {
+      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    } else {
+      return ' --- '
+    }
+  }
+
   /* Objects with state values */
 
   let HUDState = {
@@ -265,6 +278,7 @@ function App() {
                 currentProperty={currentProperty}
                 savedProperties={savedProperties}
                 onAddRemoveProperty={handleAddRemoveProperty}
+                formatNumber={formatNumber}
               />
             </Route>
             <Route path='/saved-properties'>
@@ -272,6 +286,7 @@ function App() {
                 savedProperties={savedProperties}
                 setCurrentProperty={setCurrentProperty}
                 onAddRemoveProperty={handleAddRemoveProperty}
+                formatNumber={formatNumber}
               />
             </Route>
             <Route path='/'>

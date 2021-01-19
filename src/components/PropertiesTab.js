@@ -26,6 +26,14 @@ function PropertiesTab() {
     }, 1);
   };
 
+  const formatNumber = (value) => {
+    if (value) {
+      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    } else {
+      return ' --- '
+    }
+  }
+
   const renderProperties = (data) => {
     return (
       <ul className='properties'>
@@ -95,7 +103,7 @@ function PropertiesTab() {
                   </li>
                   <div className='properties-info'>
                     <li>
-                      <p>${price}</p>
+                      <p>${formatNumber(price)}</p>
                     </li>
                     <li>
                       <p>
