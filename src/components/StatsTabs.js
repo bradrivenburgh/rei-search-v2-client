@@ -78,7 +78,7 @@ function StatsTabs({ id }) {
               <ul className='stats'>{renderTable(economic)}</ul>
             </>
           ) : (
-            <p>Please conduct a search to retrieve economic statistics.</p>
+            <p className='no-info-msg'>Please conduct a search to <br /> retrieve economic statistics.</p>
           )}
         </>
       ) : (
@@ -89,7 +89,7 @@ function StatsTabs({ id }) {
               <ul className='stats'>{renderTable(demographic)}</ul>
             </>
           ) : (
-            <p>Please conduct a search to retrieve demographic statistics.</p>
+            <p className='no-info-msg'>Please conduct a search to <br /> retrieve demographic statistics.</p>
           )}
         </>
       )}

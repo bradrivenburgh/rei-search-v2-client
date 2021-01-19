@@ -132,9 +132,9 @@ function PropertiesTab() {
         </>
       ) : (!properties.length && statistics.economic.length)
       ? (
-        <p>No properties are available. Please search another location.</p>
+        <p className='no-info-msg'>No properties are available. <br /> Please search another location.</p>
       ) : (
-        <p>Please conduct a search to retrieve a list of properties.</p>
+        <p className='no-info-msg'>Please conduct a search to <br /> retrieve a list of properties.</p>
       )
       }
     </>
