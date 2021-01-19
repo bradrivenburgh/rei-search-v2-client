@@ -234,7 +234,7 @@ function HUD({defaultTab, HUDState}) {
         <div className='HUD__tab'>
           <button
             id='economics-btn'
-            value='economics'
+            aria-label='economic stats button'
             className={
               activeTab.econTab
                 ? "HUD__tab__tablinks active"
@@ -246,7 +246,7 @@ function HUD({defaultTab, HUDState}) {
           </button>
           <button
             id='demographics-btn'
-            value='demographics'
+            aria-label='demographic stats button'
             className={
               activeTab.demogTab
                 ? "HUD__tab__tablinks active"
@@ -258,7 +258,7 @@ function HUD({defaultTab, HUDState}) {
           </button>
           <button
             id='properties-btn'
-            value='properties'
+            aria-label='properties button'
             className={
               activeTab.propsTab
                 ? "HUD__tab__tablinks active"
