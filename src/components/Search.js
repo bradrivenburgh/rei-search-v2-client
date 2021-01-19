@@ -61,8 +61,13 @@ class Search extends React.Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    this.context.handleSearch(this.state.value);
-    this.autosuggest.current.input.blur()  
+    // Only search if another search is not running
+    if (!this.context.isLoading) {
+      this.context.handleSearch(this.state.value);
+      // Remove focus from input so software keyboard
+      // on mobile will close
+      this.autosuggest.current.input.blur()  
+    }
   }
 
   render() {

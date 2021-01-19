@@ -13,6 +13,7 @@ export const Context = createContext({
   setSavedProperties: () => {},
   defaultTab: false,
   setDefaultTab: () => {},
+  isLoading: false,
   handleAddRemoveProperty: () => {},
   handleSearch: () => {},
   currentMarkerLatLng: {},

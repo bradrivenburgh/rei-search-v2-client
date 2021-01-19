@@ -266,6 +266,7 @@ function App() {
     currentMarkerLatLng,
     setCurrentMarkerLatLng,
     setFindMarker,
+    isLoading,
   };
 
   return (
