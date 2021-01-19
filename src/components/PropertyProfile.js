@@ -66,7 +66,7 @@ function PropertyProfile({
         </p>
       </div>
       
-      <div className='property_profile__basic-stats-container'>
+      <div className='property-profile__basic-stats-container'>
         <h2>Basic Facts</h2>
 
         <ul className='property-profile__basic-stats'>

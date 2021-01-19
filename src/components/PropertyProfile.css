@@ -29,17 +29,8 @@
   margin: 1em 1em 0 1em;
 }
 
-@media only screen and (min-width: 900px) {
-  .property-profile__info {
-    max-width: 70%;
-    margin: 1em auto;
-  }
-  .property-profile header {
-    margin-bottom: 1em;
-  }
-}
 
-.property_profile__basic-stats-container {
+.property-profile__basic-stats-container {
   background-color: #eee;
   padding: 0.1em 1em 1.5em 1em;
 }
@@ -49,7 +40,21 @@
   justify-content: space-between;
   font-size: 1em;
   text-align: center;
-  max-width: 500px;
+  max-width: 700px;
+}
+
+@media only screen and (min-width: 900px) {
+  .property-profile__info {
+    max-width: 70%;
+    margin: 1em auto;
+  }
+  .property-profile__basic-stats-container {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  .property-profile header {
+    margin-bottom: 1em;
+  }
 }
 
 .property-profile__description {
