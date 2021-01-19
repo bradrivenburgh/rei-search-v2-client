@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import {ReactComponent as Logo} from '../images/reisearch-icon-large.svg';
-import econStatsImage from '../images/econ-stats.png' 
-import propertiesImage from '../images/properties.png'
-import propertyProfileImage from '../images/property-profile.png'
+import econStatsImage from '../images/econ-stats.png';
+import propertiesImage from '../images/properties.png';
+import propertyProfileImage from '../images/property-profile.png';
+import savedPropsImage from '../images/saved-properties.png';
 import "./About.css";
 
 function About({ aboutState: { visited, handleAddAboutVisited } }) {
@@ -92,6 +93,11 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
               src={propertyProfileImage}
               alt='screenshot of property profile'
             />
+            <br />
+            <img
+              src={savedPropsImage}
+              alt='screenshot of property profile'
+            />
           </div>
         </div>
 
@@ -100,27 +106,27 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
           <p>To get started searching for your next investment property:</p>
           <ol>
             <li>
-              Navigate to the main page by clicking the "X" icon at the top of
+              <b>Navigate to the main page</b> by clicking the <b>X</b> icon at the top of
               this page.
             </li>
             <li>
-              Use the input at the top to search for a location in the Philadelphia region.  
+              Use the input at the top to <b>search for a location</b> in the Philadelphia region.  
               You may search using an address or just a city and state.
             </li>
             <li>
-              View returned statistics and properties using the tabs on the expandable
-              head-up-display (HUD) positioned at the bottom of the app. 
+              <b>View returned statistics and properties</b> using the tabs on the expandable 
+              <b> head-up-display (HUD)</b> positioned at the bottom of the app. 
             </li>
             <li>
-              Navigate to markers representing individual properties on the map by pressing 
-              the location button that accompanies each property in the HUD. Similarly, navigate to properties
-              listed in the HUD by clicking on the address appearing in the popups attached to each marker. 
+              <b>Locat properties on the map </b> by pressing 
+              the location button that accompanies each property in the HUD. Similarly, <b>navigate to properties
+              listed in the HUD</b> by clicking on the address appearing in the popups attached to each marker. 
             </li>
             <li>
-              View photos and a description of each property by clicking on its photo in the HUD properties tab.
+              <b>View photos and a description of each property</b> by clicking on its photo in the HUD properties tab.
             </li>
             <li>
-              Save properties for later viewing by selecting the heart icon that accompanies each property.
+            <b>Save properties for later viewing</b> by selecting the heart icon that accompanies each property.
               The list of saved properties may be accessed by selecting the "Saved properties" link in 
               the menu appearing in the top-right corner of the app.
             </li>
