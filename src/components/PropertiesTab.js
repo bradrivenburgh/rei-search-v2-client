@@ -97,6 +97,7 @@ function PropertiesTab() {
                     </button>
                     <button
                       className='properties__locate-button'
+                      tabIndex='6'
                       onClick={() => handleFindMarker(property)}>
                       <LocatorIcon />
                     </button>
