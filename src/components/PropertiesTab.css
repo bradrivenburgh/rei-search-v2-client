@@ -28,11 +28,14 @@
   width: 200px;
   height: 125px;
   object-fit: cover;
-  margin-right: 2em;
 }
 
 .properties__img-container {
   position: relative;
+}
+
+.properties-info {
+  margin-left: 2em;
 }
 
 .properties .addRemove-button {
@@ -58,6 +61,7 @@
   transition: .2s;
 }
 
+/* For last generation compact phones like iPhone 5 */
 @media screen and (max-width: 350px) {
   .properties img {
     width: 100px;
@@ -66,6 +70,10 @@
 
   .properties p {
     font-size: .8em;
+  }
+
+  .properties-info {
+    margin-left: 1em;
   }
 
   .properties .addRemove-button {
