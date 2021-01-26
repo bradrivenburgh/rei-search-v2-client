@@ -20,12 +20,16 @@
   width: 200px;
   height: 125px;
   object-fit: cover;
-  margin-right: 2em;
 }
 
 .saved-properties__img-container {
   position: relative;
 }
+
+.saved-properties-info {
+  margin-left: 2em;
+}
+
 
 .saved-properties .addRemove-button {
   position: absolute;
@@ -33,6 +37,11 @@
   left: 500px;
 }
 
+@media screen and (max-width: 350px) {
+  .saved-properties-info {
+    margin-left: 1em;
+  }
+}
 
 @media screen and (max-width: 560px) {
   .saved-properties img {

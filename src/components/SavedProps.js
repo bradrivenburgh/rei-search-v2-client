@@ -49,7 +49,7 @@ function SavedProps({
                         <HeartIcon />
                       </button>
                   </li>
-                  <div>
+                  <div className="saved-properties-info">
                     <li>
                       <p>${formatNumber(price)}</p>
                     </li>
