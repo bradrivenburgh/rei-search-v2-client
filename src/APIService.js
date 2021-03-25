@@ -13,7 +13,7 @@ const postOptions = (data = {}) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
+      Authorization: `Bearer ${config.REISEARCH_API_TOKEN}`,
     },
     body: JSON.stringify(data),
   };
@@ -24,7 +24,7 @@ const deleteOptions = {
   method: "DELETE",
   headers: {
     "Content-Type": "application/json",
-    "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
+    Authorization: `Bearer ${config.REISEARCH_API_TOKEN}`,
   },
 };
 
@@ -57,7 +57,7 @@ export const pingServer = () => {
   fetchCall(config.REISEARCH_API_ENDPOINT, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
+      Authorization: `Bearer ${config.REISEARCH_API_TOKEN}`,
     },
   });
 };
@@ -72,7 +72,7 @@ export const search = (value) => {
   return fetchCall(url, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
+      Authorization: `Bearer ${config.REISEARCH_API_TOKEN}`,
     },
   });
 };
@@ -81,7 +81,7 @@ export const getSavedProperties = () => {
   return fetchCall(`${config.REISEARCH_API_ENDPOINT}/favorites`, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${config.REISEARCH_API_TOKEN}`,
+      Authorization: `Bearer ${config.REISEARCH_API_TOKEN}`,
     },
   });
 };

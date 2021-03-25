@@ -128,7 +128,7 @@ function App() {
   const handleAddAboutVisited = () => {
     setVisited("true");
   };
-  
+
   /**
    * Query api with search value to get and set statistics
    * and properties
@@ -138,29 +138,30 @@ function App() {
     // Start loading animation
     setIsLoading(true);
 
-    search(value).then((data) => {
-      if (data.badRequest) {
-        setBadSearch(true);
-      }
-      setStatistics(data.apiStatistics);
-      setProperties(data.properties);
-      setMapData({
-        ...mapData,
-        msaShape: data.msa,
-        countyShape: data.county,
-        tractShape: data.tract,
-      });
-      // Used to set defaultTab to true for an instant;
-      // triggers HUD events and Map events
-      setDefaultTab(true);
-      setDefaultTab(false);
+    search(value)
+      .then((data) => {
+        if (data.badRequest) {
+          setBadSearch(true);
+        }
+        setStatistics(data.apiStatistics);
+        setProperties(data.properties);
+        setMapData({
+          ...mapData,
+          msaShape: data.msa,
+          countyShape: data.county,
+          tractShape: data.tract,
+        });
+        // Used to set defaultTab to true for an instant;
+        // triggers HUD events and Map events
+        setDefaultTab(true);
+        setDefaultTab(false);
 
-      // End loading animation
-      setIsLoading(false);
-    })
-    .catch(e => {
-      throw new Error(e);
-    })
+        // End loading animation
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        throw new Error(e);
+      });
   };
 
   /**
@@ -213,15 +214,15 @@ function App() {
   /**
    * Uses a regular expression to insert commas in the appropriate
    * places for a value representing currency.
-   * @param {number} value 
+   * @param {number} value
    */
   const formatNumber = (value) => {
     if (value) {
-      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     } else {
-      return ' --- '
+      return " --- ";
     }
-  }
+  };
 
   /* Objects with state values */
 
@@ -294,7 +295,7 @@ function App() {
               <About
                 aboutState={{ visited, setVisited, handleAddAboutVisited }}
               />
-              <BadSearch badSearchState={{badSearch, setBadSearch}} />
+              <BadSearch badSearchState={{ badSearch, setBadSearch }} />
               <Menu
                 menuState={{
                   menuState,
