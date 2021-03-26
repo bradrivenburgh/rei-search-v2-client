@@ -37,7 +37,7 @@ function App() {
   });
   /* HUD State */
   let [pressCount, setPressCount] = useState(0);
-  let [HUDPosition, setHUDPosition] = useState("");
+  let [HUDPosition, setHUDPosition] = useState("69px");
   let [defaultTab, setDefaultTab] = useState(false);
   // Holds tab refs for each tab in HUD
   let [activeTab, setActiveTab] = useState({

@@ -23,7 +23,7 @@ describe("HUD", () => {
     const hudContainer = screen
       .getByRole("button", { name: "▲" })
       .closest("section");
-    expect(hudContainer).toHaveStyle({ height: "67px" || "69px" });
+    expect(hudContainer).toHaveStyle({ height: "69px" });
   });
 
   test("HUD has expand and full-screen buttons on app load", () => {
@@ -39,5 +39,19 @@ describe("HUD", () => {
     expect(expandBtn).toBeInTheDocument();
   });
 
+  test("HUD has 'econ', 'demog', and 'property' buttons", () => {
+    render(
+      <BrowserRouter>
+        <HUD />
+      </BrowserRouter>
+    );
 
+    const tabControlButtons = screen.getAllByLabelText(/button/i);
+    const buttonIds = tabControlButtons.map((button) => button.id);
+    expect(buttonIds).toEqual([
+      "economics-btn",
+      "demographics-btn",
+      "properties-btn",
+    ]);
+  });
 });
