@@ -1,21 +1,17 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import {ReactComponent as Logo} from '../images/reisearch-icon-large.svg';
-import econStatsImage from '../images/econ-stats.png';
-import propertiesImage from '../images/properties.png';
-import propertyProfileImage from '../images/property-profile.png';
-import savedPropsImage from '../images/saved-properties.png';
+import PropTypes from "prop-types";
+import { ReactComponent as Logo } from "../images/reisearch-icon-large.svg";
+import econStatsImage from "../images/econ-stats.png";
+import propertiesImage from "../images/properties.png";
+import propertyProfileImage from "../images/property-profile.png";
+import savedPropsImage from "../images/saved-properties.png";
 import "./About.css";
 
 function About({ aboutState: { visited, handleAddAboutVisited } }) {
   return (
     <div
       className='about-wrapper'
-      style={
-        visited === "true"
-          ? { display: "none" }
-          : { display: "block" }
-      }>
+      style={visited === "true" ? { display: "none" } : { display: "block" }}>
       <section className='about'>
         <header>
           <nav className='closing-nav'>
@@ -41,9 +37,7 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
 
         <div>
           <h4>Get marketplace statistics</h4>
-          <p>
-            The app produces statistical data on three geographic levels:
-          </p>
+          <p>The app produces statistical data on three geographic levels:</p>
 
           <ul>
             <li>
@@ -56,15 +50,15 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
             </li>
             <br />
             <li>
-            <strong>County:</strong> moderately-sized geographies
-              that provide context for more granular census tract data.
+              <strong>County:</strong> moderately-sized geographies that provide
+              context for more granular census tract data.
             </li>
             <br />
             <li>
-              <strong>Census Tracts:</strong> small geographic units
-              used for statistical purposes by the US Census Bureau. CT data may
-              provide investors with valuable insights into the desirability 
-              of a neighborhood.
+              <strong>Census Tracts:</strong> small geographic units used for
+              statistical purposes by the US Census Bureau. CT data may provide
+              investors with valuable insights into the desirability of a
+              neighborhood.
             </li>
           </ul>
 
@@ -79,8 +73,9 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
         <div>
           <h4>Find your next rental property</h4>
           <p>
-            Each search will produce a list of properties for sale within ten kilometers
-            of a location. You have the option to save properties for later viewing.
+            Each search will produce a list of properties for sale within ten
+            kilometers of a location. You have the option to save properties for
+            later viewing.
           </p>
 
           <div className='about__flex-container'>
@@ -94,10 +89,7 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
               alt='screenshot of property profile'
             />
             <br />
-            <img
-              src={savedPropsImage}
-              alt='screenshot of saved properties'
-            />
+            <img src={savedPropsImage} alt='screenshot of saved properties' />
           </div>
         </div>
 
@@ -106,36 +98,47 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
           <p>To get started searching for your next investment property:</p>
           <ol>
             <li>
-              <b>Navigate to the main page</b> by clicking the <b>X</b> icon at the top of
-              this page.
+              <b>Navigate to the main page</b> by clicking the <b>X</b> icon at
+              the top of this page.
             </li>
             <li>
-              Use the input at the top to <b>search for a location</b> in the Philadelphia region.  
-              You may search using an address or just a city and state.
+              Use the input at the top to <b>search for a location</b> in the
+              Philadelphia region. You may search using an address or just a
+              city and state.
             </li>
             <li>
-              <b>View returned statistics and properties</b> using the tabs on the expandable 
-              <b> head-up-display (HUD)</b> positioned at the bottom of the app. 
+              <b>View returned statistics and properties</b> using the tabs on
+              the expandable
+              <b> head-up-display (HUD)</b> positioned at the bottom of the app.
             </li>
             <li>
-              <b>Locat properties on the map </b> by pressing 
-              the location button that accompanies each property in the HUD. Similarly, <b>navigate to properties
-              listed in the HUD</b> by clicking on the address appearing in the popups attached to each marker. 
+              <b>Locate properties on the map </b> by pressing the location
+              button that accompanies each property in the HUD. Similarly,{" "}
+              <b>navigate to properties listed in the HUD</b> by clicking on the
+              address appearing in the popups attached to each marker.
             </li>
             <li>
-              <b>View photos and a description of each property</b> by clicking on its photo in the HUD properties tab.
+              <b>View photos and a description of each property</b> by clicking
+              on its photo in the HUD properties tab.
             </li>
             <li>
-            <b>Save properties for later viewing</b> by selecting the heart icon that accompanies each property.
-              The list of saved properties may be accessed by selecting the "Saved properties" link in 
-              the menu appearing in the top-right corner of the app.
+              <b>Save properties for later viewing</b> by selecting the heart
+              icon that accompanies each property. The list of saved properties
+              may be accessed by selecting the "Saved properties" link in the
+              menu appearing in the top-right corner of the app.
             </li>
           </ol>
         </div>
         <div>
           <h3>Attributions</h3>
-          <p>All icons used in this app were created and used with permission by artists from 
-             <a href="https://thenounproject.com/" target="_new"> The Noun Project</a>.
+          <p>
+            All icons used in this app were created and used with permission by
+            artists from
+            <a href='https://thenounproject.com/' target='_new'>
+              {" "}
+              The Noun Project
+            </a>
+            .
           </p>
         </div>
       </section>
@@ -144,15 +147,15 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
 }
 
 About.defaultProps = {
-  aboutState: { 
-    visited: 'false', 
-    handleAddAboutVisited: () => {} 
-  }
-}
+  aboutState: {
+    visited: "false",
+    handleAddAboutVisited: () => {},
+  },
+};
 
 About.propTypes = {
   visited: PropTypes.string,
-  handleAddAboutVisited: PropTypes.func
-}
+  handleAddAboutVisited: PropTypes.func,
+};
 
 export default About;

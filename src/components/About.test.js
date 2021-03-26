@@ -38,12 +38,31 @@ describe("About", () => {
         />
       </BrowserRouter>
     );
-    
+
     const closeButton = screen.getByRole("button", { name: "X" });
     userEvent.click(closeButton);
-    
-    // check to make sure handler that hides the About modal has been called 
+
+    // check to make sure handler that hides the About modal has been called
     expect(closeModal).toHaveBeenCalledTimes(1);
     expect(visited).toBe("true");
+  });
+
+  test("all four images loaded properly", () => {
+    render(
+      <BrowserRouter>
+        <About />
+      </BrowserRouter>
+    );
+
+    const allImages = screen.getAllByRole("img");
+    expect(allImages).toHaveLength(4);
+
+    const allImagesAltText = allImages.map((img) => img.alt);
+    expect(allImagesAltText).toEqual([
+      "screenshot of econ tab selected in dashboard",
+      "screenshot of properties tab and map with icons",
+      "screenshot of property profile",
+      "screenshot of saved properties",
+    ]);
   });
 });
