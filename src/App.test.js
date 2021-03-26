@@ -26,4 +26,23 @@ describe("App", () => {
     const hiddenCloseButton = screen.queryByRole("button", { name: "X" });
     expect(hiddenCloseButton).not.toBeInTheDocument();
   });
+
+  test("HUD 'expand' and 'contract' buttons change appropriately based on HUD position", () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+
+    const contractBtn = screen.getByRole("button", { name: "⛶" });
+    const expandBtn = screen.getByRole("button", { name: "▲" });
+
+    userEvent.click(contractBtn);
+
+    expect(contractBtn).toHaveTextContent("▼")
+    expect(expandBtn).toHaveTextContent("_")
+    // const downArrowContractBtn = screen.getByRole("button", { name: "▼" });
+    // expect(downArrowContractBtn)
+  });
+
 });
