@@ -54,4 +54,18 @@ describe("HUD", () => {
       "properties-btn",
     ]);
   });
+
+  test("HUD has default message when a search has not been performed", () => {
+    render(
+      <BrowserRouter>
+        <HUD />
+      </BrowserRouter>
+    );
+
+    // Get default messages when no data available; expect one for each tab
+    const conductSearchMsgs = screen.getAllByText("Please conduct a search", {
+      exact: false,
+    });
+    expect(conductSearchMsgs).toHaveLength(3);
+  });
 });
