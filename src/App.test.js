@@ -46,7 +46,7 @@ describe("Subsequent visits to App", () => {
     expect(expandBtn).toHaveTextContent("_");
   });
 
-  test("clicking tab buttons increases HUD height when HUD is docked", async () => {
+  test("Clicking tab buttons increases HUD height when HUD is docked", async () => {
     render(
       <BrowserRouter>
         <App />
@@ -73,10 +73,57 @@ describe("Subsequent visits to App", () => {
     // return to docked position
     userEvent.click(contractBtn);
     expect(hudContainer).toHaveStyle({ height: "69px" });
-   
+
     // click demog button to expand the HUD
     userEvent.click(tabControlButtons[1]);
     expect(hudContainer).toHaveStyle({ height: "38%" });
+  });
 
+  test("Clicking menuOpen button displays menu, click menuCloseButton closes it", () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+
+    // Find menu open / close buttons and menu container
+    const menuCloseButton = screen.getByTestId("menu-close-button");
+    const menuOpenButton = screen.getByRole("button", { name: "☰" });
+    const menu = menuCloseButton.closest("div");
+
+    // expect menu content to be hidden and off-screen
+    expect(menu).not.toBeVisible();
+    expect(menu).toHaveStyle({ right: "-250px" });
+
+    // expect that clicking menu open button will make its content visible
+    // and on-screen
+    userEvent.click(menuOpenButton);
+    expect(menu).toBeVisible();
+    expect(menu).toHaveStyle({ right: "0px" });
+
+    // expect that clicking menu close button will hide it again
+    userEvent.click(menuCloseButton);
+    expect(menu).not.toBeVisible();
+    expect(menu).toHaveStyle({ right: "-250px" });
+  });
+  test("clicking outside of the open menu closes it", () => {
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+
+    const menuOpenButton = screen.getByRole("button", { name: "☰" });
+    const menu = screen.getByTestId("menu-close-button").closest("div");
+    const HUDButton = screen.getByRole("button", { name: "⛶" });
+
+    userEvent.click(menuOpenButton);
+    expect(menu).toBeVisible();
+    expect(menu).toHaveStyle({ right: "0px" });
+
+    // expect a button on the HUD will close menu
+    userEvent.click(HUDButton);
+    expect(menu).not.toBeVisible();
+    expect(menu).toHaveStyle({ right: "-250px" });
   });
 });

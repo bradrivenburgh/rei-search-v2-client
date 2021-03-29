@@ -1,14 +1,16 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import Search from "./Search";
-import {ReactComponent as Logo} from '../images/reisearch-icon-small.svg';
+import { ReactComponent as Logo } from "../images/reisearch-icon-small.svg";
 
 import "./Nav.css";
 
 function Nav({ menuState: { setMenuState } }) {
   return (
     <nav className='nav'>
-      <div style={{marginLeft:10, marginTop:3}}><Logo /></div>
+      <div style={{ marginLeft: 10, marginTop: 3 }}>
+        <Logo />
+      </div>
       <Search />
       <button
         className='menu-button'
@@ -34,7 +36,7 @@ Nav.defaultProps = {
 Nav.propTypes = {
   menuState: PropTypes.shape({
     setMenuState: PropTypes.func.isRequired,
-  })
-}
+  }),
+};
 
 export default Nav;
