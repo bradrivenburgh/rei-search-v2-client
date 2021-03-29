@@ -9,7 +9,7 @@ function Nav({ menuState: { setMenuState } }) {
   return (
     <nav className='nav'>
       <div style={{ marginLeft: 10, marginTop: 3 }}>
-        <Logo />
+        <Logo title='rei-search logo' />
       </div>
       <Search />
       <button
