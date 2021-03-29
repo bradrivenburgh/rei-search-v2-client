@@ -1,10 +1,8 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Context } from "../Context";
 import { fakeProps, savedProps } from "../mockData";
 import PropertiesTab from "./PropertiesTab";
-
-afterAll(cleanup);
 
 const contextValues = {
   searchResults: { properties: fakeProps, setProperties: () => {} },
@@ -40,7 +38,7 @@ describe("PropertiesTab", () => {
     ).toBeInTheDocument();
   });
 
-  test("contains a pressed and unpressed button", () => {
+  test("contains a pressed and unpressed favorites button", () => {
     render(
       <BrowserRouter>
         <Context.Provider value={contextValues}>
@@ -57,5 +55,21 @@ describe("PropertiesTab", () => {
 
     expect(unpressedButton[0]).toBeInTheDocument();
     expect(pressedButton[0]).toBeInTheDocument();
+  });
+
+  test("each entry contains an image, property info, and favorite and locate buttons", () => {
+    render(
+      <BrowserRouter>
+        <Context.Provider value={contextValues}>
+          <PropertiesTab />
+        </Context.Provider>
+      </BrowserRouter>
+    );
+
+    const propertyImages = screen.getAllByRole("img");
+    const propertyInfo = document.querySelectorAll(".properties-info");
+    const allButtons = screen.getAllByRole("button");
+    expect(propertyImages.length).toEqual(propertyInfo.length);
+    expect(propertyImages.length).toEqual(allButtons.length / 2);
   });
 });

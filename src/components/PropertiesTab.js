@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../Context";
-import {ReactComponent as HeartIcon} from '../images/heart.svg';
-import {ReactComponent as LocatorIcon} from '../images/locator.svg';
+import { ReactComponent as HeartIcon } from "../images/heart.svg";
+import { ReactComponent as LocatorIcon } from "../images/locator.svg";
 import Image from "./Image";
 import "./PropertiesTab.css";
 
@@ -16,9 +16,9 @@ function PropertiesTab() {
     setFindMarker,
   } = useContext(Context);
 
-  const handleFindMarker = ({property}) => {
+  const handleFindMarker = ({ property }) => {
     setCurrentMarkerLatLng({
-      current: [property.latitude, property.longitude]
+      current: [property.latitude, property.longitude],
     });
     setFindMarker(true);
     setTimeout(() => {
@@ -28,11 +28,11 @@ function PropertiesTab() {
 
   const formatNumber = (value) => {
     if (value) {
-      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
     } else {
-      return ' --- '
+      return " --- ";
     }
-  }
+  };
 
   const renderProperties = (data) => {
     return (
@@ -57,7 +57,7 @@ function PropertiesTab() {
           return (
             <li
               key={index}
-              className="goto"
+              className='goto'
               id={streetAddress}
               onClick={() =>
                 setCurrentProperty({
@@ -125,19 +125,20 @@ function PropertiesTab() {
 
   return (
     <>
-      {
-      properties.length ? (
+      {properties.length ? (
         <>
           <h3>Properties</h3>
           {renderProperties(properties)}
         </>
-      ) : (!properties.length && statistics.economic.length)
-      ? (
-        <p className='no-info-msg'>No properties are available. <br /> Please search another location.</p>
+      ) : !properties.length && statistics.economic.length ? (
+        <p className='no-info-msg'>
+          No properties are available. <br /> Please search another location.
+        </p>
       ) : (
-        <p className='no-info-msg'>Please conduct a search to <br /> retrieve a list of properties.</p>
-      )
-      }
+        <p className='no-info-msg'>
+          Please conduct a search to <br /> retrieve a list of properties.
+        </p>
+      )}
     </>
   );
 }
