@@ -1,17 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, useHistory } from 'react-router-dom';
-import {ReactComponent as HeartIcon} from '../images/heart.svg';
-import Image from './Image';
-import './SavedProps.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, useHistory } from "react-router-dom";
+import { ReactComponent as HeartIcon } from "../images/heart.svg";
+import Image from "./Image";
+import "./SavedProps.css";
 
 function SavedProps({
   savedProperties,
   setCurrentProperty,
   onAddRemoveProperty,
-  formatNumber
+  formatNumber,
 }) {
-
   let history = useHistory();
 
   const renderProperties = (data) => {
@@ -40,16 +39,16 @@ function SavedProps({
                       <Image photo={photos[0]} />
                     </Link>
                     <button
-                        className='addRemove-button remove-button'
-                        value='add-remove'
-                        aria-pressed='true'
-                        onClick={() =>
-                          onAddRemoveProperty(true, property, savedProperties)
-                        }>
-                        <HeartIcon />
-                      </button>
+                      className='addRemove-button remove-button'
+                      value='add-remove'
+                      aria-pressed='true'
+                      onClick={() =>
+                        onAddRemoveProperty(true, property, savedProperties)
+                      }>
+                      <HeartIcon />
+                    </button>
                   </li>
-                  <div className="saved-properties-info">
+                  <div className='saved-properties-info'>
                     <li>
                       <p>${formatNumber(price)}</p>
                     </li>
@@ -86,39 +85,42 @@ function SavedProps({
 }
 
 SavedProps.defaultProps = {
-  savedProperties: [{
-    id: 1,
-    property: {
-    address: {
-      streetAddress: "Placeholder St.",
-      city: "Somewhere",
-      state: "PA",
-      zipcode: "00000",
-      neighborhood: null,
-      community: null,
-      subdivision: null,
+  savedProperties: [
+    {
+      id: 1,
+      property: {
+        address: {
+          streetAddress: "Placeholder St.",
+          city: "Somewhere",
+          state: "PA",
+          zipcode: "00000",
+          neighborhood: null,
+          community: null,
+          subdivision: null,
+        },
+        bedrooms: "2",
+        bathrooms: "2",
+        price: "200000",
+        yearBuilt: 1980,
+        longitude: -75.10820770263672,
+        latitude: 39.98884201049805,
+        description: "Placeholder description.",
+        livingArea: 1000,
+        currency: "USD",
+        photos: [],
+      },
     },
-    bedrooms: "2",
-    bathrooms: "2",
-    price: "200000",
-    yearBuilt: 1980,
-    longitude: -75.10820770263672,
-    latitude: 39.98884201049805,
-    description: "Placeholder description.",
-    livingArea: 1000,
-    currency: "USD",
-    photos: [],
-  }}],
+  ],
   setCurrentProperty: () => {},
   onAddRemoveProperty: () => {},
-  formatNumber: () => {}
-}
+  formatNumber: () => {},
+};
 
 SavedProps.propTypes = {
   savedProperties: PropTypes.array.isRequired,
   setCurrentProperty: PropTypes.func.isRequired,
   onAddRemoveProperty: PropTypes.func.isRequired,
   formatNumber: PropTypes.func.isRequired,
-}
+};
 
 export default SavedProps;

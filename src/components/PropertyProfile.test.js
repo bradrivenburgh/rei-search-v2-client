@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 
 import { BrowserRouter } from "react-router-dom";
 import PropertyProfile from "./PropertyProfile";
@@ -32,6 +31,7 @@ describe("PropertyProfile", () => {
     );
 
     const closeButton = screen.getByRole("button", { name: "X" });
+    expect(closeButton).toBeInTheDocument();
   });
 
   test("renders an image carousel", () => {
