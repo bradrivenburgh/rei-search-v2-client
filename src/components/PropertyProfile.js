@@ -46,6 +46,7 @@ function PropertyProfile({
               : "addRemove-button add-button"
           }
           aria-pressed={inSavedProperties}
+          title="favorite"
           value='add-remove'
           onClick={() =>
             onAddRemoveProperty(
@@ -65,7 +66,7 @@ function PropertyProfile({
           {city}, {state} {zipcode}
         </p>
       </div>
-      
+
       <div className='property-profile__basic-stats-container'>
         <h2>Basic Facts</h2>
 
@@ -127,7 +128,7 @@ PropertyProfile.defaultProps = {
   },
   savedProperties: [{}],
   onAddRemoveProperty: () => {},
-  formatNumber: () => {}
+  formatNumber: () => {},
 };
 
 PropertyProfile.propTypes = {
