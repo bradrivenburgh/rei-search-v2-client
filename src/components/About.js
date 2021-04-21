@@ -102,6 +102,11 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
               the top of this page.
             </li>
             <li>
+              <b>Sign-up</b> for an account or <b>login</b> by accessing the menu 
+              ("<b>☰</b>") button in the top-right corner of the page. Or continue as 
+              a visitor.
+            </li>
+            <li>
               Use the input at the top to <b>search for a location</b> in the
               Philadelphia region. You may search using an address or just a
               city and state.
@@ -123,9 +128,9 @@ function About({ aboutState: { visited, handleAddAboutVisited } }) {
             </li>
             <li>
               <b>Save properties for later viewing</b> by selecting the heart
-              icon that accompanies each property. The list of saved properties
-              may be accessed by selecting the "Saved properties" link in the
-              menu appearing in the top-right corner of the app.
+              icon that accompanies each property (requires an account). The list 
+              of saved properties may be accessed by selecting the "Saved properties" 
+              link in the menu.
             </li>
           </ol>
         </div>
