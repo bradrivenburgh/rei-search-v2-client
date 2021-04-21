@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import PropTypes from "prop-types";
-import AuthApiService from "../services/auth-api-service";
-import "./Login.css";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import AuthApiService from '../services/auth-api-service';
+import './Login.css';
 
 function Login({ props: setLoggedIn }) {
   const [loginError, setLoginError] = useState(null);
   const [formData, setFormData] = useState({
-    user_name: "",
-    password: "",
+    user_name: '',
+    password: '',
   });
 
   const handleChange = (e) => {
@@ -36,11 +36,11 @@ function Login({ props: setLoggedIn }) {
     })
       .then((response) => {
         setFormData({
-          user_name: "",
-          password: "",
+          user_name: '',
+          password: '',
         });
         setLoggedIn(true);
-        history.push("/summary");
+        history.push('/summary');
       })
       .catch((response) => {
         setLoginError(response.error);
@@ -58,7 +58,7 @@ function Login({ props: setLoggedIn }) {
           className='login__form'
           onSubmit={(e) => handleSubmit(e)}>
           {loginError && (
-            <p style={{ color: "red", maxWidth: "160px" }}>{loginError}</p>
+            <p style={{ color: 'red', maxWidth: '160px' }}>{loginError}</p>
           )}
 
           <label htmlFor='user_name'>User Name:</label>
@@ -84,13 +84,22 @@ function Login({ props: setLoggedIn }) {
               Cancel
             </button>
             <button
-              className={allFormValuesPresent() ? "disabled-button" : ""}
+              className={allFormValuesPresent() ? 'disabled-button' : ''}
               disabled={allFormValuesPresent()}
               aria-disabled={allFormValuesPresent()}>
               Submit
             </button>
           </div>
         </form>
+        <div className='login__test-account'>
+          <h2>Test Account</h2>
+          <p>
+            <strong>User Name:</strong> Test
+          </p>
+          <p>
+            <strong>Password:</strong> Sn@pple123
+          </p>
+        </div>
       </section>
     </>
   );

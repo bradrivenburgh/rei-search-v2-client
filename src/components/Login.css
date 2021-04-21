@@ -2,8 +2,9 @@
 
 .login {
   display: flex;
-  justify-content: center;
-  margin: 0 0 2em
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 2em;
 }
 
 .login__form {
@@ -29,4 +30,15 @@
 .login__buttons button {
   margin-top: 2em;
   margin-right: 1em;
+}
+
+.login__test-account {
+  margin-top: 2em; 
+  border: 1px dashed black; 
+  padding: 1em;
+}
+
+.login__test-account h2 {
+  margin-top: .5em;
+  text-align: center;
 }
