@@ -149,9 +149,6 @@ function App() {
         setSavedProperties(data);
       });
     } else {
-      // if (savedProperties.length > 0) {
-      //   window.location.reload()
-      // }
       setSavedProperties([]);
     }
   }, [loggedIn]);
@@ -215,6 +212,8 @@ function App() {
       });
   };
 
+  // Create history object to redirect visitors to login when trying to
+  // save a property via the save button
   let history = useHistory();
   /**
    * Adds or removes a property from the savedProperties array
@@ -248,10 +247,12 @@ function App() {
         inSavedProps = true;
         postSavedProperty(prop);
       }
-      setCurrentProperty({ ...currentProperty, inSavedProperties: inSavedProps });
+      setCurrentProperty({
+        ...currentProperty,
+        inSavedProperties: inSavedProps,
+      });
       setSavedProperties(newSavedProps);
     }
-
   };
 
   /**
@@ -266,7 +267,6 @@ function App() {
         menuVisibility: 'hidden',
       });
     }
-
   };
 
   /**
