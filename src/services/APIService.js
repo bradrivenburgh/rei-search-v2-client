@@ -1,4 +1,5 @@
-import config from "./config";
+import config from "../config";
+import TokenService from './token-service';
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
@@ -13,7 +14,7 @@ const postOptions = (data = {}) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${config.REISEARCH_API_TOKEN}`,
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
     },
     body: JSON.stringify(data),
   };
@@ -24,7 +25,7 @@ const deleteOptions = {
   method: "DELETE",
   headers: {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${config.REISEARCH_API_TOKEN}`,
+    'authorization': `bearer ${TokenService.getAuthToken()}`,
   },
 };
 
@@ -67,7 +68,7 @@ export const search = (value) => {
     address: value.toLowerCase(),
   };
   const queryString = formatQueryParams(params);
-  const url = `${config.REISEARCH_API_ENDPOINT}search/?${queryString}`;
+  const url = `${config.REISEARCH_API_ENDPOINT}/search/?${queryString}`;
 
   return fetchCall(url, {
     headers: {
@@ -81,8 +82,7 @@ export const getSavedProperties = () => {
   return fetchCall(`${config.REISEARCH_API_ENDPOINT}/favorites`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${config.REISEARCH_API_TOKEN}`,
-    },
+      'authorization': `bearer ${TokenService.getAuthToken()}`,    },
   });
 };
 

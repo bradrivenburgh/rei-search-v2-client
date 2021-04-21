@@ -1,27 +1,37 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
-import About from "./components/About";
-import Nav from "./components/Nav";
-import Menu from "./components/Menu";
-import MapLeaflet from "./components/MapLeaflet";
-import HUD from "./components/HUD";
-import SavedProps from "./components/SavedProps";
-import PropertyProfile from "./components/PropertyProfile";
-import Loading from "./components/Loading";
-import BadSearch from "./components/BadSearch";
-import BoundaryError from "./components/BoundaryError";
+import React, { useState, useRef, useEffect } from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom';
+import About from './components/About';
+import CreateAccount from './components/CreateAccount';
+import Login from './components/Login';
+import Nav from './components/Nav';
+import Menu from './components/Menu';
+import MapLeaflet from './components/MapLeaflet';
+import HUD from './components/HUD';
+import SavedProps from './components/SavedProps';
+import PropertyProfile from './components/PropertyProfile';
+import Loading from './components/Loading';
+import BadSearch from './components/BadSearch';
+import BoundaryError from './components/BoundaryError';
 import {
   search,
   pingServer,
   getSavedProperties,
   postSavedProperty,
   deleteSavedProperty,
-} from "./APIService";
-import { Context } from "./Context";
-import { placeholderProfile } from "./mockData";
+} from './services/APIService';
+import PublicOnlyRoute from './Utils/PublicOnlyRoute';
+import PrivateRoute from './Utils/PrivateRoute';
+import TokenService from './services/token-service';
+import AuthApiService from './services/auth-api-service';
+import IdleService from './services/idle-service';
+import { Context } from './Context';
+import { placeholderProfile } from './mockData';
 
 function App() {
   /* State */
+
+  /* Auth */
+  const [loggedIn, setLoggedIn] = useState(TokenService.hasAuthToken());
 
   /* Data from API */
   let [statistics, setStatistics] = useState({
@@ -37,7 +47,7 @@ function App() {
   });
   /* HUD State */
   let [pressCount, setPressCount] = useState(0);
-  let [HUDPosition, setHUDPosition] = useState("69px");
+  let [HUDPosition, setHUDPosition] = useState('69px');
   let [defaultTab, setDefaultTab] = useState(false);
   // Holds tab refs for each tab in HUD
   let [activeTab, setActiveTab] = useState({
@@ -53,8 +63,8 @@ function App() {
   });
   /* Menu State */
   let [menuState, setMenuState] = useState({
-    menuOffset: "-250px",
-    menuVisibility: "hidden",
+    menuOffset: '-250px',
+    menuVisibility: 'hidden',
   });
   //Reference to node holding Nav, Map, Search, and HUD
   let mainViewNode = useRef(null);
@@ -66,10 +76,10 @@ function App() {
     tractShape: {},
     countyShape: {},
     displayLayer: {
-      "Property markers": true,
-      "MSA shape": true,
-      "County shape": true,
-      "CT shape": true,
+      'Property markers': true,
+      'MSA shape': true,
+      'County shape': true,
+      'CT shape': true,
     },
   });
   let [currentMarkerLatLng, setCurrentMarkerLatLng] = useState({
@@ -77,7 +87,7 @@ function App() {
   });
   let [findMarker, setFindMarker] = useState(false);
   /* About page state */
-  const [visited, setVisited] = useState(localStorage.getItem("visited"));
+  const [visited, setVisited] = useState(localStorage.getItem('visited'));
   /* BadSearch Modal */
   let [badSearch, setBadSearch] = useState(false);
   /* Loading Indicator State */
@@ -95,24 +105,65 @@ function App() {
     }
   }, [isAwake]);
 
+  /* Handle idle logout / refresh */
+  const logoutFromIdle = () => {
+    // remove the token from localStorage
+    TokenService.clearAuthToken();
+    // remove any queued calls to the refresh endpoint
+    TokenService.clearCallbackBeforeExpiry();
+    // remove the timeouts that auto logout when idle
+    IdleService.unRegisterIdleResets();
+    setLoggedIn(TokenService.hasAuthToken());
+  };
+
+  useEffect(() => {
+    //  we'll set this to logout a user when they're idle
+    IdleService.setIdleCallback(logoutFromIdle);
+    // if a user is logged in
+    if (TokenService.hasAuthToken()) {
+      // tell the idle service to register event listeners
+      // to prevent logoutFromIdle
+      IdleService.registerIdleTimerResets();
+      // Queue a timeout just before the JWT token expires
+      TokenService.queueCallbackBeforeExpiry(() => {
+        // the timeout will call this callback just before the token expires
+        AuthApiService.postRefreshToken();
+      });
+    }
+    return () => {
+      // when the app unmounts, stop the event listeners
+      // that auto logout (clear the token from storage)
+      IdleService.unRegisterIdleResets();
+      // remove the refresh endpoint request
+      TokenService.clearCallbackBeforeExpiry();
+    };
+  }, []);
+
   /**
-   * Load saved properties when app loads; if user accounts
-   * are enabled, change to when login occurs
+   * Load saved properties when user logs in; clear them
+   * when the user logs out
    */
   useEffect(() => {
-    getSavedProperties().then((data) => {
-      setSavedProperties(data);
-    });
-  }, []);
+    if (loggedIn) {
+      getSavedProperties().then((data) => {
+        setSavedProperties(data);
+      });
+    } else {
+      // if (savedProperties.length > 0) {
+      //   window.location.reload()
+      // }
+      setSavedProperties([]);
+    }
+  }, [loggedIn]);
 
   /**
    * If the user has visited before, do not show About
    */
   useEffect(() => {
-    if (visited === "true") {
-      localStorage.setItem("visited", visited);
+    if (visited === 'true') {
+      localStorage.setItem('visited', visited);
     } else {
-      localStorage.setItem("visited", "false");
+      localStorage.setItem('visited', 'false');
     }
   }, [visited]);
 
@@ -122,11 +173,11 @@ function App() {
    * Handlers to manage visited State for About
    */
   const handleRemoveAboutVisited = () => {
-    setVisited("false");
+    setVisited('false');
   };
 
   const handleAddAboutVisited = () => {
-    setVisited("true");
+    setVisited('true');
   };
 
   /**
@@ -164,6 +215,7 @@ function App() {
       });
   };
 
+  let history = useHistory();
   /**
    * Adds or removes a property from the savedProperties array
    * @param {boolean} inSavedProps
@@ -175,26 +227,31 @@ function App() {
     prop = {},
     savedProps = []
   ) => {
-    let newSavedProps;
+    if (!loggedIn) {
+      history.push('/login');
+    } else {
+      let newSavedProps;
 
-    // Remove prop from savedProperties
-    if (inSavedProps) {
-      newSavedProps = savedProps.filter(
-        (savedProp) =>
-          savedProp.property.address.streetAddress !==
-          prop.property.address.streetAddress
-      );
-      inSavedProps = false;
-      deleteSavedProperty(prop.id);
+      // Remove prop from savedProperties
+      if (inSavedProps) {
+        newSavedProps = savedProps.filter(
+          (savedProp) =>
+            savedProp.property.address.streetAddress !==
+            prop.property.address.streetAddress
+        );
+        inSavedProps = false;
+        deleteSavedProperty(prop.id);
+      }
+      // Add property to savedProperties
+      else {
+        newSavedProps = [...savedProps, prop];
+        inSavedProps = true;
+        postSavedProperty(prop);
+      }
+      setCurrentProperty({ ...currentProperty, inSavedProperties: inSavedProps });
+      setSavedProperties(newSavedProps);
     }
-    // Add property to savedProperties
-    else {
-      newSavedProps = [...savedProps, prop];
-      inSavedProps = true;
-      postSavedProperty(prop);
-    }
-    setCurrentProperty({ ...currentProperty, inSavedProperties: inSavedProps });
-    setSavedProperties(newSavedProps);
+
   };
 
   /**
@@ -205,10 +262,11 @@ function App() {
   const handleMenuClose = (e, mainViewNode) => {
     if (mainViewNode.current.contains(e.target)) {
       setMenuState({
-        menuOffset: "-250px",
-        menuVisibility: "hidden",
+        menuOffset: '-250px',
+        menuVisibility: 'hidden',
       });
     }
+
   };
 
   /**
@@ -218,9 +276,9 @@ function App() {
    */
   const formatNumber = (value) => {
     if (value) {
-      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+      return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     } else {
-      return " --- ";
+      return ' --- ';
     }
   };
 
@@ -275,6 +333,12 @@ function App() {
       <BoundaryError>
         <Context.Provider value={contextValues}>
           <Switch>
+            <PublicOnlyRoute path='/login'>
+              <Login props={setLoggedIn} />
+            </PublicOnlyRoute>
+            <PublicOnlyRoute path='/create-account'>
+              <CreateAccount props={setLoggedIn} />
+            </PublicOnlyRoute>
             <Route path='/property-profile'>
               <PropertyProfile
                 currentProperty={currentProperty}
@@ -283,14 +347,20 @@ function App() {
                 formatNumber={formatNumber}
               />
             </Route>
-            <Route path='/saved-properties'>
+            <PrivateRoute path='/saved-properties'>
               <SavedProps
                 savedProperties={savedProperties}
                 setCurrentProperty={setCurrentProperty}
                 onAddRemoveProperty={handleAddRemoveProperty}
                 formatNumber={formatNumber}
               />
-            </Route>
+            </PrivateRoute>
+            <PublicOnlyRoute path='/login'>
+              <Login props={setLoggedIn} />
+            </PublicOnlyRoute>
+            <PublicOnlyRoute path='/create-account'>
+              <CreateAccount props={setLoggedIn} />
+            </PublicOnlyRoute>
             <Route path='/'>
               <About
                 aboutState={{ visited, setVisited, handleAddAboutVisited }}
@@ -300,6 +370,8 @@ function App() {
                 menuState={{
                   menuState,
                   setMenuState,
+                  loggedIn,
+                  setLoggedIn,
                   handleRemoveAboutVisited,
                 }}
               />

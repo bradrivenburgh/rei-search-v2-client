@@ -1,7 +1,7 @@
 let REISEARCH_API_ENDPOINT = "";
 
 (process.env.NODE_ENV === 'development')
-  ? REISEARCH_API_ENDPOINT = "http://localhost:8000/api/"
+  ? REISEARCH_API_ENDPOINT = "http://localhost:8000/api"
   : REISEARCH_API_ENDPOINT = process.env.REACT_APP_REISEARCH_API_ENDPOINT
 
 const config = {
@@ -11,6 +11,7 @@ const config = {
   CENSUS_API_KEY: process.env.CENSUS_API_KEY,
   REISEARCH_API_ENDPOINT,
   REISEARCH_API_TOKEN: process.env.REACT_APP_REISEARCH_API_TOKEN,
+  TOKEN_KEY: 'reisearch-client-auth-token',
 }
 
 export default config;
