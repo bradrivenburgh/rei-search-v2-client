@@ -56,10 +56,13 @@ Each search will produce a list of properties for sale within ten kilometers of 
 - React Router
 - React Leaflet 
 - Jest 
+- React Testing Library
 - Node.js 
 - Express 
 - Knex.js 
-- PostgreSQL 
+- PostgreSQL
+- JWT
+- Bcrypt
 - Mocha 
 - Chai
 - Sinon 
