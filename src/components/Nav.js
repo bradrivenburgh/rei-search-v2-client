@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Search from "./Search";
-import { ReactComponent as Logo } from "../images/reisearch-icon-small.svg";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Search from './Search';
+import { ReactComponent as Logo } from '../images/reisearch-icon-small.svg';
 
-import "./Nav.css";
+import './Nav.css';
 
 function Nav({ menuState: { setMenuState } }) {
   return (
@@ -14,11 +14,12 @@ function Nav({ menuState: { setMenuState } }) {
       <Search />
       <button
         className='menu-button'
+        title='Menu'
         tabIndex='7'
         onClick={() => {
           setMenuState({
-            menuOffset: "0px",
-            menuVisibility: "visible",
+            menuOffset: '0px',
+            menuVisibility: 'visible',
           });
         }}>
         ☰
