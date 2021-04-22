@@ -66,7 +66,7 @@ describe("PropertyProfile", () => {
       </BrowserRouter>
     );
 
-    const favoritesBtn = screen.getByTitle("favorite");
+    const favoritesBtn = screen.getByRole("button", {name: /save property/i});
     expect(favoritesBtn).toBeInTheDocument();
   });
 

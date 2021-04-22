@@ -71,7 +71,7 @@ function PropertiesTab() {
               <ul>
                 <div className='properties__flex-container'>
                   <li className='properties__img-container'>
-                    <Link to='/property-profile' tabIndex='6'>
+                    <Link to='/property-profile' tabIndex='6' title="Property profile">
                       <Image photo={photos[0]} alt={streetAddress} />
                     </Link>
                     <button
@@ -99,7 +99,7 @@ function PropertiesTab() {
                       className='properties__locate-button'
                       tabIndex='6'
                       onClick={() => handleFindMarker(property)}>
-                      <LocatorIcon />
+                      <LocatorIcon title="Locate property" />
                     </button>
                   </li>
                   <div className='properties-info'>

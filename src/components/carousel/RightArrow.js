@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function RightArrow({onNextSlide}) {
+function RightArrow({ onNextSlide }) {
   return (
-    <button className="forwardArrow" onClick={() => onNextSlide()}>&gt;</button>
+    <button
+      className='forwardArrow'
+      onClick={() => onNextSlide()}
+      title='Next slide'>
+      &gt;
+    </button>
   );
 }
 
 RightArrow.propTypes = {
-  onNextSlide: PropTypes.func.isRequired
-}
+  onNextSlide: PropTypes.func.isRequired,
+};
 
 export default RightArrow;

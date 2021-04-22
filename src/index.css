@@ -52,6 +52,7 @@ header {
   border: 0;
   background-color: #ccc;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .closing-nav button:hover {

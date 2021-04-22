@@ -41,7 +41,7 @@ describe("Carousel", () => {
       </BrowserRouter>
     );
 
-    const rightButton = screen.getByRole("button", { name: ">" });
+    const rightButton = screen.getByRole("button", { name: "Next slide" });
 
     // Second image in array is not active by default
     const inactiveSecondSlide = screen.getByAltText("slide 2").closest("div");
@@ -72,7 +72,7 @@ describe("Carousel", () => {
       </BrowserRouter>
     );
 
-    const leftButton = screen.getByRole("button", { name: "<" });
+    const leftButton = screen.getByRole("button", { name: "Previous slide" });
 
     // Second image in array is not active by default
     const inactiveSecondSlide = screen.getByAltText("slide 2").closest("div");

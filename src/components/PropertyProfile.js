@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useHistory } from "react-router-dom";
-import house from "../images/default-house.png";
-import { ReactComponent as HeartIcon } from "../images/heart.svg";
-import Carousel from "./carousel/Carousel";
-import "./PropertyProfile.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
+import house from '../images/default-house.png';
+import { ReactComponent as HeartIcon } from '../images/heart.svg';
+import Carousel from './carousel/Carousel';
+import './PropertyProfile.css';
 
 function PropertyProfile({
   savedProperties,
@@ -42,11 +42,11 @@ function PropertyProfile({
         <button
           className={
             inSavedProperties
-              ? "addRemove-button remove-button"
-              : "addRemove-button add-button"
+              ? 'addRemove-button remove-button'
+              : 'addRemove-button add-button'
           }
           aria-pressed={inSavedProperties}
-          title="favorite"
+          title='Save property'
           value='add-remove'
           onClick={() =>
             onAddRemoveProperty(
@@ -105,23 +105,23 @@ PropertyProfile.defaultProps = {
       id: 1,
       property: {
         address: {
-          streetAddress: "Placeholder St.",
-          city: "Somewhere",
-          state: "PA",
-          zipcode: "00000",
+          streetAddress: 'Placeholder St.',
+          city: 'Somewhere',
+          state: 'PA',
+          zipcode: '00000',
           neighborhood: null,
           community: null,
           subdivision: null,
         },
-        bedrooms: "2",
-        bathrooms: "2",
-        price: "200000",
+        bedrooms: '2',
+        bathrooms: '2',
+        price: '200000',
         yearBuilt: 1980,
         longitude: -75.10820770263672,
         latitude: 39.98884201049805,
-        description: "Placeholder description.",
+        description: 'Placeholder description.',
         livingArea: 1000,
-        currency: "USD",
+        currency: 'USD',
         photos: [],
       },
     },

@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import {ReactComponent as EconomicsIcon} from '../images/economics-resized.svg';
-import {ReactComponent as DemographicsIcon} from '../images/demographics-resized.svg';
-import {ReactComponent as PropertiesIcon} from '../images/properties-resized.svg';
-import StatsTabs from "./StatsTabs";
-import PropertiesTab from "./PropertiesTab";
-import "./HUD.css";
+import { ReactComponent as EconomicsIcon } from '../images/economics-resized.svg';
+import { ReactComponent as DemographicsIcon } from '../images/demographics-resized.svg';
+import { ReactComponent as PropertiesIcon } from '../images/properties-resized.svg';
+import StatsTabs from './StatsTabs';
+import PropertiesTab from './PropertiesTab';
+import './HUD.css';
 
-function HUD({defaultTab, HUDState}) {
+function HUD({ defaultTab, HUDState }) {
   /* STATE */
 
   let {
@@ -28,7 +28,7 @@ function HUD({defaultTab, HUDState}) {
   let copyRefScrollTops = useRef({
     econTab: 0,
     demogTab: 0,
-    propsTab: 0
+    propsTab: 0,
   });
 
   /**
@@ -42,8 +42,8 @@ function HUD({defaultTab, HUDState}) {
         demogTab: demographicsTabContent.current.scrollTop,
         propsTab: propertiesTabContent.current.scrollTop,
       };
-  
-      if (e.target.classList[0] === "property-image") {
+
+      if (e.target.classList[0] === 'property-image') {
         setHUDScrollTops({
           econTab: copyRefScrollTops.current.econTab,
           demogTab: copyRefScrollTops.current.demogTab,
@@ -58,14 +58,13 @@ function HUD({defaultTab, HUDState}) {
    * Sets the scroll position for the tabs when HUDScrollTops updates
    */
   useEffect(() => {
-
     economicsTabContent.current.scrollTop = HUDScrollTops.econTab;
     demographicsTabContent.current.scrollTop = HUDScrollTops.demogTab;
     propertiesTabContent.current.scrollTop = HUDScrollTops.propsTab;
   }, [HUDScrollTops]);
 
   /**
-   * Records ref scrollTops to copyRefScrollTops on every render.  
+   * Records ref scrollTops to copyRefScrollTops on every render.
    * Diffs the scrollTops from the tab refs 'current' property with
    * those in state on cleanup; set new state values if any differences.
    */
@@ -114,10 +113,10 @@ function HUD({defaultTab, HUDState}) {
    */
   const HUDHeights = () => {
     return {
-      baseScreen: "69px",
-      oneThirdScreen: "38%",
-      twoThirdsScreen: "67%",
-      fullScreen: "100%",
+      baseScreen: '69px',
+      oneThirdScreen: '38%',
+      twoThirdsScreen: '67%',
+      fullScreen: '100%',
     };
   };
 
@@ -146,7 +145,7 @@ function HUD({defaultTab, HUDState}) {
       // If no active tab, set it to 'econTab'
       let { econTab, demogTab, propsTab } = activeTab;
       if (!econTab && !demogTab && !propsTab && pressCount > 0) {
-        setActiveTab(changeActiveValue("econTab"));
+        setActiveTab(changeActiveValue('econTab'));
       }
     },
     [activeTab, setActiveTab, setHUDPosition, setPressCount]
@@ -180,7 +179,7 @@ function HUD({defaultTab, HUDState}) {
    * @param {string} selectedTab
    */
   const handleOpenTab = useCallback(
-    (selectedTab = "econTab") => {
+    (selectedTab = 'econTab') => {
       // Expand HUD if tab is clicked when just tabs are showing
       if (pressCount === 0) {
         handleHUDHeight(pressCount + 1);
@@ -210,7 +209,7 @@ function HUD({defaultTab, HUDState}) {
    */
   useEffect(() => {
     if (defaultTab) {
-      handleOpenTab("econTab");
+      handleOpenTab('econTab');
     }
   }, [defaultTab, handleOpenTab]);
 
@@ -220,13 +219,13 @@ function HUD({defaultTab, HUDState}) {
         <div className='HUD__button-container'>
           <button
             className='HUD__expand-button'
-            tabIndex="1"
+            tabIndex='1'
             onClick={() => handleHUDHeight(pressCount + 1)}>
             {pressCount === 3 ? <>&#95;</> : <>&#9650;</>}
           </button>
           <button
             className='HUD__contract-button'
-            tabIndex="2"
+            tabIndex='2'
             onClick={() => handleHUDHeight(pressCount - 1)}>
             {pressCount === 0 ? <>&#x26F6;</> : <>&#9660;</>}
           </button>
@@ -235,37 +234,40 @@ function HUD({defaultTab, HUDState}) {
           <button
             id='economics-btn'
             aria-label='economic stats button'
+            title='Economics'
             className={
               activeTab.econTab
-                ? "HUD__tab__tablinks active"
-                : "HUD__tab__tablinks"
+                ? 'HUD__tab__tablinks active'
+                : 'HUD__tab__tablinks'
             }
-            tabIndex="3"
-            onClick={() => handleOpenTab("econTab")}>
+            tabIndex='3'
+            onClick={() => handleOpenTab('econTab')}>
             <EconomicsIcon />
           </button>
           <button
             id='demographics-btn'
             aria-label='demographic stats button'
+            title='Demographics'
             className={
               activeTab.demogTab
-                ? "HUD__tab__tablinks active"
-                : "HUD__tab__tablinks"
+                ? 'HUD__tab__tablinks active'
+                : 'HUD__tab__tablinks'
             }
-            tabIndex="4"
-            onClick={() => handleOpenTab("demogTab")}>
+            tabIndex='4'
+            onClick={() => handleOpenTab('demogTab')}>
             <DemographicsIcon />
           </button>
           <button
             id='properties-btn'
             aria-label='properties button'
+            title='Properties'
             className={
               activeTab.propsTab
-                ? "HUD__tab__tablinks active"
-                : "HUD__tab__tablinks"
+                ? 'HUD__tab__tablinks active'
+                : 'HUD__tab__tablinks'
             }
-            tabIndex="5"
-            onClick={() => handleOpenTab("propsTab")}>
+            tabIndex='5'
+            onClick={() => handleOpenTab('propsTab')}>
             <PropertiesIcon />
           </button>
         </div>
@@ -276,10 +278,10 @@ function HUD({defaultTab, HUDState}) {
           ref={economicsTabContent}
           className={
             activeTab.econTab
-              ? "HUD__tabcontent HUD__tabcontent--visible"
-              : "HUD__tabcontent HUD__tabcontent--hidden"
+              ? 'HUD__tabcontent HUD__tabcontent--visible'
+              : 'HUD__tabcontent HUD__tabcontent--hidden'
           }
-          tabIndex="3">
+          tabIndex='3'>
           <StatsTabs id='economics' />
         </div>
 
@@ -287,10 +289,10 @@ function HUD({defaultTab, HUDState}) {
           ref={demographicsTabContent}
           className={
             activeTab.demogTab
-              ? "HUD__tabcontent HUD__tabcontent--visible"
-              : "HUD__tabcontent HUD__tabcontent--hidden"
+              ? 'HUD__tabcontent HUD__tabcontent--visible'
+              : 'HUD__tabcontent HUD__tabcontent--hidden'
           }
-          tabIndex="4">
+          tabIndex='4'>
           <StatsTabs id='demographics' />
         </div>
 
@@ -299,22 +301,22 @@ function HUD({defaultTab, HUDState}) {
           onClick={(e) => handleScrollPosition(e)}
           className={
             activeTab.propsTab
-              ? "HUD__tabcontent HUD__tabcontent--visible"
-              : "HUD__tabcontent HUD__tabcontent--hidden"
+              ? 'HUD__tabcontent HUD__tabcontent--visible'
+              : 'HUD__tabcontent HUD__tabcontent--hidden'
           }
-          tabIndex="5">
+          tabIndex='5'>
           <PropertiesTab />
         </div>
       </div>
     </section>
   );
-};
+}
 
 HUD.defaultProps = {
   defaultTab: false,
   HUDState: {
     pressCount: 0,
-    HUDPosition: "69px",
+    HUDPosition: '69px',
     activeTab: {},
     setPressCount: () => {},
     setHUDPosition: () => {},
@@ -322,10 +324,10 @@ HUD.defaultProps = {
     HUDScrollTops: {
       econTab: 0,
       demogTab: 0,
-      propsTab: 0
+      propsTab: 0,
     },
-    setHUDScrollTops: () => {}
-  }
+    setHUDScrollTops: () => {},
+  },
 };
 
 HUD.propTypes = {
@@ -340,11 +342,10 @@ HUD.propTypes = {
     HUDScrollTops: PropTypes.shape({
       econTab: PropTypes.number,
       demogTab: PropTypes.number,
-      propsTab: PropTypes.number
+      propsTab: PropTypes.number,
     }).isRequired,
-    setHUDScrollTops: PropTypes.func.isRequired
-
-  })
-}
+    setHUDScrollTops: PropTypes.func.isRequired,
+  }),
+};
 
 export default HUD;
